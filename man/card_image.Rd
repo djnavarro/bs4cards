@@ -4,14 +4,7 @@
 \alias{card_image}
 \title{Specify the image for a card}
 \usage{
-card_image(
-  image,
-  link = NULL,
-  alt = NULL,
-  align = NULL,
-  padding = 0,
-  margin = 0
-)
+card_image(image, link = NULL, alt = NULL, align = NULL, pad = 0)
 }
 \arguments{
 \item{image}{Path to the image file}
@@ -22,9 +15,7 @@ card_image(
 
 \item{align}{Alignment of the image within the card ("top", "bottom" or NULL)}
 
-\item{padding}{Padding size for the image (integer between 0 and 5)}
-
-\item{margin}{Margin size for the image (integer between 0 and 5)}
+\item{pad}{Padding size for the image (integer between 0 and 5)}
 }
 \value{
 A "shiny.tag" object

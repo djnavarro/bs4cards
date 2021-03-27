@@ -35,7 +35,7 @@ card <- function(title, text, image, image_align = "top", col_spec = "col-12 col
 
   card_content %>%
     htmltools::div(class = "card") %>%
-    htmltools::div(class = paste(col_spec, "d-flex align-items-stretch"))
+    htmltools::div(class = paste(col_spec, "mt-3 mb-3 d-flex align-items-stretch"))
 
 }
 
