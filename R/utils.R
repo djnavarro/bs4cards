@@ -100,8 +100,10 @@ sample_kitten <- function() {
 #' @export
 #'
 sample_lorem <- function() {
-  text <- readLines(url("https://loripsum.net/api/short/plaintext/1")) %>%
+  con <- url("https://loripsum.net/api/short/plaintext/1")
+  text <- readLines(con) %>%
     paste(collapse = "") %>%
     gsub(pattern = " *$", replacement = "", x = .)
+  close(con)
   return(text)
 }
