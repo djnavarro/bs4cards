@@ -18,18 +18,19 @@ card_body <- function(title, text) {
 #' @param title Title for the card
 #' @param image Path to the card image
 #' @param text Text for the card
+#' @param width Width for the card (25, 50, 75 or 100, default = 25)
 #'
 #' @return A "shiny.tag" object
 #' @export
 #'
 #' @examples
-card <- function(title, image, text) {
+card <- function(title, image, text, width = 25) {
 
   body_tag <- card_body(title, text)
   image_tag <- card_img(image)
 
   htmltools::div(
     list(image_tag, body_tag),
-    class = "card"
+    class = paste0("card w-", width)
   )
 }
