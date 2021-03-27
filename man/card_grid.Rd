@@ -4,12 +4,10 @@
 \alias{card_grid}
 \title{Create a deck of cards}
 \usage{
-card_grid(cards, col_spec = "col-12 col-md-4", type = "card-group")
+card_grid(cards, type = "card-group")
 }
 \arguments{
 \item{cards}{List of cards}
-
-\item{col_spec}{Bootstrap classes to specify width of card}
 
 \item{type}{Bootstrap class to define the grid ("card-group" or "card-deck")}
 }

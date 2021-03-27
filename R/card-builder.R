@@ -16,39 +16,26 @@ card_body <- function(title, text) {
 #' Specifies a bootstrap card
 #'
 #' @param title Title for the card
-#' @param image Path to the card image
 #' @param text Text for the card
-#' @param width Width for the card (25, 50, 75, 100 or NULL)
+#' @param image Path to the card image
 #' @param image_align Placement of the card image ("top" or "bottom")
+#' @param col_spec Bootstrap classes setting card width
 #'
 #' @return A "shiny.tag" object
 #' @export
 #'
 #' @examples
-card <- function(title, image, text, width = NULL, image_align = "top") {
+card <- function(title, text, image, image_align = "top", col_spec = "col-12 col-md-4") {
 
   body_tag <- card_body(title, text)
-  card_class <- ifelse(
-    test = is.null(width),
-    yes = "card",
-    no = paste0("card w-", width)
-  )
+  image_tag <- as_card_part(image, "image", align = image_align)
 
-  if(image_align == "top") {
-    image_tag <- as_card_part(image, "image", align = image_align)
-    return(htmltools::div(
-      list(image_tag, body_tag),
-      class = card_class
-    ))
-  }
+  if(image_align == "top") {card_content <- list(image_tag, body_tag)}
+  if(image_align == "bottom") {card_content <- list(body_tag, image_tag)}
 
-  if(image_align == "bottom") {
-    image_tag <- as_card_part(image, "image", align = image_align)
-    return(htmltools::div(
-      list(body_tag, image_tag),
-      class = card_class
-    ))
-  }
+  card_content %>%
+    htmltools::div(class = "card") %>%
+    htmltools::div(class = paste(col_spec, "d-flex align-items-stretch"))
 
 }
 
