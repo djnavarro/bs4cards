@@ -4,7 +4,15 @@
 \alias{card}
 \title{Specifies a bootstrap card}
 \usage{
-card(title, text, image, image_align = "top", col_spec = "col-12 col-md-4")
+card(
+  title,
+  text,
+  image,
+  image_align = "top",
+  col_spec = "col-12 col-md-4",
+  footer = NULL,
+  header = NULL
+)
 }
 \arguments{
 \item{title}{Title for the card}
@@ -16,6 +24,10 @@ card(title, text, image, image_align = "top", col_spec = "col-12 col-md-4")
 \item{image_align}{Placement of the card image ("top" or "bottom")}
 
 \item{col_spec}{Bootstrap classes setting card width}
+
+\item{footer}{Card footer}
+
+\item{header}{Card header}
 }
 \value{
 A "shiny.tag" object

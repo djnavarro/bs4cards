@@ -7,7 +7,7 @@
 card_text(text)
 }
 \arguments{
-\item{title}{String specifying the text to insert in a card}
+\item{text}{String specifying the text to insert in a card}
 }
 \value{
 A "shiny.tag" object

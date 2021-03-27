@@ -60,6 +60,7 @@ card_title <- function(title, level = 5) {
   return(title_tag)
 }
 
+
 #' Specify the subtitle of a card
 #'
 #' @param subtitle String specifying the subtitle
@@ -82,7 +83,7 @@ card_subtitle <- function(subtitle, level = 6) {
 
 #' Specify the text of a card
 #'
-#' @param title String specifying the text to insert in a card
+#' @param text String specifying the text to insert in a card
 #'
 #' @return A "shiny.tag" object
 #' @export
@@ -96,4 +97,36 @@ card_text <- function(text) {
 
   return(text_tag)
 }
+
+
+#' Specify the footer of a card
+#'
+#' @param text String specifying footer content
+#'
+#' @return A "shiny.tag" object
+#' @export
+#'
+#' @examples
+card_footer <- function(text) {
+  text %>%
+    htmltools::div(class = "card-footer") %>%
+    add_s3_class("bs4card.footer")
+}
+
+
+#' Specify the header of a card
+#'
+#' @param text String specifying header content
+#'
+#' @return A "shiny.tag" object
+#' @export
+#'
+#' @examples
+card_header <- function(text) {
+  text %>%
+    htmltools::div(class = "card-header") %>%
+    add_s3_class("bs4card.header")
+}
+
+
 
