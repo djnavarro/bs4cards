@@ -19,7 +19,9 @@ card_body <- function(title, text) {
 #' @param text Text for the card
 #' @param image Path to the card image
 #' @param image_align Placement of the card image ("top" or "bottom")
-#' @param col_spec Bootstrap classes setting card width
+#' @param width Bootstrap classes setting card width
+#' @param padding Bootstrap classes setting card padding
+#' @param margin Bootstrap classes setting card margin
 #' @param footer Card footer
 #' @param header Card header
 #'
@@ -27,7 +29,13 @@ card_body <- function(title, text) {
 #' @export
 #'
 #' @examples
-card <- function(title, text, image, image_align = "top", col_spec = "col-12 col-md-4", footer = NULL, header = NULL) {
+card <- function(title, text, image,
+                 image_align = "top",
+                 width = bs_col(medium = 4),
+                 margin = bs_mar(base = 0),
+                 padding = bs_pad(base = 2),
+                 footer = NULL,
+                 header = NULL) {
 
   body_tag <- card_body(title, text)
   image_tag <- as_card_part(image, "image", align = image_align)
@@ -50,7 +58,7 @@ card <- function(title, text, image, image_align = "top", col_spec = "col-12 col
 
   card_content %>%
     htmltools::div(class = "card") %>%
-    htmltools::div(class = paste(col_spec, "mt-3 mb-3 d-flex align-items-stretch"))
+    htmltools::div(class = paste(width, margin, padding, "d-flex"))
 }
 
 

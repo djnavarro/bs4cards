@@ -9,7 +9,9 @@ card(
   text,
   image,
   image_align = "top",
-  col_spec = "col-12 col-md-4",
+  width = bs_col(medium = 4),
+  margin = bs_mar(base = 3),
+  padding = bs_pad(),
   footer = NULL,
   header = NULL
 )
@@ -23,7 +25,11 @@ card(
 
 \item{image_align}{Placement of the card image ("top" or "bottom")}
 
-\item{col_spec}{Bootstrap classes setting card width}
+\item{width}{Bootstrap classes setting card width}
+
+\item{margin}{Bootstrap classes setting card margin}
+
+\item{padding}{Bootstrap classes setting card padding}
 
 \item{footer}{Card footer}
 
