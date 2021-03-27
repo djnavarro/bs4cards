@@ -4,7 +4,7 @@
 #' @param image Path to the image file
 #' @param link URL to visit when image is clicked (optional)
 #' @param alt Alt text for the image
-#' @param align Alignment of the image within the card ("top", "left" or "right")
+#' @param align Alignment of the image within the card ("top", "bottom" or NULL)
 #' @param padding Padding size for the image (integer between 0 and 5)
 #' @param margin Margin size for the image (integer between 0 and 5)
 #'
@@ -12,10 +12,14 @@
 #' @export
 #'
 #' @examples
-card_image <- function(image, link = NULL, alt = NULL, align = "top", padding = 0, margin = 0) {
+card_image <- function(image, link = NULL, alt = NULL, align = NULL, padding = 0, margin = 0) {
 
   # construct class string for the image
-  class_img <- paste0("card-img-", align)
+  class_img <- ifelse(
+    test = is.null(align),
+    yes = "card-img",
+    no = paste0("card-img-", align)
+  )
   class_pad <- paste0("p-", padding)
   class_mar <- paste0("m-", margin)
 

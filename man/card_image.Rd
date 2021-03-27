@@ -8,7 +8,7 @@ card_image(
   image,
   link = NULL,
   alt = NULL,
-  align = "top",
+  align = NULL,
   padding = 0,
   margin = 0
 )
@@ -20,7 +20,7 @@ card_image(
 
 \item{alt}{Alt text for the image}
 
-\item{align}{Alignment of the image within the card ("top", "left" or "right")}
+\item{align}{Alignment of the image within the card ("top", "bottom" or NULL)}
 
 \item{padding}{Padding size for the image (integer between 0 and 5)}
 
