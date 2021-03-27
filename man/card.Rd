@@ -9,9 +9,9 @@ card(
   text,
   image,
   image_align = "top",
-  width = bs_col(medium = 4),
+  width = bs_col(base = 12),
   margin = bs_mar(base = 0),
-  padding = bs_pad(base = 2),
+  padding = bs_pad(base = 0),
   footer = NULL,
   header = NULL
 )

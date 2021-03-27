@@ -81,5 +81,27 @@ bs_pad <- function(base = 0, bottom = NULL, top = NULL, left = NULL, right = NUL
 }
 
 
+#' Sample a placekitten image URL
+#'
+#' @return A string containing the URL
+#' @export
+#'
+sample_kitten <- function() {
+  pixels_wide <- sample(250:350, 1)
+  pixels_high <- sample(150:250, 1)
+  kitten <- paste("https://placekitten.com", pixels_wide, pixels_high, sep = "/")
+  return(kitten)
+}
 
-#"mt-3 mb-3 d-flex align-items-stretch"
+
+#' Sample lorem ipsum text
+#'
+#' @return A string containing the text
+#' @export
+#'
+sample_lorem <- function() {
+  text <- readLines(url("https://loripsum.net/api/short/plaintext/1")) %>%
+    paste(collapse = "") %>%
+    gsub(pattern = " *$", replacement = "", x = .)
+  return(text)
+}

@@ -31,9 +31,9 @@ card_body <- function(title, text) {
 #' @examples
 card <- function(title, text, image,
                  image_align = "top",
-                 width = bs_col(medium = 4),
+                 width = bs_col(base = 12),
                  margin = bs_mar(base = 0),
-                 padding = bs_pad(base = 2),
+                 padding = bs_pad(base = 0),
                  footer = NULL,
                  header = NULL) {
 
@@ -79,26 +79,26 @@ card_group <- function(cards) {
 }
 
 
-#' Create columns of "masonry-like" cards
-#'
-#' @param cards List of cards
-#'
-#' @return A thing
-#' @export
-#'
-#' @examples
-card_columns <- function(cards) {
-
-  block_wrap <- function(card) {
-    card %>% htmltools::div(class = "p-0 m-0", style = "display: inline-block")
-  }
-
-  cards %>%
-    lapply(block_wrap) %>%
-    htmltools::div(class = "card-columns") %>%
-    #htmltools::div(class = "row") %>%
-    htmltools::div(class = "container")
-}
+# #' Create columns of "masonry-like" cards
+# #'
+# #' @param cards List of cards
+# #'
+# #' @return A thing
+# #' @export
+# #'
+# #' @examples
+# card_columns <- function(cards) {
+#
+#   block_wrap <- function(card) {
+#     card %>% htmltools::div(class = "p-0 m-0", style = "display: inline-block")
+#   }
+#
+#   cards %>%
+#     lapply(block_wrap) %>%
+#     htmltools::div(class = "card-columns") %>%
+#     htmltools::div(class = "row") %>%
+#     htmltools::div(class = "container")
+# }
 
 
 
