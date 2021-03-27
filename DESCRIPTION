@@ -17,3 +17,5 @@ RoxygenNote: 7.1.1
 Imports: 
     htmltools,
     magrittr
+URL: https://github.com/djnavarro/bs4cards
+BugReports: https://github.com/djnavarro/bs4cards/issues
