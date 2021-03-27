@@ -18,17 +18,21 @@ card_body <- function(title, text) {
 #' @param title Title for the card
 #' @param image Path to the card image
 #' @param text Text for the card
-#' @param width Width for the card (25, 50, 75 or 100, default = 25)
+#' @param width Width for the card (25, 50, 75, 100 or NULL)
 #' @param image_align Placement of the card image ("top" or "bottom")
 #'
 #' @return A "shiny.tag" object
 #' @export
 #'
 #' @examples
-card <- function(title, image, text, width = 25, image_align = "top") {
+card <- function(title, image, text, width = NULL, image_align = "top") {
 
   body_tag <- card_body(title, text)
-  card_class <- paste0("card w-", width)
+  card_class <- ifelse(
+    test = is.null(width),
+    yes = "card",
+    no = paste0("card w-", width)
+  )
 
   if(image_align == "top") {
     image_tag <- as_card_part(image, "image", align = image_align)

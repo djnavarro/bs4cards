@@ -2,6 +2,7 @@
 
 export("%>%")
 export(card)
+export(card_grid)
 export(card_image)
 export(card_subtitle)
 export(card_text)
