@@ -2,7 +2,7 @@
 
 export("%>%")
 export(card)
-export(card_img)
+export(card_image)
 export(card_subtitle)
 export(card_text)
 export(card_title)

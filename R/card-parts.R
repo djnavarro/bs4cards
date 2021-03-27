@@ -1,7 +1,7 @@
 
 #' Specify the image for a card
 #'
-#' @param src Path to the image file
+#' @param image Path to the image file
 #' @param link URL to visit when image is clicked (optional)
 #' @param alt Alt text for the image
 #' @param align Alignment of the image within the card ("top", "left" or "right")
@@ -12,18 +12,17 @@
 #' @export
 #'
 #' @examples
-card_img <- function(src, link = NULL, alt = NULL, align = "top", padding = 0, margin = 0) {
+card_image <- function(image, link = NULL, alt = NULL, align = "top", padding = 0, margin = 0) {
 
   # construct class string for the image
   class_img <- paste0("card-img-", align)
   class_pad <- paste0("p-", padding)
   class_mar <- paste0("m-", margin)
-  class_tot <-
 
   # construct image tag
   img_tag <- htmltools::img(
     class = paste(class_img, class_pad, class_mar),
-    src = src,
+    src = image,
     alt = alt
   )
 
@@ -32,8 +31,13 @@ card_img <- function(src, link = NULL, alt = NULL, align = "top", padding = 0, m
     img_tag <- img_tag %>% htmltools::a(href = link)
   }
 
+  # add S3 class
+  img_tag <- img_tag %>%
+    add_s3_class("bs4card.image")
+
   return(img_tag)
 }
+
 
 #' Specify the title of a card
 #'
@@ -46,7 +50,12 @@ card_img <- function(src, link = NULL, alt = NULL, align = "top", padding = 0, m
 #' @examples
 card_title <- function(title, level = 5) {
   h_fun <- eval(str2lang(paste0("htmltools::h", level)))
-  return(h_fun(title, class = "card-title"))
+
+  title_tag <- title %>%
+    h_fun(class = "card-title") %>%
+    add_s3_class("bs4card.title")
+
+  return(title_tag)
 }
 
 #' Specify the subtitle of a card
@@ -60,8 +69,14 @@ card_title <- function(title, level = 5) {
 #' @examples
 card_subtitle <- function(subtitle, level = 6) {
   h_fun <- eval(str2lang(paste0("htmltools::h", level)))
-  return(h_fun(title, class = "card-subtitle"))
+
+  subtitle_tag <- subtitle %>%
+    h_fun(class = "card-subtitle") %>%
+    add_s3_class("bs4card.subtitle")
+
+  return(subtitle_tag)
 }
+
 
 #' Specify the text of a card
 #'
@@ -72,7 +87,11 @@ card_subtitle <- function(subtitle, level = 6) {
 #'
 #' @examples
 card_text <- function(text) {
-  htmltools::p(text, class = "card-text")
-}
 
+  text_tag <- text %>%
+    htmltools::p(class = "card-text") %>%
+    add_s3_class("bs4card.text")
+
+  return(text_tag)
+}
 
