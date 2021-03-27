@@ -4,7 +4,10 @@
 \alias{sample_lorem}
 \title{Sample lorem ipsum text}
 \usage{
-sample_lorem()
+sample_lorem(use_cache = TRUE)
+}
+\arguments{
+\item{use_cache}{Sample from cached lorem ipusm text? (default = TRUE)}
 }
 \value{
 A string containing the text
