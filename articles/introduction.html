@@ -95,24 +95,36 @@
 <div class="card-group m-0 mb-2 mt-2 p-0">
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png"><div class="card-body">
+<a href="https://slides.djnavarro.net/starting-rmarkdown">
+<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png"></a>
+<div class="card-body">
+<a href="https://slides.djnavarro.net/starting-rmarkdown">
 <h5 class="card-title">Starting R markdown</h5>
+</a>
 <p class="card-text">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-ggplot2.png"><div class="card-body">
+<a href="https://slides.djnavarro.net/starting-ggplot2">
+<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-ggplot2.png"></a>
+<div class="card-body">
+<a href="https://slides.djnavarro.net/starting-ggplot2">
 <h5 class="card-title">Starting ggplot2</h5>
+</a>
 <p class="card-text">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-programming.png"><div class="card-body">
+<a href="https://slides.djnavarro.net/starting-programming">
+<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-programming.png"></a>
+<div class="card-body">
+<a href="https://slides.djnavarro.net/starting-programming">
 <h5 class="card-title">Starting programming</h5>
+</a>
 <p class="card-text">This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</p>
 </div>
 </div>
@@ -124,16 +136,15 @@
 <div id="enabling-bootstrap-4" class="section level2">
 <h2 class="hasAnchor">
 <a href="#enabling-bootstrap-4" class="anchor"></a>Enabling bootstrap 4</h2>
-<p>The <code>bs4cards</code> package takes its name from the “cards” system introduced in bootstrap version 4, and the package does not work for R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the <code>bs4cards</code> package takes its name from the “cards” system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
 <pre><code>output:
   html_document:
     theme:
       version: 4</code></pre>
-<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/">boostrap 4.5</a> rather than an older version (boostrap 3.4) that doesn’t support cards.</p>
-<p>To enable bootstrap 4 in a pkgdown site (such as this one), edit the <code>_pkgdown.yml</code> file to include the following</p>
+<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/">bootstrap 4.5</a>. To enable bootstrap 4 in a pkgdown site such as this one, edit the <code>_pkgdown.yml</code> file to include the following</p>
 <pre><code>template:
   bootstrap: 4</code></pre>
-<p>(You may need to update to the development version of pkgdown to make this work!)</p>
+<p>You may need to update to the development version of pkgdown to make this work.</p>
 </div>
 <div id="basic-cards" class="section level2">
 <h2 class="hasAnchor">
@@ -192,49 +203,49 @@
 <div class="card-group m-0 mb-2 mt-2 p-0">
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/265/195"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/252/159"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Haec para/doca illi, nos admirabilia dicamus. Praeclare enim Plato: Beatum, cui etiam in senectute contigerit, ut sapientiam verasque opiniones assequi possit. Qui ita affectus, beatum esse numquam probabis;</p>
+<p class="card-text">Cur ipse Pythagoras et Aegyptum lustravit et Persarum magos adiit? Eodem modo is enim tibi nemo dabit, quod, expetendum sit, id esse laudabile. Eam si varietatem diceres, intellegerem, ut etiam non dicente te intellego;</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/277/180"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/335/174"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit. Nosti, credo, illud: Nemo pius est, qui pietatem-; Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus.</p>
+<p class="card-text">Sed ea mala virtuti magnitudine obruebantur. Et certamen honestum et disputatio splendida! Haec para/doca illi, nos admirabilia dicamus.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/344/249"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/272/165"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Itaque hic ipse iam pridem est reiectus; Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Beatus sibi videtur esse moriens.</p>
+<p class="card-text">Si alia sentit, inquam, alia loquitur, numquam intellegam quid sentiat; Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur. An me, inquam, nisi te audire vellem, censes haec dicturum fuisse?</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/265/150"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/327/161"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quid est, quod ab ea absolvi et perfici debeat? Honesta oratio, Socratica, Platonis etiam. Haec para/doca illi, nos admirabilia dicamus.</p>
+<p class="card-text">Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit. Contemnit enim disserendi elegantiam, confuse loquitur. An me, inquam, nisi te audire vellem, censes haec dicturum fuisse?</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/257/158"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/271/193"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus. Sin dicit obscurari quaedam nec apparere, quia valde parva sint, nos quoque concedimus; Haec para/doca illi, nos admirabilia dicamus.</p>
+<p class="card-text">Itaque hic ipse iam pridem est reiectus; Si quicquam extra virtutem habeatur in bonis. Nobis aliter videtur, recte secusne, postea;</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/250/155"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/307/172"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nobis aliter videtur, recte secusne, postea; Et certamen honestum et disputatio splendida! Qui ita affectus, beatum esse numquam probabis;</p>
+<p class="card-text">Graece donan, Latine voluptatem vocant. Omnis est enim de virtutis dignitate contentio. Omnia contraria, quos etiam insanos esse vultis.</p>
 </div>
 </div>
 </div>
@@ -255,27 +266,27 @@
 <div class="card-group m-0 mb-2 mt-2 p-0">
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/345/184"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/291/228"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Et certamen honestum et disputatio splendida!</p>
+<p class="card-text">Facillimum id quidem est, inquam. Paria sunt igitur. Ut non sine causa ex iis memoriae ducta sit disciplina. Nec vero hoc oratione solum, sed multo magis vita et factis et moribus comprobavit.</p>
 </div>
 <div class="card-footer">Kitten A</div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/331/218"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/339/248"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Cur ipse Pythagoras et Aegyptum lustravit et Persarum magos adiit? Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Neque solum ea communia, verum etiam paria esse dixerunt.</p>
+<p class="card-text">Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Et certamen honestum et disputatio splendida! Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare;</p>
 </div>
 <div class="card-footer">Kitten B</div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/306/224"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/322/197"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Haec para/doca illi, nos admirabilia dicamus. Omnis est enim de virtutis dignitate contentio. Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus.</p>
+<p class="card-text">Quid est, quod ab ea absolvi et perfici debeat? Ut non sine causa ex iis memoriae ducta sit disciplina. Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri.</p>
 </div>
 <div class="card-footer">Kitten C</div>
 </div>
@@ -294,27 +305,27 @@
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
 <div class="card-header">Kitten A</div>
-<img class="card-img-top p-0" src="https://placekitten.com/260/153"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/303/221"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quid de Platone aut de Democrito loquar? Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur. Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur.</p>
+<p class="card-text">Quid de Platone aut de Democrito loquar? Quorum sine causa fieri nihil putandum est. Beatus sibi videtur esse moriens.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
 <div class="card-header">Kitten B</div>
-<img class="card-img-top p-0" src="https://placekitten.com/312/244"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/344/166"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Haec para/doca illi, nos admirabilia dicamus. Quicquid enim a sapientia proficiscitur, id continuo debet expletum esse omnibus suis partibus; Neque solum ea communia, verum etiam paria esse dixerunt.</p>
+<p class="card-text">Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Sed quanta sit alias, nunc tantum possitne esse tanta. An me, inquam, nisi te audire vellem, censes haec dicturum fuisse?</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
 <div class="card-header">Kitten C</div>
-<img class="card-img-top p-0" src="https://placekitten.com/284/223"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/341/178"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nam cui proposito sit conservatio sui, necesse est huic partes quoque sui caras suo genere laudabiles. Eadem nunc mea adversum te oratio est. Quid est, quod ab ea absolvi et perfici debeat?</p>
+<p class="card-text">Ergo ita: non posse honeste vivi, nisi honeste vivatur? Sed ea mala virtuti magnitudine obruebantur. Omnis est enim de virtutis dignitate contentio.</p>
 </div>
 </div>
 </div>
