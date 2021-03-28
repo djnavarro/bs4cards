@@ -4,10 +4,14 @@
 \alias{card_group}
 \title{Create a group of cards}
 \usage{
-card_group(cards)
+card_group(cards, margin = bs_mar(top = 2, bottom = 2), padding = bs_pad())
 }
 \arguments{
 \item{cards}{List of cards}
+
+\item{margin}{Bootstrap classes setting card group margin}
+
+\item{padding}{Bootstrap classes setting card group padding}
 }
 \value{
 A thing

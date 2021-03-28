@@ -18,9 +18,9 @@
 #' @examples
 card <- function(title, text, image,
                  image_align = "top",
-                 width = bs_col(base = 12),
+                 width = bs_col(medium = 4),
                  margin = bs_mar(base = 0),
-                 padding = bs_pad(base = 0),
+                 padding = bs_pad(base = 2),
                  footer = NULL,
                  header = NULL) {
 
@@ -53,14 +53,17 @@ card <- function(title, text, image,
 #' Create a group of cards
 #'
 #' @param cards List of cards
+#' @param padding Bootstrap classes setting card group padding
+#' @param margin Bootstrap classes setting card group margin
 #'
 #' @return A thing
 #' @export
 #'
 #' @examples
-card_group <- function(cards) {
+card_group <- function(cards, margin = bs_mar(top = 2, bottom = 2), padding = bs_pad()) {
+
   cards %>%
-    htmltools::div(class = "card-group") %>%
+    htmltools::div(class = paste("card-group", margin, padding)) %>%
     htmltools::div(class = "row") %>%
     htmltools::div(class = "container")
 }
