@@ -1,5 +1,21 @@
 
-#' Sample a placekitten image URL
+#' Generate a random kitten card
+#'
+#' @param ... Arguments to be passed to `card()`
+#'
+#' @return Specification for a bootstrap card
+#' @export
+sample_card <- function(...) {
+  card(
+    title = "A kitten card",
+    image = sample_kitten(),
+    text = sample_lorem(),
+    ...
+  )
+}
+
+
+#' Generate a placekitten image URL
 #'
 #' @return A string containing the URL
 #' @export
@@ -12,7 +28,7 @@ sample_kitten <- function() {
 }
 
 
-#' Sample lorem ipsum text
+#' Generate lorem ipsum text
 #'
 #' @param use_cache Sample from cached lorem ipusm text? (default = TRUE)
 #'

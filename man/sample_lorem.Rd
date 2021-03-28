@@ -2,7 +2,7 @@
 % Please edit documentation in R/samplers.R
 \name{sample_lorem}
 \alias{sample_lorem}
-\title{Sample lorem ipsum text}
+\title{Generate lorem ipsum text}
 \usage{
 sample_lorem(use_cache = TRUE)
 }
@@ -13,5 +13,5 @@ sample_lorem(use_cache = TRUE)
 A string containing the text
 }
 \description{
-Sample lorem ipsum text
+Generate lorem ipsum text
 }

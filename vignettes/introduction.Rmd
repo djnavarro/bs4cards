@@ -116,17 +116,10 @@ card(
 
 
 ```{r}
-kitty <- function( ...) {
-  card(
-    title = "A kitten card",
-    image = sample_kitten(),
-    text = sample_lorem(),
-    ...
-  )
-}
-
-kitty_list <- list(kitty(), kitty(), kitty(), 
-                   kitty(), kitty(), kitty())
+kitty_list <- list(
+  sample_card(), sample_card(), sample_card(), sample_card(),
+  sample_card(), sample_card(), sample_card(), sample_card()
+)
 
 card_group(kitty_list)
 ```
@@ -136,18 +129,24 @@ card_group(kitty_list)
 
 
 ```{r}
-list(kitty(footer = "Kitten A"), 
-     kitty(footer = "Kitten B"), 
-     kitty(footer = "Kitten C")) %>% 
-  card_group()
+kitties_with_footers <- list(
+  sample_card(footer = "Kitten A"), 
+  sample_card(footer = "Kitten B"), 
+  sample_card(footer = "Kitten C")
+) 
+
+card_group(kitties_with_footers)
 ```
 
 
 ```{r}
-list(kitty(header = "Kitten A"), 
-     kitty(header = "Kitten B"), 
-     kitty(header = "Kitten C")) %>% 
-  card_group()
+kitties_with_headers <- list(
+  sample_card(header = "Kitten A"), 
+  sample_card(header = "Kitten B"), 
+  sample_card(header = "Kitten C")
+)
+
+card_group(kitties_with_headers)
 ```
 
 

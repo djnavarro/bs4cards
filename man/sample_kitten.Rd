@@ -2,7 +2,7 @@
 % Please edit documentation in R/samplers.R
 \name{sample_kitten}
 \alias{sample_kitten}
-\title{Sample a placekitten image URL}
+\title{Generate a placekitten image URL}
 \usage{
 sample_kitten()
 }
@@ -10,5 +10,5 @@ sample_kitten()
 A string containing the URL
 }
 \description{
-Sample a placekitten image URL
+Generate a placekitten image URL
 }
