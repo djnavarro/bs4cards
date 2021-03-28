@@ -17,7 +17,9 @@
 #' @export
 #'
 #' @examples
-card <- function(title, text, image,
+card <- function(title = NULL,
+                 text = NULL,
+                 image = NULL,
                  link = NULL,
                  image_align = "top",
                  width = bs_col(medium = 4),
@@ -28,19 +30,8 @@ card <- function(title, text, image,
 
   body_tag <- card_body(title, text, link = link)
   image_tag <- as_card_part(image, "image", align = image_align, link = link)
-
-  if(is.null(footer)) {
-    footer_tag <- NULL
-  } else {
-    footer_tag <- as_card_part(footer, "footer")
-  }
-
-  if(is.null(header)) {
-    header_tag <- NULL
-  } else {
-    header_tag <- as_card_part(header, "header")
-  }
-
+  footer_tag <-as_card_part(footer, "footer")
+  header_tag <-as_card_part(header, "header")
 
   if(image_align == "top") {card_content <- list(header_tag, image_tag, body_tag, footer_tag)}
   if(image_align == "bottom") {card_content <- list(header_tag, body_tag, image_tag, footer_tag)}

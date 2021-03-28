@@ -5,6 +5,7 @@ add_s3_class <- function(x, name) {
 }
 
 as_card_part <- function(x, part, ...) {
+  if(is.null(x)) return(NULL)
   class_name <- paste0("bs4card.", part)
   if(methods::is(x, class_name)) {
     return(x)
