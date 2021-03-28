@@ -64,26 +64,51 @@ template:
 You may need to update to the development version of pkgdown to make this work.
 
 
-## Basic cards
+## Building bootstrap cards
 
+The main function in bs4cards is the `card()` function. To create a minimal text-only card, call the `card()` function specifying the `title` and `text` arguments:
 
 ```{r, results='asis'}
 library(bs4cards)
+
 card(
-  title = "My First Card",
-  image = "https://placekitten.com/300/200",
-  text = "The image above is from placekitten.com. It is extremely cute."
+  title = "A bootstrap card", 
+  text = "This is a minimal bootstrap 4 card containing title and text"
 )
 ```
 
+In most cases you'll also want to add an image to the card using the `image` argument. This argument specifies the path to the image file. For the purposes of this example I'll set image paths using links to [placekitten.com](https://placekitten.com):
+
 ```{r, results='asis'}
 card(
-  title = "My First Card",
+  title = "A kitten card",
   image = "https://placekitten.com/300/200",
-  text = "The image below is from placekitten.com. It is extremely cute.",
+  text = "The image at the top of this card is from placekitten.com. It's very cute"
+)
+```
+
+Images are placed at the top of the card by default, but can be moved to the bottom by setting `image_align = "bottom"`:
+
+```{r, results='asis'}
+card(
+  title = "A kitten card",
+  image = "https://placekitten.com/300/200",
+  text = "The image at the bottom of this card is from placekitten.com. It's still cute",
   image_align = "bottom"
 )
 ```
+
+In most cases you'll want cards to be associated with a link, which is set by specifying the `link` argument to `card()`. This will convert both the card title and image to links:
+
+```{r, results='asis'}
+card(
+  title = "Placekittens",
+  image = "https://placekitten.com/300/200",
+  text = "The image at the top of this card is from placekitten.com. It's very cute",
+  link = "https://placekitten.com"
+)
+```
+
 
 
 ## Card grids

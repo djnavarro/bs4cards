@@ -5,9 +5,9 @@
 \title{Specifies a bootstrap card}
 \usage{
 card(
-  title,
-  text,
-  image,
+  title = NULL,
+  text = NULL,
+  image = NULL,
   link = NULL,
   image_align = "top",
   width = bs_col(medium = 4),
