@@ -4,7 +4,7 @@
 \alias{card_title}
 \title{Specify the title of a card}
 \usage{
-card_title(title, level = 5)
+card_title(title, level = 5, link = NULL)
 }
 \arguments{
 \item{title}{String specifying the title}

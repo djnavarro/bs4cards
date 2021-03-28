@@ -74,24 +74,36 @@
 <div class="card-group m-0 mb-2 mt-2 p-0">
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png"><div class="card-body">
+<a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
+<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png"></a>
+<div class="card-body">
+<a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
 <h5 class="card-title">Starting R markdown</h5>
+</a>
 <p class="card-text">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-ggplot2.png"><div class="card-body">
+<a href="https://slides.djnavarro.net/starting-ggplot2" class="external-link">
+<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-ggplot2.png"></a>
+<div class="card-body">
+<a href="https://slides.djnavarro.net/starting-ggplot2" class="external-link">
 <h5 class="card-title">Starting ggplot2</h5>
+</a>
 <p class="card-text">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-programming.png"><div class="card-body">
+<a href="https://slides.djnavarro.net/starting-programming" class="external-link">
+<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-programming.png"></a>
+<div class="card-body">
+<a href="https://slides.djnavarro.net/starting-programming" class="external-link">
 <h5 class="card-title">Starting programming</h5>
+</a>
 <p class="card-text">This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</p>
 </div>
 </div>
@@ -103,16 +115,15 @@
 <div id="enabling-bootstrap-4" class="section level2">
 <h2 class="hasAnchor">
 <a href="#enabling-bootstrap-4" class="anchor"></a>Enabling bootstrap 4</h2>
-<p>The <code>bs4cards</code> package takes its name from the “cards” system introduced in bootstrap version 4, and the package does not work for R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the <code>bs4cards</code> package takes its name from the “cards” system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
 <pre><code>output:
   html_document:
     theme:
       version: 4</code></pre>
-<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/" class="external-link">boostrap 4.5</a> rather than an older version (boostrap 3.4) that doesn’t support cards.</p>
-<p>To enable bootstrap 4 in a pkgdown site (such as this one), edit the <code>_pkgdown.yml</code> file to include the following</p>
+<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/" class="external-link">bootstrap 4.5</a>. To enable bootstrap 4 in a pkgdown site such as this one, edit the <code>_pkgdown.yml</code> file to include the following</p>
 <pre><code>template:
   bootstrap: 4</code></pre>
-<p>(You may need to update to the development version of pkgdown to make this work!)</p>
+<p>You may need to update to the development version of pkgdown to make this work.</p>
 </div>
 <div id="basic-cards" class="section level2">
 <h2 class="hasAnchor">
@@ -171,49 +182,49 @@
 <div class="card-group m-0 mb-2 mt-2 p-0">
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/304/166"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/297/207"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nam cui proposito sit conservatio sui, necesse est huic partes quoque sui caras suo genere laudabiles. Nosti, credo, illud: Nemo pius est, qui pietatem-; Facillimum id quidem est, inquam. Paria sunt igitur.</p>
+<p class="card-text">Ita ne hoc quidem modo paria peccata sunt. Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur. Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/330/152"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/326/178"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Ita ne hoc quidem modo paria peccata sunt. Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Nam cui proposito sit conservatio sui, necesse est huic partes quoque sui caras suo genere laudabiles.</p>
+<p class="card-text">Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit. Cur ipse Pythagoras et Aegyptum lustravit et Persarum magos adiit? Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/329/209"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/288/166"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">His enim rebus detractis negat se reperire in asotorum vita quod reprehendat. An me, inquam, nisi te audire vellem, censes haec dicturum fuisse? Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus.</p>
+<p class="card-text">Tria genera bonorum; At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia? Gracchum patrem non beatiorem fuisse quam fillum, cum alter stabilire rem publicam studuerit, alter evertere. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/268/216"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/341/185"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Sed ea mala virtuti magnitudine obruebantur. Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere.</p>
+<p class="card-text">Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Nescio quo modo praetervolavit oratio.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/324/163"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/342/191"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur. Qui ita affectus, beatum esse numquam probabis; His enim rebus detractis negat se reperire in asotorum vita quod reprehendat.</p>
+<p class="card-text">Eaedem res maneant alio modo. Quorum sine causa fieri nihil putandum est. Tria genera bonorum; At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia?</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/297/235"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/250/186"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Praeclare enim Plato: Beatum, cui etiam in senectute contigerit, ut sapientiam verasque opiniones assequi possit. Eaedem res maneant alio modo. His enim rebus detractis negat se reperire in asotorum vita quod reprehendat.</p>
+<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo ita: non posse honeste vivi, nisi honeste vivatur? Eadem nunc mea adversum te oratio est.</p>
 </div>
 </div>
 </div>
@@ -234,27 +245,27 @@
 <div class="card-group m-0 mb-2 mt-2 p-0">
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/328/234"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/316/247"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nosti, credo, illud: Nemo pius est, qui pietatem-; Si quicquam extra virtutem habeatur in bonis. Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri.</p>
+<p class="card-text">Si quicquam extra virtutem habeatur in bonis. Longum est enim ad omnia respondere, quae a te dicta sunt. Omnia contraria, quos etiam insanos esse vultis.</p>
 </div>
 <div class="card-footer">Kitten A</div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/269/167"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/321/203"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Beatus sibi videtur esse moriens. Eodem modo is enim tibi nemo dabit, quod, expetendum sit, id esse laudabile. Quid de Platone aut de Democrito loquar?</p>
+<p class="card-text">Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere. Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? Dolere malum est: in crucem qui agitur, beatus esse non potest.</p>
 </div>
 <div class="card-footer">Kitten B</div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/288/150"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/283/249"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quicquid enim a sapientia proficiscitur, id continuo debet expletum esse omnibus suis partibus; Et certamen honestum et disputatio splendida! Ut non sine causa ex iis memoriae ducta sit disciplina.</p>
+<p class="card-text">Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Dolere malum est: in crucem qui agitur, beatus esse non potest. Eadem nunc mea adversum te oratio est.</p>
 </div>
 <div class="card-footer">Kitten C</div>
 </div>
@@ -273,27 +284,27 @@
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
 <div class="card-header">Kitten A</div>
-<img class="card-img-top p-0" src="https://placekitten.com/294/170"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/261/151"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Longum est enim ad omnia respondere, quae a te dicta sunt. Nobis aliter videtur, recte secusne, postea;</p>
+<p class="card-text">Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Ita ne hoc quidem modo paria peccata sunt. Et certamen honestum et disputatio splendida!</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
 <div class="card-header">Kitten B</div>
-<img class="card-img-top p-0" src="https://placekitten.com/259/236"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/290/250"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Tria genera bonorum; At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia? Facillimum id quidem est, inquam. Paria sunt igitur. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia.</p>
+<p class="card-text">Dolere malum est: in crucem qui agitur, beatus esse non potest. Itaque hic ipse iam pridem est reiectus; Ut non sine causa ex iis memoriae ducta sit disciplina.</p>
 </div>
 </div>
 </div>
 <div class="col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card">
 <div class="card-header">Kitten C</div>
-<img class="card-img-top p-0" src="https://placekitten.com/338/195"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/271/196"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Facillimum id quidem est, inquam. Paria sunt igitur. Honesta oratio, Socratica, Platonis etiam. Et certamen honestum et disputatio splendida!</p>
+<p class="card-text">Longum est enim ad omnia respondere, quae a te dicta sunt. Omnia contraria, quos etiam insanos esse vultis. Ut non sine causa ex iis memoriae ducta sit disciplina.</p>
 </div>
 </div>
 </div>

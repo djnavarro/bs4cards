@@ -18,18 +18,21 @@ slides <- list(
   card(
     title = "Starting R markdown",
     image = "https://slides.djnavarro.net/index_img/starting-rmarkdown.png",
+    link = "https://slides.djnavarro.net/starting-rmarkdown",
     text = "An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown."
   ),
 
   card(
     title = "Starting ggplot2",
     image = "https://slides.djnavarro.net/index_img/starting-ggplot2.png",
+    link = "https://slides.djnavarro.net/starting-ggplot2",
     text = "An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2."
   ),
 
   card(
     title = "Starting programming",
     image = "https://slides.djnavarro.net/index_img/starting-programming.png",
+    link = "https://slides.djnavarro.net/starting-programming",
     text = "This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2."
   )
 )
@@ -42,7 +45,7 @@ The goal of bs4cards is to his task a little easier inside an R markdown documen
 
 ## Enabling bootstrap 4
 
-The `bs4cards` package takes its name from the "cards" system introduced in bootstrap version 4, and the package does not work for R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site 
+The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the `bs4cards` package takes its name from the "cards" system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site 
 
 ```
 output:
@@ -51,16 +54,14 @@ output:
       version: 4
 ```
 
-This overrides the R markdown defaults to ensure that the output is built using [boostrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/) rather than an older version (boostrap 3.4) that doesn't support cards.
-
-To enable bootstrap 4 in a pkgdown site (such as this one), edit the `_pkgdown.yml` file to include the following
+This overrides the R markdown defaults to ensure that the output is built using [bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/). To enable bootstrap 4 in a pkgdown site such as this one, edit the `_pkgdown.yml` file to include the following
 
 ```
 template:
   bootstrap: 4
 ```
 
-(You may need to update to the development version of pkgdown to make this work!)
+You may need to update to the development version of pkgdown to make this work.
 
 
 ## Basic cards

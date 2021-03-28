@@ -5,6 +5,7 @@
 #' @param title Title for the card
 #' @param text Text for the card
 #' @param image Path to the card image
+#' @param link URL to link to from title and image
 #' @param image_align Placement of the card image ("top" or "bottom")
 #' @param width Bootstrap classes setting card width
 #' @param padding Bootstrap classes setting card padding
@@ -17,6 +18,7 @@
 #'
 #' @examples
 card <- function(title, text, image,
+                 link = NULL,
                  image_align = "top",
                  width = bs_col(medium = 4),
                  margin = bs_mar(base = 0),
@@ -24,8 +26,8 @@ card <- function(title, text, image,
                  footer = NULL,
                  header = NULL) {
 
-  body_tag <- card_body(title, text)
-  image_tag <- as_card_part(image, "image", align = image_align)
+  body_tag <- card_body(title, text, link = link)
+  image_tag <- as_card_part(image, "image", align = image_align, link = link)
 
   if(is.null(footer)) {
     footer_tag <- NULL

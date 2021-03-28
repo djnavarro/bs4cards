@@ -8,6 +8,7 @@ card(
   title,
   text,
   image,
+  link = NULL,
   image_align = "top",
   width = bs_col(medium = 4),
   margin = bs_mar(base = 0),
@@ -22,6 +23,8 @@ card(
 \item{text}{Text for the card}
 
 \item{image}{Path to the card image}
+
+\item{link}{URL to link to from title and image}
 
 \item{image_align}{Placement of the card image ("top" or "bottom")}
 

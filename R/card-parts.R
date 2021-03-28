@@ -50,12 +50,17 @@ card_image <- function(image, link = NULL, alt = NULL, align = NULL, pad = 0) {
 #' @export
 #'
 #' @examples
-card_title <- function(title, level = 5) {
+card_title <- function(title, level = 5, link = NULL) {
   h_fun <- eval(str2lang(paste0("htmltools::h", level)))
 
   title_tag <- title %>%
     h_fun(class = "card-title") %>%
     add_s3_class("bs4card.title")
+
+  # wrap title tag in link if requested
+  if(!is.null(link)) {
+    title_tag <- title_tag %>% htmltools::a(href = link)
+  }
 
   return(title_tag)
 }
@@ -130,9 +135,9 @@ card_header <- function(text) {
 
 
 
-card_body <- function(title, text) {
+card_body <- function(title, text, link = NULL) {
 
-  title_tag <- as_card_part(title, "title")
+  title_tag <- as_card_part(title, "title", link = link)
   text_tag <- as_card_part(text, "text")
 
   htmltools::div(
