@@ -40,7 +40,7 @@ slides <- list(
 card_grid(slides)
 ```
 
-The goal of bs4cards is to his task a little easier inside an R markdown document or website. 
+The goal of bs4cards is to make this task a little easier inside an R markdown document or website. 
 
 
 ## Enabling bootstrap 4
