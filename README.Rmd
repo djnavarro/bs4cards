@@ -25,9 +25,4 @@ When creating R markdown websites, I often find myself wanting to organise conte
 devtools::install_github("djnavarro/bs4cards")
 ```
 
-The documentation is a work in progress:
-
-- pkgdown site: https://djnavarro.net/bs4cards
-- example site: https://djnavarro.net/bs4cards-example
-
 

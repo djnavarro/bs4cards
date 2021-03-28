@@ -20,3 +20,5 @@ Imports:
     methods
 URL: https://github.com/djnavarro/bs4cards
 BugReports: https://github.com/djnavarro/bs4cards/issues
+Suggests: 
+    rmarkdown

@@ -1,0 +1,154 @@
+---
+title: "Introduction"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. For example, in a recent project I wanted something like this:
+
+```{r, echo=FALSE}
+library(bs4cards)
+slides <- list(
+  
+  card(
+    title = "Starting R markdown",
+    image = "https://slides.djnavarro.net/index_img/starting-rmarkdown.png",
+    text = "An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown."
+  ),
+
+  card(
+    title = "Starting ggplot2",
+    image = "https://slides.djnavarro.net/index_img/starting-ggplot2.png",
+    text = "An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2."
+  ),
+
+  card(
+    title = "Starting programming",
+    image = "https://slides.djnavarro.net/index_img/starting-programming.png",
+    text = "This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2."
+  )
+)
+
+card_group(slides)
+```
+
+The goal of bs4cards is to his task a little easier inside an R markdown document or website. 
+
+
+## Enabling bootstrap 4
+
+The `bs4cards` package takes its name from the "cards" system introduced in bootstrap version 4, and the package does not work for R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site 
+
+```
+output:
+  html_document:
+    theme:
+      version: 4
+```
+
+This overrides the R markdown defaults to ensure that the output is built using [boostrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/) rather than an older version (boostrap 3.4) that doesn't support cards.
+
+To enable bootstrap 4 in a pkgdown site (such as this one), edit the `_pkgdown.yml` file to include the following
+
+```
+template:
+  bootstrap: 4
+```
+
+(You may need to update to the development version of pkgdown to make this work!)
+
+
+## Basic cards
+
+
+```{r, results='asis'}
+library(bs4cards)
+card(
+  title = "My First Card",
+  image = "https://placekitten.com/300/200",
+  text = "The image above is from placekitten.com. It is extremely cute."
+)
+```
+
+```{r, results='asis'}
+card(
+  title = "My First Card",
+  image = "https://placekitten.com/300/200",
+  text = "The image below is from placekitten.com. It is extremely cute.",
+  image_align = "bottom"
+)
+```
+
+
+## Card grids
+
+
+```{r, results='asis'}
+kitty <- function( ...) {
+  card(
+    title = "A kitten card",
+    image = sample_kitten(),
+    text = sample_lorem(),
+    ...
+  )
+}
+
+kitty_list <- list(kitty(), kitty(), kitty(), 
+                   kitty(), kitty(), kitty())
+
+card_group(kitty_list)
+```
+
+
+## Headers and footers
+
+
+```{r, results='asis'}
+list(kitty(footer = "Kitten A"), 
+     kitty(footer = "Kitten B"), 
+     kitty(footer = "Kitten C")) %>% 
+  card_group()
+```
+
+
+```{r, results='asis'}
+list(kitty(header = "Kitten A"), 
+     kitty(header = "Kitten B"), 
+     kitty(header = "Kitten C")) %>% 
+  card_group()
+```
+
+
+## Customising card width
+
+
+```{r, results='asis'}
+card(
+  title = "My First Card",
+  image = "https://placekitten.com/300/200",
+  text = "The image above is from placekitten.com. It is extremely cute.",
+  width = bs_col(medium = 4) 
+)
+
+card(
+  title = "My First Card",
+  image = "https://placekitten.com/300/200",
+  text = "The image above is from placekitten.com. It is extremely cute.",
+  width = bs_col(medium = 6) 
+)
+
+card(
+  title = "My First Card",
+  image = "https://placekitten.com/300/200",
+  text = "The image above is from placekitten.com. It is extremely cute.",
+  width = bs_col(large = 6) 
+)
+```
+
+
+
