@@ -137,8 +137,21 @@ card_group(kitty_list)
 When placed in a group, cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.
 
 
-## Headers and footers
+## Adding headers and footers
 
+The `card()` function includes `header` and `footer` arguments that can be used to add headers and footers to a bootstrap card, as illustrated below: 
+
+```{r}
+card(
+  title = "A kitten card",
+  image = "https://placekitten.com/300/200",
+  text = "The image at the top of this card is from placekitten.com. It's very cute",
+  header = "Header",
+  footer = "Footer"
+)
+```
+
+When arranged into a card group, headers and footers line up with one another:
 
 ```{r}
 kitties_with_footers <- list(
