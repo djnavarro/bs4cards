@@ -68,7 +68,7 @@ You may need to update to the development version of pkgdown to make this work.
 
 The main function in bs4cards is the `card()` function. To create a minimal text-only card, call the `card()` function specifying the `title` and `text` arguments:
 
-```{r, results='asis'}
+```{r}
 library(bs4cards)
 
 card(
@@ -77,9 +77,10 @@ card(
 )
 ```
 
+
 In most cases you'll also want to add an image to the card using the `image` argument. This argument specifies the path to the image file. For the purposes of this example I'll set image paths using links to [placekitten.com](https://placekitten.com):
 
-```{r, results='asis'}
+```{r}
 card(
   title = "A kitten card",
   image = "https://placekitten.com/300/200",
@@ -89,7 +90,7 @@ card(
 
 Images are placed at the top of the card by default, but can be moved to the bottom by setting `image_align = "bottom"`:
 
-```{r, results='asis'}
+```{r}
 card(
   title = "A kitten card",
   image = "https://placekitten.com/300/200",
@@ -100,7 +101,7 @@ card(
 
 In most cases you'll want cards to be associated with a link, which is set by specifying the `link` argument to `card()`. This will convert both the card title and image to links:
 
-```{r, results='asis'}
+```{r}
 card(
   title = "Placekittens",
   image = "https://placekitten.com/300/200",
@@ -114,7 +115,7 @@ card(
 ## Card grids
 
 
-```{r, results='asis'}
+```{r}
 kitty <- function( ...) {
   card(
     title = "A kitten card",
@@ -134,7 +135,7 @@ card_group(kitty_list)
 ## Headers and footers
 
 
-```{r, results='asis'}
+```{r}
 list(kitty(footer = "Kitten A"), 
      kitty(footer = "Kitten B"), 
      kitty(footer = "Kitten C")) %>% 
@@ -142,7 +143,7 @@ list(kitty(footer = "Kitten A"),
 ```
 
 
-```{r, results='asis'}
+```{r}
 list(kitty(header = "Kitten A"), 
      kitty(header = "Kitten B"), 
      kitty(header = "Kitten C")) %>% 
@@ -153,7 +154,7 @@ list(kitty(header = "Kitten A"),
 ## Customising card width
 
 
-```{r, results='asis'}
+```{r}
 card(
   title = "My First Card",
   image = "https://placekitten.com/300/200",
