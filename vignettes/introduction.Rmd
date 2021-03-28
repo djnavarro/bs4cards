@@ -111,18 +111,30 @@ card(
 ```
 
 
+## Building card groups
 
-## Card grids
+Cards are usually arranged into groups rather than presented in isolation. The `card_group()` function takes a list of cards as input and generates a bootstrap card group. To illustrate how this works, I'll use the `sample_card()` function that generates a random card
 
+```{r}
+sample_card()
+```
+
+and use this to create a list of eight cards:
 
 ```{r}
 kitty_list <- list(
   sample_card(), sample_card(), sample_card(), sample_card(),
   sample_card(), sample_card(), sample_card(), sample_card()
 )
+```
 
+This list is then passed to `card_group()`:
+
+```{r}
 card_group(kitty_list)
 ```
+
+When placed in a group, cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.
 
 
 ## Headers and footers
