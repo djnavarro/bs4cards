@@ -37,7 +37,7 @@ slides <- list(
   )
 )
 
-card_group(slides)
+card_grid(slides)
 ```
 
 The goal of bs4cards is to his task a little easier inside an R markdown document or website. 
@@ -45,7 +45,7 @@ The goal of bs4cards is to his task a little easier inside an R markdown documen
 
 ## Enabling bootstrap 4
 
-The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the `bs4cards` package takes its name from the "cards" system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site 
+The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the `bs4cards` package takes its name from the [cards](https://getbootstrap.com/docs/4.5/components/card/) system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site 
 
 ```
 output:
@@ -111,9 +111,9 @@ card(
 ```
 
 
-## Building card groups
+## Building card grids
 
-Cards are usually arranged into groups rather than presented in isolation. The `card_group()` function takes a list of cards as input and generates a bootstrap card group. To illustrate how this works, I'll use the `sample_card()` function that generates a random card
+Cards are usually arranged into grids rather than presented in isolation. The `card_grid()` function takes a list of cards as input and lays them out on a grid. To illustrate how this works, I'll use the `sample_card()` function that generates a random card
 
 ```{r}
 sample_card()
@@ -128,13 +128,13 @@ kitty_list <- list(
 )
 ```
 
-This list is then passed to `card_group()`:
+This list is then passed to `card_grid()`:
 
 ```{r}
-card_group(kitty_list)
+card_grid(kitty_list)
 ```
 
-When placed in a group, cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.
+The cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.
 
 
 ## Adding headers and footers
@@ -151,7 +151,7 @@ card(
 )
 ```
 
-When arranged into a card group, headers and footers line up with one another:
+When arranged into a grid, headers and footers line up with one another:
 
 ```{r}
 kitties_with_footers <- list(
@@ -160,7 +160,7 @@ kitties_with_footers <- list(
   sample_card(footer = "Kitten C")
 ) 
 
-card_group(kitties_with_footers)
+card_grid(kitties_with_footers)
 ```
 
 
@@ -171,7 +171,7 @@ kitties_with_headers <- list(
   sample_card(header = "Kitten C")
 )
 
-card_group(kitties_with_headers)
+card_grid(kitties_with_headers)
 ```
 
 
@@ -189,12 +189,12 @@ The `card()` function has a `width` argument that can be used to modify this def
 
 ```{r}
 card(
-  text = "On small devices this card spans 12 columns, on medium devices it spans 6, on large devices it spans 4 columns, and on extra large devices it spans 3",
-  width = bs_col(medium = 6, large = 4, extra_large = 3) 
+  text = "On small devices this card spans 12 columns, on medium devices it spans 6, and on large devices it spans 4 columns",
+  width = bs_col(medium = 6, large = 4) 
 )
 ```
 
-This makes it possible to build card groups that contain cards of different width. On medium or larger devices the right card is twice as wide as the left card. On smaller devices, however, both cards revert to full width and are laid out one above the other:
+This makes it possible to build card grids that contain cards of different width. On medium or larger devices the right card is twice as wide as the left card. On smaller devices, however, both cards revert to full width and are laid out one above the other:
 
 ```{r}
 uneven_cards <- list(
@@ -202,5 +202,5 @@ uneven_cards <- list(
   card(text = "A wide card", width = bs_col(medium = 8))
 )
 
-card_group(uneven_cards)
+card_grid(uneven_cards)
 ```

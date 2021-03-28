@@ -37,13 +37,12 @@ card <- function(title = NULL,
   if(image_align == "bottom") {card_content <- list(header_tag, body_tag, image_tag, footer_tag)}
 
   card_content %>%
-    htmltools::div(class = "card") %>%
-    htmltools::div(class = paste(width, margin, padding, "d-flex"))
+    htmltools::div(class = paste("card", width, margin, padding, "d-flex"))
 }
 
 
 
-#' Create a group of cards
+#' Create a grid of cards
 #'
 #' @param cards List of cards
 #' @param padding Bootstrap classes setting card group padding
@@ -53,11 +52,9 @@ card <- function(title = NULL,
 #' @export
 #'
 #' @examples
-card_group <- function(cards, margin = bs_mar(top = 2, bottom = 2), padding = bs_pad()) {
+card_grid <- function(cards, margin = bs_mar(top = 3, bottom = 3), padding = bs_pad()) {
 
   cards %>%
-    htmltools::div(class = paste("card-group", margin, padding)) %>%
-    htmltools::div(class = "row") %>%
-    htmltools::div(class = "container")
+    htmltools::div(class = paste("row", margin, padding))
 }
 
