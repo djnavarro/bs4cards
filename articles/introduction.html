@@ -90,11 +90,8 @@
     
     
 <p>When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. For example, in a recent project I wanted something like this:</p>
-<div class="container">
-<div class="row">
-<div class="card-group m-0 mb-2 mt-2 p-0">
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="row m-0 mb-3 mt-3 p-0">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <a href="https://slides.djnavarro.net/starting-rmarkdown">
 <img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png"></a>
 <div class="card-body">
@@ -104,9 +101,7 @@
 <p class="card-text">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <a href="https://slides.djnavarro.net/starting-ggplot2">
 <img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-ggplot2.png"></a>
 <div class="card-body">
@@ -116,9 +111,7 @@
 <p class="card-text">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <a href="https://slides.djnavarro.net/starting-programming">
 <img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-programming.png"></a>
 <div class="card-body">
@@ -129,14 +122,11 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
 <p>The goal of bs4cards is to his task a little easier inside an R markdown document or website.</p>
 <div id="enabling-bootstrap-4" class="section level2">
 <h2 class="hasAnchor">
 <a href="#enabling-bootstrap-4" class="anchor"></a>Enabling bootstrap 4</h2>
-<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the <code>bs4cards</code> package takes its name from the “cards” system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the <code>bs4cards</code> package takes its name from the <a href="https://getbootstrap.com/docs/4.5/components/card/">cards</a> system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
 <pre><code>output:
   html_document:
     theme:
@@ -157,12 +147,10 @@
   title <span class="op">=</span> <span class="st">"A bootstrap card"</span>, 
   text <span class="op">=</span> <span class="st">"This is a minimal bootstrap 4 card containing title and text"</span>
 <span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-body">
 <h5 class="card-title">A bootstrap card</h5>
 <p class="card-text">This is a minimal bootstrap 4 card containing title and text</p>
-</div>
 </div>
 </div>
 <p>In most cases you’ll also want to add an image to the card using the <code>image</code> argument. This argument specifies the path to the image file. For the purposes of this example I’ll set image paths using links to <a href="https://placekitten.com">placekitten.com</a>:</p>
@@ -172,12 +160,10 @@
   image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
   text <span class="op">=</span> <span class="st">"The image at the top of this card is from placekitten.com. It's very cute"</span>
 <span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <img class="card-img-top p-0" src="https://placekitten.com/300/200"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
 <p class="card-text">The image at the top of this card is from placekitten.com. It's very cute</p>
-</div>
 </div>
 </div>
 <p>Images are placed at the top of the card by default, but can be moved to the bottom by setting <code>image_align = "bottom"</code>:</p>
@@ -188,14 +174,12 @@
   text <span class="op">=</span> <span class="st">"The image at the bottom of this card is from placekitten.com. It's still cute"</span>,
   image_align <span class="op">=</span> <span class="st">"bottom"</span>
 <span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-body">
 <h5 class="card-title">A kitten card</h5>
 <p class="card-text">The image at the bottom of this card is from placekitten.com. It's still cute</p>
 </div>
 <img class="card-img-bottom p-0" src="https://placekitten.com/300/200">
-</div>
 </div>
 <p>In most cases you’ll want cards to be associated with a link, which is set by specifying the <code>link</code> argument to <code><a href="../reference/card.html">card()</a></code>. This will convert both the card title and image to links:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -205,8 +189,7 @@
   text <span class="op">=</span> <span class="st">"The image at the top of this card is from placekitten.com. It's very cute"</span>,
   link <span class="op">=</span> <span class="st">"https://placekitten.com"</span>
 <span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <a href="https://placekitten.com">
 <img class="card-img-top p-0" src="https://placekitten.com/300/200"></a>
 <div class="card-body">
@@ -217,19 +200,16 @@
 </div>
 </div>
 </div>
-</div>
-<div id="building-card-groups" class="section level2">
+<div id="building-card-grids" class="section level2">
 <h2 class="hasAnchor">
-<a href="#building-card-groups" class="anchor"></a>Building card groups</h2>
-<p>Cards are usually arranged into groups rather than presented in isolation. The <code><a href="../reference/card_group.html">card_group()</a></code> function takes a list of cards as input and generates a bootstrap card group. To illustrate how this works, I’ll use the <code><a href="../reference/sample_card.html">sample_card()</a></code> function that generates a random card</p>
+<a href="#building-card-grids" class="anchor"></a>Building card grids</h2>
+<p>Cards are usually arranged into grids rather than presented in isolation. The <code><a href="../reference/card_grid.html">card_grid()</a></code> function takes a list of cards as input and lays them out on a grid. To illustrate how this works, I’ll use the <code><a href="../reference/sample_card.html">sample_card()</a></code> function that generates a random card</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/281/186"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/320/170"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Honesta oratio, Socratica, Platonis etiam. Dolere malum est: in crucem qui agitur, beatus esse non potest. Sequitur disserendi ratio cognitioque naturae;</p>
-</div>
+<p class="card-text">Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Ut non sine causa ex iis memoriae ducta sit disciplina. Sed ea mala virtuti magnitudine obruebantur.</p>
 </div>
 </div>
 <p>and use this to create a list of eight cards:</p>
@@ -238,80 +218,60 @@
   <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<p>This list is then passed to <code><a href="../reference/card_group.html">card_group()</a></code>:</p>
+<p>This list is then passed to <code><a href="../reference/card_grid.html">card_grid()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card_group.html">card_group</a></span><span class="op">(</span><span class="va">kitty_list</span><span class="op">)</span></code></pre></div>
-<div class="container">
-<div class="row">
-<div class="card-group m-0 mb-2 mt-2 p-0">
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/279/215"><div class="card-body">
+<code class="sourceCode R"><span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">kitty_list</span><span class="op">)</span></code></pre></div>
+<div class="row m-0 mb-3 mt-3 p-0">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/254/225"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Qui ita affectus, beatum esse numquam probabis;</p>
+<p class="card-text">Eodem modo is enim tibi nemo dabit, quod, expetendum sit, id esse laudabile. Neque solum ea communia, verum etiam paria esse dixerunt. Ita ne hoc quidem modo paria peccata sunt.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/252/163"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/276/165"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Eaedem res maneant alio modo. Quid de Platone aut de Democrito loquar? Non semper, inquam; Eam tum adesse, cum dolor omnis absit;</p>
+<p class="card-text">Itaque hic ipse iam pridem est reiectus; Si alia sentit, inquam, alia loquitur, numquam intellegam quid sentiat; Omnis est enim de virtutis dignitate contentio.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/268/184"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/300/233"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quorum sine causa fieri nihil putandum est. Itaque hic ipse iam pridem est reiectus; Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus.</p>
+<p class="card-text">Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? Honesta oratio, Socratica, Platonis etiam.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/276/160"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/267/174"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nec vero hoc oratione solum, sed multo magis vita et factis et moribus comprobavit. Facillimum id quidem est, inquam. Paria sunt igitur. Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt.</p>
+<p class="card-text">Facillimum id quidem est, inquam. Paria sunt igitur. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Sed quanta sit alias, nunc tantum possitne esse tanta.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/307/236"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/307/150"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Satis est tibi in te, satis in legibus, satis in mediocribus amicitiis praesidii.</p>
+<p class="card-text">Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Eodem modo is enim tibi nemo dabit, quod, expetendum sit, id esse laudabile.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/324/155"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/279/244"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Ergo ita: non posse honeste vivi, nisi honeste vivatur? Eam si varietatem diceres, intellegerem, ut etiam non dicente te intellego; Si quicquam extra virtutem habeatur in bonis.</p>
+<p class="card-text">Sequitur disserendi ratio cognitioque naturae; Si alia sentit, inquam, alia loquitur, numquam intellegam quid sentiat; Longum est enim ad omnia respondere, quae a te dicta sunt.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/267/200"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/291/170"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Omnis est enim de virtutis dignitate contentio. Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Neque solum ea communia, verum etiam paria esse dixerunt.</p>
+<p class="card-text">Graece donan, Latine voluptatem vocant. Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Si alia sentit, inquam, alia loquitur, numquam intellegam quid sentiat;</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/302/199"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/318/225"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? Nosti, credo, illud: Nemo pius est, qui pietatem-; Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere.</p>
+<p class="card-text">Qua ex cognitione facilior facta est investigatio rerum occultissimarum. Quicquid enim a sapientia proficiscitur, id continuo debet expletum esse omnibus suis partibus; Quid igitur dubitamus in tota eius natura quaerere quid sit effectum?</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<p>When placed in a group, cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.</p>
+<p>The cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.</p>
 </div>
 <div id="adding-headers-and-footers" class="section level2">
 <h2 class="hasAnchor">
@@ -325,8 +285,7 @@
   header <span class="op">=</span> <span class="st">"Header"</span>,
   footer <span class="op">=</span> <span class="st">"Footer"</span>
 <span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-header">Header</div>
 <img class="card-img-top p-0" src="https://placekitten.com/300/200"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
@@ -334,8 +293,7 @@
 </div>
 <div class="card-footer">Footer</div>
 </div>
-</div>
-<p>When arranged into a card group, headers and footers line up with one another:</p>
+<p>When arranged into a grid, headers and footers line up with one another:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kitties_with_footers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>footer <span class="op">=</span> <span class="st">"Kitten A"</span><span class="op">)</span>, 
@@ -343,38 +301,28 @@
   <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>footer <span class="op">=</span> <span class="st">"Kitten C"</span><span class="op">)</span>
 <span class="op">)</span> 
 
-<span class="fu"><a href="../reference/card_group.html">card_group</a></span><span class="op">(</span><span class="va">kitties_with_footers</span><span class="op">)</span></code></pre></div>
-<div class="container">
-<div class="row">
-<div class="card-group m-0 mb-2 mt-2 p-0">
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/282/231"><div class="card-body">
+<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">kitties_with_footers</span><span class="op">)</span></code></pre></div>
+<div class="row m-0 mb-3 mt-3 p-0">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/346/183"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Et certamen honestum et disputatio splendida! Cur ipse Pythagoras et Aegyptum lustravit et Persarum magos adiit? Omnis est enim de virtutis dignitate contentio.</p>
+<p class="card-text">Beatus sibi videtur esse moriens. Qua ex cognitione facilior facta est investigatio rerum occultissimarum. Et certamen honestum et disputatio splendida!</p>
 </div>
 <div class="card-footer">Kitten A</div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/328/182"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/277/207"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quicquid enim a sapientia proficiscitur, id continuo debet expletum esse omnibus suis partibus; Eaedem res maneant alio modo. Omnia contraria, quos etiam insanos esse vultis.</p>
+<p class="card-text">Eam si varietatem diceres, intellegerem, ut etiam non dicente te intellego; Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Eaedem res maneant alio modo.</p>
 </div>
 <div class="card-footer">Kitten B</div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
-<img class="card-img-top p-0" src="https://placekitten.com/282/219"><div class="card-body">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<img class="card-img-top p-0" src="https://placekitten.com/299/150"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nobis aliter videtur, recte secusne, postea; Graece donan, Latine voluptatem vocant. Si alia sentit, inquam, alia loquitur, numquam intellegam quid sentiat;</p>
+<p class="card-text">Nobis aliter videtur, recte secusne, postea; Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Haec para/doca illi, nos admirabilia dicamus.</p>
 </div>
 <div class="card-footer">Kitten C</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -384,37 +332,27 @@
   <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>header <span class="op">=</span> <span class="st">"Kitten C"</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="fu"><a href="../reference/card_group.html">card_group</a></span><span class="op">(</span><span class="va">kitties_with_headers</span><span class="op">)</span></code></pre></div>
-<div class="container">
-<div class="row">
-<div class="card-group m-0 mb-2 mt-2 p-0">
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">kitties_with_headers</span><span class="op">)</span></code></pre></div>
+<div class="row m-0 mb-3 mt-3 p-0">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-header">Kitten A</div>
-<img class="card-img-top p-0" src="https://placekitten.com/328/179"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/326/194"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Tria genera bonorum; At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia? Nobis aliter videtur, recte secusne, postea; Qui ita affectus, beatum esse numquam probabis;</p>
+<p class="card-text">Neque solum ea communia, verum etiam paria esse dixerunt. Eiuro, inquit adridens, iniquum, hac quidem de re; Apparet statim, quae sint officia, quae actiones. Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus;</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-header">Kitten B</div>
-<img class="card-img-top p-0" src="https://placekitten.com/291/181"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/263/208"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nec vero hoc oratione solum, sed multo magis vita et factis et moribus comprobavit. Tria genera bonorum; At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia? Haec para/doca illi, nos admirabilia dicamus.</p>
+<p class="card-text">Quam ob rem tandem, inquit, non satisfacit? Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus.</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-header">Kitten C</div>
-<img class="card-img-top p-0" src="https://placekitten.com/322/158"><div class="card-body">
+<img class="card-img-top p-0" src="https://placekitten.com/338/246"><div class="card-body">
 <h5 class="card-title">A kitten card</h5>
-<p class="card-text">Honesta oratio, Socratica, Platonis etiam. Eadem nunc mea adversum te oratio est. An me, inquam, nisi te audire vellem, censes haec dicturum fuisse?</p>
-</div>
-</div>
-</div>
+<p class="card-text">Eiuro, inquit adridens, iniquum, hac quidem de re; Apparet statim, quae sint officia, quae actiones. Itaque hic ipse iam pridem est reiectus; Nescio quo modo praetervolavit oratio.</p>
 </div>
 </div>
 </div>
@@ -430,41 +368,31 @@
 <p>The <code><a href="../reference/card.html">card()</a></code> function has a <code>width</code> argument that can be used to modify this default:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  text <span class="op">=</span> <span class="st">"On small devices this card spans 12 columns, on medium devices it spans 6, on large devices it spans 4 columns, and on extra large devices it spans 3"</span>,
-  width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">6</span>, large <span class="op">=</span> <span class="fl">4</span>, extra_large <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> 
+  text <span class="op">=</span> <span class="st">"On small devices this card spans 12 columns, on medium devices it spans 6, and on large devices it spans 4 columns"</span>,
+  width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">6</span>, large <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> 
 <span class="op">)</span></code></pre></div>
-<div class="col-12 col-md-6 col-lg-4 col-xl-3 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-6 col-lg-4 m-0 p-2 d-flex">
 <div class="card-body">
-<p class="card-text">On small devices this card spans 12 columns, on medium devices it spans 6, on large devices it spans 4 columns, and on extra large devices it spans 3</p>
+<p class="card-text">On small devices this card spans 12 columns, on medium devices it spans 6, and on large devices it spans 4 columns</p>
 </div>
 </div>
-</div>
-<p>This makes it possible to build card groups that contain cards of different width. On medium or larger devices the right card is twice as wide as the left card. On smaller devices, however, both cards revert to full width and are laid out one above the other:</p>
+<p>This makes it possible to build card grids that contain cards of different width. On medium or larger devices the right card is twice as wide as the left card. On smaller devices, however, both cards revert to full width and are laid out one above the other:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">uneven_cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"A narrow card"</span>, width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"A wide card"</span>, width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span>
 
-<span class="fu"><a href="../reference/card_group.html">card_group</a></span><span class="op">(</span><span class="va">uneven_cards</span><span class="op">)</span></code></pre></div>
-<div class="container">
-<div class="row">
-<div class="card-group m-0 mb-2 mt-2 p-0">
-<div class="col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card">
+<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">uneven_cards</span><span class="op">)</span></code></pre></div>
+<div class="row m-0 mb-3 mt-3 p-0">
+<div class="card col-12 col-md-4 m-0 p-2 d-flex">
 <div class="card-body">
 <p class="card-text">A narrow card</p>
 </div>
 </div>
-</div>
-<div class="col-12 col-md-8 m-0 p-2 d-flex">
-<div class="card">
+<div class="card col-12 col-md-8 m-0 p-2 d-flex">
 <div class="card-body">
 <p class="card-text">A wide card</p>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
