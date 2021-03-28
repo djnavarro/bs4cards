@@ -1,18 +1,5 @@
 
 
-
-card_body <- function(title, text) {
-
-  title_tag <- as_card_part(title, "title")
-  text_tag <- as_card_part(text, "text")
-
-  htmltools::div(
-    list(title_tag, text_tag),
-    class = "card-body"
-  )
-}
-
-
 #' Specifies a bootstrap card
 #'
 #' @param title Title for the card
@@ -77,29 +64,4 @@ card_group <- function(cards) {
     htmltools::div(class = "row") %>%
     htmltools::div(class = "container")
 }
-
-
-# #' Create columns of "masonry-like" cards
-# #'
-# #' @param cards List of cards
-# #'
-# #' @return A thing
-# #' @export
-# #'
-# #' @examples
-# card_columns <- function(cards) {
-#
-#   block_wrap <- function(card) {
-#     card %>% htmltools::div(class = "p-0 m-0", style = "display: inline-block")
-#   }
-#
-#   cards %>%
-#     lapply(block_wrap) %>%
-#     htmltools::div(class = "card-columns") %>%
-#     htmltools::div(class = "row") %>%
-#     htmltools::div(class = "container")
-# }
-
-
-
 

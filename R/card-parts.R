@@ -130,3 +130,17 @@ card_header <- function(text) {
 
 
 
+card_body <- function(title, text) {
+
+  title_tag <- as_card_part(title, "title")
+  text_tag <- as_card_part(text, "text")
+
+  htmltools::div(
+    list(title_tag, text_tag),
+    class = "card-body"
+  )
+}
+
+
+
+
