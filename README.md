@@ -17,3 +17,6 @@ You can install the development version from
 # install.packages("devtools")
 devtools::install_github("djnavarro/bs4cards")
 ```
+
+The functionality of the package is outlined in the [introduction
+article](https://bs4cards.djnavarro.net/articles/introduction.html).
