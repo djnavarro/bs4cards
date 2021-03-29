@@ -7,7 +7,7 @@ template:
   opengraph:
     image:
       src: "https://bs4cards.djnavarro.net/twitter-card.png"
-      alt: "A grid of hearts"
+      alt: "A grid of hearts. Text in the middle reads 'bs4cards'"
     twitter:
       creator: "@djnavarro"
       site: "https://bs4cards.djnavarro.net"
