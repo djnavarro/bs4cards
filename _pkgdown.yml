@@ -6,7 +6,7 @@ template:
   bootstrap: 4
   opengraph:
     image:
-      src: man/figures/card.png
+      src: "https://bs4cards.djnavarro.net/twitter-card.png"
       alt: "A grid of hearts"
     twitter:
       creator: "@djnavarro"
