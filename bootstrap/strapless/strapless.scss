@@ -1,0 +1,20 @@
+
+// to build: sass strapless.scss strapless.css
+
+@import "strapless-variables";
+@import "../bootstrap-4.6.0/scss/mixins";
+@import "strapless-reboot";
+@import "../bootstrap-4.6.0/scss/grid";
+@import "../bootstrap-4.6.0/scss/images";
+@import "../bootstrap-4.6.0/scss/utilities/display";
+@import "../bootstrap-4.6.0/scss/utilities/flex";
+@import "../bootstrap-4.6.0/scss/utilities/spacing";
+@import "../bootstrap-4.6.0/scss/card";
+
+
+// possibly we can reduce mixins to these?
+//@import "bootstrap-4.6.0/scss/mixins/deprecate";
+//@import "bootstrap-4.6.0/scss/mixins/breakpoints";
+//@import "bootstrap-4.6.0/scss/mixins/grid-framework";
+//@import "bootstrap-4.6.0/scss/mixins/grid";
+
