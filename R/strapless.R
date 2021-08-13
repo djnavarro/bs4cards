@@ -12,7 +12,7 @@ use_strapless <- function(destdir = ".", source = "local") {
   destfile <- fs::path(destdir, "strapless.css")
   if(source == "local") {
     path <- system.file("extdata", "strapless.css", package = "bs4cards")
-    fs::file_copy(path, destfile)
+    fs::file_copy(path, destfile, overwrite = TRUE)
     return(invisible(NULL))
   }
   if(source == "github") {
