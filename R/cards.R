@@ -8,13 +8,16 @@
 #' @param footer Card footer
 #' @param header Card header
 #' @param width Card width ("narrow", "medium", "wide")
-#' @param orientation defailt top
+#' @param orientation Position of the image ("top", "bottom", "left", "right")
+#' @param padding Spacing between parts of the card (integer between 0 and 5)
+#' @param margin Spacing between adjacent cards (integer between 0 and 5)
 #'
 #' @return A "shiny.tag" object
 #' @export
 #'
 cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
-                  footer = NULL, header = NULL, width = "medium", orientation = "top") {
+                  footer = NULL, header = NULL, width = "medium",
+                  orientation = "top", padding = 0, margin = 1) {
 
   card_list <-data %>%
     dplyr::transmute(
@@ -25,7 +28,9 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       header = {{header}},
       footer = {{footer}},
       width  = {{width}},
-      orientation = {{orientation}}
+      orientation = {{orientation}},
+      padding = {{padding}},
+      margin = {{margin}}
     ) %>%
     purrr::transpose() %>%
     purrr::map(purrr::lift_dl(make_card))
@@ -45,7 +50,8 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
 # arrange the pieces into a card ------------------------------------------
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
-                      footer = NULL, header = NULL, width, orientation = "top") {
+                      footer = NULL, header = NULL, width, orientation,
+                      padding, margin) {
 
   title  <- make_title(title)
   text   <- make_text(text)
@@ -60,9 +66,62 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
 
   body <- make_body(title, text)
 
-  style <- paste("card", make_width(width), "p-0 m-0 d-flex")
-  arrange_card(header, image, body, footer, orientation, style)
+  bits <- assemble_bits(header, image, body, footer, orientation)
+  card <- assemble_card(bits, width, padding, margin)
+  return(card)
 }
+
+
+
+
+# assembly for the card structure -----------------------------------------
+
+assemble_bits <- function(header, image, body, footer, orientation) {
+
+  if(orientation == "top") {
+    return(htmltools::div(header, image, body, footer))
+  }
+
+  if(orientation == "bottom") {
+    return(htmltools::div(header, body, image, footer))
+  }
+
+  if(orientation == "left") {
+    lhs <- htmltools::div(class = "col-sm-6", image)
+    rhs <- htmltools::div(class = "col-sm-6", body)
+    row <- htmltools::div(class = "row no-gutters", lhs, rhs)
+    return(htmltools::div(header, row, footer))
+  }
+
+  if(orientation == "right") {
+    lhs <- htmltools::div(class = "col-sm-6", body)
+    rhs <- htmltools::div(class = "col-sm-6", image)
+    row <- htmltools::div(class = "row no-gutters", lhs, rhs)
+    return(htmltools::div(header, row, footer))
+  }
+}
+
+
+assemble_card <- function(pieces, width, padding, margin) {
+
+  inner_card <- htmltools::div(
+    class = paste0("card d-flex m-0 p-", padding, " col-12"),
+    style = "visibility: visible;",
+    pieces
+  )
+
+  outer_card <- htmltools::div(
+    class = paste0("card d-flex m-0 p-", margin, " ", make_width(width)),
+    style = "visibility: hidden;",
+    inner_card
+  )
+
+  return(outer_card)
+}
+
+
+
+
 
 
 
@@ -92,7 +151,6 @@ make_body <- function(title, text) {
   htmltools::div(class = "card-body", title, text)
 }
 
-
 make_width <- function(width) {
   if(width == "narrow") return("col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2")
   if(width == "medium") return("col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3")
@@ -100,17 +158,8 @@ make_width <- function(width) {
   return(width)
 }
 
-arrange_card <- function(header, image, body, footer, orientation, style) {
 
-  if(orientation == "top") {
-    return(htmltools::div(class = style, header, image, body, footer))
-  }
 
-  if(orientation == "bottom") {
-    return(htmltools::div(class = style, header, body, image, footer))
-  }
-
-}
 
 
 
