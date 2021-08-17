@@ -194,6 +194,7 @@ make_width <- function(width) {
   if(width == "narrow") return("col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2")
   if(width == "medium") return("col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3")
   if(width == "wide") return("col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4")
+  if(width == "very-wide") return("col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6")
   return(width)
 }
 
