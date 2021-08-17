@@ -104,7 +104,8 @@ galleries %>%
     image = locate_thumbnail(short_name),
     width = "wide",
     layout = "inset-top", 
-    padding = 0
+    footer = date,
+    colour = "#ffffffcc"
   )
 ```
 
@@ -118,7 +119,7 @@ galleries %>%
     image = locate_thumbnail(short_name),
     width = "wide",
     layout = "inset-bottom", 
-    colour = "#ffffff66"
+    colour = "#ffffffcc"
   )
 ```
 
