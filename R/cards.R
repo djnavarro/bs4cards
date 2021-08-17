@@ -187,7 +187,7 @@ make_header <- function(header) {
 }
 
 make_footer <- function(footer) {
-  if(!is.null(footer)) htmltools::div(footer, class = "card-footer")
+  if(!is.null(footer)) htmltools::div(footer, class = "card-footer text-muted")
 }
 
 make_width <- function(width) {
