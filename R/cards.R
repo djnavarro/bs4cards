@@ -6,19 +6,18 @@
 #' @param image Path to the card image
 #' @param link URL to link to from title and image
 #' @param footer Card footer
-#' @param header Card header
 #' @param width Card width ("narrow", "medium", "wide")
 #' @param layout Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")
 #' @param padding Spacing between parts of the card (integer between 0 and 5)
-#' @param margin Spacing between adjacent cards (integer between 0 and 5)
+#' @param gutter Spacing between adjacent cards (integer between 0 and 5)
 #' @param colour Colour applied to the card (interpretation depends on layout)
 #'
 #' @return A "shiny.tag" object
 #' @export
 #'
 cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
-                  footer = NULL, header = NULL, width = "medium",
-                  layout = "label-below", padding = 0, margin = 1,
+                  footer = NULL, width = "medium",
+                  layout = "label-below", padding = 0, gutter = 1,
                   colour = "#ffffffaa") {
 
   card_list <-data %>%
@@ -27,20 +26,23 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       text   = {{text}},
       image  = {{image}},
       link   = {{link}},
-      header = {{header}},
       footer = {{footer}},
       width  = {{width}},
       layout = {{layout}},
       padding = {{padding}},
-      margin = {{margin}},
+      gutter = {{gutter}},
       colour = {{colour}}
     ) %>%
     purrr::transpose() %>%
     purrr::map(purrr::lift_dl(make_card))
 
   collate <- function(...) {
+    row_margins <- paste(
+      "my-1",
+      ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter))
+    )
     htmltools::div(
-      class = paste("row p-0 m-0 d-flex"),
+      class = paste("row p-0", row_margins, " d-flex"),
       ...
     )
   }
@@ -54,12 +56,11 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
                       footer = NULL, header = NULL, width, layout,
-                      padding, margin, colour) {
+                      padding, gutter, colour) {
 
   title  <- make_title(title)
   text   <- make_text(text)
   image  <- make_image(image)
-  header <- make_header(header)
   footer <- make_footer(footer)
 
   if(!is.null(link)) {
@@ -67,8 +68,8 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
     image <- htmltools::a(image, href = link)
   }
 
-  bits <- assemble_bits(header, image, title, text, footer, layout, colour)
-  card <- assemble_card(bits, width, padding, margin, colour)
+  core <- assemble_core(image, title, text, layout, colour)
+  card <- assemble_card(core, footer, width, padding, gutter, colour)
   return(card)
 }
 
@@ -77,16 +78,17 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
 
 # assembly for the card structure -----------------------------------------
 
-assemble_bits <- function(header, image, title, text, footer, layout, colour) {
+assemble_core <- function(image, title, text, layout, colour) {
+
 
   if(layout == "label-below") {
     body <- htmltools::div(class = "card-body", title, text, style = "background-color: #00000000;")
-    return(htmltools::div(header, image, body, footer))
+    return(htmltools::div(image, body))
   }
 
   if(layout == "label-above") {
     body <- htmltools::div(class = "card-body", title, text, style = "background-color: #00000000;")
-    return(htmltools::div(header, body, image, footer))
+    return(htmltools::div(body, image))
   }
 
   if(layout == "label-right") {
@@ -94,7 +96,7 @@ assemble_bits <- function(header, image, title, text, footer, layout, colour) {
     lhs <- htmltools::div(class = "col-sm-6", image)
     rhs <- htmltools::div(class = "col-sm-6", body, style = "background-color: #00000000;")
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
-    return(htmltools::div(header, row, footer))
+    return(htmltools::div(row))
   }
 
   if(layout == "label-left") {
@@ -102,7 +104,7 @@ assemble_bits <- function(header, image, title, text, footer, layout, colour) {
     lhs <- htmltools::div(class = "col-sm-6", body, style = "background-color: #00000000;")
     rhs <- htmltools::div(class = "col-sm-6", image)
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
-    return(htmltools::div(header, row, footer))
+    return(htmltools::div(row))
   }
 
   if(layout == "inset-bottom") {
@@ -117,7 +119,7 @@ assemble_bits <- function(header, image, title, text, footer, layout, colour) {
       style = css,
       title, text
     )
-    return(htmltools::div(header, image, body, footer))
+    return(htmltools::div(image, body))
   }
 
   if(layout == "inset-top") {
@@ -132,28 +134,27 @@ assemble_bits <- function(header, image, title, text, footer, layout, colour) {
       style = css,
       title, text
     )
-    return(htmltools::div(header, image, body, footer))
+    return(htmltools::div(image, body))
   }
 }
 
 
-assemble_card <- function(pieces, width, padding, margin, colour) {
+assemble_card <- function(core, footer, width, padding, gutter, colour) {
 
   colour_css <- paste0("background-color: ", colour , ";")
 
-  inner_card <- htmltools::div(
-    class = paste0("card d-flex m-0 p-", padding, " col-12"),
+  inner <- htmltools::div(
+    class = paste0("card-body border rounded m-0 p-", padding, " col-12"),
     style = paste0("visibility: visible; ", colour_css),
-    pieces
+    core
   )
 
-  outer_card <- htmltools::div(
-    class = paste0("card d-flex m-0 p-", margin, " ", make_width(width)),
-    style = "visibility: hidden;",
-    inner_card
+  outer <- htmltools::div(
+    class = paste0("card bg-transparent border-0 m-0 p-", gutter, " ", make_width(width)),
+    inner, footer
   )
 
-  return(outer_card)
+  return(outer)
 }
 
 
@@ -182,12 +183,10 @@ make_image <- function(image, image_position) {
   if(!is.null(image)) htmltools::img(src = image, class = "card-img")
 }
 
-make_header <- function(header) {
-  if(!is.null(header)) htmltools::div(header, class = "card-header")
-}
-
 make_footer <- function(footer) {
-  if(!is.null(footer)) htmltools::div(footer, class = "card-footer text-muted")
+  if(!is.null(footer)) {
+    htmltools::div(footer, class = "card-footer small text-muted pt-1 pb-2 border-0 bg-transparent")
+  }
 }
 
 make_width <- function(width) {
