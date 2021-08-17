@@ -8,7 +8,7 @@
 #' @param footer Card footer
 #' @param header Card header
 #' @param width Card width ("narrow", "medium", "wide")
-#' @param orientation Position of the image ("top", "bottom", "left", "right")
+#' @param label_position Position of the label relative to the image (e.g., "below", "above", "left", "right")
 #' @param padding Spacing between parts of the card (integer between 0 and 5)
 #' @param margin Spacing between adjacent cards (integer between 0 and 5)
 #'
@@ -17,7 +17,7 @@
 #'
 cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
                   footer = NULL, header = NULL, width = "medium",
-                  orientation = "top", padding = 0, margin = 1) {
+                  label_position = "below", padding = 0, margin = 1) {
 
   card_list <-data %>%
     dplyr::transmute(
@@ -28,7 +28,7 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       header = {{header}},
       footer = {{footer}},
       width  = {{width}},
-      orientation = {{orientation}},
+      label_position = {{label_position}},
       padding = {{padding}},
       margin = {{margin}}
     ) %>%
@@ -50,7 +50,7 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
 # arrange the pieces into a card ------------------------------------------
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
-                      footer = NULL, header = NULL, width, orientation,
+                      footer = NULL, header = NULL, width, label_position,
                       padding, margin) {
 
   title  <- make_title(title)
@@ -64,7 +64,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
     image <- htmltools::a(image, href = link)
   }
 
-  bits <- assemble_bits(header, image, title, text, footer, orientation)
+  bits <- assemble_bits(header, image, title, text, footer, label_position)
   card <- assemble_card(bits, width, padding, margin)
   return(card)
 }
@@ -74,19 +74,19 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
 
 # assembly for the card structure -----------------------------------------
 
-assemble_bits <- function(header, image, title, text, footer, orientation) {
+assemble_bits <- function(header, image, title, text, footer, label_position) {
 
-  if(orientation == "top") {
+  if(label_position == "below") {
     body <- htmltools::div(class = "card-body", title, text)
     return(htmltools::div(header, image, body, footer))
   }
 
-  if(orientation == "bottom") {
+  if(label_position == "above") {
     body <- htmltools::div(class = "card-body", title, text)
     return(htmltools::div(header, body, image, footer))
   }
 
-  if(orientation == "left") {
+  if(label_position == "right") {
     body <- htmltools::div(class = "card-body", title, text)
     lhs <- htmltools::div(class = "col-sm-6", image)
     rhs <- htmltools::div(class = "col-sm-6", body)
@@ -94,7 +94,7 @@ assemble_bits <- function(header, image, title, text, footer, orientation) {
     return(htmltools::div(header, row, footer))
   }
 
-  if(orientation == "right") {
+  if(label_position == "left") {
     body <- htmltools::div(class = "card-body", title, text)
     lhs <- htmltools::div(class = "col-sm-6", body)
     rhs <- htmltools::div(class = "col-sm-6", image)
@@ -102,10 +102,31 @@ assemble_bits <- function(header, image, title, text, footer, orientation) {
     return(htmltools::div(header, row, footer))
   }
 
-  if(orientation == "background") {
+  if(label_position == "inset-bottom") {
+    css <- paste(
+      "height: 20%;",
+      "position: absolute;",
+      "top: 80%;",
+      "background-color: #ffffff80;"
+    )
     body <- htmltools::div(
       class = "card-img-overlay",
-      style = "height:30%; float:bottom; background-color:#FFFFFF80",
+      style = css,
+      title, text
+    )
+    return(htmltools::div(header, image, body, footer))
+  }
+
+  if(label_position == "inset-top") {
+    css <- paste(
+      "height: 20%;",
+      "position: absolute;",
+      "top: 0%;",
+      "background-color: #ffffff80;"
+    )
+    body <- htmltools::div(
+      class = "card-img-overlay",
+      style = css,
       title, text
     )
     return(htmltools::div(header, image, body, footer))

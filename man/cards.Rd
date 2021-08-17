@@ -13,7 +13,9 @@ cards(
   footer = NULL,
   header = NULL,
   width = "medium",
-  overlay = "FALSE"
+  label_position = "below",
+  padding = 0,
+  margin = 1
 )
 }
 \arguments{
@@ -33,7 +35,11 @@ cards(
 
 \item{width}{Card width ("narrow", "medium", "wide")}
 
-\item{overlay}{Logical}
+\item{label_position}{Position of the label relative to the image (e.g., "below", "above", "left", "right")}
+
+\item{padding}{Spacing between parts of the card (integer between 0 and 5)}
+
+\item{margin}{Spacing between adjacent cards (integer between 0 and 5)}
 }
 \value{
 A "shiny.tag" object
