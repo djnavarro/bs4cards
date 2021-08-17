@@ -150,36 +150,23 @@ make_card_horizontal <- function(image, title, text, footer, layout, padding, gu
 
 make_card_inset <- function(image, title, text, footer, layout, padding, gutter, colour) {
 
+  if(layout == "inset-top") top <- "0%"
+  if(layout == "inset-bottom") top <- "80%"
 
-  if(layout == "inset-bottom") {
-    css <- paste(
+  overlay <- htmltools::div(
+    class = "card-img-overlay p-0 m-0",
+    style = paste0(
+      "background-color: ", colour, ";",
       "height: 20%;",
       "position: absolute;",
-      "top: 80%;",
-      paste0("background-color: ", colour, ";")
-    )
-  }
-
-  if(layout == "inset-top") {
-    css <- paste(
-      "height: 20%;",
-      "position: absolute;",
-      "top: 0%;",
-      paste0("background-color: ", colour, ";")
-    )
-  }
-
-  body <- htmltools::div(
-    class = "card-img-overlay",
-    style = css,
+      "top: ", top, ";"
+    ),
     title, text
   )
-  core <- htmltools::div(image, body)
 
   inner <- htmltools::div(
-    class = paste0("card-body border rounded m-0 p-", padding, " col-12"),
-    style = paste0("visibility: visible; background-color: ", colour),
-    core
+    style = "position: relative",
+    image, overlay
   )
 
   card <- htmltools::div(
