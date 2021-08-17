@@ -27,7 +27,6 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       image  = {{image}},
       link   = {{link}},
       footer = {{footer}},
-      width  = {{width}},
       layout = {{layout}},
       padding = {{padding}},
       gutter = {{gutter}},
@@ -42,7 +41,7 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter))
     )
     htmltools::div(
-      class = paste("row p-0", row_margins, " d-flex"),
+      class = paste("row p-0", make_row_cols(width), row_margins), #, " d-flex"),
       ...
     )
   }
@@ -55,12 +54,12 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
 # arrange the pieces into a card ------------------------------------------
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
-                      footer = NULL, header = NULL, width, layout,
+                      footer = NULL, header = NULL, layout,
                       padding, gutter, colour) {
 
   title  <- make_title(title)
   text   <- make_text(text)
-  image  <- make_image(image)
+  image  <- make_image(image, layout)
   footer <- make_footer(footer)
 
   if(!is.null(link)) {
@@ -68,44 +67,32 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
     image <- htmltools::a(image, href = link)
   }
 
-  core <- assemble_core(image, title, text, layout, colour)
-  card <- assemble_card(core, footer, width, padding, gutter, colour)
-  return(card)
-}
-
-
-
-
-# assembly for the card structure -----------------------------------------
-
-assemble_core <- function(image, title, text, layout, colour) {
-
-
-  if(layout == "label-below") {
-    body <- htmltools::div(class = "card-body", title, text, style = "background-color: #00000000;")
-    return(htmltools::div(image, body))
+  if(layout == "label-below" | layout == "label-above") {
+    card <- make_card_vertical(image, title, text, footer, layout, padding, gutter, colour)
+    return(card)
   }
 
-  if(layout == "label-above") {
-    body <- htmltools::div(class = "card-body", title, text, style = "background-color: #00000000;")
-    return(htmltools::div(body, image))
-  }
+
+  # horizontal layouts ------------------------------------------------------
 
   if(layout == "label-right") {
-    body <- htmltools::div(class = "card-body", title, text)
+    #body <- htmltools::div(class = "card-body", title, text)
     lhs <- htmltools::div(class = "col-sm-6", image)
-    rhs <- htmltools::div(class = "col-sm-6", body, style = "background-color: #00000000;")
+    rhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
-    return(htmltools::div(row))
+    core <- htmltools::div(row)
   }
 
   if(layout == "label-left") {
-    body <- htmltools::div(class = "card-body", title, text)
-    lhs <- htmltools::div(class = "col-sm-6", body, style = "background-color: #00000000;")
+    lhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
     rhs <- htmltools::div(class = "col-sm-6", image)
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
-    return(htmltools::div(row))
+    core <- htmltools::div(row)
   }
+
+
+  # overlay-layouts ---------------------------------------------------------
+
 
   if(layout == "inset-bottom") {
     css <- paste(
@@ -119,7 +106,7 @@ assemble_core <- function(image, title, text, layout, colour) {
       style = css,
       title, text
     )
-    return(htmltools::div(image, body))
+    core <- htmltools::div(image, body)
   }
 
   if(layout == "inset-top") {
@@ -134,31 +121,51 @@ assemble_core <- function(image, title, text, layout, colour) {
       style = css,
       title, text
     )
-    return(htmltools::div(image, body))
+    core <- htmltools::div(image, body)
   }
-}
 
-
-assemble_card <- function(core, footer, width, padding, gutter, colour) {
-
-  colour_css <- paste0("background-color: ", colour , ";")
 
   inner <- htmltools::div(
     class = paste0("card-body border rounded m-0 p-", padding, " col-12"),
-    style = paste0("visibility: visible; ", colour_css),
+    style = paste0("visibility: visible; background-color: ", colour),
     core
   )
 
-  outer <- htmltools::div(
-    class = paste0("card bg-transparent border-0 m-0 p-", gutter, " ", make_width(width)),
+  card <- htmltools::div(
+    class = paste0("card bg-transparent border-0 m-0 p-", gutter),
     inner, footer
   )
 
-  return(outer)
+  return(card)
 }
 
+make_card_vertical <- function(image, title, text, footer, layout, padding, gutter, colour) {
 
+  body <- htmltools::div(
+    class = paste0("card-body justify-content-end border rounded m-0 p-", padding),
+    style = paste0("visibility: visible; background-color: ", colour),
+    title, text
+  )
 
+  card_class <- paste0("card bg-transparent border-0 m-0 p-", gutter)
+
+  if(layout == "label-below") {
+    card <- htmltools::div(
+      class = card_class,
+      image, body, footer
+    )
+  }
+
+  if(layout == "label-above") {
+    card <- htmltools::div(
+      class = card_class,
+      body, image, footer
+    )
+  }
+
+  return(card)
+
+}
 
 
 
@@ -169,23 +176,26 @@ make_title <- function(title) {
   if(!is.null(title)) {
     htmltools::h5(
       title,
-      class = "card-title",
+      class = "card-title px-3",
       style = "margin-top:1rem; margin-bottom:1rem"
     )
   }
 }
 
 make_text <- function(text) {
-  if(!is.null(text)) htmltools::p(text, class = "card-text")
+  if(!is.null(text)) htmltools::p(text, class = "card-text px-3 pb-3")
 }
 
-make_image <- function(image, image_position) {
-  if(!is.null(image)) htmltools::img(src = image, class = "card-img")
+make_image <- function(image, layout) {
+  if(is.null(image)) return(NULL)
+  if(layout == "label-above") return(htmltools::img(src = image, class = "card-img-bottom"))
+  if(layout == "label-below") return(htmltools::img(src = image, class = "card-img-top"))
+  return(htmltools::img(src = image, class = "card-img"))
 }
 
 make_footer <- function(footer) {
   if(!is.null(footer)) {
-    htmltools::div(footer, class = "card-footer small text-muted pt-1 pb-2 border-0 bg-transparent")
+    htmltools::div(footer, class = "card-footer small text-muted h-auto px-3 py-auto border-0") #bg-transparent")
   }
 }
 
@@ -197,7 +207,13 @@ make_width <- function(width) {
   return(width)
 }
 
-
+make_row_cols <- function(width){
+  if(width == "narrow") return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
+  if(width == "medium") return("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4")
+  if(width == "wide") return("row-cols-1 row-cols-md-2 row-cols-lg-3")
+  if(width == "very-wide") return("row-cols-1 row-cols-lg-2")
+  return(width)
+}
 
 
 
