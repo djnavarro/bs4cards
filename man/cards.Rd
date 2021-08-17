@@ -13,9 +13,10 @@ cards(
   footer = NULL,
   header = NULL,
   width = "medium",
-  label_position = "below",
+  layout = "label-below",
   padding = 0,
-  margin = 1
+  margin = 1,
+  colour = "#00000080"
 )
 }
 \arguments{
@@ -35,11 +36,13 @@ cards(
 
 \item{width}{Card width ("narrow", "medium", "wide")}
 
-\item{label_position}{Position of the label relative to the image (e.g., "below", "above", "left", "right")}
+\item{layout}{Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")}
 
 \item{padding}{Spacing between parts of the card (integer between 0 and 5)}
 
 \item{margin}{Spacing between adjacent cards (integer between 0 and 5)}
+
+\item{colour}{Colour applied to the card (interpretation depends on layout)}
 }
 \value{
 A "shiny.tag" object
