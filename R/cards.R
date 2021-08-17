@@ -72,72 +72,20 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
     return(card)
   }
 
-
-  # horizontal layouts ------------------------------------------------------
-
-  if(layout == "label-right") {
-    #body <- htmltools::div(class = "card-body", title, text)
-    lhs <- htmltools::div(class = "col-sm-6", image)
-    rhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
-    row <- htmltools::div(class = "row no-gutters", lhs, rhs)
-    core <- htmltools::div(row)
+  if(layout == "label-right" | layout == "label-left") {
+    card <- make_card_horizontal(image, title, text, footer, layout, padding, gutter, colour)
+    return(card)
   }
 
-  if(layout == "label-left") {
-    lhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
-    rhs <- htmltools::div(class = "col-sm-6", image)
-    row <- htmltools::div(class = "row no-gutters", lhs, rhs)
-    core <- htmltools::div(row)
+  if(layout == "inset-bottom" | layout == "inset-top") {
+    card <- make_card_inset(image, title, text, footer, layout, padding, gutter, colour)
+    return(card)
   }
-
-
-  # overlay-layouts ---------------------------------------------------------
-
-
-  if(layout == "inset-bottom") {
-    css <- paste(
-      "height: 20%;",
-      "position: absolute;",
-      "top: 80%;",
-      paste0("background-color: ", colour, ";")
-    )
-    body <- htmltools::div(
-      class = "card-img-overlay",
-      style = css,
-      title, text
-    )
-    core <- htmltools::div(image, body)
-  }
-
-  if(layout == "inset-top") {
-    css <- paste(
-      "height: 20%;",
-      "position: absolute;",
-      "top: 0%;",
-      paste0("background-color: ", colour, ";")
-    )
-    body <- htmltools::div(
-      class = "card-img-overlay",
-      style = css,
-      title, text
-    )
-    core <- htmltools::div(image, body)
-  }
-
-
-  inner <- htmltools::div(
-    class = paste0("card-body border rounded m-0 p-", padding, " col-12"),
-    style = paste0("visibility: visible; background-color: ", colour),
-    core
-  )
-
-  card <- htmltools::div(
-    class = paste0("card bg-transparent border-0 m-0 p-", gutter),
-    inner, footer
-  )
-
-  return(card)
 }
+
+
+# card builders for different layout types --------------------------------
+
 
 make_card_vertical <- function(image, title, text, footer, layout, padding, gutter, colour) {
 
@@ -168,7 +116,79 @@ make_card_vertical <- function(image, title, text, footer, layout, padding, gutt
 }
 
 
+make_card_horizontal <- function(image, title, text, footer, layout, padding, gutter, colour) {
 
+  if(layout == "label-right") {
+    lhs <- htmltools::div(class = "col-sm-6", image)
+    rhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
+    row <- htmltools::div(class = "row no-gutters", lhs, rhs)
+    core <- htmltools::div(row)
+  }
+
+  if(layout == "label-left") {
+    lhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
+    rhs <- htmltools::div(class = "col-sm-6", image)
+    row <- htmltools::div(class = "row no-gutters", lhs, rhs)
+    core <- htmltools::div(row)
+  }
+
+  inner <- htmltools::div(
+    class = paste0("card-body border rounded m-0 p-", padding, " col-12"),
+    style = paste0("visibility: visible; background-color: ", colour),
+    core
+  )
+
+  card <- htmltools::div(
+    class = paste0("card bg-transparent border-0 m-0 p-", gutter),
+    inner, footer
+  )
+
+  return(card)
+}
+
+
+
+make_card_inset <- function(image, title, text, footer, layout, padding, gutter, colour) {
+
+
+  if(layout == "inset-bottom") {
+    css <- paste(
+      "height: 20%;",
+      "position: absolute;",
+      "top: 80%;",
+      paste0("background-color: ", colour, ";")
+    )
+  }
+
+  if(layout == "inset-top") {
+    css <- paste(
+      "height: 20%;",
+      "position: absolute;",
+      "top: 0%;",
+      paste0("background-color: ", colour, ";")
+    )
+  }
+
+  body <- htmltools::div(
+    class = "card-img-overlay",
+    style = css,
+    title, text
+  )
+  core <- htmltools::div(image, body)
+
+  inner <- htmltools::div(
+    class = paste0("card-body border rounded m-0 p-", padding, " col-12"),
+    style = paste0("visibility: visible; background-color: ", colour),
+    core
+  )
+
+  card <- htmltools::div(
+    class = paste0("card bg-transparent border-0 m-0 p-", gutter),
+    inner, footer
+  )
+
+  return(card)
+}
 
 # wrapper functions for small html pieces ---------------------------------
 
