@@ -103,7 +103,7 @@ galleries %>%
     link = locate_gallery(short_name),
     image = locate_thumbnail(short_name),
     width = "wide",
-    layout = "inset-bottom", 
+    layout = "inset-top", 
     padding = 0
   )
 ```
@@ -113,11 +113,12 @@ galleries %>%
 galleries %>% 
   cards(
     title = long_name,
+    footer = blurb,
     link = locate_gallery(short_name),
     image = locate_thumbnail(short_name),
     width = "wide",
-    layout = "inset-top", 
-    padding = 0
+    layout = "inset-bottom", 
+    colour = "#ffffff66"
   )
 ```
 
