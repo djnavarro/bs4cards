@@ -64,9 +64,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
     image <- htmltools::a(image, href = link)
   }
 
-  body <- make_body(title, text)
-
-  bits <- assemble_bits(header, image, body, footer, orientation)
+  bits <- assemble_bits(header, image, title, text, footer, orientation)
   card <- assemble_card(bits, width, padding, margin)
   return(card)
 }
@@ -76,17 +74,20 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
 
 # assembly for the card structure -----------------------------------------
 
-assemble_bits <- function(header, image, body, footer, orientation) {
+assemble_bits <- function(header, image, title, text, footer, orientation) {
 
   if(orientation == "top") {
+    body <- htmltools::div(class = "card-body", title, text)
     return(htmltools::div(header, image, body, footer))
   }
 
   if(orientation == "bottom") {
+    body <- htmltools::div(class = "card-body", title, text)
     return(htmltools::div(header, body, image, footer))
   }
 
   if(orientation == "left") {
+    body <- htmltools::div(class = "card-body", title, text)
     lhs <- htmltools::div(class = "col-sm-6", image)
     rhs <- htmltools::div(class = "col-sm-6", body)
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
@@ -94,6 +95,7 @@ assemble_bits <- function(header, image, body, footer, orientation) {
   }
 
   if(orientation == "right") {
+    body <- htmltools::div(class = "card-body", title, text)
     lhs <- htmltools::div(class = "col-sm-6", body)
     rhs <- htmltools::div(class = "col-sm-6", image)
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
@@ -102,8 +104,9 @@ assemble_bits <- function(header, image, body, footer, orientation) {
 
   if(orientation == "background") {
     body <- htmltools::div(
-      class = "card-img-overlay m-0 p-0",
-      body
+      class = "card-img-overlay",
+      style = "height:30%; float:bottom; background-color:#FFFFFF80",
+      title, text
     )
     return(htmltools::div(header, image, body, footer))
   }
@@ -136,7 +139,13 @@ assemble_card <- function(pieces, width, padding, margin) {
 # wrapper functions for small html pieces ---------------------------------
 
 make_title <- function(title) {
-  if(!is.null(title)) htmltools::h5(title, class = "card-title")
+  if(!is.null(title)) {
+    htmltools::h5(
+      title,
+      class = "card-title",
+      style = "margin-top:1rem; margin-bottom:1rem"
+    )
+  }
 }
 
 make_text <- function(text) {
@@ -153,10 +162,6 @@ make_header <- function(header) {
 
 make_footer <- function(footer) {
   if(!is.null(footer)) htmltools::div(footer, class = "card-footer")
-}
-
-make_body <- function(title, text) {
-  htmltools::div(class = "card-body", title, text)
 }
 
 make_width <- function(width) {
