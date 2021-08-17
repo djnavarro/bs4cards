@@ -99,6 +99,14 @@ assemble_bits <- function(header, image, body, footer, orientation) {
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
     return(htmltools::div(header, row, footer))
   }
+
+  if(orientation == "background") {
+    body <- htmltools::div(
+      class = "card-img-overlay m-0 p-0",
+      body
+    )
+    return(htmltools::div(header, image, body, footer))
+  }
 }
 
 
