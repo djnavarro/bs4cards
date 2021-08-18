@@ -40,7 +40,7 @@ cards(
 
 \item{gutter}{Spacing between adjacent cards (integer between 0 and 5)}
 
-\item{breakpoint}{Position to insert breaks for horizontal or inset cards (numeric between 0 and 1)}
+\item{breakpoint}{Position to insert breaks for horizontal or inset cards, interpreted as proportion of card allocated to label}
 
 \item{colour}{Colour applied to the card (interpretation depends on layout)}
 }
