@@ -105,7 +105,6 @@ galleries %>%
     image = locate_thumbnail(short_name),
     width = "wide",
     layout = "inset-top", 
-    footer = date,
     colour = "#ffffffcc"
   )
 ```

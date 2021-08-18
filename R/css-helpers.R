@@ -9,6 +9,13 @@ column_width_class <- function(width){
   return(width)
 }
 
+border_width_style <- function(width, top = TRUE, right = TRUE, bottom = TRUE, left = TRUE) {
+  border_widths <- rep("0", 4)
+  border_widths[c(top, right, bottom, left)] <- width
+  border_widths <- paste(border_widths, collapse = " ")
+  return(border_widths)
+}
+
 card_class <- function(gutter) {
   paste0("card bg-transparent m-0 p-", gutter, " border-0")
 }
@@ -20,11 +27,14 @@ image_class <- function(layout) {
   paste0(card_type)
 }
 
-image_style <- function(corners, border) {
+image_style <- function(corners, border, layout) {
+  border_widths <- border[["width"]]
+  if(layout == "label-above") border_widths <- border_width_style(border[["width"]], top = FALSE)  # avoid duplicates
+  if(layout == "label-below") border_widths <- border_width_style(border[["width"]], bottom = FALSE)
   paste0(
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
-    "border-width:", border[["width"]], "; ",
+    "border-width:", border_widths, "; ",
     corners[["image"]]
   )
 }
@@ -37,7 +47,7 @@ footer_style <- function(corners, border) {
   paste0(
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
-    "border-width:", border[["width"]], "; ",
+    "border-width:", border_width_style(border[["width"]], top = FALSE), "; ",
     corners[["footer"]]
   )
 }
@@ -62,27 +72,28 @@ body_vertical_style <- function(colour, corners, border) {
 }
 
 label_horizontal_class <- function(breakpoint) {
-  paste0("col-sm-", round(breakpoint * 12))
+  paste0("col-", round(breakpoint * 12))
 }
 
-label_horizontal_style <- function(colour, corners, border) {
+label_horizontal_style <- function(colour, corners, border, layout) {
+  if(layout == "label-right") border_widths <- border_width_style(border[["width"]], left = FALSE)
+  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], right = FALSE)
   paste(
     "background-color:", colour, ";",
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
-    "border-width:", border[["width"]], "; ",
+    "border-width:", border_widths, "; ",
     corners[["label"]]
   )
 }
 
 image_horizontal_class <- function(breakpoint) {
-  paste0("col-sm-", 12 - round(breakpoint * 12))
+  paste0("col-", 12 - round(breakpoint * 12))
 }
 
 image_horizontal_style <- function(corners) { # border already styled by image
   corners[["image"]]
 }
-
 
 body_inset_style <- function(corners) {
   paste(

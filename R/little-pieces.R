@@ -43,7 +43,7 @@ make_image <- function(image, layout, corners, border) {
     htmltools::img(
       src = image,
       class = image_class(layout),
-      style = image_style(corners, border)
+      style = image_style(corners, border, layout)
     )
   }
 }

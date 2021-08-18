@@ -60,7 +60,7 @@ make_card_horizontal <- function(title, text, image, link,
 
   label_horizontal <- htmltools::div(
     class = label_horizontal_class(breakpoint),
-    style = label_horizontal_style(colour = "#00000000", corners, border),
+    style = label_horizontal_style(colour = "#00000000", corners, border, layout),
     pieces$title, pieces$text
   )
 
