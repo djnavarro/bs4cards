@@ -114,6 +114,20 @@ galleries %>%
 galleries %>% 
   cards(
     title = long_name,
+    link = locate_gallery(short_name),
+    image = locate_thumbnail(short_name),
+    width = "wide",
+    layout = "inset-bottom", 
+    colour = "#ffffffcc", 
+    rounding = 0
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
     footer = blurb,
     link = locate_gallery(short_name),
     image = locate_thumbnail(short_name),
