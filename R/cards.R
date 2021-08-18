@@ -43,7 +43,7 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter))
     )
     htmltools::div(
-      class = paste("row p-0", make_row_cols(width), row_margins), #, " d-flex"),
+      class = paste("row p-0", column_width_class(width), row_margins),
       ...
     )
   }

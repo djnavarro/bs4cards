@@ -42,7 +42,7 @@ make_image <- function(image, layout, corners, border) {
   if(!is.null(image)) {
     htmltools::img(
       src = image,
-      class = image_classes(layout),
+      class = image_class(layout),
       style = image_style(corners, border)
     )
   }
@@ -52,7 +52,7 @@ make_footer <- function(footer, corners, border) {
   if(!is.null(footer)) {
     htmltools::div(
       footer,
-      class = footer_classes(),
+      class = footer_class(),
       style = footer_style(corners, border)
     )
   }

@@ -13,14 +13,14 @@ make_card_vertical <- function(title, text, image, link,
   rm(title, text, image, footer, header)
 
   body_vertical <- htmltools::div(
-    class = body_vertical_classes(padding),
+    class = body_vertical_class(padding),
     style = body_vertical_style(colour, corners, border),
     pieces$title, pieces$text
   )
 
   if(layout == "label-below") {
     return(htmltools::div(
-      class = card_classes(gutter),
+      class = card_class(gutter),
       style = card_style(corners),
       pieces$image, body_vertical, pieces$footer
     ))
@@ -28,7 +28,7 @@ make_card_vertical <- function(title, text, image, link,
 
   if(layout == "label-above") {
     return(htmltools::div(
-      class = card_classes(gutter),
+      class = card_class(gutter),
       style = card_style(corners),
       body_vertical, pieces$image, pieces$footer
     ))
@@ -53,13 +53,13 @@ make_card_horizontal <- function(title, text, image, link,
   if(is.null(breakpoint)) breakpoint <- 2/3
 
   image_horizontal <- htmltools::div(
-    class = image_horizontal_classes(breakpoint),
+    class = image_horizontal_class(breakpoint),
     style = image_horizontal_style(corners),
     pieces$image
   )
 
   label_horizontal <- htmltools::div(
-    class = label_horizontal_classes(breakpoint),
+    class = label_horizontal_class(breakpoint),
     style = label_horizontal_style(colour = "#00000000", corners, border),
     pieces$title, pieces$text
   )
@@ -84,7 +84,7 @@ make_card_horizontal <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_classes(gutter),
+    class = card_class(gutter),
     style = card_style(corners),
     body_horizontal, pieces$footer
   ))
@@ -109,7 +109,7 @@ make_card_inset <- function(title, text, image, link,
   if(is.null(breakpoint)) breakpoint <- 1/6
 
   label_inset <- htmltools::div(
-    class = label_inset_classes(),
+    class = label_inset_class(),
     style = label_inset_style(colour, corners, border, breakpoint, layout),
     pieces$title, pieces$text
   )
@@ -120,7 +120,7 @@ make_card_inset <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_classes(gutter),
+    class = card_class(gutter),
     style = card_style(corners),
     body_inset, pieces$footer
   ))
