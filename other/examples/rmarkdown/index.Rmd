@@ -105,8 +105,21 @@ galleries %>%
     image = locate_thumbnail(short_name),
     width = "wide",
     layout = "inset-top", 
-    footer = date,
     colour = "#ffffffcc"
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = locate_gallery(short_name),
+    image = locate_thumbnail(short_name),
+    width = "wide",
+    layout = "inset-bottom", 
+    colour = "#ffffffcc", 
+    rounding = 0
   )
 ```
 
