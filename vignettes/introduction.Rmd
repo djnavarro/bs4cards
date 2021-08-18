@@ -12,40 +12,31 @@ knitr::opts_chunk$set(
 When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. For example, in a recent project I wanted something like this:
 
 ```{r, echo=FALSE}
-library(bs4cards)
-slides <- list(
-  
-  card(
-    title = "Starting R markdown",
-    image = "https://slides.djnavarro.net/index_img/starting-rmarkdown.png",
-    link = "https://slides.djnavarro.net/starting-rmarkdown",
-    text = "An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown."
-  ),
-  
-  card(
-    title = "Starting ggplot2",
-    image = "https://slides.djnavarro.net/index_img/starting-ggplot2.png",
-    link = "https://slides.djnavarro.net/starting-ggplot2",
-    text = "An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2."
-  ),
-  
-  card(
-    title = "Starting programming",
-    image = "https://slides.djnavarro.net/index_img/starting-programming.png",
-    link = "https://slides.djnavarro.net/starting-programming",
-    text = "This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2."
+slides <- data.frame(
+  messy_title = c("Starting R markdown", "Starting ggplot2", "Starting programming"),
+  clean_title = c("starting-rmarkdown", "starting-ggplot2", "starting-programming"),
+  description = c("An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.", "An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.", text = "This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.")
   )
-)
 
-card_grid(slides)
+bs4cards::cards(
+    data = slides,
+    title = messy_title,
+    text = description,
+    link = paste0("https://slides.djnavarro.net/", clean_title),
+    image = paste0("https://slides.djnavarro.net/index_img/", clean_title, ".png"),
+    width = "wide"
+  )
 ```
 
 The goal of bs4cards is to make this task a little easier inside an R markdown document or website. 
 
-
 ## Enabling bootstrap 4
 
-The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the `bs4cards` package takes its name from the [cards](https://getbootstrap.com/docs/4.5/components/card/) system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site 
+The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the `bs4cards` package takes its name from the [cards](https://getbootstrap.com/docs/4.5/components/card/) system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3, or don't use bootstrap at all. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you're creating:
+
+### Vanilla R markdown
+
+For a plain R markdown document or website (i.e., one where the output format is `html_document`) here is the relevant section of YAML you might use:
 
 ```
 output:
@@ -54,207 +45,64 @@ output:
       version: 4
 ```
 
-This overrides the R markdown defaults to ensure that the output is built using [bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/). To enable bootstrap 4 in a pkgdown site such as this one, edit the `_pkgdown.yml` file to include the following
+This overrides the R markdown defaults [@rmarkdown] to ensure that the output is built using [bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/). 
+
+### Pkgdown
+
+To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the `_pkgdown.yml` file to include the following
 
 ```
 template:
   bootstrap: 4
 ```
 
-You may need to update to the development version of pkgdown to make this work.
+Note that this relies on a currently-in-development feature, so you may need to update to the development version of pkgdown to make this work.
+
+
+### Distill (experimental!!!)
+
+Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn't look visually appealing when mixed with the distill styling.^[The original version of this post used that solution, with a promissory note to do a better job later.] To fix this, bs4cards includes a stripped down version of bootstrap called "strapless", that only uses the subset of bootstrap css relevant to cards. The convenience function `use_strapless()` will copy the strapless css file to the target location. To copy it to the same location as this post:
+
+```{r, eval=FALSE}
+bs4cards::use_strapless(here::here("_posts", "bs4cards-in-distill"))
+```
+
+Next, to enable the library within the post, add the following lines to the YAML header for the post:
+
+```
+output:
+  distill::distill_article:
+    css: "strapless.css"
+```
+
+Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project.
+
+Once that's done you should be ready to go! However, please be careful: this is an experimental feature and has not yet been properly tested.
 
 
 ## Building bootstrap cards
 
-The main function in bs4cards is the `card()` function. To create a minimal text-only card, call the `card()` function specifying the `title` and `text` arguments:
+The main function in bs4cards is `cards()`. It takes a data frame as the first argument, generally the data set from which the bootstrap cards are to be constructed. In the example at the top of this vignette I used a simple data frame called `slides`:
 
 ```{r}
+slides
+```
+
+Each row in this data frame corresponds to one card in the grid, and the columns are used to construct the card. For example to create the card grid shown at the start of the vignette, I needed to the `title` for each card, the `text` printed below it, the `image` decorating the card, and the URL to which the title and image in each card should `link`. Each of these is an argument to `cards()`, and for each argument you can pass an expression that will be evaluated using the `data` input. To create something very similar to the set of cards depicted at the beginning, you could do something like this:
+
+```{r, message=FALSE}
+library(dplyr)
 library(bs4cards)
 
-card(
-  title = "A bootstrap card", 
-  text = "This is a minimal bootstrap 4 card containing title and text"
-)
-```
-
-
-In most cases you'll also want to add an image to the card using the `image` argument. This argument specifies the path to the image file. For the purposes of this example I'll set image paths using links to [placekitten.com](https://placekitten.com):
-
-```{r}
-card(
-  title = "A kitten card",
-  image = "https://placekitten.com/300/200",
-  text = "The image at the top of this card is from placekitten.com. It's very cute"
-)
-```
-
-Images are placed at the top of the card by default, but can be moved to the bottom by setting `image_align = "bottom"`:
-
-```{r}
-card(
-  title = "A kitten card",
-  image = "https://placekitten.com/300/200",
-  text = "The image at the bottom of this card is from placekitten.com. It's still cute",
-  image_align = "bottom"
-)
-```
-
-In most cases you'll want cards to be associated with a link, which is set by specifying the `link` argument to `card()`. This will convert both the card title and image to links:
-
-```{r}
-card(
-  title = "Placekittens",
-  image = "https://placekitten.com/300/200",
-  text = "The image at the top of this card is from placekitten.com. It's very cute",
-  link = "https://placekitten.com"
-)
-```
-
-
-## Building card grids
-
-Cards are usually arranged into grids rather than presented in isolation. The `card_grid()` function takes a list of cards as input and lays them out on a grid. To illustrate how this works, I'll use the `sample_card()` function that generates a random card
-
-```{r}
-sample_card()
-```
-
-and use this to create a list of eight cards:
-
-```{r}
-kitty_list <- list(
-  sample_card(), sample_card(), sample_card(), sample_card(),
-  sample_card(), sample_card(), sample_card(), sample_card()
-)
-```
-
-This list is then passed to `card_grid()`:
-
-```{r}
-card_grid(kitty_list)
-```
-
-The cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.
-
-
-## Adding headers and footers
-
-The `card()` function includes `header` and `footer` arguments that can be used to add headers and footers to a bootstrap card, as illustrated below: 
-
-```{r}
-card(
-  title = "A kitten card",
-  image = "https://placekitten.com/300/200",
-  text = "The image at the top of this card is from placekitten.com. It's very cute",
-  header = "Header",
-  footer = "Footer"
-)
-```
-
-When arranged into a grid, headers and footers line up with one another:
-
-```{r}
-kitties_with_footers <- list(
-  sample_card(footer = "Kitten A"), 
-  sample_card(footer = "Kitten B"), 
-  sample_card(footer = "Kitten C")
-) 
-
-card_grid(kitties_with_footers)
-```
-
-
-```{r}
-kitties_with_headers <- list(
-  sample_card(header = "Kitten A"), 
-  sample_card(header = "Kitten B"), 
-  sample_card(header = "Kitten C")
-)
-
-card_grid(kitties_with_headers)
-```
-
-
-## Setting width
-
-The layout of bootstrap cards on different sized devices is controlled by the [grid system](https://getbootstrap.com/docs/4.5/layout/grid/). The display is divided into 12 vertical columns, and the bootstrap `col` CSS classes can be used to specify how many columns are spanned by a card in a responsive way. The bs4cards package makes this functionality available through the `bs_col()` function. By default, a card generated by bs4cards has width:
-
-```{r}
-bs_col(medium = 4)
-```
-
-For devices of medium (or larger) size, the `col-md-4` class applies, and card spans 4 of the 12 columns, allowing three cards to be laid out horizontally. For smaller devices, `col-12` class is applied, with the consequence that the card spans all 12 columns.
-
-The `card()` function has a `width` argument that can be used to modify this default:
-
-```{r}
-card(
-  text = "On small devices this card spans 12 columns, on medium devices it spans 6, and on large devices it spans 4 columns",
-  width = bs_col(medium = 6, large = 4) 
-)
-```
-
-This makes it possible to build card grids that contain cards of different width. On medium or larger devices the right card is twice as wide as the left card. On smaller devices, however, both cards revert to full width and are laid out one above the other:
-
-```{r}
-uneven_cards <- list(
-  card(text = "A narrow card", width = bs_col(medium = 4)),
-  card(text = "A wide card", width = bs_col(medium = 8))
-)
-
-card_grid(uneven_cards)
-```
-
-## Setting margins and padding
-
-The bs4cards package also allows you to control the margins and padding for cards using the `bs_mar()` and `bs_pad()` functions. By default, cards generated by `card()` do not have margins. Setting margins around cards allows the cards within a grid to be separated from one another:
-
-```{r}
-spaced_cards <- list(
-  card(text = "The first card", margin = bs_mar(2)),
-  card(text = "The second card", margin = bs_mar(2))
-)
-
-card_grid(spaced_cards)
-```
-
-The `bs_mar()` function also allows finer grained control by setting margins separately for each side of the card:
-
-```{r}
-spaced_cards <- list(
-  card(text = "The first card", margin = bs_mar(right = 2)),
-  card(text = "The second card", margin = bs_mar(top = 5))
-)
-
-card_grid(spaced_cards)
-```
-
-The `bs_pad()` function operates similarly. The default for `card()` applies a moderate amount of padding on all sides (the default is `bs_pad(2)`). To override this, specify the `pad` argument as shown below:
-
-```{r}
-padded_cards <- list(
-  
-  card(
-    title = "A kitten card",
-    image = "https://placekitten.com/300/200",
-    text = "This card applies the default padding",
-    margin = bs_mar(2)
-  ),
-  
-  card(
-    title = "A kitten card",
-    image = "https://placekitten.com/300/200",
-    text = "This card has no padding",
-    margin = bs_mar(2),
-    pad = bs_pad(0)
+slides %>% 
+  cards(
+    title = messy_title,
+    text = description,
+    link = paste0("https://slides.djnavarro.net/", clean_title),
+    image = paste0("https://slides.djnavarro.net/index_img/", clean_title, ".png")
   )
-)
-
-card_grid(padded_cards)
 ```
 
-## Additional functionality
-
-The bs4cards package also provides functions that allow finer grain control over the individual components of a card, such as `card_title()`, `card_image()`, and `card_footer()`. The intention with these functions is to allow the user to exercise a high degree of control over the appearance of cards. These are a work in progress :-) 
+Note that `link` and `image` are both constructed using the `clean_title` variable from the `slides` data. In my experience this is grossly typical. Usually we try to give files for websites sensible and consistent names, so it's often the case that the same names get reused in a coherent way. By using expressions to construct the links and image paths it's possible to "get away" with a pretty small data frame with only a few variables.
 
 

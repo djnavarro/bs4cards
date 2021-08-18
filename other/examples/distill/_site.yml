@@ -1,0 +1,8 @@
+name: "strapless distill"
+title: "Distill site with strapless"
+description: |
+  Distill site with strapless
+output_dir: "_site"
+output:
+  distill::distill_article:
+    css: ["theme.css", "strapless.css"]
