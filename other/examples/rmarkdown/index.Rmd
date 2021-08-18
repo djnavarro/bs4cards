@@ -88,7 +88,8 @@ galleries %>%
     image = locate_thumbnail(short_name),
     width = "very-wide",
     footer = paste("posted on", date),
-    layout = "label-right"
+    layout = "label-right",
+    breakpoint = 7/12
   )
 ```
 
@@ -122,4 +123,22 @@ galleries %>%
     colour = "#ffffffcc"
   )
 ```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    footer = date,
+    link = locate_gallery(short_name),
+    image = locate_thumbnail(short_name),
+    width = "wide",
+    layout = "inset-bottom", 
+    breakpoint = .5,
+    colour = "#ffffffcc"
+  )
+```
+
+
 
