@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • bs4cards</title>
+<title>Specifies a bootstrap card — cards • bs4cards</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Specifies a bootstrap card — cards" />
+<meta property="og:description" content="Specifies a bootstrap card" />
 <meta property="og:image" content="https://bs4cards.djnavarro.net/twitter-card.png" />
 <meta property="og:image:alt" content="A grid of hearts. Text in the middle reads 'bs4cards'" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -63,7 +64,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -122,48 +123,85 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Specifies a bootstrap card</h1>
+    <small class="dont-index">Source: <a href='https://github.com/djnavarro/bs4cards/blob/master/R/cards.R'><code>R/cards.R</code></a></small>
+    <div class="hidden name"><code>cards.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Specifies a bootstrap card</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>cards</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  text <span class='op'>=</span> <span class='cn'>NULL</span>,
+  image <span class='op'>=</span> <span class='cn'>NULL</span>,
+  link <span class='op'>=</span> <span class='cn'>NULL</span>,
+  footer <span class='op'>=</span> <span class='cn'>NULL</span>,
+  width <span class='op'>=</span> <span class='st'>"medium"</span>,
+  layout <span class='op'>=</span> <span class='st'>"label-below"</span>,
+  padding <span class='op'>=</span> <span class='fl'>0</span>,
+  gutter <span class='op'>=</span> <span class='fl'>1</span>,
+  colour <span class='op'>=</span> <span class='st'>"#ffffffaa"</span>
+<span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="cards.html">cards()</a></code> </p>
-        </td>
-        <td><p>Specifies a bootstrap card</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_strapless.html">use_strapless()</a></code> </p>
-        </td>
-        <td><p>Use the strapless css library</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>Data</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Title for the card</p></td>
+    </tr>
+    <tr>
+      <th>text</th>
+      <td><p>Text for the card</p></td>
+    </tr>
+    <tr>
+      <th>image</th>
+      <td><p>Path to the card image</p></td>
+    </tr>
+    <tr>
+      <th>link</th>
+      <td><p>URL to link to from title and image</p></td>
+    </tr>
+    <tr>
+      <th>footer</th>
+      <td><p>Card footer</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>Card width ("narrow", "medium", "wide")</p></td>
+    </tr>
+    <tr>
+      <th>layout</th>
+      <td><p>Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")</p></td>
+    </tr>
+    <tr>
+      <th>padding</th>
+      <td><p>Spacing between parts of the card (integer between 0 and 5)</p></td>
+    </tr>
+    <tr>
+      <th>gutter</th>
+      <td><p>Spacing between adjacent cards (integer between 0 and 5)</p></td>
+    </tr>
+    <tr>
+      <th>colour</th>
+      <td><p>Colour applied to the card (interpretation depends on layout)</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A "shiny.tag" object</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
