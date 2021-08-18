@@ -64,7 +64,7 @@
 </div>
   </div>
 </nav><div class="container template-article">
-<script src="introduction_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+<script src="introduction_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <img src="" class="pkg-logo" alt=""><div class="page-header pb-2 mt-4 mb-2 border-bottom toc-ignore">
       <h1 class="display-4" data-toc-skip>Introduction</h1>
@@ -78,35 +78,35 @@
     
     
 <p>When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. For example, in a recent project I wanted something like this:</p>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent border-0 m-0 p-1">
 <a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png"></a>
-<div class="card-body">
+<img src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png" class="card-img-top"></a>
+<div class="card-body justify-content-end border rounded m-0 p-0" style="visibility: visible; background-color: #ffffffaa">
 <a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
-<h5 class="card-title">Starting R markdown</h5>
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Starting R markdown</h5>
 </a>
-<p class="card-text">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
+<p class="card-text px-3 pb-3">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<div class="card bg-transparent border-0 m-0 p-1">
 <a href="https://slides.djnavarro.net/starting-ggplot2" class="external-link">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-ggplot2.png"></a>
-<div class="card-body">
+<img src="https://slides.djnavarro.net/index_img/starting-ggplot2.png" class="card-img-top"></a>
+<div class="card-body justify-content-end border rounded m-0 p-0" style="visibility: visible; background-color: #ffffffaa">
 <a href="https://slides.djnavarro.net/starting-ggplot2" class="external-link">
-<h5 class="card-title">Starting ggplot2</h5>
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Starting ggplot2</h5>
 </a>
-<p class="card-text">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
+<p class="card-text px-3 pb-3">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
+<div class="card bg-transparent border-0 m-0 p-1">
 <a href="https://slides.djnavarro.net/starting-programming" class="external-link">
-<img class="card-img-top p-0" src="https://slides.djnavarro.net/index_img/starting-programming.png"></a>
-<div class="card-body">
+<img src="https://slides.djnavarro.net/index_img/starting-programming.png" class="card-img-top"></a>
+<div class="card-body justify-content-end border rounded m-0 p-0" style="visibility: visible; background-color: #ffffffaa">
 <a href="https://slides.djnavarro.net/starting-programming" class="external-link">
-<h5 class="card-title">Starting programming</h5>
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Starting programming</h5>
 </a>
-<p class="card-text">This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</p>
+<p class="card-text px-3 pb-3">This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</p>
 </div>
 </div>
 </div>
@@ -114,361 +114,100 @@
 <div id="enabling-bootstrap-4" class="section level2">
 <h2 class="hasAnchor">
 <a href="#enabling-bootstrap-4" class="anchor" aria-hidden="true"></a>Enabling bootstrap 4</h2>
-<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the <code>bs4cards</code> package takes its name from the <a href="https://getbootstrap.com/docs/4.5/components/card/" class="external-link">cards</a> system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For example, here is the relevant section of YAML you might use in a simple R markdown site</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the <code>bs4cards</code> package takes its name from the <a href="https://getbootstrap.com/docs/4.5/components/card/" class="external-link">cards</a> system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3, or don’t use bootstrap at all. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you’re creating:</p>
+<div id="vanilla-r-markdown" class="section level3">
+<h3 class="hasAnchor">
+<a href="#vanilla-r-markdown" class="anchor" aria-hidden="true"></a>Vanilla R markdown</h3>
+<p>For a plain R markdown document or website (i.e., one where the output format is <code>html_document</code>) here is the relevant section of YAML you might use:</p>
 <pre><code>output:
   html_document:
     theme:
       version: 4</code></pre>
-<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/" class="external-link">bootstrap 4.5</a>. To enable bootstrap 4 in a pkgdown site such as this one, edit the <code>_pkgdown.yml</code> file to include the following</p>
+<p>This overrides the R markdown defaults <span class="citation">[@rmarkdown]</span> to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/" class="external-link">bootstrap 4.5</a>.</p>
+</div>
+<div id="pkgdown" class="section level3">
+<h3 class="hasAnchor">
+<a href="#pkgdown" class="anchor" aria-hidden="true"></a>Pkgdown</h3>
+<p>To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the <code>_pkgdown.yml</code> file to include the following</p>
 <pre><code>template:
   bootstrap: 4</code></pre>
-<p>You may need to update to the development version of pkgdown to make this work.</p>
+<p>Note that this relies on a currently-in-development feature, so you may need to update to the development version of pkgdown to make this work.</p>
+</div>
+<div id="distill-experimental" class="section level3">
+<h3 class="hasAnchor">
+<a href="#distill-experimental" class="anchor" aria-hidden="true"></a>Distill (experimental!!!)</h3>
+<p>Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn’t look visually appealing when mixed with the distill styling.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The original version of this post used that solution, with a promissory note to do a better job later.&lt;/p&gt;"><sup>1</sup></a> To fix this, bs4cards includes a stripped down version of bootstrap called “strapless”, that only uses the subset of bootstrap css relevant to cards. The convenience function <code><a href="../reference/use_strapless.html">use_strapless()</a></code> will copy the strapless css file to the target location. To copy it to the same location as this post:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">bs4cards</span><span class="fu">::</span><span class="fu"><a href="../reference/use_strapless.html">use_strapless</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"_posts"</span>, <span class="st">"bs4cards-in-distill"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Next, to enable the library within the post, add the following lines to the YAML header for the post:</p>
+<pre><code>output:
+  distill::distill_article:
+    css: "strapless.css"</code></pre>
+<p>Alternatively, if you want to enable strapless for the entire site, this markup goes in the <code>_site.yml</code> file and the css file should go in the home folder for the project.</p>
+<p>Once that’s done you should be ready to go! However, please be careful: this is an experimental feature and has not yet been properly tested.</p>
+</div>
 </div>
 <div id="building-bootstrap-cards" class="section level2">
 <h2 class="hasAnchor">
 <a href="#building-bootstrap-cards" class="anchor" aria-hidden="true"></a>Building bootstrap cards</h2>
-<p>The main function in bs4cards is the <code><a href="../reference/card.html">card()</a></code> function. To create a minimal text-only card, call the <code><a href="../reference/card.html">card()</a></code> function specifying the <code>title</code> and <code>text</code> arguments:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  title <span class="op">=</span> <span class="st">"A bootstrap card"</span>, 
-  text <span class="op">=</span> <span class="st">"This is a minimal bootstrap 4 card containing title and text"</span>
-<span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-body">
-<h5 class="card-title">A bootstrap card</h5>
-<p class="card-text">This is a minimal bootstrap 4 card containing title and text</p>
-</div>
-</div>
-<p>In most cases you’ll also want to add an image to the card using the <code>image</code> argument. This argument specifies the path to the image file. For the purposes of this example I’ll set image paths using links to <a href="https://placekitten.com" class="external-link">placekitten.com</a>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  title <span class="op">=</span> <span class="st">"A kitten card"</span>,
-  image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
-  text <span class="op">=</span> <span class="st">"The image at the top of this card is from placekitten.com. It's very cute"</span>
-<span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/300/200"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">The image at the top of this card is from placekitten.com. It's very cute</p>
-</div>
-</div>
-<p>Images are placed at the top of the card by default, but can be moved to the bottom by setting <code>image_align = "bottom"</code>:</p>
+<p>The main function in bs4cards is <code><a href="../reference/cards.html">cards()</a></code>. It takes a data frame as the first argument, generally the data set from which the bootstrap cards are to be constructed. In the example at the top of this vignette I used a simple data frame called <code>slides</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  title <span class="op">=</span> <span class="st">"A kitten card"</span>,
-  image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
-  text <span class="op">=</span> <span class="st">"The image at the bottom of this card is from placekitten.com. It's still cute"</span>,
-  image_align <span class="op">=</span> <span class="st">"bottom"</span>
-<span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">The image at the bottom of this card is from placekitten.com. It's still cute</p>
-</div>
-<img class="card-img-bottom p-0" src="https://placekitten.com/300/200">
-</div>
-<p>In most cases you’ll want cards to be associated with a link, which is set by specifying the <code>link</code> argument to <code><a href="../reference/card.html">card()</a></code>. This will convert both the card title and image to links:</p>
+<code class="sourceCode R"><span class="va">slides</span>
+<span class="co">#&gt;            messy_title          clean_title</span>
+<span class="co">#&gt; 1  Starting R markdown   starting-rmarkdown</span>
+<span class="co">#&gt; 2     Starting ggplot2     starting-ggplot2</span>
+<span class="co">#&gt; 3 Starting programming starting-programming</span>
+<span class="co">#&gt;                                                                                                                                                                                                 description</span>
+<span class="co">#&gt; 1                                                                                          An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</span>
+<span class="co">#&gt; 2                                                                                           An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</span>
+<span class="co">#&gt; 3 This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</span></code></pre></div>
+<p>Each row in this data frame corresponds to one card in the grid, and the columns are used to construct the card. For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input. To create something very similar to the set of cards depicted at the beginning, you could do something like this:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  title <span class="op">=</span> <span class="st">"Placekittens"</span>,
-  image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
-  text <span class="op">=</span> <span class="st">"The image at the top of this card is from placekitten.com. It's very cute"</span>,
-  link <span class="op">=</span> <span class="st">"https://placekitten.com"</span>
-<span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<a href="https://placekitten.com" class="external-link">
-<img class="card-img-top p-0" src="https://placekitten.com/300/200"></a>
-<div class="card-body">
-<a href="https://placekitten.com" class="external-link">
-<h5 class="card-title">Placekittens</h5>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span>
+
+<span class="va">slides</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">messy_title</span>,
+    text <span class="op">=</span> <span class="va">description</span>,
+    link <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://slides.djnavarro.net/"</span>, <span class="va">clean_title</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://slides.djnavarro.net/index_img/"</span>, <span class="va">clean_title</span>, <span class="st">".png"</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
+<div class="card bg-transparent border-0 m-0 p-1">
+<a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
+<img src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png" class="card-img-top"></a>
+<div class="card-body justify-content-end border rounded m-0 p-0" style="visibility: visible; background-color: #ffffffaa">
+<a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Starting R markdown</h5>
 </a>
-<p class="card-text">The image at the top of this card is from placekitten.com. It's very cute</p>
+<p class="card-text px-3 pb-3">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
+</div>
+</div>
+<div class="card bg-transparent border-0 m-0 p-1">
+<a href="https://slides.djnavarro.net/starting-ggplot2" class="external-link">
+<img src="https://slides.djnavarro.net/index_img/starting-ggplot2.png" class="card-img-top"></a>
+<div class="card-body justify-content-end border rounded m-0 p-0" style="visibility: visible; background-color: #ffffffaa">
+<a href="https://slides.djnavarro.net/starting-ggplot2" class="external-link">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Starting ggplot2</h5>
+</a>
+<p class="card-text px-3 pb-3">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
+</div>
+</div>
+<div class="card bg-transparent border-0 m-0 p-1">
+<a href="https://slides.djnavarro.net/starting-programming" class="external-link">
+<img src="https://slides.djnavarro.net/index_img/starting-programming.png" class="card-img-top"></a>
+<div class="card-body justify-content-end border rounded m-0 p-0" style="visibility: visible; background-color: #ffffffaa">
+<a href="https://slides.djnavarro.net/starting-programming" class="external-link">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Starting programming</h5>
+</a>
+<p class="card-text px-3 pb-3">This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</p>
 </div>
 </div>
 </div>
-<div id="building-card-grids" class="section level2">
-<h2 class="hasAnchor">
-<a href="#building-card-grids" class="anchor" aria-hidden="true"></a>Building card grids</h2>
-<p>Cards are usually arranged into grids rather than presented in isolation. The <code><a href="../reference/card_grid.html">card_grid()</a></code> function takes a list of cards as input and lays them out on a grid. To illustrate how this works, I’ll use the <code><a href="../reference/sample_card.html">sample_card()</a></code> function that generates a random card</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/256/226"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Graece donan, Latine voluptatem vocant. Ut non sine causa ex iis memoriae ducta sit disciplina. Nobis aliter videtur, recte secusne, postea;</p>
+<p>Note that <code>link</code> and <code>image</code> are both constructed using the <code>clean_title</code> variable from the <code>slides</code> data. In my experience this is grossly typical. Usually we try to give files for websites sensible and consistent names, so it’s often the case that the same names get reused in a coherent way. By using expressions to construct the links and image paths it’s possible to “get away” with a pretty small data frame with only a few variables.</p>
 </div>
-</div>
-<p>and use this to create a list of eight cards:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kitty_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<p>This list is then passed to <code><a href="../reference/card_grid.html">card_grid()</a></code>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">kitty_list</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/334/167"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur. Ita ne hoc quidem modo paria peccata sunt. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/280/245"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Gracchum patrem non beatiorem fuisse quam fillum, cum alter stabilire rem publicam studuerit, alter evertere. Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur. Sed quanta sit alias, nunc tantum possitne esse tanta.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/323/168"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Ita ne hoc quidem modo paria peccata sunt. Nam cui proposito sit conservatio sui, necesse est huic partes quoque sui caras suo genere laudabiles. Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/290/154"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus. Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Quid de Platone aut de Democrito loquar?</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/340/182"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Quid de Platone aut de Democrito loquar? Sed erat aequius Triarium aliquid de dissensione nostra iudicare.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/294/228"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Longum est enim ad omnia respondere, quae a te dicta sunt. Scaevola tribunus plebis ferret ad plebem vellentne de ea re quaeri. Omnia contraria, quos etiam insanos esse vultis.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/275/155"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Itaque hic ipse iam pridem est reiectus; An me, inquam, nisi te audire vellem, censes haec dicturum fuisse? Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/298/245"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Quid est, quod ab ea absolvi et perfici debeat? Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Beatus sibi videtur esse moriens.</p>
-</div>
-</div>
-</div>
-<p>The cards are arranged into a responsive grid. The images in each card retain their original aspect ratio, but the size of the card is stretched vertically to ensure that all cards within any row have the same height.</p>
-</div>
-<div id="adding-headers-and-footers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#adding-headers-and-footers" class="anchor" aria-hidden="true"></a>Adding headers and footers</h2>
-<p>The <code><a href="../reference/card.html">card()</a></code> function includes <code>header</code> and <code>footer</code> arguments that can be used to add headers and footers to a bootstrap card, as illustrated below:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  title <span class="op">=</span> <span class="st">"A kitten card"</span>,
-  image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
-  text <span class="op">=</span> <span class="st">"The image at the top of this card is from placekitten.com. It's very cute"</span>,
-  header <span class="op">=</span> <span class="st">"Header"</span>,
-  footer <span class="op">=</span> <span class="st">"Footer"</span>
-<span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-header">Header</div>
-<img class="card-img-top p-0" src="https://placekitten.com/300/200"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">The image at the top of this card is from placekitten.com. It's very cute</p>
-</div>
-<div class="card-footer">Footer</div>
-</div>
-<p>When arranged into a grid, headers and footers line up with one another:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kitties_with_footers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>footer <span class="op">=</span> <span class="st">"Kitten A"</span><span class="op">)</span>, 
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>footer <span class="op">=</span> <span class="st">"Kitten B"</span><span class="op">)</span>, 
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>footer <span class="op">=</span> <span class="st">"Kitten C"</span><span class="op">)</span>
-<span class="op">)</span> 
 
-<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">kitties_with_footers</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/285/243"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Non semper, inquam; Eam tum adesse, cum dolor omnis absit; Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere. Nescio quo modo praetervolavit oratio.</p>
-</div>
-<div class="card-footer">Kitten A</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/289/163"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Nam cui proposito sit conservatio sui, necesse est huic partes quoque sui caras suo genere laudabiles. Sequitur disserendi ratio cognitioque naturae; Non semper, inquam; Eam tum adesse, cum dolor omnis absit;</p>
-</div>
-<div class="card-footer">Kitten B</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/295/200"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus. Ut non sine causa ex iis memoriae ducta sit disciplina. Contemnit enim disserendi elegantiam, confuse loquitur.</p>
-</div>
-<div class="card-footer">Kitten C</div>
-</div>
-</div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kitties_with_headers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>header <span class="op">=</span> <span class="st">"Kitten A"</span><span class="op">)</span>, 
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>header <span class="op">=</span> <span class="st">"Kitten B"</span><span class="op">)</span>, 
-  <span class="fu"><a href="../reference/sample_card.html">sample_card</a></span><span class="op">(</span>header <span class="op">=</span> <span class="st">"Kitten C"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">kitties_with_headers</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-header">Kitten A</div>
-<img class="card-img-top p-0" src="https://placekitten.com/291/250"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Et nemo nimium beatus est; Ita ne hoc quidem modo paria peccata sunt. Dolere malum est: in crucem qui agitur, beatus esse non potest. Quasi vero, inquit, perpetua oratio rhetorum solum, non etiam philosophorum sit.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-header">Kitten B</div>
-<img class="card-img-top p-0" src="https://placekitten.com/292/248"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Dolere malum est: in crucem qui agitur, beatus esse non potest. Contemnit enim disserendi elegantiam, confuse loquitur. Ita ne hoc quidem modo paria peccata sunt.</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-header">Kitten C</div>
-<img class="card-img-top p-0" src="https://placekitten.com/324/220"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Quid est, quod ab ea absolvi et perfici debeat? Facile pateremur, qui etiam nunc agendi aliquid discendique causa prope contra naturam vígillas suscipere soleamus.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="setting-width" class="section level2">
-<h2 class="hasAnchor">
-<a href="#setting-width" class="anchor" aria-hidden="true"></a>Setting width</h2>
-<p>The layout of bootstrap cards on different sized devices is controlled by the <a href="https://getbootstrap.com/docs/4.5/layout/grid/" class="external-link">grid system</a>. The display is divided into 12 vertical columns, and the bootstrap <code>col</code> CSS classes can be used to specify how many columns are spanned by a card in a responsive way. The bs4cards package makes this functionality available through the <code><a href="../reference/bs_col.html">bs_col()</a></code> function. By default, a card generated by bs4cards has width:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="co">#&gt; [1] "col-12 col-md-4"</span></code></pre></div>
-<p>For devices of medium (or larger) size, the <code>col-md-4</code> class applies, and card spans 4 of the 12 columns, allowing three cards to be laid out horizontally. For smaller devices, <code>col-12</code> class is applied, with the consequence that the card spans all 12 columns.</p>
-<p>The <code><a href="../reference/card.html">card()</a></code> function has a <code>width</code> argument that can be used to modify this default:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-  text <span class="op">=</span> <span class="st">"On small devices this card spans 12 columns, on medium devices it spans 6, and on large devices it spans 4 columns"</span>,
-  width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">6</span>, large <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> 
-<span class="op">)</span></code></pre></div>
-<div class="card col-12 col-md-6 col-lg-4 m-0 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">On small devices this card spans 12 columns, on medium devices it spans 6, and on large devices it spans 4 columns</p>
-</div>
-</div>
-<p>This makes it possible to build card grids that contain cards of different width. On medium or larger devices the right card is twice as wide as the left card. On smaller devices, however, both cards revert to full width and are laid out one above the other:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">uneven_cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"A narrow card"</span>, width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"A wide card"</span>, width <span class="op">=</span> <span class="fu"><a href="../reference/bs_col.html">bs_col</a></span><span class="op">(</span>medium <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">uneven_cards</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-0 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">A narrow card</p>
-</div>
-</div>
-<div class="card col-12 col-md-8 m-0 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">A wide card</p>
-</div>
-</div>
-</div>
-</div>
-<div id="setting-margins-and-padding" class="section level2">
-<h2 class="hasAnchor">
-<a href="#setting-margins-and-padding" class="anchor" aria-hidden="true"></a>Setting margins and padding</h2>
-<p>The bs4cards package also allows you to control the margins and padding for cards using the <code><a href="../reference/bs_mar.html">bs_mar()</a></code> and <code><a href="../reference/bs_pad.html">bs_pad()</a></code> functions. By default, cards generated by <code><a href="../reference/card.html">card()</a></code> do not have margins. Setting margins around cards allows the cards within a grid to be separated from one another:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">spaced_cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"The first card"</span>, margin <span class="op">=</span> <span class="fu"><a href="../reference/bs_mar.html">bs_mar</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"The second card"</span>, margin <span class="op">=</span> <span class="fu"><a href="../reference/bs_mar.html">bs_mar</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">spaced_cards</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-2 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">The first card</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-2 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">The second card</p>
-</div>
-</div>
-</div>
-<p>The <code><a href="../reference/bs_mar.html">bs_mar()</a></code> function also allows finer grained control by setting margins separately for each side of the card:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">spaced_cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"The first card"</span>, margin <span class="op">=</span> <span class="fu"><a href="../reference/bs_mar.html">bs_mar</a></span><span class="op">(</span>right <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"The second card"</span>, margin <span class="op">=</span> <span class="fu"><a href="../reference/bs_mar.html">bs_mar</a></span><span class="op">(</span>top <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">spaced_cards</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-0 mr-2 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">The first card</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-0 mt-5 p-2 d-flex">
-<div class="card-body">
-<p class="card-text">The second card</p>
-</div>
-</div>
-</div>
-<p>The <code><a href="../reference/bs_pad.html">bs_pad()</a></code> function operates similarly. The default for <code><a href="../reference/card.html">card()</a></code> applies a moderate amount of padding on all sides (the default is <code>bs_pad(2)</code>). To override this, specify the <code>pad</code> argument as shown below:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">padded_cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"A kitten card"</span>,
-    image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
-    text <span class="op">=</span> <span class="st">"This card applies the default padding"</span>,
-    margin <span class="op">=</span> <span class="fu"><a href="../reference/bs_mar.html">bs_mar</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-  <span class="op">)</span>,
-  
-  <span class="fu"><a href="../reference/card.html">card</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"A kitten card"</span>,
-    image <span class="op">=</span> <span class="st">"https://placekitten.com/300/200"</span>,
-    text <span class="op">=</span> <span class="st">"This card has no padding"</span>,
-    margin <span class="op">=</span> <span class="fu"><a href="../reference/bs_mar.html">bs_mar</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
-    pad <span class="op">=</span> <span class="fu"><a href="../reference/bs_pad.html">bs_pad</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="../reference/card_grid.html">card_grid</a></span><span class="op">(</span><span class="va">padded_cards</span><span class="op">)</span></code></pre></div>
-<div class="row m-0 mb-3 mt-3 p-0">
-<div class="card col-12 col-md-4 m-2 p-2 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/300/200"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">This card applies the default padding</p>
-</div>
-</div>
-<div class="card col-12 col-md-4 m-2 p-0 d-flex">
-<img class="card-img-top p-0" src="https://placekitten.com/300/200"><div class="card-body">
-<h5 class="card-title">A kitten card</h5>
-<p class="card-text">This card has no padding</p>
-</div>
-</div>
-</div>
-</div>
-<div id="additional-functionality" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-functionality" class="anchor" aria-hidden="true"></a>Additional functionality</h2>
-<p>The bs4cards package also provides functions that allow finer grain control over the individual components of a card, such as <code><a href="../reference/card_title.html">card_title()</a></code>, <code><a href="../reference/card_image.html">card_image()</a></code>, and <code><a href="../reference/card_footer.html">card_footer()</a></code>. The intention with these functions is to allow the user to exercise a high degree of control over the appearance of cards. These are a work in progress :-)</p>
-</div>
   </div>
  <div class="col-md-3 d-none d-md-block" id="pkgdown-sidebar">
         <div class="sticky-top">

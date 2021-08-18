@@ -58,6 +58,9 @@
     <loc>/reference/card_title.html</loc>
   </url>
   <url>
+    <loc>/reference/cards.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -74,5 +77,8 @@
   </url>
   <url>
     <loc>/reference/strapless.html</loc>
+  </url>
+  <url>
+    <loc>/reference/use_strapless.html</loc>
   </url>
 </urlset>

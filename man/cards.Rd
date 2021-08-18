@@ -11,12 +11,11 @@ cards(
   image = NULL,
   link = NULL,
   footer = NULL,
-  header = NULL,
   width = "medium",
   layout = "label-below",
   padding = 0,
-  margin = 1,
-  colour = "#00000080"
+  gutter = 1,
+  colour = "#ffffffaa"
 )
 }
 \arguments{
@@ -32,15 +31,13 @@ cards(
 
 \item{footer}{Card footer}
 
-\item{header}{Card header}
-
 \item{width}{Card width ("narrow", "medium", "wide")}
 
 \item{layout}{Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")}
 
 \item{padding}{Spacing between parts of the card (integer between 0 and 5)}
 
-\item{margin}{Spacing between adjacent cards (integer between 0 and 5)}
+\item{gutter}{Spacing between adjacent cards (integer between 0 and 5)}
 
 \item{colour}{Colour applied to the card (interpretation depends on layout)}
 }
