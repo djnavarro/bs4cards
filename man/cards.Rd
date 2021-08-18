@@ -15,6 +15,7 @@ cards(
   layout = "label-below",
   padding = 0,
   gutter = 1,
+  breakpoint = NULL,
   colour = "#ffffffaa"
 )
 }
@@ -38,6 +39,8 @@ cards(
 \item{padding}{Spacing between parts of the card (integer between 0 and 5)}
 
 \item{gutter}{Spacing between adjacent cards (integer between 0 and 5)}
+
+\item{breakpoint}{Position to insert breaks for horizontal or inset cards (numeric between 0 and 1)}
 
 \item{colour}{Colour applied to the card (interpretation depends on layout)}
 }

@@ -10,6 +10,7 @@
 #' @param layout Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")
 #' @param padding Spacing between parts of the card (integer between 0 and 5)
 #' @param gutter Spacing between adjacent cards (integer between 0 and 5)
+#' @param breakpoint Position to insert breaks for horizontal or inset cards, interpreted as proportion of card allocated to label
 #' @param colour Colour applied to the card (interpretation depends on layout)
 #'
 #' @return A "shiny.tag" object
@@ -18,7 +19,7 @@
 cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
                   footer = NULL, width = "medium",
                   layout = "label-below", padding = 0, gutter = 1,
-                  colour = "#ffffffaa") {
+                  breakpoint = NULL, colour = "#ffffffaa") {
 
   card_list <-data %>%
     dplyr::transmute(
@@ -30,6 +31,7 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
       layout = {{layout}},
       padding = {{padding}},
       gutter = {{gutter}},
+      breakpoint = {{breakpoint}},
       colour = {{colour}}
     ) %>%
     purrr::transpose() %>%
@@ -55,7 +57,7 @@ cards <- function(data, title = NULL, text = NULL, image = NULL, link = NULL,
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
                       footer = NULL, header = NULL, layout,
-                      padding, gutter, colour) {
+                      padding, gutter, breakpoint = NULL, colour) {
 
   title  <- make_title(title)
   text   <- make_text(text)
@@ -73,12 +75,12 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   }
 
   if(layout == "label-right" | layout == "label-left") {
-    card <- make_card_horizontal(image, title, text, footer, layout, padding, gutter, colour)
+    card <- make_card_horizontal(image, title, text, footer, layout, padding, gutter, breakpoint, colour)
     return(card)
   }
 
   if(layout == "inset-bottom" | layout == "inset-top") {
-    card <- make_card_inset(image, title, text, footer, layout, padding, gutter, colour)
+    card <- make_card_inset(image, title, text, footer, layout, padding, gutter, breakpoint, colour)
     return(card)
   }
 }
@@ -116,18 +118,26 @@ make_card_vertical <- function(image, title, text, footer, layout, padding, gutt
 }
 
 
-make_card_horizontal <- function(image, title, text, footer, layout, padding, gutter, colour) {
+make_card_horizontal <- function(image, title, text, footer, layout, padding, gutter, breakpoint, colour) {
+
+  if(is.null(breakpoint)) breakpoint <- 2/3
+
+  label_cols <- round(breakpoint * 12)
+  image_cols <- 12 - label_cols
+
+  label_class <- paste0("col-sm-", label_cols)
+  image_class <- paste0("col-sm-", image_cols)
 
   if(layout == "label-right") {
-    lhs <- htmltools::div(class = "col-sm-6", image)
-    rhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
+    lhs <- htmltools::div(class = image_class, image)
+    rhs <- htmltools::div(class = label_class, title, text, style = "background-color: #00000000;")
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
     core <- htmltools::div(row)
   }
 
   if(layout == "label-left") {
-    lhs <- htmltools::div(class = "col-sm-6", title, text, style = "background-color: #00000000;")
-    rhs <- htmltools::div(class = "col-sm-6", image)
+    lhs <- htmltools::div(class = label_class, title, text, style = "background-color: #00000000;")
+    rhs <- htmltools::div(class = image_class, image)
     row <- htmltools::div(class = "row no-gutters", lhs, rhs)
     core <- htmltools::div(row)
   }
@@ -148,7 +158,7 @@ make_card_horizontal <- function(image, title, text, footer, layout, padding, gu
 
 
 
-make_card_inset <- function(image, title, text, footer, layout, padding, gutter, colour) {
+make_card_inset <- function(image, title, text, footer, layout, padding, gutter, breakpoint, colour) {
 
   if(layout == "inset-top") top <- "0%"
   if(layout == "inset-bottom") top <- "80%"
