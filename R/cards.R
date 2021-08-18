@@ -120,6 +120,8 @@ make_card_vertical <- function(image, title, text, footer, layout, padding, gutt
 
 make_card_horizontal <- function(image, title, text, footer, layout, padding, gutter, breakpoint, colour) {
 
+  # the default for horizontal cards is a wide label, presuming the common
+  # use case for horizontal cards is for people to supply a descriptive blurb
   if(is.null(breakpoint)) breakpoint <- 2/3
 
   label_cols <- round(breakpoint * 12)
@@ -160,16 +162,20 @@ make_card_horizontal <- function(image, title, text, footer, layout, padding, gu
 
 make_card_inset <- function(image, title, text, footer, layout, padding, gutter, breakpoint, colour) {
 
-  if(layout == "inset-top") top <- "0%"
-  if(layout == "inset-bottom") top <- "80%"
+  # the default breakpoint for inset cards is thin, as it is presumed the
+  # typical use case for inset cards is to provide a small floating caption/title
+  if(is.null(breakpoint)) breakpoint <- 1/6
+
+  label_height <- round(breakpoint * 100)
+  label_offset <- ifelse(layout == "inset-bottom", 100 - label_height, 0)
 
   overlay <- htmltools::div(
     class = "card-img-overlay p-0 m-0",
     style = paste0(
       "background-color: ", colour, ";",
-      "height: 20%;",
+      "height: ", label_height, "%;",
       "position: absolute;",
-      "top: ", top, ";"
+      "top: ", label_offset, "%;"
     ),
     title, text
   )
