@@ -8,10 +8,10 @@ output:
       version: 4
 ---
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 
 ```{r, message=FALSE}
 library(bs4cards)
@@ -23,6 +23,10 @@ locate_gallery <- function(x) {
   paste0("https://art.djnavarro.net/gallery/", x)
 }
 
+galleries
+```
+
+```{r}
 galleries %>% 
   cards(
     title = long_name,
@@ -154,4 +158,29 @@ galleries %>%
 ```
 
 
+## Tags
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = locate_gallery(short_name),
+    image = locate_thumbnail(short_name),
+    tags = paste("all", paintbrushes),
+    width = "very-wide",
+    footer = paintbrushes,
+    layout = "label-right",
+    breakpoint = 7/12
+  )
+```
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
 

@@ -6,6 +6,7 @@
 #' @param image Path to the card image
 #' @param link URL to link to from title and image
 #' @param footer Card footer
+#' @param tags Tags to be assigned to each card
 #' @param width Card width ("narrow", "medium", "wide")
 #' @param layout Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")
 #' @param padding Spacing between parts of the card (integer between 0 and 5)
@@ -25,6 +26,7 @@ cards <- function(data,
                   image = NULL,
                   link = NULL,
                   footer = NULL,
+                  tags = NULL,
                   width = "medium",
                   layout = "label-below",
                   padding = 0,
@@ -36,13 +38,14 @@ cards <- function(data,
                   rounding = "1rem"
                   ) {
 
-  card_list <- data %>%
+  card_data <- data %>%
     dplyr::transmute(
       title  = {{title}},
       text   = {{text}},
       image  = {{image}},
       link   = {{link}},
       footer = {{footer}},
+      tags = {{tags}},
       layout = {{layout}},
       padding = {{padding}},
       gutter = {{gutter}},
@@ -53,7 +56,7 @@ cards <- function(data,
       rounding = {{rounding}}
     )
 
-  card_list <- card_list %>%
+  card_list <- card_data %>%
     purrr::transpose() %>%
     purrr::map(make_card_dots)
 
@@ -68,13 +71,55 @@ cards <- function(data,
     )
   }
 
-  do.call(collate, card_list)
+  card_list <- do.call(collate, card_list)
+
+  tags <- card_data[["tags"]]
+  if(is.null(tags)) tags <- ""
+  unique_tags <- unique_strings(tags)
+
+  if(!exists("tags") || is.null(tags)) return(card_list)
+  if(length(unique_tags) == 0) return(card_list)
+
+  taglist <- lapply(unique_tags, tag_button)
+  taglist <- do.call(tag_wrapper, taglist)
+
+  card_list <- htmltools::div(taglist, card_list)
+  return(card_list)
+
+  # <p>
+  #   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+  #   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+  #   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+  #   </p>
+}
+
+
+unique_strings <- function(x) {
+  unique(unlist(strsplit(x, split = "[[:space:]]+")))
+}
+
+tag_button <- function(tag) {
+  htmltools::tags$button(
+    class = "btn btn-primary",
+    type = "button",
+    onClick = paste0(
+      "$('.all').hide(400, 'swing');",
+      "setTimeout(function() {$('.", tag, "').show(400, 'swing')}, 400);"
+    ),
+    #"data-toggle" = "collapse",
+    #"data-target" = paste0(".", tag),
+    tag
+  )
 }
 
 
 
+tag_wrapper <- function(...) {
+  htmltools::p(...)
+}
+
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
-                      footer = NULL, header = NULL, layout,
+                      footer = NULL, header = NULL, tags = NULL, layout,
                       padding, gutter, breakpoint = NULL, colour,
                       border_width, border_colour, rounding
                       ) {
@@ -85,7 +130,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   if(layout == "label-below" | layout == "label-above") {
     card <- make_card_vertical(
       title, text, image, link,
-      footer, header, layout,
+      footer, header, tags, layout,
       padding, gutter, breakpoint,
       colour, border, radius
     )
@@ -95,7 +140,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   if(layout == "label-right" | layout == "label-left") {
     card <- make_card_horizontal(
       title, text, image, link,
-      footer, header, layout,
+      footer, header, tags, layout,
       padding, gutter, breakpoint,
       colour, border, radius
     )
@@ -105,7 +150,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   if(layout == "inset-bottom" | layout == "inset-top") {
     card <- make_card_inset(
       title, text, image, link,
-      footer, header, layout,
+      footer, header, tags, layout,
       padding, gutter, breakpoint,
       colour, border, radius
     )

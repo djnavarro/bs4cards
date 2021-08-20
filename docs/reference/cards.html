@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.0.0.9002</button>
+    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Released version">0.0.0.9003</button>
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto ml-3"><li class="active nav-item">
@@ -56,12 +56,16 @@
   image <span class="op">=</span> <span class="cn">NULL</span>,
   link <span class="op">=</span> <span class="cn">NULL</span>,
   footer <span class="op">=</span> <span class="cn">NULL</span>,
+  tags <span class="op">=</span> <span class="cn">NULL</span>,
   width <span class="op">=</span> <span class="st">"medium"</span>,
   layout <span class="op">=</span> <span class="st">"label-below"</span>,
   padding <span class="op">=</span> <span class="fl">0</span>,
   gutter <span class="op">=</span> <span class="fl">1</span>,
   breakpoint <span class="op">=</span> <span class="cn">NULL</span>,
-  colour <span class="op">=</span> <span class="st">"#ffffffaa"</span>
+  colour <span class="op">=</span> <span class="st">"#ffffffaa"</span>,
+  border_width <span class="op">=</span> <span class="st">"1px"</span>,
+  border_colour <span class="op">=</span> <span class="st">"#808080"</span>,
+  rounding <span class="op">=</span> <span class="st">"1rem"</span>
 <span class="op">)</span></code></pre>
     </div>
 
@@ -78,6 +82,8 @@
       <dd class="col-sm-9" id="ref-arguments desc"><p>URL to link to from title and image</p></dd>
     <dt class="col-sm-3 section level2" id="pkg-arg-footer">footer</dt>
       <dd class="col-sm-9" id="ref-arguments desc"><p>Card footer</p></dd>
+    <dt class="col-sm-3 section level2" id="pkg-arg-tags">tags</dt>
+      <dd class="col-sm-9" id="ref-arguments desc"><p>Tags to be assigned to each card</p></dd>
     <dt class="col-sm-3 section level2" id="pkg-arg-width">width</dt>
       <dd class="col-sm-9" id="ref-arguments desc"><p>Card width ("narrow", "medium", "wide")</p></dd>
     <dt class="col-sm-3 section level2" id="pkg-arg-layout">layout</dt>
@@ -90,6 +96,12 @@
       <dd class="col-sm-9" id="ref-arguments desc"><p>Position to insert breaks for horizontal or inset cards, interpreted as proportion of card allocated to label</p></dd>
     <dt class="col-sm-3 section level2" id="pkg-arg-colour">colour</dt>
       <dd class="col-sm-9" id="ref-arguments desc"><p>Colour applied to the card (interpretation depends on layout)</p></dd>
+    <dt class="col-sm-3 section level2" id="pkg-arg-border_width">border_width</dt>
+      <dd class="col-sm-9" id="ref-arguments desc"><p>Width of card border</p></dd>
+    <dt class="col-sm-3 section level2" id="pkg-arg-border_colour">border_colour</dt>
+      <dd class="col-sm-9" id="ref-arguments desc"><p>Colour of card border</p></dd>
+    <dt class="col-sm-3 section level2" id="pkg-arg-rounding">rounding</dt>
+      <dd class="col-sm-9" id="ref-arguments desc"><p>Amount of rounding on card corners</p></dd>
     </dl><div class="ref-section section level2" id="section-value">
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value" aria-hidden="true"></a>Value</h2>
 
