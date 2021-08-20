@@ -102,7 +102,7 @@ tag_button <- function(tag) {
   htmltools::tags$button(
     class = "btn btn-primary",
     type = "button",
-    onClick = paste0("hideClass('all'); showClass('", tag, "');"),
+    onClick = paste0("$('.all').hide(); $('.", tag, "').show();"),
     #"data-toggle" = "collapse",
     #"data-target" = paste0(".", tag),
     tag
