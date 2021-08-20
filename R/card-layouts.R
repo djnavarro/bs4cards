@@ -1,12 +1,12 @@
 
 
-make_card_vertical <- function(title, text, image, link,
-                               footer, header, tags, layout,
-                               padding, gutter, breakpoint,
-                               colour, border, radius) {
+layout_card_vertical <- function(title, text, image, link,
+                                 footer, header, tags, layout,
+                                 padding, gutter, breakpoint,
+                                 colour, border, radius) {
 
-  corners <- tidy_corners(layout, footer, header, radius)
-  pieces <- make_pieces(title, text, image, link, footer, header,
+  corners <- card_corners(layout, footer, header, radius)
+  pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
   # defensive coding!
@@ -36,13 +36,13 @@ make_card_vertical <- function(title, text, image, link,
 }
 
 
-make_card_horizontal <- function(title, text, image, link,
-                                 footer, header, tags, layout,
-                                 padding, gutter, breakpoint,
-                                 colour, border, radius) {
+layout_card_horizontal <- function(title, text, image, link,
+                                   footer, header, tags, layout,
+                                   padding, gutter, breakpoint,
+                                   colour, border, radius) {
 
-  corners <- tidy_corners(layout, footer, header, radius)
-  pieces <- make_pieces(title, text, image, link, footer, header,
+  corners <- card_corners(layout, footer, header, radius)
+  pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
   # defensive coding!
@@ -92,13 +92,13 @@ make_card_horizontal <- function(title, text, image, link,
 
 
 
-make_card_inset <- function(title, text, image, link,
-                            footer, header, tags, layout,
-                            padding, gutter, breakpoint,
-                            colour, border, radius) {
+layout_card_inset <- function(title, text, image, link,
+                              footer, header, tags, layout,
+                              padding, gutter, breakpoint,
+                              colour, border, radius) {
 
-  corners <- tidy_corners(layout, footer, header, radius)
-  pieces <- make_pieces(title, text, image, link, footer, header,
+  corners <- card_corners(layout, footer, header, radius)
+  pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
   # defensive coding!

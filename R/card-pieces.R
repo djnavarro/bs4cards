@@ -1,5 +1,5 @@
 
-make_pieces <- function(title, text, image, link, footer, header,
+card_pieces <- function(title, text, image, link, footer, header,
                         layout, border, corners) {
 
   title  <- make_title(title, text)

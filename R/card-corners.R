@@ -4,7 +4,7 @@
 # helpers to define tidy corners ------------------------------------------
 
 
-tidy_corners <- function(layout, footer = NULL, header = NULL, radius) {
+card_corners <- function(layout, footer = NULL, header = NULL, radius) {
 
   no_footer <- is.null(footer)
   no_header <- is.null(header)

@@ -85,12 +85,6 @@ cards <- function(data,
 
   card_list <- htmltools::div(taglist, card_list)
   return(card_list)
-
-  # <p>
-  #   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-  #   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-  #   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-  #   </p>
 }
 
 
@@ -128,7 +122,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   radius <- rounding;
 
   if(layout == "label-below" | layout == "label-above") {
-    card <- make_card_vertical(
+    card <- layout_card_vertical(
       title, text, image, link,
       footer, header, tags, layout,
       padding, gutter, breakpoint,
@@ -138,7 +132,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   }
 
   if(layout == "label-right" | layout == "label-left") {
-    card <- make_card_horizontal(
+    card <- layout_card_horizontal(
       title, text, image, link,
       footer, header, tags, layout,
       padding, gutter, breakpoint,
@@ -148,7 +142,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   }
 
   if(layout == "inset-bottom" | layout == "inset-top") {
-    card <- make_card_inset(
+    card <- layout_card_inset(
       title, text, image, link,
       footer, header, tags, layout,
       padding, gutter, breakpoint,
