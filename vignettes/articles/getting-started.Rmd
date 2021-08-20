@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Getting Started"
 ---
 
 ```{r, include = FALSE}
@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. For example, in a recent project I wanted something like this:
+When creating R markdown pages and websites it can be useful to organise content into a grid of links and image, sometimes known as "cards". To design a course website you may want something like this:
 
 ```{r, echo=FALSE}
 slides <- data.frame(
@@ -28,11 +28,12 @@ bs4cards::cards(
   )
 ```
 
-The goal of bs4cards is to make this task a little easier inside an R markdown document or website. 
+The ability to create cards is already available via the "bootstrap" library that is already incorporated into many html-based R markdown outputs. However, this functionality is not automatically exposed to the R markdown user. With this in mind the goal of bs4cards is to provide a convenient interface to the [cards system](https://getbootstrap.com/docs/4.5/components/card/) system introduced in bootstrap version 4.
+
 
 ## Enabling bootstrap 4
 
-The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap: the `bs4cards` package takes its name from the [cards](https://getbootstrap.com/docs/4.5/components/card/) system introduced in bootstrap version 4, and will not work properly if used in R markdown documents that rely on bootstrap version 3, or don't use bootstrap at all. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you're creating:
+The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap. The default behaviour of R markdown when creating HTML documents is to use bootstrap version 3, so this setting needs to be altered. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you're creating:
 
 ### Vanilla R markdown
 
@@ -75,9 +76,7 @@ output:
     css: "strapless.css"
 ```
 
-Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project.
-
-Once that's done you should be ready to go! However, please be careful: this is an experimental feature and has not yet been properly tested.
+Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project. Once that's done you should be ready to go! That being said, please be careful: this is an experimental feature. It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn't work with strapless yet.
 
 
 ## Building bootstrap cards
@@ -138,7 +137,9 @@ galleries %>%
 ```
 
 
-## Vertical layouts
+## Choosing a layout
+
+### Vertical layouts
 
 The bs4cards package supports six different layouts: two "vertical" layouts, two "horizontal" layouts, and two "inset" layouts. If you want vertically oriented cards, set `layout = "label-above"` or `layout = "label-below"` (the default) to create the cards:
 
@@ -169,7 +170,7 @@ galleries %>%
 ```
 
 
-## Horizontal layouts
+### Horizontal layouts
 
 To set horizontal layouts, set `layout = "label-left"` or `layout = "label-right"`:
 
@@ -202,7 +203,7 @@ galleries %>%
 
 
 
-## Inset layouts
+### Inset layouts
 
 The inset layouts place the "label" part of the card as a floating overlay on top of the image. The overlay can appear at the top or the bottom, depending on whether `layout = "inset-top"` or `layout = "inset-bottom"`:
 

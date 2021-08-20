@@ -4,7 +4,6 @@
 # bs4cards
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 When creating R markdown websites, I often find myself wanting to
@@ -17,6 +16,3 @@ You can install the development version from
 # install.packages("devtools")
 devtools::install_github("djnavarro/bs4cards")
 ```
-
-The functionality of the package is outlined in the [introduction
-article](https://bs4cards.djnavarro.net/articles/introduction.html).

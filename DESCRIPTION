@@ -23,8 +23,10 @@ Imports:
 URL: https://github.com/djnavarro/bs4cards
 BugReports: https://github.com/djnavarro/bs4cards/issues
 Suggests: 
+    knitr,
     rmarkdown,
     tibble
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
+VignetteBuilder: knitr
