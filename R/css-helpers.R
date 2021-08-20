@@ -120,4 +120,14 @@ label_inset_style <- function(colour, corners, border, breakpoint, layout) {
   )
 }
 
+title_class <- function(has_text) {
+  base <- "card-title my-auto px-3 pt-3"
+  bottom <- ifelse(has_text, "pb-1", "pb-3")
+  return(paste(base, bottom))
+}
 
+text_class <- function(has_title) {
+  base <- "card-text my-auto px-3 pb-3"
+  top <- ifelse(has_title, "pt-1", "pt-3")
+  return(paste(base, top))
+}
