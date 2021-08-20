@@ -38,7 +38,7 @@ cards <- function(data,
                   rounding = "1rem"
                   ) {
 
-  card_list <- data %>%
+  card_data <- data %>%
     dplyr::transmute(
       title  = {{title}},
       text   = {{text}},
@@ -56,7 +56,7 @@ cards <- function(data,
       rounding = {{rounding}}
     )
 
-  card_list <- card_list %>%
+  card_list <- card_data %>%
     purrr::transpose() %>%
     purrr::map(make_card_dots)
 
@@ -71,10 +71,46 @@ cards <- function(data,
     )
   }
 
-  do.call(collate, card_list)
+  card_list <- do.call(collate, card_list)
+
+  tags <- card_data[["tags"]]
+  if(is.null(tags)) tags <- ""
+  unique_tags <- unique_strings(tags)
+
+  if(!exists("tags") || is.null(tags)) return(card_list)
+  if(length(unique_tags) == 0) return(card_list)
+
+  taglist <- lapply(unique_tags, tag_button)
+  taglist <- do.call(tag_wrapper, taglist)
+
+  card_list <- htmltools::div(taglist, card_list)
+  return(card_list)
+
+  # <p>
+  #   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+  #   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+  #   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+  #   </p>
 }
 
 
+unique_strings <- function(x) {
+  unique(unlist(strsplit(x, split = "[[:space:]]+")))
+}
+
+tag_button <- function(tag) {
+  htmltools::tags$button(
+    class = "btn btn-primary",
+    type = "button",
+    "data-toggle" = "collapse",
+    "data-target" = paste0(".", tag),
+    tag
+  )
+}
+
+tag_wrapper <- function(...) {
+  htmltools::p(...)
+}
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
                       footer = NULL, header = NULL, tags = NULL, layout,

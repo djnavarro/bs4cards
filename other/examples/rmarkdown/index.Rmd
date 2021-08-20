@@ -23,6 +23,10 @@ locate_gallery <- function(x) {
   paste0("https://art.djnavarro.net/gallery/", x)
 }
 
+galleries
+```
+
+```{r}
 galleries %>% 
   cards(
     title = long_name,
@@ -163,10 +167,10 @@ galleries %>%
     text = blurb,
     link = locate_gallery(short_name),
     image = locate_thumbnail(short_name),
-    tags = tags,
+    tags = paintbrushes,
     width = "very-wide",
-    footer = tags,
+    footer = paintbrushes,
     layout = "label-right",
     breakpoint = 7/12
   )
-
+```

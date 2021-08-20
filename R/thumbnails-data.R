@@ -1,7 +1,7 @@
 
 #'@export
 galleries <- tibble::tribble(
-  ~long_name,               ~short_name,    ~date,        ~blurb,                                                                            ~tags,
+  ~long_name,               ~short_name,    ~date,        ~blurb,                                                                            ~paintbrushes,
   "Ash Cloud and Blood",    "ash",          "2021-07-17", "Simulated watercolours in ggplot2 using the transparent polygon method",          "ggplot2",
   "Ghosts on Marble Paper", "ghosts",       "2021-01-09", "Abstract landscapes generated using ambient",                                     "ambient",
   "Ice Floes",              "ice-floes",    "2021-01-19", "Abstract icebergs generated using ambient",                                       "ambient",

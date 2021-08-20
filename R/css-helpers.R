@@ -17,7 +17,7 @@ border_width_style <- function(width, top = TRUE, right = TRUE, bottom = TRUE, l
 }
 
 card_class <- function(gutter, tags = "") {
-  paste0("card bg-transparent m-0 p-", gutter, " border-0 ", tags)
+  paste0("card bg-transparent m-0 p-", gutter, " border-0 collapse.show ", tags)
 }
 
 image_class <- function(layout) {
