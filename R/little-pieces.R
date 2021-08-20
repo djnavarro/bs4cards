@@ -2,8 +2,8 @@
 make_pieces <- function(title, text, image, link, footer, header,
                         layout, border, corners) {
 
-  title  <- make_title(title)
-  text   <- make_text(text)
+  title  <- make_title(title, text)
+  text   <- make_text(text, title)
 
   image  <- make_image(image, layout, corners, border)
   footer <- make_footer(footer, corners, border)
@@ -19,21 +19,20 @@ make_pieces <- function(title, text, image, link, footer, header,
 
 # wrapper functions for small html pieces ---------------------------------
 
-make_title <- function(title) {
+make_title <- function(title, text) {
   if(!is.null(title)) {
     htmltools::h5(
       title,
-      class = "card-title px-3",
-      style = "margin-top:1rem; margin-bottom:1rem"
+      class = title_class(!is.null(text))
     )
   }
 }
 
-make_text <- function(text) {
+make_text <- function(text, title) {
   if(!is.null(text)) {
     htmltools::p(
       text,
-      class = "card-text px-3 pb-3"
+      class = text_class(!is.null(title))
     )
   }
 }

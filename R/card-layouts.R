@@ -106,12 +106,22 @@ make_card_inset <- function(title, text, image, link,
 
   # the default breakpoint for inset cards is thin, as it is presumed the
   # typical use case for inset cards is to provide a small floating caption/title
-  if(is.null(breakpoint)) breakpoint <- 1/6
+  if(is.null(breakpoint)) breakpoint <- .2
+
+  label_inner_wrapper <- htmltools::div(
+    class = "my-auto",
+    pieces$title, pieces$text
+  )
+
+  label_outer_wrapper <- htmltools::div(
+    class = "d-flex flex-column h-100",
+    label_inner_wrapper
+  )
 
   label_inset <- htmltools::div(
     class = label_inset_class(),
     style = label_inset_style(colour, corners, border, breakpoint, layout),
-    pieces$title, pieces$text
+    label_outer_wrapper
   )
 
   body_inset <- htmltools::div(
