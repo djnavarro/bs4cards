@@ -46,7 +46,7 @@ output:
       version: 4
 ```
 
-This overrides the R markdown defaults [@rmarkdown] to ensure that the output is built using [bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/). 
+This overrides the R markdown defaults to ensure that the output is built using [bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/). 
 
 ### Pkgdown
 
@@ -57,10 +57,10 @@ template:
   bootstrap: 4
 ```
 
-Note that this relies on a currently-in-development feature, so you may need to update to the development version of pkgdown to make this work.
+Note that this relies on an in-development feature, so you may need to update to the development version of pkgdown to make this work.
 
 
-### Distill (experimental!!!)
+### Distill
 
 Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn't look visually appealing when mixed with the distill styling.^[The original version of this post used that solution, with a promissory note to do a better job later.] To fix this, bs4cards includes a stripped down version of bootstrap called "strapless", that only uses the subset of bootstrap css relevant to cards. The convenience function `use_strapless()` will copy the strapless css file to the target location. To copy it to the same location as this post:
 
@@ -76,218 +76,45 @@ output:
     css: "strapless.css"
 ```
 
-Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project. Once that's done you should be ready to go! That being said, please be careful: this is an experimental feature. It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn't work with strapless yet.
+Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project. Once that's done you should be ready to go! That being said, please be careful: **this is an experimental feature.** It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn't work with strapless yet.
 
 
-## Building bootstrap cards
+## Creating a grid of cards
 
-The main function in bs4cards is `cards()`. It takes a data frame as the first argument, generally the data set from which the bootstrap cards are to be constructed. In the example at the top of this vignette I used a simple data frame called `slides`:
+The main function in bs4cards is `cards()`. It takes a data frame as the first argument, generally the data set from which the bootstrap cards are to be constructed. The package comes with a data set `galleries` that I'll use to create the grids
 
 ```{r}
-slides
-```
-
-Each row in this data frame corresponds to one card in the grid, and the columns are used to construct the card. For example to create the card grid shown at the start of the vignette, I needed to the `title` for each card, the `text` printed below it, the `image` decorating the card, and the URL to which the title and image in each card should `link`. Each of these is an argument to `cards()`, and for each argument you can pass an expression that will be evaluated using the `data` input. To create something the cards depicted at the beginning, you could do something like this:
-
-```{r, message=FALSE}
-library(dplyr)
 library(bs4cards)
-
-slides %>% 
-  cards(
-    title = messy_title,
-    text = description,
-    link = paste0("https://slides.djnavarro.net/", clean_title),
-    image = paste0("https://slides.djnavarro.net/index_img/", clean_title, ".png"),
-    width = "wide"
-  )
-```
-
-Note that `link` and `image` are both constructed using the `clean_title` variable from the `slides` data. In my experience this is grossly typical. Usually we try to give files for websites sensible and consistent names, so it's often the case that the same names get reused in a coherent way. By using expressions to construct the links and image paths it's possible to "get away" with a pretty small data frame with only a few variables.
-
-## The galleries data
-
-The bs4cards package comes with a data set `galleries`:
-
-```{r}
 galleries
 ```
 
-Define some convenience functions that specify URLs for the image thumbnail and the target location for a link:
-
-```{r}
-locate_thumbnail <- function(x) {
-  paste0("https://bs4cards.djnavarro.net/image/", x, ".jpg")
-} 
-locate_gallery <- function(x) {
-  paste0("https://art.djnavarro.net/gallery/", x)
-}
-```
-
-Off we go: 
+Each row in this data corresponds to one card in the grid. The columns contain information that is useful for constructing the cards. For example to create the card grid shown at the start of the vignette, I needed to the `title` for each card, the `text` printed below it, the `image` decorating the card, and the URL to which the title and image in each card should `link`. Each of these is an argument to `cards()`, and for each argument you can pass an expression that will be evaluated using the `data` input:
 
 ```{r}
 galleries %>% 
   cards(
     title = long_name,
-    text = date,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name)
+    link = paste0("https://art.djnavarro.net/gallery/", short_name),
+    image = paste0("https://bs4cards.djnavarro.net/image/", short_name, ".jpg"),
+    footer = paste("posted on ", date)
   )
 ```
 
-
-## Choosing a layout
-
-### Vertical layouts
-
-The bs4cards package supports six different layouts: two "vertical" layouts, two "horizontal" layouts, and two "inset" layouts. If you want vertically oriented cards, set `layout = "label-above"` or `layout = "label-below"` (the default) to create the cards:
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    footer = paste("posted on", date),
-    width = "wide",
-    layout = "label-above"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    text = blurb,
-    footer = paste("posted on", date),
-    width = "wide",
-    layout = "label-below"
-  )
-```
-
-
-### Horizontal layouts
-
-To set horizontal layouts, set `layout = "label-left"` or `layout = "label-right"`:
+The `cards()` function supports a variety of different layouts and customisation options, discussed in the next article. To give a flavour of what's possible, here's another example based on the same data:
 
 ```{r}
 galleries %>% 
   cards(
     title = long_name,
     text = blurb,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "very-wide",
-    layout = "label-left"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "very-wide",
-    footer = paste("posted on", date),
-    layout = "label-right",
-    breakpoint = 7/12
-  )
-```
-
-
-
-### Inset layouts
-
-The inset layouts place the "label" part of the card as a floating overlay on top of the image. The overlay can appear at the top or the bottom, depending on whether `layout = "inset-top"` or `layout = "inset-bottom"`:
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "wide",
-    layout = "inset-top", 
-    colour = "#ffffffcc"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "wide",
-    layout = "inset-bottom", 
-    colour = "#ffffffcc", 
-    rounding = 0
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    footer = blurb,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "wide",
-    layout = "inset-bottom", 
-    colour = "#ffffffcc"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    footer = date,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "wide",
-    layout = "inset-bottom", 
-    breakpoint = .5,
-    colour = "#ffffffcc"
-  )
-```
-
-
-## Tags
-
-The `tags` argument can be used to assign each card to a set of tags, and adds toggle buttons at the top of the card list that the user can do to display only those cards possessing the tag in question. The tags should be a single string, with spaces separating each tag. In the `galleries` data, the `paintbrushes` variable contains a list of some of the packages that were used in generating each generative art system. It's generally a good idea to have one tag that is possessed by all of the cards. The bs4cards package doesn't enforce this, but it's easy to do as illustrated below:
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
+    link = paste0("https://art.djnavarro.net/gallery/", short_name),
+    image = paste0("https://bs4cards.djnavarro.net/image/", short_name, ".jpg"),
     tags = paste("all", paintbrushes),
+    footer = paste("posted on", date),
+    layout = "label-right", 
     width = "very-wide",
-    footer = paintbrushes,
-    layout = "label-right",
-    breakpoint = 7/12
+    rounding = "3px"
   )
 ```
 
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+

@@ -12,3 +12,10 @@ template:
       creator: "@djnavarro"
       site: "https://bs4cards.djnavarro.net"
       card: summary_large_image
+
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - articles/getting-started
+  - articles/custom-cards
