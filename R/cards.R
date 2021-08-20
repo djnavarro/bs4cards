@@ -102,11 +102,14 @@ tag_button <- function(tag) {
   htmltools::tags$button(
     class = "btn btn-primary",
     type = "button",
-    "data-toggle" = "collapse",
-    "data-target" = paste0(".", tag),
+    onClick = paste0("hideClass('all'); showClass('", tag, "');"),
+    #"data-toggle" = "collapse",
+    #"data-target" = paste0(".", tag),
     tag
   )
 }
+
+
 
 tag_wrapper <- function(...) {
   htmltools::p(...)
