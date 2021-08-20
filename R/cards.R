@@ -6,6 +6,7 @@
 #' @param image Path to the card image
 #' @param link URL to link to from title and image
 #' @param footer Card footer
+#' @param tags Tags to be assigned to each card
 #' @param width Card width ("narrow", "medium", "wide")
 #' @param layout Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")
 #' @param padding Spacing between parts of the card (integer between 0 and 5)
@@ -25,6 +26,7 @@ cards <- function(data,
                   image = NULL,
                   link = NULL,
                   footer = NULL,
+                  tags = NULL,
                   width = "medium",
                   layout = "label-below",
                   padding = 0,
@@ -43,6 +45,7 @@ cards <- function(data,
       image  = {{image}},
       link   = {{link}},
       footer = {{footer}},
+      tags = {{tags}},
       layout = {{layout}},
       padding = {{padding}},
       gutter = {{gutter}},
@@ -74,7 +77,7 @@ cards <- function(data,
 
 
 make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
-                      footer = NULL, header = NULL, layout,
+                      footer = NULL, header = NULL, tags = NULL, layout,
                       padding, gutter, breakpoint = NULL, colour,
                       border_width, border_colour, rounding
                       ) {
@@ -85,7 +88,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   if(layout == "label-below" | layout == "label-above") {
     card <- make_card_vertical(
       title, text, image, link,
-      footer, header, layout,
+      footer, header, tags, layout,
       padding, gutter, breakpoint,
       colour, border, radius
     )
@@ -95,7 +98,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   if(layout == "label-right" | layout == "label-left") {
     card <- make_card_horizontal(
       title, text, image, link,
-      footer, header, layout,
+      footer, header, tags, layout,
       padding, gutter, breakpoint,
       colour, border, radius
     )
@@ -105,7 +108,7 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
   if(layout == "inset-bottom" | layout == "inset-top") {
     card <- make_card_inset(
       title, text, image, link,
-      footer, header, layout,
+      footer, header, tags, layout,
       padding, gutter, breakpoint,
       colour, border, radius
     )

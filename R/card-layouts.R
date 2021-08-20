@@ -1,7 +1,7 @@
 
 
 make_card_vertical <- function(title, text, image, link,
-                               footer, header, layout,
+                               footer, header, tags, layout,
                                padding, gutter, breakpoint,
                                colour, border, radius) {
 
@@ -37,7 +37,7 @@ make_card_vertical <- function(title, text, image, link,
 
 
 make_card_horizontal <- function(title, text, image, link,
-                                 footer, header, layout,
+                                 footer, header, tags, layout,
                                  padding, gutter, breakpoint,
                                  colour, border, radius) {
 
@@ -93,7 +93,7 @@ make_card_horizontal <- function(title, text, image, link,
 
 
 make_card_inset <- function(title, text, image, link,
-                            footer, header, layout,
+                            footer, header, tags, layout,
                             padding, gutter, breakpoint,
                             colour, border, radius) {
 

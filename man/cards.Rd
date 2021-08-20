@@ -11,12 +11,16 @@ cards(
   image = NULL,
   link = NULL,
   footer = NULL,
+  tags = NULL,
   width = "medium",
   layout = "label-below",
   padding = 0,
   gutter = 1,
   breakpoint = NULL,
-  colour = "#ffffffaa"
+  colour = "#ffffffaa",
+  border_width = "1px",
+  border_colour = "#808080",
+  rounding = "1rem"
 )
 }
 \arguments{
@@ -32,6 +36,8 @@ cards(
 
 \item{footer}{Card footer}
 
+\item{tags}{Tags to be assigned to each card}
+
 \item{width}{Card width ("narrow", "medium", "wide")}
 
 \item{layout}{Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")}
@@ -43,6 +49,12 @@ cards(
 \item{breakpoint}{Position to insert breaks for horizontal or inset cards, interpreted as proportion of card allocated to label}
 
 \item{colour}{Colour applied to the card (interpretation depends on layout)}
+
+\item{border_width}{Width of card border}
+
+\item{border_colour}{Colour of card border}
+
+\item{rounding}{Amount of rounding on card corners}
 }
 \value{
 A "shiny.tag" object
