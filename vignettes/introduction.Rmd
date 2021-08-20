@@ -108,17 +108,17 @@ Note that `link` and `image` are both constructed using the `clean_title` variab
 
 ## The galleries data
 
-The bs4cards package comes with a data set `galleries`, and includes a small image file for each row:
+The bs4cards package comes with a data set `galleries`:
 
 ```{r}
 galleries
 ```
 
-Define some convenience functions:
+Define some convenience functions that specify URLs for the image thumbnail and the target location for a link:
 
 ```{r}
 locate_thumbnail <- function(x) {
-  system.file("extdata", "thumbnail", paste0(x, ".jpg"), package = "bs4cards")
+  paste0("https://bs4cards.djnavarro.net/image/", x, ".jpg")
 } 
 locate_gallery <- function(x) {
   paste0("https://art.djnavarro.net/gallery/", x)

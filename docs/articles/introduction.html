@@ -211,7 +211,7 @@
 <div id="the-galleries-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-galleries-data" class="anchor" aria-hidden="true"></a>The galleries data</h2>
-<p>The bs4cards package comes with a data set <code>galleries</code>, and includes a small image file for each row:</p>
+<p>The bs4cards package comes with a data set <code>galleries</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span>
 <span class="co">#&gt; # A tibble: 7 × 5</span>
@@ -224,10 +224,10 @@
 <span class="co">#&gt; 5 Silhouettes            silhouettes  2021-01-24 Trees generated … ggplot2 rcpp…</span>
 <span class="co">#&gt; 6 Track Marks            track-marks  2020-09-20 Voronoi tessella… ggplot2 rcpp </span>
 <span class="co">#&gt; 7 Viewports              viewports    2021-02-28 Simple masks wit… ggplot2 flam…</span></code></pre></div>
-<p>Define some convenience functions:</p>
+<p>Define some convenience functions that specify URLs for the image thumbnail and the target location for a link:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">locate_thumbnail</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"thumbnail"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">".jpg"</span><span class="op">)</span>, package <span class="op">=</span> <span class="st">"bs4cards"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://bs4cards.djnavarro.net/image/"</span>, <span class="va">x</span>, <span class="st">".jpg"</span><span class="op">)</span>
 <span class="op">}</span> 
 <span class="va">locate_gallery</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://art.djnavarro.net/gallery/"</span>, <span class="va">x</span><span class="op">)</span>
@@ -244,7 +244,7 @@
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
@@ -254,7 +254,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
@@ -264,7 +264,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
@@ -274,7 +274,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
@@ -284,7 +284,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
@@ -294,7 +294,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
@@ -304,7 +304,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
@@ -336,7 +336,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
@@ -346,7 +346,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
@@ -356,7 +356,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
@@ -366,7 +366,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
@@ -376,7 +376,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
@@ -386,7 +386,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
@@ -396,7 +396,7 @@
 </a>
 </div>
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
 </div>
 </div>
@@ -414,7 +414,7 @@
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
@@ -425,7 +425,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
@@ -436,7 +436,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
@@ -447,7 +447,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
@@ -458,7 +458,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
@@ -469,7 +469,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
@@ -480,7 +480,7 @@
 </div>
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
@@ -517,7 +517,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -533,7 +533,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -549,7 +549,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -565,7 +565,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -581,7 +581,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -597,7 +597,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -613,7 +613,7 @@
 </div>
 <div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
 </div>
 </div>
 </div>
@@ -637,7 +637,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
@@ -654,7 +654,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
@@ -671,7 +671,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
@@ -688,7 +688,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
@@ -705,7 +705,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
@@ -722,7 +722,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
@@ -739,7 +739,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
@@ -771,7 +771,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
@@ -782,7 +782,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
@@ -793,7 +793,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
@@ -804,7 +804,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
@@ -815,7 +815,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
@@ -826,7 +826,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
@@ -837,7 +837,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
@@ -861,7 +861,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
@@ -872,7 +872,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
@@ -883,7 +883,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
@@ -894,7 +894,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
@@ -905,7 +905,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
@@ -916,7 +916,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
@@ -927,7 +927,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
@@ -951,7 +951,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
@@ -963,7 +963,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
@@ -975,7 +975,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
@@ -987,7 +987,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
@@ -999,7 +999,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
@@ -1011,7 +1011,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
@@ -1023,7 +1023,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
@@ -1050,7 +1050,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
@@ -1063,7 +1063,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
@@ -1076,7 +1076,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
@@ -1089,7 +1089,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
@@ -1102,7 +1102,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
@@ -1115,7 +1115,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
@@ -1128,7 +1128,7 @@
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
 <h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
@@ -1171,7 +1171,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
@@ -1188,7 +1188,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
@@ -1205,7 +1205,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
@@ -1222,7 +1222,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora" class="external-link">
@@ -1239,7 +1239,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes" class="external-link">
@@ -1256,7 +1256,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks" class="external-link">
@@ -1273,7 +1273,7 @@
 <div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
-<img src="../../../../../../tmp/RtmpTvPWJQ/temp_libpath1829afd0fd4c/bs4cards/extdata/thumbnail/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports" class="external-link">
