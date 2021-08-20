@@ -1,5 +1,4 @@
 
-#'@export
 galleries <- tibble::tribble(
   ~long_name,               ~short_name,    ~date,        ~blurb,                                                                            ~paintbrushes,
   "Ash Cloud and Blood",    "ash",          "2021-07-17", "Simulated watercolours in ggplot2 using the transparent polygon method",          "ggplot2",
@@ -11,3 +10,4 @@ galleries <- tibble::tribble(
   "Viewports",              "viewports",    "2021-02-28", "Simple masks with ggfx using flametree-generated textures"                      , "ggplot2 flametree"
 )
 
+usethis::use_data(galleries)

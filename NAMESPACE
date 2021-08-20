@@ -2,6 +2,5 @@
 
 export("%>%")
 export(cards)
-export(galleries)
 export(use_strapless)
 importFrom(magrittr,"%>%")
