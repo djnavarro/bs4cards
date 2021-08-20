@@ -28,7 +28,7 @@ make_card_vertical <- function(title, text, image, link,
 
   if(layout == "label-above") {
     return(htmltools::div(
-      class = card_class(gutter),
+      class = card_class(gutter, tags),
       style = card_style(corners),
       body_vertical, pieces$image, pieces$footer
     ))
@@ -84,7 +84,7 @@ make_card_horizontal <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_class(gutter),
+    class = card_class(gutter, tags),
     style = card_style(corners),
     body_horizontal, pieces$footer
   ))
@@ -120,7 +120,7 @@ make_card_inset <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_class(gutter),
+    class = card_class(gutter, tags),
     style = card_style(corners),
     body_inset, pieces$footer
   ))

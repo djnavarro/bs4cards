@@ -154,4 +154,19 @@ galleries %>%
 ```
 
 
+## Tags
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = locate_gallery(short_name),
+    image = locate_thumbnail(short_name),
+    tags = tags,
+    width = "very-wide",
+    footer = tags,
+    layout = "label-right",
+    breakpoint = 7/12
+  )
 
