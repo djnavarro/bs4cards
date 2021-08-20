@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bs4cards</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@
     
 <p>When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. For example, in a recent project I wanted something like this:</p>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
-<div class="card bg-transparent m-0 p-1 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-rmarkdown">
 <img src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -106,7 +106,7 @@
 <p class="card-text px-3 pb-3">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
-<div class="card bg-transparent m-0 p-1 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-ggplot2">
 <img src="https://slides.djnavarro.net/index_img/starting-ggplot2.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -116,7 +116,7 @@
 <p class="card-text px-3 pb-3">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
-<div class="card bg-transparent m-0 p-1 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-programming">
 <img src="https://slides.djnavarro.net/index_img/starting-programming.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -178,7 +178,7 @@
 <span class="co">#&gt; 1                                                                                          An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</span>
 <span class="co">#&gt; 2                                                                                           An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</span>
 <span class="co">#&gt; 3 This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</span></code></pre></div>
-<p>Each row in this data frame corresponds to one card in the grid, and the columns are used to construct the card. For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input. To create something very similar to the set of cards depicted at the beginning, you could do something like this:</p>
+<p>Each row in this data frame corresponds to one card in the grid, and the columns are used to construct the card. For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input. To create something the cards depicted at the beginning, you could do something like this:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards">bs4cards</a></span><span class="op">)</span>
@@ -188,10 +188,11 @@
     title <span class="op">=</span> <span class="va">messy_title</span>,
     text <span class="op">=</span> <span class="va">description</span>,
     link <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://slides.djnavarro.net/"</span>, <span class="va">clean_title</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://slides.djnavarro.net/index_img/"</span>, <span class="va">clean_title</span>, <span class="st">".png"</span><span class="op">)</span>
+    image <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://slides.djnavarro.net/index_img/"</span>, <span class="va">clean_title</span>, <span class="st">".png"</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>
   <span class="op">)</span></code></pre></div>
-<div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card bg-transparent m-0 p-1 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-rmarkdown">
 <img src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -201,7 +202,7 @@
 <p class="card-text px-3 pb-3">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
-<div class="card bg-transparent m-0 p-1 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-ggplot2">
 <img src="https://slides.djnavarro.net/index_img/starting-ggplot2.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -211,7 +212,7 @@
 <p class="card-text px-3 pb-3">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
-<div class="card bg-transparent m-0 p-1 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-programming">
 <img src="https://slides.djnavarro.net/index_img/starting-programming.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -223,6 +224,1087 @@
 </div>
 </div>
 <p>Note that <code>link</code> and <code>image</code> are both constructed using the <code>clean_title</code> variable from the <code>slides</code> data. In my experience this is grossly typical. Usually we try to give files for websites sensible and consistent names, so it’s often the case that the same names get reused in a coherent way. By using expressions to construct the links and image paths it’s possible to “get away” with a pretty small data frame with only a few variables.</p>
+</div>
+<div id="the-galleries-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-galleries-data" class="anchor"></a>The galleries data</h2>
+<p>The bs4cards package comes with a data set <code>galleries</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span>
+<span class="co">#&gt; # A tibble: 7 × 5</span>
+<span class="co">#&gt;   long_name              short_name   date       blurb             paintbrushes </span>
+<span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;        </span>
+<span class="co">#&gt; 1 Ash Cloud and Blood    ash          2021-07-17 Simulated waterc… ggplot2      </span>
+<span class="co">#&gt; 2 Ghosts on Marble Paper ghosts       2021-01-09 Abstract landsca… ambient      </span>
+<span class="co">#&gt; 3 Ice Floes              ice-floes    2021-01-19 Abstract iceberg… ambient      </span>
+<span class="co">#&gt; 4 Native Flora           native-flora 2021-02-10 Collections of s… ggplot2 flam…</span>
+<span class="co">#&gt; 5 Silhouettes            silhouettes  2021-01-24 Trees generated … ggplot2 rcpp…</span>
+<span class="co">#&gt; 6 Track Marks            track-marks  2020-09-20 Voronoi tessella… ggplot2 rcpp </span>
+<span class="co">#&gt; 7 Viewports              viewports    2021-02-28 Simple masks wit… ggplot2 flam…</span></code></pre></div>
+<p>Define some convenience functions that specify URLs for the image thumbnail and the target location for a link:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">locate_thumbnail</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://bs4cards.djnavarro.net/image/"</span>, <span class="va">x</span>, <span class="st">".jpg"</span><span class="op">)</span>
+<span class="op">}</span> 
+<span class="va">locate_gallery</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://art.djnavarro.net/gallery/"</span>, <span class="va">x</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p>Off we go:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    text <span class="op">=</span> <span class="va">date</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+<p class="card-text px-3 pb-3">2021-07-17</p>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+<p class="card-text px-3 pb-3">2021-01-09</p>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+<p class="card-text px-3 pb-3">2021-01-19</p>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+<p class="card-text px-3 pb-3">2021-02-10</p>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+<p class="card-text px-3 pb-3">2021-01-24</p>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+<p class="card-text px-3 pb-3">2020-09-20</p>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+<p class="card-text px-3 pb-3">2021-02-28</p>
+</div>
+</div>
+</div>
+</div>
+<div id="vertical-layouts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#vertical-layouts" class="anchor"></a>Vertical layouts</h2>
+<p>The bs4cards package supports six different layouts: two “vertical” layouts, two “horizontal” layouts, and two “inset” layouts. If you want vertically oriented cards, set <code>layout = "label-above"</code> or <code>layout = "label-below"</code> (the default) to create the cards:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>,
+    layout <span class="op">=</span> <span class="st">"label-above"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+</div>
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+</div>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    text <span class="op">=</span> <span class="va">blurb</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>,
+    layout <span class="op">=</span> <span class="st">"label-below"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+<p class="card-text px-3 pb-3">Simulated watercolours in ggplot2 using the transparent polygon method</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract landscapes generated using ambient</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract icebergs generated using ambient</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+<p class="card-text px-3 pb-3">Collections of small flametrees that resemble branching plants</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+<p class="card-text px-3 pb-3">Trees generated in flametree with random walk backgrounds</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+<p class="card-text px-3 pb-3">Voronoi tessellations with seed points sampled from an iterated function system</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+<p class="card-text px-3 pb-3">Simple masks with ggfx using flametree-generated textures</p>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+</div>
+</div>
+</div>
+<div id="horizontal-layouts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#horizontal-layouts" class="anchor"></a>Horizontal layouts</h2>
+<p>To set horizontal layouts, set <code>layout = "label-left"</code> or <code>layout = "label-right"</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    text <span class="op">=</span> <span class="va">blurb</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"very-wide"</span>,
+    layout <span class="op">=</span> <span class="st">"label-left"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+<p class="card-text px-3 pb-3">Simulated watercolours in ggplot2 using the transparent polygon method</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract landscapes generated using ambient</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract icebergs generated using ambient</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+<p class="card-text px-3 pb-3">Collections of small flametrees that resemble branching plants</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+<p class="card-text px-3 pb-3">Trees generated in flametree with random walk backgrounds</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+<p class="card-text px-3 pb-3">Voronoi tessellations with seed points sampled from an iterated function system</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 1rem 1rem ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="col-8" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 0 1px 1px ;  border-radius: 1rem 0 0 1rem ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+<p class="card-text px-3 pb-3">Simple masks with ggfx using flametree-generated textures</p>
+</div>
+<div class="col-4" style="border-radius: 0 1rem 1rem 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 1rem 1rem 0 ;"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    text <span class="op">=</span> <span class="va">blurb</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"very-wide"</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>,
+    layout <span class="op">=</span> <span class="st">"label-right"</span>,
+    breakpoint <span class="op">=</span> <span class="fl">7</span><span class="op">/</span><span class="fl">12</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+<p class="card-text px-3 pb-3">Simulated watercolours in ggplot2 using the transparent polygon method</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract landscapes generated using ambient</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract icebergs generated using ambient</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+<p class="card-text px-3 pb-3">Collections of small flametrees that resemble branching plants</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+<p class="card-text px-3 pb-3">Trees generated in flametree with random walk backgrounds</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+<p class="card-text px-3 pb-3">Voronoi tessellations with seed points sampled from an iterated function system</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+<p class="card-text px-3 pb-3">Simple masks with ggfx using flametree-generated textures</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+</div>
+</div>
+</div>
+<div id="inset-layouts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#inset-layouts" class="anchor"></a>Inset layouts</h2>
+<p>The inset layouts place the “label” part of the card as a floating overlay on top of the image. The overlay can appear at the top or the bottom, depending on whether <code>layout = "inset-top"</code> or <code>layout = "inset-bottom"</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>,
+    layout <span class="op">=</span> <span class="st">"inset-top"</span>, 
+    colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 0%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>,
+    layout <span class="op">=</span> <span class="st">"inset-bottom"</span>, 
+    colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>, 
+    rounding <span class="op">=</span> <span class="fl">0</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+</div>
+</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 0 0 0 0 ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    footer <span class="op">=</span> <span class="va">blurb</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>,
+    layout <span class="op">=</span> <span class="st">"inset-bottom"</span>, 
+    colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Simulated watercolours in ggplot2 using the transparent polygon method</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Abstract landscapes generated using ambient</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Abstract icebergs generated using ambient</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Collections of small flametrees that resemble branching plants</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Trees generated in flametree with random walk backgrounds</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Voronoi tessellations with seed points sampled from an iterated function system</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 17%;position: absolute;top: 83%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Simple masks with ggfx using flametree-generated textures</div>
+</div>
+</div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    text <span class="op">=</span> <span class="va">blurb</span>,
+    footer <span class="op">=</span> <span class="va">date</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"wide"</span>,
+    layout <span class="op">=</span> <span class="st">"inset-bottom"</span>, 
+    breakpoint <span class="op">=</span> <span class="fl">.5</span>,
+    colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>
+  <span class="op">)</span></code></pre></div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+<p class="card-text px-3 pb-3">Simulated watercolours in ggplot2 using the transparent polygon method</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-07-17</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract landscapes generated using ambient</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-01-09</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract icebergs generated using ambient</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-01-19</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+<p class="card-text px-3 pb-3">Collections of small flametrees that resemble branching plants</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-02-10</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+<p class="card-text px-3 pb-3">Trees generated in flametree with random walk backgrounds</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-01-24</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+<p class="card-text px-3 pb-3">Voronoi tessellations with seed points sampled from an iterated function system</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2020-09-20</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div style="position: relative; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
+<div class="card-img-overlay p-0 m-0" style="background-color: #ffffffcc;height: 50%;position: absolute;top: 50%;border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+<p class="card-text px-3 pb-3">Simple masks with ggfx using flametree-generated textures</p>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-02-28</div>
+</div>
+</div>
+</div>
+<div id="tags" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tags" class="anchor"></a>Tags</h2>
+<p>The <code>tags</code> argument can be used to assign each card to a set of tags, and adds toggle buttons at the top of the card list that the user can do to display only those cards possessing the tag in question. The tags should be a single string, with spaces separating each tag. In the <code>galleries</code> data, the <code>paintbrushes</code> variable contains a list of some of the packages that were used in generating each generative art system. It’s generally a good idea to have one tag that is possessed by all of the cards. The bs4cards package doesn’t enforce this, but it’s easy to do as illustrated below:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    text <span class="op">=</span> <span class="va">blurb</span>,
+    link <span class="op">=</span> <span class="fu">locate_gallery</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    image <span class="op">=</span> <span class="fu">locate_thumbnail</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    tags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="va">paintbrushes</span><span class="op">)</span>,
+    width <span class="op">=</span> <span class="st">"very-wide"</span>,
+    footer <span class="op">=</span> <span class="va">paintbrushes</span>,
+    layout <span class="op">=</span> <span class="st">"label-right"</span>,
+    breakpoint <span class="op">=</span> <span class="fl">7</span><span class="op">/</span><span class="fl">12</span>
+  <span class="op">)</span></code></pre></div>
+<div>
+<p>
+<button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.all').show(400, 'swing')}, 400);">all</button>
+<button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.ggplot2').show(400, 'swing')}, 400);">ggplot2</button>
+<button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.ambient').show(400, 'swing')}, 400);">ambient</button>
+<button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.flametree').show(400, 'swing')}, 400);">flametree</button>
+<button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.rcpp').show(400, 'swing')}, 400);">rcpp</button>
+</p>
+<div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ash Cloud and Blood</h5>
+</a>
+<p class="card-text px-3 pb-3">Simulated watercolours in ggplot2 using the transparent polygon method</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ambient" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ghosts on Marble Paper</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract landscapes generated using ambient</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ambient</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ambient" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Ice Floes</h5>
+</a>
+<p class="card-text px-3 pb-3">Abstract icebergs generated using ambient</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ambient</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Native Flora</h5>
+</a>
+<p class="card-text px-3 pb-3">Collections of small flametrees that resemble branching plants</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 flametree</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 rcpp flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Silhouettes</h5>
+</a>
+<p class="card-text px-3 pb-3">Trees generated in flametree with random walk backgrounds</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 rcpp flametree</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 rcpp" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Track Marks</h5>
+</a>
+<p class="card-text px-3 pb-3">Voronoi tessellations with seed points sampled from an iterated function system</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 rcpp</div>
+</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body border-0 m-0 p-0 col-12" style="visibility: visible; background-color: #ffffffaaborder-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 0 0 0 ;"></a>
+</div>
+<div class="col-7" style="background-color: #00000000 ; border-style: solid ;  border-color: #808080 ;  border-width: 1px 1px 1px 0 ;  border-radius: 0 1rem 0 0 ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title px-3" style="margin-top:1rem; margin-bottom:1rem">Viewports</h5>
+</a>
+<p class="card-text px-3 pb-3">Simple masks with ggfx using flametree-generated textures</p>
+</div>
+</div>
+</div>
+<div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 flametree</div>
+</div>
+</div>
+</div>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 </div>
 <div class="footnotes">
 <hr>

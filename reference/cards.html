@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bs4cards</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -141,12 +141,16 @@
   image <span class='op'>=</span> <span class='cn'>NULL</span>,
   link <span class='op'>=</span> <span class='cn'>NULL</span>,
   footer <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tags <span class='op'>=</span> <span class='cn'>NULL</span>,
   width <span class='op'>=</span> <span class='st'>"medium"</span>,
   layout <span class='op'>=</span> <span class='st'>"label-below"</span>,
   padding <span class='op'>=</span> <span class='fl'>0</span>,
   gutter <span class='op'>=</span> <span class='fl'>1</span>,
   breakpoint <span class='op'>=</span> <span class='cn'>NULL</span>,
-  colour <span class='op'>=</span> <span class='st'>"#ffffffaa"</span>
+  colour <span class='op'>=</span> <span class='st'>"#ffffffaa"</span>,
+  border_width <span class='op'>=</span> <span class='st'>"1px"</span>,
+  border_colour <span class='op'>=</span> <span class='st'>"#808080"</span>,
+  rounding <span class='op'>=</span> <span class='st'>"1rem"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -177,6 +181,10 @@
       <td><p>Card footer</p></td>
     </tr>
     <tr>
+      <th>tags</th>
+      <td><p>Tags to be assigned to each card</p></td>
+    </tr>
+    <tr>
       <th>width</th>
       <td><p>Card width ("narrow", "medium", "wide")</p></td>
     </tr>
@@ -199,6 +207,18 @@
     <tr>
       <th>colour</th>
       <td><p>Colour applied to the card (interpretation depends on layout)</p></td>
+    </tr>
+    <tr>
+      <th>border_width</th>
+      <td><p>Width of card border</p></td>
+    </tr>
+    <tr>
+      <th>border_colour</th>
+      <td><p>Colour of card border</p></td>
+    </tr>
+    <tr>
+      <th>rounding</th>
+      <td><p>Amount of rounding on card corners</p></td>
     </tr>
     </table>
 
