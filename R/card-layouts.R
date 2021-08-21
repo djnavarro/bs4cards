@@ -36,6 +36,43 @@ layout_card_vertical <- function(title, text, image, link,
 }
 
 
+layout_card_singleton <- function(title, text, image, link,
+                                  footer, header, tags, layout,
+                                  padding, gutter, breakpoint,
+                                  colour, border, radius) {
+
+  corners <- card_corners(layout, footer, header, radius)
+  pieces <- card_pieces(title, text, image, link, footer, header,
+                        layout, border, corners)
+
+  # defensive coding!
+  rm(title, text, image, footer, header)
+
+  if(layout == "label-only") {
+    body_vertical <- htmltools::div(
+      class = body_vertical_class(padding),
+      style = body_vertical_style(colour, corners, border),
+      pieces$title, pieces$text
+    )
+    return(htmltools::div(
+      class = card_class(gutter),
+      style = card_style(corners),
+      body_vertical, pieces$footer
+    ))
+  }
+
+  if(layout == "image-only") {
+    return(htmltools::div(
+      class = card_class(gutter, tags),
+      style = card_style(corners),
+      pieces$image, pieces$footer
+    ))
+  }
+}
+
+
+
+
 layout_card_horizontal <- function(title, text, image, link,
                                    footer, header, tags, layout,
                                    padding, gutter, breakpoint,
@@ -47,10 +84,6 @@ layout_card_horizontal <- function(title, text, image, link,
 
   # defensive coding!
   rm(title, text, image, footer, header)
-
-  # the default for horizontal cards is a wide label, presuming the common
-  # use case for horizontal cards is for people to supply a descriptive blurb
-  if(is.null(breakpoint)) breakpoint <- 2/3
 
   image_horizontal <- htmltools::div(
     class = image_horizontal_class(breakpoint),
@@ -103,10 +136,6 @@ layout_card_inset <- function(title, text, image, link,
 
   # defensive coding!
   rm(title, text, image, footer, header)
-
-  # the default breakpoint for inset cards is thin, as it is presumed the
-  # typical use case for inset cards is to provide a small floating caption/title
-  if(is.null(breakpoint)) breakpoint <- .2
 
   label_inner_wrapper <- htmltools::div(
     class = "my-auto",

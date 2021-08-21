@@ -8,7 +8,7 @@ card_pieces <- function(title, text, image, link, footer, header,
   image  <- make_image(image, layout, corners, border)
   footer <- make_footer(footer, corners, border)
 
-  if(!is.null(link)) {
+  if(!is_na(link)) {
     title <- htmltools::a(title, href = link)
     image <- htmltools::a(image, href = link)
   }
@@ -20,25 +20,25 @@ card_pieces <- function(title, text, image, link, footer, header,
 # wrapper functions for small html pieces ---------------------------------
 
 make_title <- function(title, text) {
-  if(!is.null(title)) {
+  if(!is_na(title)) {
     htmltools::h5(
       title,
-      class = title_class(!is.null(text))
+      class = title_class(!is_na(text))
     )
   }
 }
 
 make_text <- function(text, title) {
-  if(!is.null(text)) {
+  if(!is_na(text)) {
     htmltools::p(
       text,
-      class = text_class(!is.null(title))
+      class = text_class(!is_na(title))
     )
   }
 }
 
 make_image <- function(image, layout, corners, border) {
-  if(!is.null(image)) {
+  if(!is_na(image)) {
     htmltools::img(
       src = image,
       class = image_class(layout),
@@ -48,7 +48,7 @@ make_image <- function(image, layout, corners, border) {
 }
 
 make_footer <- function(footer, corners, border) {
-  if(!is.null(footer)) {
+  if(!is_na(footer)) {
     htmltools::div(
       footer,
       class = footer_class(),

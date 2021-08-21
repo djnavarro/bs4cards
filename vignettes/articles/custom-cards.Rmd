@@ -176,7 +176,7 @@ galleries %>%
     width = "wide",
     layout = "inset-bottom", 
     colour = "#ffffffcc", 
-    rounding = 0
+    rounding = "0"
   )
 ```
 

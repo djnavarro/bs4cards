@@ -79,6 +79,7 @@
     
     
 <p>When creating R markdown pages and websites it can be useful to organise content into a grid of links and image, sometimes known as “cards”. To design a course website you may want something like this:</p>
+<div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://slides.djnavarro.net/starting-rmarkdown" class="external-link">
@@ -108,6 +109,7 @@
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Starting programming</h5>
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">This is primarily a tutorial on making generative art in R, but in doing so introduces core programming constructs and data structures. It is assumed the user has some previous experience with ggplot2.</p>
+</div>
 </div>
 </div>
 </div>
@@ -154,16 +156,30 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span>
 <span class="va">galleries</span>
-<span class="co">#&gt; # A tibble: 7 × 5</span>
-<span class="co">#&gt;   long_name              short_name   date       blurb             paintbrushes </span>
-<span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;        </span>
-<span class="co">#&gt; 1 Ash Cloud and Blood    ash          2021-07-17 Simulated waterc… ggplot2      </span>
-<span class="co">#&gt; 2 Ghosts on Marble Paper ghosts       2021-01-09 Abstract landsca… ambient      </span>
-<span class="co">#&gt; 3 Ice Floes              ice-floes    2021-01-19 Abstract iceberg… ambient      </span>
-<span class="co">#&gt; 4 Native Flora           native-flora 2021-02-10 Collections of s… ggplot2 flam…</span>
-<span class="co">#&gt; 5 Silhouettes            silhouettes  2021-01-24 Trees generated … ggplot2 rcpp…</span>
-<span class="co">#&gt; 6 Track Marks            track-marks  2020-09-20 Voronoi tessella… ggplot2 rcpp </span>
-<span class="co">#&gt; 7 Viewports              viewports    2021-02-28 Simple masks wit… ggplot2 flam…</span></code></pre></div>
+<span class="co">#&gt;                long_name   short_name       date</span>
+<span class="co">#&gt; 1    Ash Cloud and Blood          ash 2021-07-17</span>
+<span class="co">#&gt; 2 Ghosts on Marble Paper       ghosts 2021-01-09</span>
+<span class="co">#&gt; 3              Ice Floes    ice-floes 2021-01-19</span>
+<span class="co">#&gt; 4           Native Flora native-flora 2021-02-10</span>
+<span class="co">#&gt; 5            Silhouettes  silhouettes 2021-01-24</span>
+<span class="co">#&gt; 6            Track Marks  track-marks 2020-09-20</span>
+<span class="co">#&gt; 7              Viewports    viewports 2021-02-28</span>
+<span class="co">#&gt;                                                                             blurb</span>
+<span class="co">#&gt; 1          Simulated watercolours in ggplot2 using the transparent polygon method</span>
+<span class="co">#&gt; 2                                     Abstract landscapes generated using ambient</span>
+<span class="co">#&gt; 3                                       Abstract icebergs generated using ambient</span>
+<span class="co">#&gt; 4                  Collections of small flametrees that resemble branching plants</span>
+<span class="co">#&gt; 5                       Trees generated in flametree with random walk backgrounds</span>
+<span class="co">#&gt; 6 Voronoi tessellations with seed points sampled from an iterated function system</span>
+<span class="co">#&gt; 7                       Simple masks with ggfx using flametree-generated textures</span>
+<span class="co">#&gt;             paintbrushes</span>
+<span class="co">#&gt; 1                ggplot2</span>
+<span class="co">#&gt; 2                ambient</span>
+<span class="co">#&gt; 3                ambient</span>
+<span class="co">#&gt; 4      ggplot2 flametree</span>
+<span class="co">#&gt; 5 ggplot2 rcpp flametree</span>
+<span class="co">#&gt; 6           ggplot2 rcpp</span>
+<span class="co">#&gt; 7      ggplot2 flametree</span></code></pre></div>
 <p>Each row in this data corresponds to one card in the grid. The columns contain information that is useful for constructing the cards. For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
@@ -173,6 +189,7 @@
     image <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://bs4cards.djnavarro.net/image/"</span>, <span class="va">short_name</span>, <span class="st">".jpg"</span><span class="op">)</span>,
     footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"posted on "</span>, <span class="va">date</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
+<div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
 <div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
@@ -243,6 +260,7 @@
 </a>
 </div>
 <div class="card-footer small text-muted h-auto px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on  2021-02-28</div>
+</div>
 </div>
 </div>
 <p>The <code><a href="../../reference/cards.html">cards()</a></code> function supports a variety of different layouts and customisation options, discussed in the next article. To give a flavour of what’s possible, here’s another example based on the same data:</p>

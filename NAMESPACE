@@ -3,4 +3,5 @@
 export("%>%")
 export(cards)
 export(use_strapless)
+import(rlang)
 importFrom(magrittr,"%>%")
