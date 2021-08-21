@@ -1,6 +1,10 @@
 
 # helpers to generate css -----------------------------------------
 
+outer_row_class <- function(width, gutter) {
+  paste("row p-0", column_width_class(width), row_margins_class(gutter))
+}
+
 column_width_class <- function(width){
   if(width == "narrow") return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
   if(width == "medium") return("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4")
@@ -8,6 +12,11 @@ column_width_class <- function(width){
   if(width == "very-wide") return("row-cols-1 row-cols-lg-2")
   return(width)
 }
+
+row_margins_class <- function(gutter) {
+  paste("my-1", ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter)))
+}
+
 
 border_width_style <- function(width, top = TRUE, right = TRUE, bottom = TRUE, left = TRUE) {
   border_widths <- rep("0", 4)

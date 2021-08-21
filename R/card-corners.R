@@ -6,8 +6,8 @@
 
 card_corners <- function(layout, footer = NULL, header = NULL, radius) {
 
-  no_footer <- is.null(footer)
-  no_header <- is.null(header)
+  no_footer <- is_na(footer)
+  no_header <- is_na(header)
 
   css_corners <- css_corner_function(radius)
 

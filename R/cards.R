@@ -6,6 +6,7 @@
 #' @param image Path to the card image
 #' @param link URL to link to from title and image
 #' @param footer Card footer
+#' @param header Card header
 #' @param tags Tags to be assigned to each card
 #' @param width Card width ("narrow", "medium", "wide")
 #' @param layout Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")
@@ -26,6 +27,7 @@ cards <- function(data,
                   image = NULL,
                   link = NULL,
                   footer = NULL,
+                  header = NULL,
                   tags = NULL,
                   width = "medium",
                   layout = "label-below",
@@ -38,55 +40,49 @@ cards <- function(data,
                   rounding = "1rem"
                   ) {
 
-  card_data <- data %>%
-    dplyr::transmute(
-      title  = {{title}},
-      text   = {{text}},
-      image  = {{image}},
-      link   = {{link}},
-      footer = {{footer}},
-      tags = {{tags}},
-      layout = {{layout}},
-      padding = {{padding}},
-      gutter = {{gutter}},
-      breakpoint = {{breakpoint}},
-      colour = {{colour}},
-      border_width = {{border_width}},
-      border_colour = {{border_colour}},
-      rounding = {{rounding}}
-    )
+  quosures <- enquos(
+    title = title, text = text, image = image, link = link, footer = footer,
+    header = header, tags = tags, width = width, layout = layout,
+    padding = padding, gutter = gutter, breakpoint = breakpoint,
+    colour = colour, border_width = border_width, border_colour = border_colour,
+    rounding = rounding
+  )
+  cardspec <- lapply(quosures, function(x) eval_tidy(x, data = data))
+  cardspec <- validate_cardspec(cardspec, nrow(data))
+  carddata <- as.data.frame(cardspec)
 
-  card_list <- card_data %>%
-    purrr::transpose() %>%
-    purrr::map(make_card_dots)
+  cardlist <- build_card_list(carddata, cardspec[["width"]], cardspec[["gutter"]])
+  taglist <- build_tag_list(carddata[["tags"]])
 
-  collate <- function(...) {
-    row_margins <- paste(
-      "my-1",
-      ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter))
-    )
-    htmltools::div(
-      class = paste("row p-0", column_width_class(width), row_margins),
-      ...
-    )
-  }
-
-  card_list <- do.call(collate, card_list)
-
-  tags <- card_data[["tags"]]
-  if(is.null(tags)) tags <- ""
-  unique_tags <- unique_strings(tags)
-
-  if(!exists("tags") || is.null(tags)) return(card_list)
-  if(length(unique_tags) == 0) return(card_list)
-
-  taglist <- lapply(unique_tags, tag_button)
-  taglist <- do.call(tag_wrapper, taglist)
-
-  card_list <- htmltools::div(taglist, card_list)
-  return(card_list)
+  return(htmltools::div(taglist, cardlist))
 }
 
+
+build_tag_list <- function(tags) {
+  if(is_na(tags[[1]])) return(NULL)
+  categories <- unique_strings(tags)
+  if(length(categories) == 0) return(NULL)
+  taglist <- lapply(categories, tag_button)
+  taglist <- do.call(tag_wrapper, taglist)
+  return(taglist)
+}
+
+
+# transpose data frame to get list of parameters, then
+# construct a card from each parameter set, then
+# wrap all the cards in a row to form the deck
+build_card_list <- function(card_data, width, gutter) {
+  card_data <- lapply(1:nrow(card_data), function(x) card_data[x, ])
+  card_list <- lapply(card_data, function(x) do.call(make_card, x))
+  card_deck <- do.call(row_wrap(width, gutter), card_list)
+  return(card_deck)
+}
+
+row_wrap <- function(width, gutter) {
+  function(...) {
+    htmltools::div(class = outer_row_class(width, gutter), ...)
+  }
+}
 
 unique_strings <- function(x) {
   unique(unlist(strsplit(x, split = "[[:space:]]+")))
@@ -100,23 +96,20 @@ tag_button <- function(tag) {
       "$('.all').hide(400, 'swing');",
       "setTimeout(function() {$('.", tag, "').show(400, 'swing')}, 400);"
     ),
-    #"data-toggle" = "collapse",
-    #"data-target" = paste0(".", tag),
     tag
   )
 }
-
 
 
 tag_wrapper <- function(...) {
   htmltools::p(...)
 }
 
-make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
-                      footer = NULL, header = NULL, tags = NULL, layout,
-                      padding, gutter, breakpoint = NULL, colour,
-                      border_width, border_colour, rounding
-                      ) {
+# should take inputs that match the columns in carddata,
+# but not every variable gets used
+make_card <- function(title, text, image, link, footer, header, tags,
+                      width, layout, padding, gutter, breakpoint, colour,
+                      border_width, border_colour, rounding){
 
   border <- c(width = border_width, colour = border_colour, style = "solid")
   radius <- rounding;
@@ -151,6 +144,4 @@ make_card <- function(title = NULL, text = NULL, image = NULL, link = NULL,
     return(card)
   }
 }
-
-make_card_dots <- purrr::lift_dl(make_card)
 

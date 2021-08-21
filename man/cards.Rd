@@ -11,6 +11,7 @@ cards(
   image = NULL,
   link = NULL,
   footer = NULL,
+  header = NULL,
   tags = NULL,
   width = "medium",
   layout = "label-below",
@@ -35,6 +36,8 @@ cards(
 \item{link}{URL to link to from title and image}
 
 \item{footer}{Card footer}
+
+\item{header}{Card header}
 
 \item{tags}{Tags to be assigned to each card}
 
