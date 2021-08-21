@@ -1,0 +1,279 @@
+---
+title: "Customising cards"
+---
+
+```{r, include = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+```
+
+
+In this article I'll provide an overview of the various arguments to `cards()`, and how they can be used to customise the look and feel of a card grid, using the built in `galleries` data as an example:
+
+```{r}
+library(bs4cards)
+galleries
+```
+
+Because I'll be using the data repeatedly, I'll define some helper functions, one that uses the `short_name` of a gallery to construct the `preview_url()` that links to the image file to be displayed, and another one that uses it to construct the `gallery_url()` that the card links to:
+
+```{r}
+preview_url <- function(x) {
+  paste0("https://bs4cards.djnavarro.net/image/", x, ".jpg")
+} 
+gallery_url <- function(x) {
+  paste0("https://art.djnavarro.net/gallery/", x)
+}
+```
+
+## Anatomy of a card
+
+A typical grid will define a `title`, `image`, and `link` associated with each card, which in the simplest case produces output like this:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url(short_name),
+    image = preview_url(short_name)
+  )
+```
+
+
+### Links
+
+Every card in this grid uses the link in two places: the title and the image both link to the target location. However, there is no need to specify any link. If you set `link = NULL` (the default), the cards will be displayed in exactly the same way but will not link to anything.
+
+### Images
+
+It is possible to create "image only" cards by specifying only the `image` argument:
+
+```{r}
+galleries %>% 
+  cards(image = preview_url(short_name))
+```
+
+### Text and titles
+
+Alternatively, you can define "label-only" cards that contain no images, by specifying `title`, `text`, or both:
+
+```{r}
+galleries %>% 
+  cards(title = long_name, text = blurb)
+```
+
+The only constraint imposed by `cards()` is that you must include one of the three main content types: a card must have a `title`, some `text`, or an `image`. 
+
+### Headers and footers
+
+The "body" of a card is comprised of the `image` and the label (i.e., `title` and/or `text`), which may or may not be associated with a `link`. Optionally, you can add a `header` and/or `footer` which appear above or below the body. These appear in muted text, and are intended for the inclusion of ancillary information:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    footer = paste("posted on", date)
+  )
+```
+
+
+
+## Layout of a card
+
+The bs4cards package supports two vertical-oriented card layouts, two horizontally-oriented card layouts, and two inset layouts that place the label as a transparent overlay on top of the image. To select which kind of layout you prefer, specify the  `layout` argument to `cards()`. Note, however, that the layout only affects the relative position of the image and the label. Headers (if included) will always remain at the top, and footers (if included) will always remain at the bottom.
+
+### Vertical layouts
+
+If you want vertically oriented cards, set `layout = "label-above"` or `layout = "label-below"` (the default) to create the cards:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    footer = paste("posted on", date),
+    layout = "label-above"
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    text = blurb,
+    footer = paste("posted on", date),
+    layout = "label-below"
+  )
+```
+
+
+### Horizontal layouts
+
+To set horizontal layouts, set `layout = "label-left"` or `layout = "label-right"`:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    width = "very-wide",
+    layout = "label-left"
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    width = "very-wide",
+    footer = paste("posted on", date),
+    layout = "label-right",
+    breakpoint = 7/12
+  )
+```
+
+
+
+### Inset layouts
+
+The inset layouts place the "label" part of the card as a floating overlay on top of the image. The overlay can appear at the top or the bottom, depending on whether `layout = "inset-top"` or `layout = "inset-bottom"`:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    width = "wide",
+    layout = "inset-top", 
+    colour = "#ffffffcc"
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    width = "wide",
+    layout = "inset-bottom", 
+    colour = "#ffffffcc", 
+    rounding = 0
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    footer = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    width = "wide",
+    layout = "inset-bottom", 
+    colour = "#ffffffcc"
+  )
+```
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    footer = date,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    width = "wide",
+    layout = "inset-bottom", 
+    breakpoint = .5,
+    colour = "#ffffffcc"
+  )
+```
+
+
+## Filtering cards by category
+
+The `tags` argument can be used to assign each card to a set of tags, and adds toggle buttons at the top of the card list that the user can do to display only those cards possessing the tag in question. The tags should be a single string, with spaces separating each tag. In the `galleries` data, the `paintbrushes` variable contains a list of some of the packages that were used in generating each generative art system. It's generally a good idea to have one tag that is possessed by all of the cards. The bs4cards package doesn't enforce this, but it's easy to do as illustrated below:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    tags = paste("all", paintbrushes),
+    width = "very-wide",
+    footer = paintbrushes,
+    layout = "label-right",
+    breakpoint = 7/12
+  )
+```
+
+
+
+## Spacing the cards
+
+### Controlling card width
+
+the `width` argument
+
+### Setting internal breakpoint
+
+the `breakpoint` argument
+
+### Customising margins
+
+the `padding` and `gutter` arguments
+
+
+## Appearance of a card
+
+
+
+
+### Label colour
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    colour = c("#d6cadd", "white", "#c4d8e2", "white", 
+               "white", "white", "white")
+  )
+```
+
+
+### Border width
+
+
+### Border colour
+
+
+### Corner rounding
+
+
+
