@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="bs4cards">
-<title>Getting Started • bs4cards</title>
+<title>Getting started • bs4cards</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../../deps/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="../../deps/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="../../deps/bs3compat-0.2.5.1/tabs.js"></script><script src="../../deps/bs3compat-0.2.5.1/bs3compat.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
 <link href="../../syntax-highlighting.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="Getting Started">
+<script src="../../pkgdown.js"></script><meta property="og:title" content="Getting started">
 <meta property="og:description" content="bs4cards">
 <meta property="og:image" content="https://bs4cards.djnavarro.net/twitter-card.png">
 <meta property="og:image:alt" content="A grid of hearts. Text in the middle reads 'bs4cards'">
@@ -45,7 +45,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../../articles/articles/getting-started.html">Getting Started</a>
+    <a class="dropdown-item" href="../../articles/articles/getting-started.html">Getting started</a>
     <a class="dropdown-item" href="../../articles/articles/custom-cards.html">Customising cards</a>
   </div>
 </li>
@@ -68,7 +68,7 @@
 <script src="getting-started_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <img src="" class="pkg-logo" alt=""><div class="page-header pb-2 mt-4 mb-2 border-bottom toc-ignore">
-      <h1 class="display-4" data-toc-skip>Getting Started</h1>
+      <h1 class="display-4" data-toc-skip>Getting started</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/djnavarro/bs4cards/blob/master/vignettes/articles/getting-started.Rmd" class="external-link"><code>vignettes/articles/getting-started.Rmd</code></a></small>
@@ -156,30 +156,16 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span>
 <span class="va">galleries</span>
-<span class="co">#&gt;                long_name   short_name       date</span>
-<span class="co">#&gt; 1    Ash Cloud and Blood          ash 2021-07-17</span>
-<span class="co">#&gt; 2 Ghosts on Marble Paper       ghosts 2021-01-09</span>
-<span class="co">#&gt; 3              Ice Floes    ice-floes 2021-01-19</span>
-<span class="co">#&gt; 4           Native Flora native-flora 2021-02-10</span>
-<span class="co">#&gt; 5            Silhouettes  silhouettes 2021-01-24</span>
-<span class="co">#&gt; 6            Track Marks  track-marks 2020-09-20</span>
-<span class="co">#&gt; 7              Viewports    viewports 2021-02-28</span>
-<span class="co">#&gt;                                                                             blurb</span>
-<span class="co">#&gt; 1          Simulated watercolours in ggplot2 using the transparent polygon method</span>
-<span class="co">#&gt; 2                                     Abstract landscapes generated using ambient</span>
-<span class="co">#&gt; 3                                       Abstract icebergs generated using ambient</span>
-<span class="co">#&gt; 4                  Collections of small flametrees that resemble branching plants</span>
-<span class="co">#&gt; 5                       Trees generated in flametree with random walk backgrounds</span>
-<span class="co">#&gt; 6 Voronoi tessellations with seed points sampled from an iterated function system</span>
-<span class="co">#&gt; 7                       Simple masks with ggfx using flametree-generated textures</span>
-<span class="co">#&gt;             paintbrushes</span>
-<span class="co">#&gt; 1                ggplot2</span>
-<span class="co">#&gt; 2                ambient</span>
-<span class="co">#&gt; 3                ambient</span>
-<span class="co">#&gt; 4      ggplot2 flametree</span>
-<span class="co">#&gt; 5 ggplot2 rcpp flametree</span>
-<span class="co">#&gt; 6           ggplot2 rcpp</span>
-<span class="co">#&gt; 7      ggplot2 flametree</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 7 × 5</span>
+<span class="co">#&gt;   long_name              short_name   date       blurb             paintbrushes </span>
+<span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;        </span>
+<span class="co">#&gt; 1 Ash Cloud and Blood    ash          2021-07-17 Simulated waterc… ggplot2      </span>
+<span class="co">#&gt; 2 Ghosts on Marble Paper ghosts       2021-01-09 Abstract landsca… ambient      </span>
+<span class="co">#&gt; 3 Ice Floes              ice-floes    2021-01-19 Abstract iceberg… ambient      </span>
+<span class="co">#&gt; 4 Native Flora           native-flora 2021-02-10 Collections of s… ggplot2 flam…</span>
+<span class="co">#&gt; 5 Silhouettes            silhouettes  2021-01-24 Trees generated … ggplot2 rcpp…</span>
+<span class="co">#&gt; 6 Track Marks            track-marks  2020-09-20 Voronoi tessella… ggplot2 rcpp </span>
+<span class="co">#&gt; 7 Viewports              viewports    2021-02-28 Simple masks wit… ggplot2 flam…</span></code></pre></div>
 <p>Each row in this data corresponds to one card in the grid. The columns contain information that is useful for constructing the cards. For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 

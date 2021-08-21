@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: "Getting started"
 ---
 
 ```{r, include = FALSE}
@@ -7,6 +7,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(tibble)
 ```
 
 When creating R markdown pages and websites it can be useful to organise content into a grid of links and image, sometimes known as "cards". To design a course website you may want something like this:
