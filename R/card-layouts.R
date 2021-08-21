@@ -36,6 +36,43 @@ layout_card_vertical <- function(title, text, image, link,
 }
 
 
+layout_card_singleton <- function(title, text, image, link,
+                                  footer, header, tags, layout,
+                                  padding, gutter, breakpoint,
+                                  colour, border, radius) {
+
+  corners <- card_corners(layout, footer, header, radius)
+  pieces <- card_pieces(title, text, image, link, footer, header,
+                        layout, border, corners)
+
+  # defensive coding!
+  rm(title, text, image, footer, header)
+
+  if(layout == "label-only") {
+    body_vertical <- htmltools::div(
+      class = body_vertical_class(padding),
+      style = body_vertical_style(colour, corners, border),
+      pieces$title, pieces$text
+    )
+    return(htmltools::div(
+      class = card_class(gutter),
+      style = card_style(corners),
+      body_vertical, pieces$footer
+    ))
+  }
+
+  if(layout == "image-only") {
+    return(htmltools::div(
+      class = card_class(gutter, tags),
+      style = card_style(corners),
+      pieces$image, pieces$footer
+    ))
+  }
+}
+
+
+
+
 layout_card_horizontal <- function(title, text, image, link,
                                    footer, header, tags, layout,
                                    padding, gutter, breakpoint,

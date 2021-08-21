@@ -124,6 +124,16 @@ make_card <- function(title, text, image, link, footer, header, tags,
     return(card)
   }
 
+  if(layout == "label-only" | layout == "image-only") {
+    card <- layout_card_singleton(
+      title, text, image, link,
+      footer, header, tags, layout,
+      padding, gutter, breakpoint,
+      colour, border, radius
+    )
+    return(card)
+  }
+
   if(layout == "label-right" | layout == "label-left") {
     card <- layout_card_horizontal(
       title, text, image, link,

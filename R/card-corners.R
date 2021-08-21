@@ -11,6 +11,22 @@ card_corners <- function(layout, footer = NULL, header = NULL, radius) {
 
   css_corners <- css_corner_function(radius)
 
+  # singleton layouts
+
+  if(layout == "image-only") {
+    body_corners <- c(
+      image = css_corners(tl = no_header, tr = no_header, bl = no_footer, br = no_footer),
+      label = css_corners()
+    )
+  }
+
+  if(layout == "label-only") {
+    body_corners <- c(
+      image = css_corners(),
+      label = css_corners(tl = no_header, tr = no_header, bl = no_footer, br = no_footer)
+    )
+  }
+
   # vertical layouts
 
   if(layout == "label-below") {
