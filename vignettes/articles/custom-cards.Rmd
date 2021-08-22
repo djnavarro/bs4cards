@@ -83,6 +83,18 @@ galleries %>%
 ```
 
 
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url(short_name),
+    image = preview_url(short_name),
+    header = paste("posted on", date)
+  )
+```
+
+
 
 ## Layout of a card
 

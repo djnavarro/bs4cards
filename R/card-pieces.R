@@ -7,13 +7,15 @@ card_pieces <- function(title, text, image, link, footer, header,
 
   image  <- make_image(image, layout, corners, border)
   footer <- make_footer(footer, corners, border)
+  header <- make_header(header, corners, border)
 
   if(!is_na(link)) {
     title <- htmltools::a(title, href = link)
     image <- htmltools::a(image, href = link)
   }
 
-  return(list(title = title, text = text, image = image, footer = footer))
+  return(list(title = title, text = text, image = image,
+              footer = footer, header = header))
 }
 
 
@@ -56,4 +58,15 @@ make_footer <- function(footer, corners, border) {
     )
   }
 }
+
+make_header <- function(header, corners, border) {
+  if(!is_na(header)) {
+    htmltools::div(
+      header,
+      class = header_class(),
+      style = header_style(corners, border)
+    )
+  }
+}
+
 

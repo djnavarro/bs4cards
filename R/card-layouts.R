@@ -22,7 +22,7 @@ layout_card_vertical <- function(title, text, image, link,
     return(htmltools::div(
       class = card_class(gutter),
       style = card_style(corners),
-      pieces$image, body_vertical, pieces$footer
+      pieces$header, pieces$image, body_vertical, pieces$footer
     ))
   }
 
@@ -30,7 +30,7 @@ layout_card_vertical <- function(title, text, image, link,
     return(htmltools::div(
       class = card_class(gutter, tags),
       style = card_style(corners),
-      body_vertical, pieces$image, pieces$footer
+      pieces$header, body_vertical, pieces$image, pieces$footer
     ))
   }
 }
@@ -57,7 +57,7 @@ layout_card_singleton <- function(title, text, image, link,
     return(htmltools::div(
       class = card_class(gutter),
       style = card_style(corners),
-      body_vertical, pieces$footer
+      pieces$header, body_vertical, pieces$footer
     ))
   }
 
@@ -65,7 +65,7 @@ layout_card_singleton <- function(title, text, image, link,
     return(htmltools::div(
       class = card_class(gutter, tags),
       style = card_style(corners),
-      pieces$image, pieces$footer
+      pieces$header, pieces$image, pieces$footer
     ))
   }
 }
@@ -119,7 +119,7 @@ layout_card_horizontal <- function(title, text, image, link,
   return(htmltools::div(
     class = card_class(gutter, tags),
     style = card_style(corners),
-    body_horizontal, pieces$footer
+    pieces$header, body_horizontal, pieces$footer
   ))
 }
 
@@ -161,7 +161,7 @@ layout_card_inset <- function(title, text, image, link,
   return(htmltools::div(
     class = card_class(gutter, tags),
     style = card_style(corners),
-    body_inset, pieces$footer
+    pieces$header, body_inset, pieces$footer
   ))
 }
 
