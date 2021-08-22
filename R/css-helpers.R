@@ -61,6 +61,21 @@ footer_style <- function(corners, border) {
   )
 }
 
+header_class <- function() {
+  paste0("card-header small text-muted h-auto px-3 py-auto")
+}
+
+header_style <- function(corners, border) {
+  paste0(
+    "border-style:", border[["style"]], "; ",
+    "border-color:", border[["colour"]], "; ",
+    "border-width:", border_width_style(border[["width"]], top = FALSE), "; ",
+    corners[["header"]]
+  )
+}
+
+
+
 card_style <- function(corners) {
   corners[["card"]]
 }
