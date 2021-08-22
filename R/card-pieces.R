@@ -7,7 +7,7 @@ card_pieces <- function(title, text, image, link, footer, header,
 
   image  <- make_image(image, layout, corners, border)
   footer <- make_footer(footer, corners, border)
-  header <- make_footer(header, corners, border)
+  header <- make_header(header, corners, border)
 
   if(!is_na(link)) {
     title <- htmltools::a(title, href = link)
@@ -62,7 +62,7 @@ make_footer <- function(footer, corners, border) {
 make_header <- function(header, corners, border) {
   if(!is_na(header)) {
     htmltools::div(
-      footer,
+      header,
       class = header_class(),
       style = header_style(corners, border)
     )
