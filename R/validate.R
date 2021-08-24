@@ -100,17 +100,17 @@ check_valid_rounding <- function(x, n) {
 
 # if the user only specifies one of the two basic card parts
 # (image & label), require that the layout value be appropriate
-# and warn user if needed
+# and message user if needed
 clean_layout <- function(layout, no_image, no_label) {
 
   if(no_image & layout != "label-only") {
     layout <- "label-only"
-    warn("using 'label-only' layout")
+    message("using 'label-only' layout")
   }
 
   if(no_label & layout != "image-only") {
     layout <- "image-only"
-    warn("using 'image-only' layout")
+    message("using 'image-only' layout")
   }
 
   return(layout)
