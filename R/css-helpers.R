@@ -43,14 +43,28 @@ image_style <- function(corners, border, layout) {
   border_widths <- border[["width"]]
   if(layout == "label-above") border_widths <- border_width_style(border[["width"]], top = FALSE)  # avoid duplicates
   if(layout == "label-below") border_widths <- border_width_style(border[["width"]], bottom = FALSE)
-  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], top = FALSE, right = FALSE)
-  if(layout == "label-right") border_widths <- border_width_style(border[["width"]], top = FALSE, left = FALSE)
+#  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], top = FALSE, right = FALSE)
+ # if(layout == "label-right") border_widths <- border_width_style(border[["width"]], top = FALSE, left = FALSE)
   paste0(
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
     "border-width:", border_widths, "; ",
-    if(layout == "label-left")  { paste0( "margin-bottom: -", border[["width"]], ";" ) },
-    if(layout == "label-right") { paste0( "margin-bottom: -", border[["width"]], ";" ) },
+    if(layout == "label-left")  {
+      paste0(
+        "margin-left: ", border[["width"]], ";",
+        "margin-right: -", border[["width"]], ";",
+        "margin-top: -", border[["width"]], ";",
+        "margin-bottom: -", border[["width"]], ";"
+      )
+    },
+    if(layout == "label-right") {
+      paste0(
+        "margin-left: -", border[["width"]], ";",
+        "margin-right: -", border[["width"]], ";",
+        "margin-top: -", border[["width"]], ";",
+        "margin-bottom: -", border[["width"]], ";"
+      )
+    },
     corners[["image"]]
   )
 }
