@@ -93,7 +93,6 @@ layout_card_horizontal <- function(title, text, image, link,
 
   label_horizontal <- htmltools::div(
     class = label_horizontal_class(breakpoint),
-    style = label_horizontal_style(colour = "#00000000", corners, border, layout),
     pieces$title, pieces$text
   )
 
@@ -107,12 +106,8 @@ layout_card_horizontal <- function(title, text, image, link,
   )
 
   body_horizontal <- htmltools::div(
-    class = paste0("card-body border-0 m-0 p-", padding, " col-12"),
-    style = paste0(
-      "visibility: visible; ",
-      "background-color: ", colour,
-      corners[["core"]]
-    ),
+    class = body_horizontal_class(padding),
+    style = body_horizontal_style(colour, corners, border),
     row_horizontal
   )
 

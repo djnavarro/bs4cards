@@ -36,6 +36,9 @@ image_class <- function(layout) {
   paste0(card_type)
 }
 
+# note: refactor later...
+# all these conditionals suggest that image style needs to be broken into
+# separate functions for each layout type!
 image_style <- function(corners, border, layout) {
   border_widths <- border[["width"]]
   if(layout == "label-above") border_widths <- border_width_style(border[["width"]], top = FALSE)  # avoid duplicates
@@ -46,6 +49,8 @@ image_style <- function(corners, border, layout) {
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
     "border-width:", border_widths, "; ",
+    if(layout == "label-left")  { paste0( "margin-bottom: -", border[["width"]], ";" ) },
+    if(layout == "label-right") { paste0( "margin-bottom: -", border[["width"]], ";" ) },
     corners[["image"]]
   )
 }
@@ -101,30 +106,29 @@ label_horizontal_class <- function(breakpoint) {
   paste0("col-", round(breakpoint * 12), " h-100")
 }
 
-label_horizontal_style <- function(colour, corners, border, layout) {
-  if(layout == "label-right") border_widths <- border_width_style(border[["width"]], left = FALSE)
-  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], right = FALSE)
-  paste(
-    "background-color:", colour, ";",
-    "border-style:", border[["style"]], "; ",
-    "border-color:", border[["colour"]], "; ",
-    "border-width: 0; ",
-    #"border-width:", border_widths, "; ",
-    corners[["label"]]
-  )
-}
-
 row_horizontal_style <- function(corners, border) {
   paste(
-    "border-style:", border[["style"]], "; ",
-    "border-color:", border[["colour"]], "; ",
-    "border-width:", border[["width"]], "; ",
     corners[["core"]]
   )
 }
 
 row_horizontal_class <- function() {
-  "row no-gutters h-100"
+  "row no-gutters h-100 border-0"
+}
+
+body_horizontal_class <- function(padding) {
+  paste0("card-body m-0 p-", padding, " col-12")
+}
+
+body_horizontal_style <- function(colour, corners, border) {
+  paste0(
+    "visibility: visible; ",
+    "border-style:", border[["style"]], "; ",
+    "border-color:", border[["colour"]], "; ",
+    "border-width:", border[["width"]], "; ",
+    "background-color: ", colour, ";",
+    corners[["core"]]
+  )
 }
 
 image_horizontal_class <- function(breakpoint) {
