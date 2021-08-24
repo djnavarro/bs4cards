@@ -149,6 +149,7 @@ label_inset_class <- function() {
 label_inset_style <- function(colour, corners, border, breakpoint, layout) {
   height <- round(breakpoint * 100)
   paste0(
+    "overflow: hidden;",
     "background-color: ", colour, ";",
     "height: ", height, "%;",
     "position: absolute;",
