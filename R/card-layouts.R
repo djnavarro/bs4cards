@@ -101,8 +101,8 @@ layout_card_horizontal <- function(title, text, image, link,
   if(layout == "label-left" ) {lhs <- label_horizontal; rhs <- image_horizontal}
 
   row_horizontal <- htmltools::div(
-    class = "row no-gutters",
-    style = corners[["core"]],
+    class = row_horizontal_class(),
+    style = row_horizontal_style(corners, border),
     lhs, rhs
   )
 

@@ -40,6 +40,8 @@ image_style <- function(corners, border, layout) {
   border_widths <- border[["width"]]
   if(layout == "label-above") border_widths <- border_width_style(border[["width"]], top = FALSE)  # avoid duplicates
   if(layout == "label-below") border_widths <- border_width_style(border[["width"]], bottom = FALSE)
+  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], top = FALSE, right = FALSE)
+  if(layout == "label-right") border_widths <- border_width_style(border[["width"]], top = FALSE, left = FALSE)
   paste0(
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
@@ -96,7 +98,7 @@ body_vertical_style <- function(colour, corners, border) {
 }
 
 label_horizontal_class <- function(breakpoint) {
-  paste0("col-", round(breakpoint * 12))
+  paste0("col-", round(breakpoint * 12), " h-100")
 }
 
 label_horizontal_style <- function(colour, corners, border, layout) {
@@ -106,9 +108,23 @@ label_horizontal_style <- function(colour, corners, border, layout) {
     "background-color:", colour, ";",
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
-    "border-width:", border_widths, "; ",
+    "border-width: 0; ",
+    #"border-width:", border_widths, "; ",
     corners[["label"]]
   )
+}
+
+row_horizontal_style <- function(corners, border) {
+  paste(
+    "border-style:", border[["style"]], "; ",
+    "border-color:", border[["colour"]], "; ",
+    "border-width:", border[["width"]], "; ",
+    corners[["core"]]
+  )
+}
+
+row_horizontal_class <- function() {
+  "row no-gutters h-100"
 }
 
 image_horizontal_class <- function(breakpoint) {
@@ -133,6 +149,7 @@ label_inset_class <- function() {
 label_inset_style <- function(colour, corners, border, breakpoint, layout) {
   height <- round(breakpoint * 100)
   paste0(
+    "overflow: hidden;",
     "background-color: ", colour, ";",
     "height: ", height, "%;",
     "position: absolute;",
