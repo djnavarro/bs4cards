@@ -71,7 +71,7 @@ header_style <- function(corners, border) {
   paste0(
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
-    "border-width:", border_width_style(border[["width"]], top = FALSE), "; ",
+    "border-width:", border_width_style(border[["width"]], bottom = FALSE), "; ",
     corners[["header"]]
   )
 }
