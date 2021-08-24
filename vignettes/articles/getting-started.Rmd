@@ -114,7 +114,8 @@ galleries %>%
     footer = paste("posted on", date),
     layout = "label-right", 
     width = "very-wide",
-    rounding = "3px"
+    breakpoint = 5/12,
+    rounding = "1rem"
   )
 ```
 

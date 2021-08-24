@@ -37,7 +37,7 @@ cards <- function(data,
                   colour = "#ffffffaa",
                   border_width = "1px",
                   border_colour = "#808080",
-                  rounding = "1rem"
+                  rounding = "0"
                   ) {
 
   quosures <- enquos(
