@@ -60,13 +60,21 @@ make_footer <- function(footer, corners, border) {
 }
 
 make_header <- function(header, corners, border) {
-  if(!is_na(header)) {
-    htmltools::div(
-      header,
-      class = header_class(),
-      style = header_style(corners, border)
-    )
-  }
+  if(is_na(header)) return(NULL)
+
+  # to do: use this to make a preserve_whitespace() function
+  #
+  # header_text <- htmltools::span(
+  #   header,
+  #   style = "white-space: pre-wrap"
+  # )
+  header_text <- header
+
+  return(htmltools::div(
+    header_text,
+    class = header_class(),
+    style = header_style(corners, border)
+  ))
 }
 
 

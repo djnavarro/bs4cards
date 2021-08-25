@@ -30,7 +30,7 @@ galleries
 ```{r}
 galleries %>% 
   cards(
-    header = blurb,
+    header = paste0(stringr::str_pad(galleries$blurb, width = max(nchar(galleries$blurb)), pad=" ", side = "right"), knitr::raw_html("&nbsp;")),
     footer = blurb,
     #title = long_name,
     text = blurb,
