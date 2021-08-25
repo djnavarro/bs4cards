@@ -105,64 +105,30 @@ tag_wrapper <- function(...) {
   htmltools::p(...)
 }
 
-# should take inputs that match the columns in carddata,
-# but not every variable gets used
 make_card <- function(title, text, image, link, footer, header, tags,
                       width, layout, padding, gutter, breakpoint, colour,
                       border_width, border_colour, rounding){
 
-  border <- c(width = border_width, colour = border_colour, style = "solid")
-  radius <- rounding;
+  border <- c(
+    width = border_width,
+    colour = border_colour,
+    style = "solid"
+  )
 
-  if(layout == "label-below" | layout == "label-above") {
-    card <- layout_card_vertical(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
+  if(layout == "label-below")  layout_card <- layout_card_vertical
+  if(layout == "label-above")  layout_card <- layout_card_vertical
+  if(layout == "label-only")   layout_card <- layout_card_labelonly
+  if(layout == "image-only")   layout_card <- layout_card_imageonly
+  if(layout == "label-right")  layout_card <- layout_card_horizontal
+  if(layout == "label-left")   layout_card <- layout_card_horizontal
+  if(layout == "inset-top")    layout_card <- layout_card_inset
+  if(layout == "inset-bottom") layout_card <- layout_card_inset
 
-  if(layout == "label-only") {
-    card <- layout_card_labelonly(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
-
-  if(layout == "image-only") {
-    card <- layout_card_imageonly(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
-
-
-  if(layout == "label-right" | layout == "label-left") {
-    card <- layout_card_horizontal(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
-
-  if(layout == "inset-bottom" | layout == "inset-top") {
-    card <- layout_card_inset(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
+  return(layout_card(
+    title, text, image, link,
+    footer, header, tags, layout,
+    padding, gutter, breakpoint,
+    colour, border, radius = rounding
+  ))
 }
 
