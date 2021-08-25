@@ -51,84 +51,13 @@ cards <- function(data,
   cardspec <- validate_cardspec(cardspec, nrow(data))
   carddata <- as.data.frame(cardspec)
 
-  cardlist <- build_card_list(carddata, cardspec[["width"]], cardspec[["gutter"]])
+  cardlist <- build_card_list(
+    data = carddata,
+    width = cardspec[["width"]],
+    gutter = cardspec[["gutter"]]
+  )
   taglist <- build_tag_list(carddata[["tags"]])
 
   return(htmltools::div(taglist, cardlist))
-}
-
-
-build_tag_list <- function(tags) {
-  if(is_na(tags[[1]])) return(NULL)
-  categories <- unique_strings(tags)
-  if(length(categories) == 0) return(NULL)
-  taglist <- lapply(categories, tag_button)
-  taglist <- do.call(tag_wrapper, taglist)
-  return(taglist)
-}
-
-
-# transpose data frame to get list of parameters, then
-# construct a card from each parameter set, then
-# wrap all the cards in a row to form the deck
-build_card_list <- function(card_data, width, gutter) {
-  card_data <- lapply(1:nrow(card_data), function(x) card_data[x, ])
-  card_list <- lapply(card_data, function(x) do.call(make_card, x))
-  card_deck <- do.call(row_wrap(width, gutter), card_list)
-  return(card_deck)
-}
-
-row_wrap <- function(width, gutter) {
-  function(...) {
-    htmltools::div(class = outer_row_class(width, gutter), ...)
-  }
-}
-
-unique_strings <- function(x) {
-  unique(unlist(strsplit(x, split = "[[:space:]]+")))
-}
-
-tag_button <- function(tag) {
-  htmltools::tags$button(
-    class = "btn btn-primary",
-    type = "button",
-    onClick = paste0(
-      "$('.all').hide(400, 'swing');",
-      "setTimeout(function() {$('.", tag, "').show(400, 'swing')}, 400);"
-    ),
-    tag
-  )
-}
-
-
-tag_wrapper <- function(...) {
-  htmltools::p(...)
-}
-
-make_card <- function(title, text, image, link, footer, header, tags,
-                      width, layout, padding, gutter, breakpoint, colour,
-                      border_width, border_colour, rounding){
-
-  border <- c(
-    width = border_width,
-    colour = border_colour,
-    style = "solid"
-  )
-
-  if(layout == "label-below")  layout_card <- layout_card_vertical
-  if(layout == "label-above")  layout_card <- layout_card_vertical
-  if(layout == "label-only")   layout_card <- layout_card_labelonly
-  if(layout == "image-only")   layout_card <- layout_card_imageonly
-  if(layout == "label-right")  layout_card <- layout_card_horizontal
-  if(layout == "label-left")   layout_card <- layout_card_horizontal
-  if(layout == "inset-top")    layout_card <- layout_card_inset
-  if(layout == "inset-bottom") layout_card <- layout_card_inset
-
-  return(layout_card(
-    title, text, image, link,
-    footer, header, tags, layout,
-    padding, gutter, breakpoint,
-    colour, border, radius = rounding
-  ))
 }
 
