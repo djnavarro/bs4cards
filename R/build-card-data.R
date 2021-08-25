@@ -126,8 +126,8 @@ clean_layout <- function(layout, no_image, no_label) {
 # typical use case for inset cards is to provide a small floating caption/title
 clean_breakpoint <- function(breakpoint, layout) {
   if(!is_null(breakpoint)) return(breakpoint)
-  if(layout == "label-left") return(2/3)
-  if(layout == "label-right") return(2/3)
+  if(layout == "label-left") return(7/12)
+  if(layout == "label-right") return(7/12)
   if(layout == "inset-top") return(.2)
   if(layout == "inset-bottom") return(.2)
   return(1)
