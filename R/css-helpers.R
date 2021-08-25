@@ -1,5 +1,7 @@
 
-# helpers to generate css -----------------------------------------
+
+# cards -------------------------------------------------------------------
+
 
 outer_row_class <- function(width, gutter) {
   paste("row p-0", column_width_class(width), row_margins_class(gutter))
@@ -17,7 +19,6 @@ row_margins_class <- function(gutter) {
   paste("my-1", ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter)))
 }
 
-
 border_width_style <- function(width, top = TRUE, right = TRUE, bottom = TRUE, left = TRUE) {
   border_widths <- rep("0", 4)
   border_widths[c(top, right, bottom, left)] <- width
@@ -26,8 +27,35 @@ border_width_style <- function(width, top = TRUE, right = TRUE, bottom = TRUE, l
 }
 
 card_class <- function(gutter, tags = "") {
-  paste0("card bg-transparent m-0 p-", gutter, " border-0 collapse.show ", tags)
+  paste0("card d-flex flex-column bg-transparent m-0 p-", gutter, " border-0 collapse.show ", tags)
 }
+
+
+
+
+# text and titles ---------------------------------------------------------
+
+
+title_class <- function(has_text) {
+  base <- "card-title my-auto px-3 pt-3"
+  bottom <- ifelse(has_text, "pb-1", "pb-3")
+  return(paste(base, bottom))
+}
+
+text_class <- function(has_title) {
+  base <- "card-text my-auto px-3 pb-3"
+  top <- ifelse(has_title, "pt-1", "pt-3")
+  return(paste(base, top))
+}
+
+
+card_style <- function(corners) {
+  corners[["card"]]
+}
+
+
+
+# images ------------------------------------------------------------------
 
 image_class <- function(layout) {
   card_type <- "card-img"
@@ -43,8 +71,8 @@ image_style <- function(corners, border, layout) {
   border_widths <- border[["width"]]
   if(layout == "label-above") border_widths <- border_width_style(border[["width"]], top = FALSE)  # avoid duplicates
   if(layout == "label-below") border_widths <- border_width_style(border[["width"]], bottom = FALSE)
-#  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], top = FALSE, right = FALSE)
- # if(layout == "label-right") border_widths <- border_width_style(border[["width"]], top = FALSE, left = FALSE)
+  #  if(layout == "label-left")  border_widths <- border_width_style(border[["width"]], top = FALSE, right = FALSE)
+  # if(layout == "label-right") border_widths <- border_width_style(border[["width"]], top = FALSE, left = FALSE)
   paste0(
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
@@ -69,43 +97,16 @@ image_style <- function(corners, border, layout) {
   )
 }
 
-footer_class <- function() {
-  paste0("card-footer small text-muted h-auto px-3 py-auto")
-}
-
-footer_style <- function(corners, border) {
-  paste0(
-    "border-style:", border[["style"]], "; ",
-    "border-color:", border[["colour"]], "; ",
-    "border-width:", border_width_style(border[["width"]], top = FALSE), "; ",
-    corners[["footer"]]
-  )
-}
-
-header_class <- function() {
-  paste0("card-header small text-muted h-auto px-3 py-auto")
-}
-
-header_style <- function(corners, border) {
-  paste0(
-    "border-style:", border[["style"]], "; ",
-    "border-color:", border[["colour"]], "; ",
-    "border-width:", border_width_style(border[["width"]], bottom = FALSE), "; ",
-    corners[["header"]]
-  )
-}
 
 
 
-card_style <- function(corners) {
-  corners[["card"]]
-}
+# vertical layouts --------------------------------------------------------
 
-body_vertical_class <- function(padding) {
+label_vertical_class <- function(padding) {
   paste0("card-body justify-content-end m-0 p-", padding)
 }
 
-body_vertical_style <- function(colour, corners, border) {
+label_vertical_style <- function(colour, corners, border) {
   paste0(
     "visibility: visible; ",
     "background-color: ", colour, "; ",
@@ -115,6 +116,9 @@ body_vertical_style <- function(colour, corners, border) {
     corners[["label"]]
   )
 }
+
+# horizontal layouts ------------------------------------------------------
+
 
 label_horizontal_class <- function(breakpoint) {
   paste0("col-", round(breakpoint * 12), " h-100")
@@ -153,6 +157,12 @@ image_horizontal_style <- function(corners) { # border already styled by image
   corners[["image"]]
 }
 
+
+
+
+# inset layouts -----------------------------------------------------------
+
+
 body_inset_style <- function(corners) {
   paste(
     "position: relative;",
@@ -179,14 +189,35 @@ label_inset_style <- function(colour, corners, border, breakpoint, layout) {
   )
 }
 
-title_class <- function(has_text) {
-  base <- "card-title my-auto px-3 pt-3"
-  bottom <- ifelse(has_text, "pb-1", "pb-3")
-  return(paste(base, bottom))
+
+
+
+# headers and footers -----------------------------------------------------
+
+
+footer_class <- function() {
+  paste0("card-footer small text-muted px-3 py-auto")
 }
 
-text_class <- function(has_title) {
-  base <- "card-text my-auto px-3 pb-3"
-  top <- ifelse(has_title, "pt-1", "pt-3")
-  return(paste(base, top))
+footer_style <- function(corners, border) {
+  paste0(
+    "border-style:", border[["style"]], "; ",
+    "border-color:", border[["colour"]], "; ",
+    "border-width:", border_width_style(border[["width"]], top = FALSE), "; ",
+    corners[["footer"]]
+  )
 }
+
+header_class <- function() {
+  paste0("card-header small text-muted px-3 py-auto")
+}
+
+header_style <- function(corners, border) {
+  paste0(
+    "border-style:", border[["style"]], "; ",
+    "border-color:", border[["colour"]], "; ",
+    "border-width:", border_width_style(border[["width"]], bottom = FALSE), "; ",
+    corners[["header"]]
+  )
+}
+
