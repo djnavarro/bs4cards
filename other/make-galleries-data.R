@@ -10,4 +10,9 @@ galleries <- tibble::tribble(
   "Viewports",              "viewports",    "2021-02-28", "Simple masks with ggfx using flametree-generated textures"                      , "ggplot2 flametree"
 )
 
-usethis::use_data(galleries)
+galleries <- dplyr::mutate(galleries,
+  image_url = paste0("https://bs4cards.djnavarro.net/image/", short_name, ".jpg"),
+  gallery_url = paste0("https://art.djnavarro.net/gallery/", short_name)
+)
+
+usethis::use_data(galleries, overwrite = TRUE)

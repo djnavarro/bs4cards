@@ -18,16 +18,6 @@ library(bs4cards)
 galleries
 ```
 
-Because I'll be using the data repeatedly, I'll define some helper functions, one that uses the `short_name` of a gallery to construct the `preview_url()` that links to the image file to be displayed, and another one that uses it to construct the `gallery_url()` that the card links to:
-
-```{r}
-preview_url <- function(x) {
-  paste0("https://bs4cards.djnavarro.net/image/", x, ".jpg")
-} 
-gallery_url <- function(x) {
-  paste0("https://art.djnavarro.net/gallery/", x)
-}
-```
 
 ## Anatomy of a card
 
@@ -37,8 +27,8 @@ A typical grid will define a `title`, `image`, and `link` associated with each c
 galleries %>% 
   cards(
     title = long_name,
-    link = gallery_url(short_name),
-    image = preview_url(short_name)
+    link = gallery_url,
+    image = image_url
   )
 ```
 
@@ -53,7 +43,7 @@ It is possible to create "image only" cards by specifying only the `image` argum
 
 ```{r}
 galleries %>% 
-  cards(image = preview_url(short_name))
+  cards(image = image_url)
 ```
 
 ### Text and titles
@@ -76,9 +66,9 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
-    footer = paste("posted on", date)
+    link = gallery_url,
+    image = image_url,
+    footer = paste("posted:", date)
   )
 ```
 
@@ -88,9 +78,9 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
-    header = paste("posted on", date)
+    link = gallery_url,
+    image = image_url,
+    header = paste("posted:", date)
   )
 ```
 
@@ -108,9 +98,9 @@ If you want vertically oriented cards, set `layout = "label-above"` or `layout =
 galleries %>% 
   cards(
     title = long_name,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
-    footer = paste("posted on", date),
+    link = gallery_url,
+    image = image_url,
+    footer = paste("posted:", date),
     layout = "label-above"
   )
 ```
@@ -120,10 +110,10 @@ galleries %>%
 galleries %>% 
   cards(
     title = long_name,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     text = blurb,
-    footer = paste("posted on", date),
+    footer = paste("posted:", date),
     layout = "label-below"
   )
 ```
@@ -138,8 +128,8 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     width = "very-wide",
     layout = "label-left"
   )
@@ -151,10 +141,10 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     width = "very-wide",
-    footer = paste("posted on", date),
+    footer = paste("posted:", date),
     layout = "label-right",
     breakpoint = .5
   )
@@ -170,8 +160,8 @@ The inset layouts place the "label" part of the card as a floating overlay on to
 galleries %>% 
   cards(
     title = long_name,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     width = "wide",
     layout = "inset-top", 
     colour = "#ffffffcc"
@@ -183,8 +173,8 @@ galleries %>%
 galleries %>% 
   cards(
     title = long_name,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     width = "wide",
     layout = "inset-bottom", 
     colour = "#ffffffcc", 
@@ -198,8 +188,8 @@ galleries %>%
   cards(
     title = long_name,
     footer = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     width = "wide",
     layout = "inset-bottom", 
     colour = "#ffffffcc"
@@ -213,8 +203,8 @@ galleries %>%
     title = long_name,
     text = blurb,
     footer = date,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     width = "wide",
     layout = "inset-bottom", 
     breakpoint = .5,
@@ -232,8 +222,8 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     tags = paste("all", paintbrushes),
     width = "very-wide",
     footer = paintbrushes,
@@ -270,8 +260,8 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = gallery_url(short_name),
-    image = preview_url(short_name),
+    link = gallery_url,
+    image = image_url,
     colour = c("#d6cadd", "white", "#c4d8e2", "white", 
                "white", "white", "white")
   )

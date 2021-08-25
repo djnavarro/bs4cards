@@ -95,9 +95,9 @@ Each row in this data corresponds to one card in the grid. The columns contain i
 galleries %>% 
   cards(
     title = long_name,
-    link = paste0("https://art.djnavarro.net/gallery/", short_name),
-    image = paste0("https://bs4cards.djnavarro.net/image/", short_name, ".jpg"),
-    footer = paste("posted on ", date)
+    link = gallery_url,
+    image = image_url,
+    footer = paste("posted:", date)
   )
 ```
 
@@ -108,14 +108,13 @@ galleries %>%
   cards(
     title = long_name,
     text = blurb,
-    link = paste0("https://art.djnavarro.net/gallery/", short_name),
-    image = paste0("https://bs4cards.djnavarro.net/image/", short_name, ".jpg"),
+    link = gallery_url,
+    image = image_url,
     tags = paste("all", paintbrushes),
-    footer = paste("posted on", date),
+    footer = paintbrushes,
     layout = "label-right", 
     width = "very-wide",
-    breakpoint = 5/12,
-    rounding = "1rem"
+    rounding = "0"
   )
 ```
 
