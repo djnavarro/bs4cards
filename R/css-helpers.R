@@ -3,7 +3,7 @@
 # cards -------------------------------------------------------------------
 
 card_class <- function(gutter, tags = "") {
-  paste0("card d-flex flex-column bg-transparent m-0 p-", gutter, " border-0 collapse.show ", tags)
+  paste0("card bg-transparent m-0 p-", gutter, " border-0 collapse.show ", tags)
 }
 
 card_style <- function(corners) {
