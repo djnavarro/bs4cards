@@ -49,7 +49,7 @@ cards <- function(data,
   )
 
   card_spec <- lapply(quosures, function(x) eval_tidy(x, data = data))
-  card_data <- validate_cardspec(card_spec, nrow(data))
+  card_data <- build_card_data(card_spec, nrow(data))
   card_row <- build_card_row(card_data)
   tag_list <- build_tag_list(card_data[["tags"]])
 

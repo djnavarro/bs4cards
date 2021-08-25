@@ -1,5 +1,5 @@
 
-validate_cardspec <- function(cardspec, n) {
+build_card_data <- function(cardspec, n) {
 
   # check that the user has specified image and/or label
   no_image <- is_null(cardspec[["image"]])
