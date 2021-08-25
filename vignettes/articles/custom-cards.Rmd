@@ -156,7 +156,7 @@ galleries %>%
     width = "very-wide",
     footer = paste("posted on", date),
     layout = "label-right",
-    breakpoint = 7/12
+    breakpoint = .5
   )
 ```
 
@@ -237,8 +237,7 @@ galleries %>%
     tags = paste("all", paintbrushes),
     width = "very-wide",
     footer = paintbrushes,
-    layout = "label-right",
-    breakpoint = 7/12
+    layout = "label-right"
   )
 ```
 

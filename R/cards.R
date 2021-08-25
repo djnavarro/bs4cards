@@ -47,111 +47,12 @@ cards <- function(data,
     colour = colour, border_width = border_width, border_colour = border_colour,
     rounding = rounding
   )
-  cardspec <- lapply(quosures, function(x) eval_tidy(x, data = data))
-  cardspec <- validate_cardspec(cardspec, nrow(data))
-  carddata <- as.data.frame(cardspec)
 
-  cardlist <- build_card_list(carddata, cardspec[["width"]], cardspec[["gutter"]])
-  taglist <- build_tag_list(carddata[["tags"]])
+  card_spec <- lapply(quosures, function(x) eval_tidy(x, data = data))
+  card_data <- build_card_data(card_spec, nrow(data))
+  card_row <- build_card_row(card_data)
+  tag_list <- build_tag_list(card_data[["tags"]])
 
-  return(htmltools::div(taglist, cardlist))
-}
-
-
-build_tag_list <- function(tags) {
-  if(is_na(tags[[1]])) return(NULL)
-  categories <- unique_strings(tags)
-  if(length(categories) == 0) return(NULL)
-  taglist <- lapply(categories, tag_button)
-  taglist <- do.call(tag_wrapper, taglist)
-  return(taglist)
-}
-
-
-# transpose data frame to get list of parameters, then
-# construct a card from each parameter set, then
-# wrap all the cards in a row to form the deck
-build_card_list <- function(card_data, width, gutter) {
-  card_data <- lapply(1:nrow(card_data), function(x) card_data[x, ])
-  card_list <- lapply(card_data, function(x) do.call(make_card, x))
-  card_deck <- do.call(row_wrap(width, gutter), card_list)
-  return(card_deck)
-}
-
-row_wrap <- function(width, gutter) {
-  function(...) {
-    htmltools::div(class = outer_row_class(width, gutter), ...)
-  }
-}
-
-unique_strings <- function(x) {
-  unique(unlist(strsplit(x, split = "[[:space:]]+")))
-}
-
-tag_button <- function(tag) {
-  htmltools::tags$button(
-    class = "btn btn-primary",
-    type = "button",
-    onClick = paste0(
-      "$('.all').hide(400, 'swing');",
-      "setTimeout(function() {$('.", tag, "').show(400, 'swing')}, 400);"
-    ),
-    tag
-  )
-}
-
-
-tag_wrapper <- function(...) {
-  htmltools::p(...)
-}
-
-# should take inputs that match the columns in carddata,
-# but not every variable gets used
-make_card <- function(title, text, image, link, footer, header, tags,
-                      width, layout, padding, gutter, breakpoint, colour,
-                      border_width, border_colour, rounding){
-
-  border <- c(width = border_width, colour = border_colour, style = "solid")
-  radius <- rounding;
-
-  if(layout == "label-below" | layout == "label-above") {
-    card <- layout_card_vertical(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
-
-  if(layout == "label-only" | layout == "image-only") {
-    card <- layout_card_singleton(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
-
-  if(layout == "label-right" | layout == "label-left") {
-    card <- layout_card_horizontal(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
-
-  if(layout == "inset-bottom" | layout == "inset-top") {
-    card <- layout_card_inset(
-      title, text, image, link,
-      footer, header, tags, layout,
-      padding, gutter, breakpoint,
-      colour, border, radius
-    )
-    return(card)
-  }
+  return(htmltools::div(tag_list, card_row))
 }
 

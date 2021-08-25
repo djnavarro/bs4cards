@@ -22,51 +22,50 @@ card_pieces <- function(title, text, image, link, footer, header,
 # wrapper functions for small html pieces ---------------------------------
 
 make_title <- function(title, text) {
-  if(!is_na(title)) {
-    htmltools::h5(
-      title,
-      class = title_class(!is_na(text))
-    )
-  }
+  if(is_na(title)) return(NULL)
+
+  return(htmltools::h5(
+    title,
+    class = title_class(!is_na(text))
+  ))
 }
 
 make_text <- function(text, title) {
-  if(!is_na(text)) {
-    htmltools::p(
-      text,
-      class = text_class(!is_na(title))
-    )
-  }
+  if(is_na(text)) return(NULL)
+
+  return(htmltools::p(
+    text,
+    class = text_class(!is_na(title))
+  ))
 }
 
 make_image <- function(image, layout, corners, border) {
-  if(!is_na(image)) {
-    htmltools::img(
-      src = image,
-      class = image_class(layout),
-      style = image_style(corners, border, layout)
-    )
-  }
+  if(is_na(image)) return(NULL)
+
+  return(htmltools::img(
+    src = image,
+    class = image_class(layout),
+    style = image_style(corners, border, layout)
+  ))
 }
 
 make_footer <- function(footer, corners, border) {
-  if(!is_na(footer)) {
-    htmltools::div(
-      footer,
-      class = footer_class(),
-      style = footer_style(corners, border)
-    )
-  }
+  if(is_na(footer)) return(NULL)
+
+  return(htmltools::div(
+    footer,
+    class = footer_class(),
+    style = footer_style(corners, border)
+  ))
 }
 
 make_header <- function(header, corners, border) {
-  if(!is_na(header)) {
-    htmltools::div(
-      header,
-      class = header_class(),
-      style = header_style(corners, border)
-    )
-  }
-}
+  if(is_na(header)) return(NULL)
 
+  return(htmltools::div(
+    header,
+    class = header_class(),
+    style = header_style(corners, border)
+  ))
+}
 

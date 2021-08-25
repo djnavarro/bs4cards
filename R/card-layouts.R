@@ -12,31 +12,24 @@ layout_card_vertical <- function(title, text, image, link,
   # defensive coding!
   rm(title, text, image, footer, header)
 
-  body_vertical <- htmltools::div(
-    class = body_vertical_class(padding),
-    style = body_vertical_style(colour, corners, border),
+  label_vertical <- htmltools::div(
+    class = label_vertical_class(padding),
+    style = label_vertical_style(colour, corners, border),
     pieces$title, pieces$text
   )
 
-  if(layout == "label-below") {
-    return(htmltools::div(
-      class = card_class(gutter),
-      style = card_style(corners),
-      pieces$header, pieces$image, body_vertical, pieces$footer
-    ))
-  }
+  if(layout == "label-below") {above <- pieces$image; below <- label_vertical}
+  if(layout == "label-above") {below <- pieces$image; above <- label_vertical}
 
-  if(layout == "label-above") {
-    return(htmltools::div(
-      class = card_class(gutter, tags),
-      style = card_style(corners),
-      pieces$header, body_vertical, pieces$image, pieces$footer
-    ))
-  }
+  return(htmltools::div(
+    class = card_class(gutter),
+    style = card_style(corners),
+    pieces$header, above, below, pieces$footer
+  ))
 }
 
 
-layout_card_singleton <- function(title, text, image, link,
+layout_card_labelonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
                                   padding, gutter, breakpoint,
                                   colour, border, radius) {
@@ -48,28 +41,38 @@ layout_card_singleton <- function(title, text, image, link,
   # defensive coding!
   rm(title, text, image, footer, header)
 
-  if(layout == "label-only") {
-    body_vertical <- htmltools::div(
-      class = body_vertical_class(padding),
-      style = body_vertical_style(colour, corners, border),
-      pieces$title, pieces$text
-    )
-    return(htmltools::div(
-      class = card_class(gutter),
-      style = card_style(corners),
-      pieces$header, body_vertical, pieces$footer
-    ))
-  }
+  label_vertical <- htmltools::div(
+    class = label_vertical_class(padding),
+    style = label_vertical_style(colour, corners, border),
+    pieces$title, pieces$text
+  )
 
-  if(layout == "image-only") {
-    return(htmltools::div(
-      class = card_class(gutter, tags),
-      style = card_style(corners),
-      pieces$header, pieces$image, pieces$footer
-    ))
-  }
+  return(htmltools::div(
+    class = card_class(gutter),
+    style = card_style(corners),
+    pieces$header, label_vertical, pieces$footer
+  ))
 }
 
+
+layout_card_imageonly <- function(title, text, image, link,
+                                  footer, header, tags, layout,
+                                  padding, gutter, breakpoint,
+                                  colour, border, radius) {
+
+  corners <- card_corners(layout, footer, header, radius)
+  pieces <- card_pieces(title, text, image, link, footer, header,
+                        layout, border, corners)
+
+  # defensive coding!
+  rm(title, text, image, footer, header)
+
+  return(htmltools::div(
+    class = card_class(gutter, tags),
+    style = card_style(corners),
+    pieces$header, pieces$image, pieces$footer
+  ))
+}
 
 
 

@@ -1,5 +1,5 @@
 
-validate_cardspec <- function(cardspec, n) {
+build_card_data <- function(cardspec, n) {
 
   # check that the user has specified image and/or label
   no_image <- is_null(cardspec[["image"]])
@@ -30,7 +30,10 @@ validate_cardspec <- function(cardspec, n) {
   check_valid_border_colour(cardspec[["border_colour"]], n)
   check_valid_rounding(cardspec[["rounding"]], n)
 
-  return(cardspec)
+  # coerce to data frame
+  carddata <- as.data.frame(cardspec)
+
+  return(carddata)
 }
 
 is_scalar_numeric <- function(x) {
@@ -123,13 +126,20 @@ clean_layout <- function(layout, no_image, no_label) {
 # typical use case for inset cards is to provide a small floating caption/title
 clean_breakpoint <- function(breakpoint, layout) {
   if(!is_null(breakpoint)) return(breakpoint)
-  if(layout == "label-left") return(2/3)
-  if(layout == "label-right") return(2/3)
+  if(layout == "label-left") return(7/12)
+  if(layout == "label-right") return(7/12)
   if(layout == "inset-top") return(.2)
   if(layout == "inset-bottom") return(.2)
   return(1)
 }
 
+
+# to do: use this to make a preserve_whitespace() function??
+#
+# htmltools::span(
+#   blah,
+#   style = "white-space: pre-wrap"
+# )
 
 
 
