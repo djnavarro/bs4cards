@@ -131,6 +131,13 @@ clean_breakpoint <- function(breakpoint, layout) {
 }
 
 
+# to do: use this to make a preserve_whitespace() function??
+#
+# htmltools::span(
+#   blah,
+#   style = "white-space: pre-wrap"
+# )
+
 
 
 
