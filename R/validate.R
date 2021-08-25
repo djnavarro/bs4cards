@@ -30,7 +30,10 @@ validate_cardspec <- function(cardspec, n) {
   check_valid_border_colour(cardspec[["border_colour"]], n)
   check_valid_rounding(cardspec[["rounding"]], n)
 
-  return(cardspec)
+  # coerce to data frame
+  carddata <- as.data.frame(cardspec)
+
+  return(carddata)
 }
 
 is_scalar_numeric <- function(x) {

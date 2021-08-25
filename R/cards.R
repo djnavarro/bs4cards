@@ -47,17 +47,12 @@ cards <- function(data,
     colour = colour, border_width = border_width, border_colour = border_colour,
     rounding = rounding
   )
-  cardspec <- lapply(quosures, function(x) eval_tidy(x, data = data))
-  cardspec <- validate_cardspec(cardspec, nrow(data))
-  carddata <- as.data.frame(cardspec)
 
-  cardlist <- build_card_list(
-    data = carddata,
-    width = cardspec[["width"]],
-    gutter = cardspec[["gutter"]]
-  )
-  taglist <- build_tag_list(carddata[["tags"]])
+  card_spec <- lapply(quosures, function(x) eval_tidy(x, data = data))
+  card_data <- validate_cardspec(card_spec, nrow(data))
+  card_row <- build_card_row(card_data)
+  tag_list <- build_tag_list(card_data[["tags"]])
 
-  return(htmltools::div(taglist, cardlist))
+  return(htmltools::div(tag_list, card_row))
 }
 
