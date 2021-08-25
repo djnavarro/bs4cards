@@ -101,38 +101,30 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards">bs4cards</a></span><span class="op">)</span>
 <span class="va">galleries</span>
-<span class="co">#&gt; # A tibble: 7 × 5</span>
-<span class="co">#&gt;   long_name              short_name   date       blurb             paintbrushes </span>
-<span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;             &lt;chr&gt;        </span>
-<span class="co">#&gt; 1 Ash Cloud and Blood    ash          2021-07-17 Simulated waterc… ggplot2      </span>
-<span class="co">#&gt; 2 Ghosts on Marble Paper ghosts       2021-01-09 Abstract landsca… ambient      </span>
-<span class="co">#&gt; 3 Ice Floes              ice-floes    2021-01-19 Abstract iceberg… ambient      </span>
-<span class="co">#&gt; 4 Native Flora           native-flora 2021-02-10 Collections of s… ggplot2 flam…</span>
-<span class="co">#&gt; 5 Silhouettes            silhouettes  2021-01-24 Trees generated … ggplot2 rcpp…</span>
-<span class="co">#&gt; 6 Track Marks            track-marks  2020-09-20 Voronoi tessella… ggplot2 rcpp </span>
-<span class="co">#&gt; 7 Viewports              viewports    2021-02-28 Simple masks wit… ggplot2 flam…</span></code></pre></div>
-<p>Because I’ll be using the data repeatedly, I’ll define some helper functions, one that uses the <code>short_name</code> of a gallery to construct the <code>preview_url()</code> that links to the image file to be displayed, and another one that uses it to construct the <code>gallery_url()</code> that the card links to:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">preview_url</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://bs4cards.djnavarro.net/image/"</span>, <span class="va">x</span>, <span class="st">".jpg"</span><span class="op">)</span>
-<span class="op">}</span> 
-<span class="va">gallery_url</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"https://art.djnavarro.net/gallery/"</span>, <span class="va">x</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 7 × 7</span>
+<span class="co">#&gt;   long_name              short_name date  blurb paintbrushes image_url gallery_url</span>
+<span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 Ash Cloud and Blood    ash        2021… Simu… ggplot2      https://… https://ar…</span>
+<span class="co">#&gt; 2 Ghosts on Marble Paper ghosts     2021… Abst… ambient      https://… https://ar…</span>
+<span class="co">#&gt; 3 Ice Floes              ice-floes  2021… Abst… ambient      https://… https://ar…</span>
+<span class="co">#&gt; 4 Native Flora           native-fl… 2021… Coll… ggplot2 fla… https://… https://ar…</span>
+<span class="co">#&gt; 5 Silhouettes            silhouett… 2021… Tree… ggplot2 rcp… https://… https://ar…</span>
+<span class="co">#&gt; 6 Track Marks            track-mar… 2020… Voro… ggplot2 rcpp https://… https://ar…</span>
+<span class="co">#&gt; 7 Viewports              viewports  2021… Simp… ggplot2 fla… https://… https://ar…</span></code></pre></div>
 <div id="anatomy-of-a-card" class="section level2">
 <h2 class="hasAnchor">
 <a href="#anatomy-of-a-card" class="anchor"></a>Anatomy of a card</h2>
 <p>A typical grid will define a <code>title</code>, <code>image</code>, and <code>link</code> associated with each card, which in the simplest case produces output like this:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -141,7 +133,7 @@
 </a>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -150,7 +142,7 @@
 </a>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -159,7 +151,7 @@
 </a>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -168,7 +160,7 @@
 </a>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -177,7 +169,7 @@
 </a>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -186,7 +178,7 @@
 </a>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -206,31 +198,31 @@
 <h3 class="hasAnchor">
 <a href="#images" class="anchor"></a>Images</h3>
 <p>It is possible to create “image only” cards by specifying only the <code>image</code> argument:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>image <span class="op">=</span> <span class="va">image_url</span><span class="op">)</span>
 <span class="co">#&gt; using 'image-only' layout</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 </div>
 </div>
@@ -240,49 +232,49 @@
 <h3 class="hasAnchor">
 <a href="#text-and-titles" class="anchor"></a>Text and titles</h3>
 <p>Alternatively, you can define “label-only” cards that contain no images, by specifying <code>title</code>, <code>text</code>, or both:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">long_name</span>, text <span class="op">=</span> <span class="va">blurb</span><span class="op">)</span>
 <span class="co">#&gt; using 'label-only' layout</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Ash Cloud and Blood</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Simulated watercolours in ggplot2 using the transparent polygon method</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Ghosts on Marble Paper</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract landscapes generated using ambient</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Ice Floes</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract icebergs generated using ambient</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Native Flora</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Collections of small flametrees that resemble branching plants</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Silhouettes</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Trees generated in flametree with random walk backgrounds</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Track Marks</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Voronoi tessellations with seed points sampled from an iterated function system</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Viewports</h5>
 <p class="card-text my-auto px-3 pb-3 pt-1">Simple masks with ggfx using flametree-generated textures</p>
@@ -296,18 +288,18 @@
 <h3 class="hasAnchor">
 <a href="#headers-and-footers" class="anchor"></a>Headers and footers</h3>
 <p>The “body” of a card is comprised of the <code>image</code> and the label (i.e., <code>title</code> and/or <code>text</code>), which may or may not be associated with a <code>link</code>. Optionally, you can add a <code>header</code> and/or <code>footer</code> which appear above or below the body. These appear in muted text, and are intended for the inclusion of ancillary information:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted:"</span>, <span class="va">date</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -316,9 +308,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Simulated watercolours in ggplot2 using the transparent polygon method</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-07-17</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -327,9 +319,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract landscapes generated using ambient</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-09</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -338,9 +330,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract icebergs generated using ambient</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-19</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -349,9 +341,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Collections of small flametrees that resemble branching plants</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-10</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -360,9 +352,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Trees generated in flametree with random walk backgrounds</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-24</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -371,9 +363,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Voronoi tessellations with seed points sampled from an iterated function system</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2020-09-20</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -382,23 +374,23 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Simple masks with ggfx using flametree-generated textures</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-28</div>
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    header <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
+    header <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted:"</span>, <span class="va">date</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2021-07-17</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2021-07-17</div>
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -408,8 +400,8 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Simulated watercolours in ggplot2 using the transparent polygon method</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2021-01-09</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2021-01-09</div>
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -419,8 +411,8 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract landscapes generated using ambient</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2021-01-19</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2021-01-19</div>
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -430,8 +422,8 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract icebergs generated using ambient</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2021-02-10</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2021-02-10</div>
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -441,8 +433,8 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Collections of small flametrees that resemble branching plants</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2021-01-24</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2021-01-24</div>
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -452,8 +444,8 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Trees generated in flametree with random walk backgrounds</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2020-09-20</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2020-09-20</div>
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -463,8 +455,8 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Voronoi tessellations with seed points sampled from an iterated function system</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
-<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted on 2021-02-28</div>
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-header small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;">posted: 2021-02-28</div>
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -486,18 +478,18 @@
 <h3 class="hasAnchor">
 <a href="#vertical-layouts" class="anchor"></a>Vertical layouts</h3>
 <p>If you want vertically oriented cards, set <code>layout = "label-above"</code> or <code>layout = "label-below"</code> (the default) to create the cards:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted:"</span>, <span class="va">date</span><span class="op">)</span>,
     layout <span class="op">=</span> <span class="st">"label-above"</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
@@ -505,9 +497,9 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-07-17</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
@@ -515,9 +507,9 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-09</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
@@ -525,9 +517,9 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-19</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Native Flora</h5>
@@ -535,9 +527,9 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-10</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Silhouettes</h5>
@@ -545,9 +537,9 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-24</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Track Marks</h5>
@@ -555,9 +547,9 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2020-09-20</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Viewports</h5>
@@ -565,23 +557,23 @@
 </div>
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-bottom" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;"></a>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-28</div>
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted:"</span>, <span class="va">date</span><span class="op">)</span>,
     layout <span class="op">=</span> <span class="st">"label-below"</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -590,9 +582,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Simulated watercolours in ggplot2 using the transparent polygon method</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-07-17</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -601,9 +593,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract landscapes generated using ambient</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-09</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -612,9 +604,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract icebergs generated using ambient</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-19</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -623,9 +615,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Collections of small flametrees that resemble branching plants</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-10</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -634,9 +626,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Trees generated in flametree with random walk backgrounds</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-24</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -645,9 +637,9 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Voronoi tessellations with seed points sampled from an iterated function system</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2020-09-20</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
@@ -656,7 +648,7 @@
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">Simple masks with ggfx using flametree-generated textures</p>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-28</div>
 </div>
 </div>
 </div>
@@ -665,19 +657,19 @@
 <h3 class="hasAnchor">
 <a href="#horizontal-layouts" class="anchor"></a>Horizontal layouts</h3>
 <p>To set horizontal layouts, set <code>layout = "label-left"</code> or <code>layout = "label-right"</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     width <span class="op">=</span> <span class="st">"very-wide"</span>,
     layout <span class="op">=</span> <span class="st">"label-left"</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -693,7 +685,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -709,7 +701,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -725,7 +717,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -741,7 +733,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -757,7 +749,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -773,7 +765,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="col-7 h-100">
@@ -791,21 +783,21 @@
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     width <span class="op">=</span> <span class="st">"very-wide"</span>,
-    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted on"</span>, <span class="va">date</span><span class="op">)</span>,
+    footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"posted:"</span>, <span class="va">date</span><span class="op">)</span>,
     layout <span class="op">=</span> <span class="st">"label-right"</span>,
     breakpoint <span class="op">=</span> <span class="fl">.5</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -820,9 +812,9 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-07-17</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-07-17</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -837,9 +829,9 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-09</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-09</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -854,9 +846,9 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-19</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-19</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -871,9 +863,9 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-10</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-10</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -888,9 +880,9 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-01-24</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-01-24</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -905,9 +897,9 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2020-09-20</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2020-09-20</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-6" style="border-radius: 1rem 0 0 0 ;">
@@ -922,7 +914,7 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted on 2021-02-28</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">posted: 2021-02-28</div>
 </div>
 </div>
 </div>
@@ -931,19 +923,19 @@
 <h3 class="hasAnchor">
 <a href="#inset-layouts" class="anchor"></a>Inset layouts</h3>
 <p>The inset layouts place the “label” part of the card as a floating overlay on top of the image. The overlay can appear at the top or the bottom, depending on whether <code>layout = "inset-top"</code> or <code>layout = "inset-bottom"</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     width <span class="op">=</span> <span class="st">"wide"</span>,
     layout <span class="op">=</span> <span class="st">"inset-top"</span>, 
     colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -958,7 +950,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -973,7 +965,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -988,7 +980,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -1003,7 +995,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -1018,7 +1010,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -1033,7 +1025,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 1rem 1rem 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;"></a>
@@ -1050,12 +1042,12 @@
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     width <span class="op">=</span> <span class="st">"wide"</span>,
     layout <span class="op">=</span> <span class="st">"inset-bottom"</span>, 
     colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>, 
@@ -1063,7 +1055,7 @@
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1078,7 +1070,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1093,7 +1085,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1108,7 +1100,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1123,7 +1115,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1138,7 +1130,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1153,7 +1145,7 @@
 </div>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 0 0 0 0 ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;"></a>
@@ -1170,20 +1162,20 @@
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     footer <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     width <span class="op">=</span> <span class="st">"wide"</span>,
     layout <span class="op">=</span> <span class="st">"inset-bottom"</span>, 
     colour <span class="op">=</span> <span class="st">"#ffffffcc"</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1199,7 +1191,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Simulated watercolours in ggplot2 using the transparent polygon method</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1215,7 +1207,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Abstract landscapes generated using ambient</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1231,7 +1223,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Abstract icebergs generated using ambient</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1247,7 +1239,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Collections of small flametrees that resemble branching plants</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1263,7 +1255,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Trees generated in flametree with random walk backgrounds</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1279,7 +1271,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">Voronoi tessellations with seed points sampled from an iterated function system</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1297,14 +1289,14 @@
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
     footer <span class="op">=</span> <span class="va">date</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     width <span class="op">=</span> <span class="st">"wide"</span>,
     layout <span class="op">=</span> <span class="st">"inset-bottom"</span>, 
     breakpoint <span class="op">=</span> <span class="fl">.5</span>,
@@ -1312,7 +1304,7 @@
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1329,7 +1321,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-07-17</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1346,7 +1338,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-01-09</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1363,7 +1355,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-01-19</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1380,7 +1372,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-02-10</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1397,7 +1389,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2021-01-24</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1414,7 +1406,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">2020-09-20</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div style="position: relative; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 0 0 ;"></a>
@@ -1439,13 +1431,13 @@
 <h2 class="hasAnchor">
 <a href="#filtering-cards-by-category" class="anchor"></a>Filtering cards by category</h2>
 <p>The <code>tags</code> argument can be used to assign each card to a set of tags, and adds toggle buttons at the top of the card list that the user can do to display only those cards possessing the tag in question. The tags should be a single string, with spaces separating each tag. In the <code>galleries</code> data, the <code>paintbrushes</code> variable contains a list of some of the packages that were used in generating each generative art system. It’s generally a good idea to have one tag that is possessed by all of the cards. The bs4cards package doesn’t enforce this, but it’s easy to do as illustrated below:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     tags <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="va">paintbrushes</span><span class="op">)</span>,
     width <span class="op">=</span> <span class="st">"very-wide"</span>,
     footer <span class="op">=</span> <span class="va">paintbrushes</span>,
@@ -1460,7 +1452,7 @@
 <button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.rcpp').show(400, 'swing')}, 400);">rcpp</button>
 </p>
 <div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ggplot2" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1477,7 +1469,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ambient" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ambient" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1494,7 +1486,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ambient</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ambient" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ambient" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1511,7 +1503,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ambient</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1528,7 +1520,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 flametree</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 rcpp flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 rcpp flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1545,7 +1537,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 rcpp flametree</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 rcpp" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 rcpp" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1562,7 +1554,7 @@
 </div>
 <div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 rcpp</div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show all ggplot2 flametree" style="border-radius: 1rem 1rem 1rem 1rem ;">
 <div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
 <div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
 <div class="col-5" style="border-radius: 1rem 0 0 0 ;">
@@ -1607,19 +1599,19 @@
 <div id="label-colour" class="section level3">
 <h3 class="hasAnchor">
 <a href="#label-colour" class="anchor"></a>Label colour</h3>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
-    link <span class="op">=</span> <span class="fu">gallery_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
-    image <span class="op">=</span> <span class="fu">preview_url</span><span class="op">(</span><span class="va">short_name</span><span class="op">)</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
     colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#d6cadd"</span>, <span class="st">"white"</span>, <span class="st">"#c4d8e2"</span>, <span class="st">"white"</span>, 
                <span class="st">"white"</span>, <span class="st">"white"</span>, <span class="st">"white"</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #d6cadd; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -1629,7 +1621,7 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Simulated watercolours in ggplot2 using the transparent polygon method</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: white; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -1639,7 +1631,7 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract landscapes generated using ambient</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #c4d8e2; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -1649,7 +1641,7 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Abstract icebergs generated using ambient</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: white; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -1659,7 +1651,7 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Collections of small flametrees that resemble branching plants</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: white; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -1669,7 +1661,7 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Trees generated in flametree with random walk backgrounds</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: white; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
@@ -1679,7 +1671,7 @@
 <p class="card-text my-auto px-3 pb-3 pt-1">Voronoi tessellations with seed points sampled from an iterated function system</p>
 </div>
 </div>
-<div class="card d-flex flex-column bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show " style="border-radius: 1rem 1rem 1rem 1rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: white; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
