@@ -1,0 +1,54 @@
+---
+title: "Other topics"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+
+## A word of warning
+
+This post isn't finished... reader beware :-)
+
+## Tidy evaluation
+
+Because the user-supplied expressions are evaluated using the provided data, it is possible to use the data flexibly when constructing cards. Titles and text can be changed using text manipulation tools, dates can be formatted prettily and so on. For example:
+
+```{r}
+galleries %>% 
+  cards(
+    title = short_name %>% 
+      gsub("-", " ", .) %>% 
+      toupper(),
+    text = date %>% 
+      as.Date() %>% 
+      format("%d %B %Y"),
+    link = gallery_url,
+    image = image_url
+  )
+```
+
+Internally this is powered by rlang, which means that tidy evaluation is supported:
+
+```{r}
+name <- quote(short_name)
+imgs <- quote(image_url)
+  
+galleries %>% 
+  cards(
+    title = !!name,
+    image = !!imgs
+  )
+```
+
+## Passing bootstrap classes directly
+
+For the `width` argument you can pass your own bootstrap classes if you want. This isn't validated in any sense, so it's user beware.  

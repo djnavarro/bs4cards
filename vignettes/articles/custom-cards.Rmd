@@ -11,7 +11,7 @@ library(tibble)
 ```
 
 
-In this article I'll provide an overview of the various arguments to `cards()`, and how they can be used to customise the look and feel of a card grid, using the built in `galleries` data as an example:
+In this article I'll provide an overview of the various arguments to `cards()`, and how they can be used to customise the look and feel of a card grid, using the built in `galleries` data.
 
 ```{r}
 library(bs4cards)
@@ -21,78 +21,87 @@ galleries
 
 ## Anatomy of a card
 
-A typical grid will define a `title`, `image`, and `link` associated with each card, which in the simplest case produces output like this:
+Conceptually, a card is comprised of five major parts:
+
+- The *card image* is controlled by the `image` argument, which should specify the path to the image file to be displayed in each card. As a general principle, bs4cards does not distort the appearance of an image: it is not cropped, nor does it alter the aspect ratio. The only thing it will do is rescale the size of the image as the size of the browser window changes. The image can be omitted by setting `image = NULL`. The exact positioning of the image depends on the card layout (discussed below).
+
+- The *card label* has two parts, the `title` and the `text`, whose values should be character strings specifying the text to be displayed. As long as one or both of these arguments are specified, the card will have a label. The title is always displayed above the text, and the size of the label is adjusted flexibly as the screen size changes. The constituent parts can be omitted by setting `title = NULL` and/or `text = NULL`. The exact positioning of the label depends on the card layout (discussed below).
+
+- The *card link* is controlled by the `link` argument, which should specify the url to be opened when the user selects the card. The link itself does not occupy any space: if it exists, then it is applied to both the image and the card title. The link can be omitted by setting `link = NULL`
+
+- The *card footer* is controlled by the `footer` argument, which should specify text that will displayed at the bottom of the card (it always appears at the bottom regardless of what layout is adopted). The footer text is displayed in muted colours and is intended for the display of ancillary information. Some care is required when using footers, discussed later in the article. To omit footers, set `footer = NULL`.
+
+- The *card header* is analogous to the footer, and is controlled by the `header` argument. The only difference is that the header appears at the top of the card. This is rarely a useful thing to do, and while the bs4cards package does allow it, a lot of care is required (discussed later). In most cases no header is needed, in which case the default `header = NULL` is appropriate.
+
+The different parts are illustrated in the example below:
 
 ```{r}
 galleries %>% 
   cards(
     title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    footer = date
+  )
+```
+
+
+## Layout of a card
+
+The bs4cards package supports a total eight different `layout` formats. First, there are two vertical layouts and two horizontal layouts:
+
+- Setting `layout = "label-below"` places the label below the image (the default)
+- Setting `layout = "label-above"` places the label above the image
+- Setting `layout = "label-left"` places the label to the left of the image
+- Setting `layout = "label-right"` places the label to the right of the image
+
+Some examples:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    layout = "label-above"
+  )
+```
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    text = blurb,
+    layout = "label-right",
+    width = "very-wide"
+  )
+```
+
+(Notice that I set `width = "very-wide"` for the horizontal card. Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. The width of the cards is controlled by the `width` argument, and I'll talk more about it later)
+
+In addition there are two "singleton" layouts:
+
+- Setting `layout = "label-only"` includes a label but no image
+- Setting `layout = "image-only"` includes an image but no label
+
+As a convenience, the `cards()` function will detect when the user has not specified a label (or image) and will choose the appropriate layout automatically:
+
+```{r}
+galleries %>% 
+  cards(
     link = gallery_url,
     image = image_url
   )
 ```
 
 
-### Links
+Finally there are two "inset" layouts, in which the label is displayed as an overlay on top of the image. These two layouts are experimental, and I wouldn't advise using them just yet. But if you want to try...
 
-Every card in this grid uses the link in two places: the title and the image both link to the target location. However, there is no need to specify any link. If you set `link = NULL` (the default), the cards will be displayed in exactly the same way but will not link to anything.
-
-### Images
-
-It is possible to create "image only" cards by specifying only the `image` argument:
-
-```{r}
-galleries %>% 
-  cards(image = image_url)
-```
-
-### Text and titles
-
-Alternatively, you can define "label-only" cards that contain no images, by specifying `title`, `text`, or both:
-
-```{r}
-galleries %>% 
-  cards(title = long_name, text = blurb)
-```
-
-The only constraint imposed by `cards()` is that you must include one of the three main content types: a card must have a `title`, some `text`, or an `image`. 
-
-### Headers and footers
-
-The "body" of a card is comprised of the `image` and the label (i.e., `title` and/or `text`), which may or may not be associated with a `link`. Optionally, you can add a `header` and/or `footer` which appear above or below the body. These appear in muted text, and are intended for the inclusion of ancillary information:
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = gallery_url,
-    image = image_url,
-    footer = paste("posted:", date)
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = gallery_url,
-    image = image_url,
-    header = paste("posted:", date)
-  )
-```
-
-
-
-## Layout of a card
-
-The bs4cards package supports two vertical-oriented card layouts, two horizontally-oriented card layouts, and two inset layouts that place the label as a transparent overlay on top of the image. To select which kind of layout you prefer, specify the  `layout` argument to `cards()`. Note, however, that the layout only affects the relative position of the image and the label. Headers (if included) will always remain at the top, and footers (if included) will always remain at the bottom.
-
-### Vertical layouts
-
-If you want vertically oriented cards, set `layout = "label-above"` or `layout = "label-below"` (the default) to create the cards:
+- Setting `layout = "inset-top"` places the label at the top of the image
+- Setting `layout = "inset-bottom"` places the label at the bottom of the image
 
 ```{r}
 galleries %>% 
@@ -100,122 +109,17 @@ galleries %>%
     title = long_name,
     link = gallery_url,
     image = image_url,
-    footer = paste("posted:", date),
-    layout = "label-above"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = gallery_url,
-    image = image_url,
-    text = blurb,
-    footer = paste("posted:", date),
-    layout = "label-below"
-  )
-```
-
-
-### Horizontal layouts
-
-To set horizontal layouts, set `layout = "label-left"` or `layout = "label-right"`:
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = gallery_url,
-    image = image_url,
-    width = "very-wide",
-    layout = "label-left"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = gallery_url,
-    image = image_url,
-    width = "very-wide",
-    footer = paste("posted:", date),
-    layout = "label-right",
-    breakpoint = .5
-  )
-```
-
-
-
-### Inset layouts
-
-The inset layouts place the "label" part of the card as a floating overlay on top of the image. The overlay can appear at the top or the bottom, depending on whether `layout = "inset-top"` or `layout = "inset-bottom"`:
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = gallery_url,
-    image = image_url,
-    width = "wide",
     layout = "inset-top", 
     colour = "#ffffffcc"
   )
 ```
 
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = gallery_url,
-    image = image_url,
-    width = "wide",
-    layout = "inset-bottom", 
-    colour = "#ffffffcc", 
-    rounding = "0"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    footer = blurb,
-    link = gallery_url,
-    image = image_url,
-    width = "wide",
-    layout = "inset-bottom", 
-    colour = "#ffffffcc"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    footer = date,
-    link = gallery_url,
-    image = image_url,
-    width = "wide",
-    layout = "inset-bottom", 
-    breakpoint = .5,
-    colour = "#ffffffcc"
-  )
-```
+(Notice I set a partially transparent `colour` for the labels in this example. I'll talk about colours later, but inset layouts in particular tend to benefit from choosing a judicious label colour)
 
 
 ## Filtering cards by category
 
-The `tags` argument can be used to assign each card to a set of tags, and adds toggle buttons at the top of the card list that the user can do to display only those cards possessing the tag in question. The tags should be a single string, with spaces separating each tag. In the `galleries` data, the `paintbrushes` variable contains a list of some of the packages that were used in generating each generative art system. It's generally a good idea to have one tag that is possessed by all of the cards. The bs4cards package doesn't enforce this, but it's easy to do as illustrated below:
+It is possible to assign each card to a set of `tags`, and allow the user to select which tag will be displayed. At the moment, the only user interface option that bs4cards supports is buttons (other options such as dropdown lists may be supported later). If the `tags` argument is specified, labelled buttons will appear at the top of the card deck. Clicking on a button will show the cards that possess the corresponding tag. Cards are allowed to possess multiple tags: the list of tags should be a single string, with spaces separating each tag. For example, in the `galleries` data the `paintbrushes` variable contains names of some of the packages used in creating the art. For the "Native Flora" system, the "paintbrushes" were ggplot2 and the flametree package, so the relevant tag string is `"ggplot2 flametree"`. Each of these tags is associated with a button, as the example below illustrates:
 
 ```{r}
 galleries %>% 
@@ -231,29 +135,22 @@ galleries %>%
   )
 ```
 
+Notice that I used `paste()` to ensure that there is an `"all"` category, to which every card belongs. That way, if the user clicks on the associated button it will show every card.
 
+## Width, spacing, and breakpoints
 
-## Spacing the cards
-
-### Controlling card width
 
 the `width` argument
 
-### Setting internal breakpoint
 
 the `breakpoint` argument
 
-### Customising margins
 
 the `padding` and `gutter` arguments
 
 
-## Appearance of a card
+## Colours, borders, and corners
 
-
-
-
-### Label colour
 
 ```{r}
 galleries %>% 
@@ -268,13 +165,43 @@ galleries %>%
 ```
 
 
-### Border width
 
+## Headers and footers
 
-### Border colour
+As mentioned earlier, the bs4cards package allows you to include headers and footers. However, because of the limitations of bootstrap (or possibly my limitations in using it), it's not easy to simultaneously align headers, footers, images, and labels in a way that is clean and responsive regardless of the size of the browser window. As a consequence, they're best suited to cases where you want to discreetly include a small amount of metadata that can be guaranteed to fit on a single line:
 
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    width = "very-wide",
+    footer = paste("packages:", paintbrushes),
+    layout = "label-right"
+  )
+```
 
-### Corner rounding
+When the text is long enough to potentially occupy multiple lines, more care is needed. The vertical space occupied by a header or footer is calculated independently of each other. This means that when the text in the header/footer varies in length, the cards are no longer guaranteed to be equal in height, producing ragged borders in situations where the user would probably prefer card parts of the same type to be aligned with one another. This limitation is most obvious for vertically-oriented cards, and more pronounced for headers than for footers. To my eye at least, these seem visually unappealing:
 
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    header = blurb
+  )
+```
 
+```{r}
+galleries %>% 
+  cards(
+    link = gallery_url,
+    image = image_url,
+    footer = paste(long_name, blurb, sep = ": "), 
+    layout = "image-only"
+  )
+```
 
