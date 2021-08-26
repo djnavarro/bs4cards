@@ -76,11 +76,11 @@ galleries %>%
     image = image_url,
     text = blurb,
     layout = "label-right",
-    width = "very-wide"
+    width = 4
   )
 ```
 
-(Notice that I set `width = "very-wide"` for the horizontal card. Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. The width of the cards is controlled by the `width` argument, and I'll talk more about it later)
+(Notice that I set `width = 4` for the horizontal card. Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. The width of the cards is controlled by the `width` argument, and I'll talk more about it later)
 
 In addition there are two "singleton" layouts:
 
@@ -110,11 +110,11 @@ galleries %>%
     link = gallery_url,
     image = image_url,
     layout = "inset-top", 
-    colour = "#ffffffcc"
+    label_colour = "#ffffffcc"
   )
 ```
 
-(Notice I set a partially transparent `colour` for the labels in this example. I'll talk about colours later, but inset layouts in particular tend to benefit from choosing a judicious label colour)
+(Notice I set a partially transparent `label_colour` for the labels in this example. I'll talk about colours later, but inset layouts in particular tend to benefit from choosing a judicious label colour)
 
 
 ## Filtering cards by category
@@ -129,7 +129,7 @@ galleries %>%
     link = gallery_url,
     image = image_url,
     tags = paste("all", paintbrushes),
-    width = "very-wide",
+    width = 4,
     footer = paintbrushes,
     layout = "label-right"
   )
@@ -139,27 +139,28 @@ Notice that I used `paste()` to ensure that there is an `"all"` category, to whi
 
 ## Card width
 
-There are four pre-specified width settings: `"narrow"`, `"medium"` (the default), `"wide"`, and `"very-wide"`. All four are responsive widths, and will resize the cards and change the number of columns depending on the size of the display device. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:
+There are four pre-specified width settings, numbered from 1 to 5. All are responsive widths, and will resize the cards and change the number of columns depending on the size of the display device. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:
 
 ```{r, results='hold', message=FALSE}
-cards(data = galleries[1,], image = image_url, width = "narrow")
-cards(data = galleries[1,], image = image_url, width = "medium") # default
-cards(data = galleries[1,], image = image_url, width = "wide")
-cards(data = galleries[1,], image = image_url, width = "very-wide")
+cards(data = galleries[1,], image = image_url, width = 1)
+cards(data = galleries[1,], image = image_url, width = 2)
+cards(data = galleries[1,], image = image_url, width = 3)
+cards(data = galleries[1,], image = image_url, width = 4)
+cards(data = galleries[1,], image = image_url, width = 5)
 ```
 
 ## Card spacing
 
-To modify the separation between cards, use the `gutter` argument. Currently this argument is numeric, and takes a number between 0 and 5. At a later point this may be extended to allow more flexibility. At `gutter = 0`, all spacing between cards is removed:
+To modify the separation between cards, use the `spacing` argument. Currently this argument is numeric, and takes a number between 0 and 5. At `spacing = 0`, all spacing between cards is removed:
 
 ```{r, message=FALSE}
-cards(data = galleries, image = image_url, gutter = 0)
+cards(data = galleries, image = image_url, spacing = 0)
 ```
 
-At `gutter = 5` there is a lot of room between cards:
+At `spacing = 5` there is a lot of room between cards:
 
 ```{r, message=FALSE}
-cards(data = galleries, image = image_url, gutter = 5)
+cards(data = galleries, image = image_url, spacing = 5)
 ```
 
 ## Break points
@@ -174,7 +175,7 @@ galleries %>%
     text = blurb,
     link = gallery_url,
     image = image_url,
-    colour = c("#d6cadd", "white", "#c4d8e2", "white", 
+    label_colour = c("#d6cadd", "white", "#c4d8e2", "white", 
                "white", "white", "white")
   )
 ```
@@ -196,7 +197,7 @@ galleries %>%
     text = blurb,
     link = gallery_url,
     image = image_url,
-    width = "very-wide",
+    width = 4,
     footer = paste("packages:", paintbrushes),
     layout = "label-right"
   )

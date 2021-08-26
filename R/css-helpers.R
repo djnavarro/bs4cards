@@ -15,10 +15,11 @@ outer_row_class <- function(width, gutter) {
 }
 
 column_width_class <- function(width){
-  if(width == "narrow") return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
-  if(width == "medium") return("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4")
-  if(width == "wide") return("row-cols-1 row-cols-md-2 row-cols-lg-3")
-  if(width == "very-wide") return("row-cols-1 row-cols-lg-2")
+  if(width == 1) return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
+  if(width == 2) return("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4")
+  if(width == 3) return("row-cols-1 row-cols-md-2 row-cols-lg-3")
+  if(width == 4) return("row-cols-1 row-cols-lg-2")
+  if(width == 5) return("row-cols-1")
   return(width)
 }
 

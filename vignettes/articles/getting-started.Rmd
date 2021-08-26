@@ -25,7 +25,7 @@ bs4cards::cards(
     text = description,
     link = paste0("https://slides.djnavarro.net/", clean_title),
     image = paste0("https://slides.djnavarro.net/index_img/", clean_title, ".png"),
-    width = "wide"
+    width = 3
   )
 ```
 
@@ -113,8 +113,8 @@ galleries %>%
     tags = paste("all", paintbrushes),
     footer = paintbrushes,
     layout = "label-right", 
-    width = "very-wide",
-    rounding = "0"
+    width = 4,
+    rounding = 0
   )
 ```
 
