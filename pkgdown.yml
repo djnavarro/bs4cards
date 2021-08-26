@@ -4,5 +4,6 @@ pkgdown_sha: ~
 articles:
   articles/custom-cards: custom-cards.html
   articles/getting-started: getting-started.html
-last_built: 2021-08-25T10:37Z
+  articles/other-topics: other-topics.html
+last_built: 2021-08-26T08:43Z
 
