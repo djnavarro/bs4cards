@@ -727,17 +727,112 @@
 </div>
 <p>Notice that I used <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste()</a></code> to ensure that there is an <code>"all"</code> category, to which every card belongs. That way, if the user clicks on the associated button it will show every card.</p>
 </div>
-<div id="width-spacing-and-breakpoints" class="section level2">
+<div id="card-width" class="section level2">
 <h2 class="hasAnchor">
-<a href="#width-spacing-and-breakpoints" class="anchor" aria-hidden="true"></a>Width, spacing, and breakpoints</h2>
-<p>the <code>width</code> argument</p>
-<p>the <code>breakpoint</code> argument</p>
-<p>the <code>padding</code> and <code>gutter</code> arguments</p>
-</div>
-<div id="colours-borders-and-corners" class="section level2">
-<h2 class="hasAnchor">
-<a href="#colours-borders-and-corners" class="anchor" aria-hidden="true"></a>Colours, borders, and corners</h2>
+<a href="#card-width" class="anchor" aria-hidden="true"></a>Card width</h2>
+<p>There are four pre-specified width settings: <code>"narrow"</code>, <code>"medium"</code> (the default), <code>"wide"</code>, and <code>"very-wide"</code>. All four are responsive widths, and will resize the cards and change the number of columns depending on the size of the display device. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, width <span class="op">=</span> <span class="st">"narrow"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, width <span class="op">=</span> <span class="st">"medium"</span><span class="op">)</span> <span class="co"># default</span>
+<span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, width <span class="op">=</span> <span class="st">"wide"</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, width <span class="op">=</span> <span class="st">"very-wide"</span><span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+</div>
+</div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+</div>
+</div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+</div>
+</div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-lg-2 my-1 mx-n1">
+<div class="card bg-transparent m-0 p-1 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+</div>
+</div>
+</div>
+<div id="card-spacing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#card-spacing" class="anchor" aria-hidden="true"></a>Card spacing</h2>
+<p>To modify the separation between cards, use the <code>gutter</code> argument. Currently this argument is numeric, and takes a number between 0 and 5. At a later point this may be extended to allow more flexibility. At <code>gutter = 0</code>, all spacing between cards is removed:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span>, image <span class="op">=</span> <span class="va">image_url</span>, gutter <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-0">
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-0 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+</div>
+</div>
+<p>At <code>gutter = 5</code> there is a lot of room between cards:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span>, image <span class="op">=</span> <span class="va">image_url</span>, gutter <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 my-1 mx-n5">
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+<div class="card bg-transparent m-0 p-5 border-0 collapse.show NA" style="border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: 1rem 1rem 1rem 1rem ;">
+</div>
+</div>
+</div>
+</div>
+<div id="break-points" class="section level2">
+<h2 class="hasAnchor">
+<a href="#break-points" class="anchor" aria-hidden="true"></a>Break points</h2>
+</div>
+<div id="card-colour" class="section level2">
+<h2 class="hasAnchor">
+<a href="#card-colour" class="anchor" aria-hidden="true"></a>Card colour</h2>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
@@ -822,11 +917,23 @@
 </div>
 </div>
 </div>
+<div id="border-colour" class="section level2">
+<h2 class="hasAnchor">
+<a href="#border-colour" class="anchor" aria-hidden="true"></a>Border colour</h2>
+</div>
+<div id="border-width" class="section level2">
+<h2 class="hasAnchor">
+<a href="#border-width" class="anchor" aria-hidden="true"></a>Border width</h2>
+</div>
+<div id="corner-rounding" class="section level2">
+<h2 class="hasAnchor">
+<a href="#corner-rounding" class="anchor" aria-hidden="true"></a>Corner rounding</h2>
+</div>
 <div id="headers-and-footers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#headers-and-footers" class="anchor" aria-hidden="true"></a>Headers and footers</h2>
 <p>As mentioned earlier, the bs4cards package allows you to include headers and footers. However, because of the limitations of bootstrap (or possibly my limitations in using it), it’s not easy to simultaneously align headers, footers, images, and labels in a way that is clean and responsive regardless of the size of the browser window. As a consequence, they’re best suited to cases where you want to discreetly include a small amount of metadata that can be guaranteed to fit on a single line:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
@@ -961,7 +1068,7 @@
 </div>
 </div>
 <p>When the text is long enough to potentially occupy multiple lines, more care is needed. The vertical space occupied by a header or footer is calculated independently of each other. This means that when the text in the header/footer varies in length, the cards are no longer guaranteed to be equal in height, producing ragged borders in situations where the user would probably prefer card parts of the same type to be aligned with one another. This limitation is most obvious for vertically-oriented cards, and more pronounced for headers than for footers. To my eye at least, these seem visually unappealing:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
@@ -1043,7 +1150,7 @@
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     link <span class="op">=</span> <span class="va">gallery_url</span>,

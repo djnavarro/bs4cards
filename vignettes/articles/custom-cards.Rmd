@@ -137,20 +137,35 @@ galleries %>%
 
 Notice that I used `paste()` to ensure that there is an `"all"` category, to which every card belongs. That way, if the user clicks on the associated button it will show every card.
 
-## Width, spacing, and breakpoints
+## Card width
+
+There are four pre-specified width settings: `"narrow"`, `"medium"` (the default), `"wide"`, and `"very-wide"`. All four are responsive widths, and will resize the cards and change the number of columns depending on the size of the display device. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:
+
+```{r, results='hold', message=FALSE}
+cards(data = galleries[1,], image = image_url, width = "narrow")
+cards(data = galleries[1,], image = image_url, width = "medium") # default
+cards(data = galleries[1,], image = image_url, width = "wide")
+cards(data = galleries[1,], image = image_url, width = "very-wide")
+```
+
+## Card spacing
+
+To modify the separation between cards, use the `gutter` argument. Currently this argument is numeric, and takes a number between 0 and 5. At a later point this may be extended to allow more flexibility. At `gutter = 0`, all spacing between cards is removed:
+
+```{r, message=FALSE}
+cards(data = galleries, image = image_url, gutter = 0)
+```
+
+At `gutter = 5` there is a lot of room between cards:
+
+```{r, message=FALSE}
+cards(data = galleries, image = image_url, gutter = 5)
+```
+
+## Break points
 
 
-the `width` argument
-
-
-the `breakpoint` argument
-
-
-the `padding` and `gutter` arguments
-
-
-## Colours, borders, and corners
-
+## Card colour
 
 ```{r}
 galleries %>% 
@@ -164,7 +179,11 @@ galleries %>%
   )
 ```
 
+## Border colour
 
+## Border width
+
+## Corner rounding
 
 ## Headers and footers
 
