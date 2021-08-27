@@ -4,6 +4,8 @@
 # bs4cards
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/djnavarro/bs4cards/workflows/R-CMD-check/badge.svg)](https://github.com/djnavarro/bs4cards/actions)
 <!-- badges: end -->
 
 When creating R markdown websites, I often find myself wanting to
