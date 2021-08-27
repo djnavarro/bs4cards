@@ -28,11 +28,11 @@ parse_breakpoint <- function(breakpoint, layout) {
   }
 
   if(layout == "inset-top" | layout == "inset-bottom") {
-    if(breakpoint == 1) return(4/12)
-    if(breakpoint == 2) return(5/12)
-    if(breakpoint == 3) return(6/12)
-    if(breakpoint == 4) return(7/12)
-    if(breakpoint == 5) return(8/12)
+    if(breakpoint == 1) return(3/12)
+    if(breakpoint == 2) return(4/12)
+    if(breakpoint == 3) return(5/12)
+    if(breakpoint == 4) return(6/12)
+    if(breakpoint == 5) return(7/12)
   }
 
 }
