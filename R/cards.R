@@ -30,13 +30,13 @@ cards <- function(data,
                   tags = NULL,
                   layout = "label-below",
                   width = 3,
-                  spacing = 1,
+                  spacing = 2,
                   breakpoint = 7,
                   label_colour = "#ffffffaa",
                   border_colour = "#808080",
-                  border_width = .1,
-                  rounding = 20
-                  ) {
+                  border_width = 1,
+                  rounding = 3
+) {
 
   quosures <- enquos(
     title = title,

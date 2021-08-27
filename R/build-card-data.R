@@ -13,9 +13,8 @@ build_card_data <- function(cardspec, n) {
   check_valid_spacing(cardspec[["gutter"]])
   check_valid_breakpoint(cardspec[["breakpoint"]])
 
-  # clean up values as necessary
+  # coerce the layout if needed
   cardspec[["layout"]] <- clean_layout(cardspec[["layout"]], no_image, no_label)
-  cardspec[["breakpoint"]] <- clean_breakpoint(cardspec[["breakpoint"]])
 
   # check that valid "card data" has been input and replace NULL with NA
   data_inputs <- c("title", "text", "image", "link", "footer", "header", "tags")
@@ -30,8 +29,12 @@ build_card_data <- function(cardspec, n) {
   check_valid_border_colour(cardspec[["border_colour"]], n)
   check_valid_rounding(cardspec[["rounding"]], n)
 
-  cardspec[["border_width"]] <- clean_border_width(cardspec[["border_width"]])
-  cardspec[["rounding"]] <- clean_rounding(cardspec[["rounding"]])
+  # convert numeric sizes to css specifications
+  cardspec[["width"]] <- parse_width(cardspec[["width"]])
+  cardspec[["gutter"]] <- parse_spacing(cardspec[["gutter"]])
+  cardspec[["border_width"]] <- parse_borderwidth(cardspec[["border_width"]])
+  cardspec[["rounding"]] <- parse_rounding(cardspec[["rounding"]])
+  cardspec[["breakpoint"]] <- parse_breakpoint(cardspec[["breakpoint"]])
 
   # coerce to data frame
   carddata <- as.data.frame(cardspec)
@@ -125,19 +128,6 @@ clean_layout <- function(layout, no_image, no_label) {
 }
 
 
-clean_breakpoint <- function(breakpoint, layout) {
-  breakpoint/12
-}
-
-clean_border_width <- function(border_width) {
-  if(is_character(border_width)) return(border_width)
-  paste0(border_width, "px")
-}
-
-clean_rounding <- function(rounding) {
-  if(is_character(rounding)) return(rounding)
-  paste0(rounding, "px")
-}
 
 
 

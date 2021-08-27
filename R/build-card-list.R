@@ -45,7 +45,11 @@ build_card <- function(title, text, image, link, footer, header, tags,
 
 row_wrap <- function(width, gutter) {
   function(...) {
-    htmltools::div(class = outer_row_class(width, gutter), ...)
+    htmltools::div(
+      class = outer_row_class(width),
+      style = outer_row_style(gutter),
+      ...
+    )
   }
 }
 

@@ -22,8 +22,8 @@ layout_card_vertical <- function(title, text, image, link,
   if(layout == "label-above") {below <- pieces$image; above <- label_vertical}
 
   return(htmltools::div(
-    class = card_class(gutter),
-    style = card_style(corners),
+    class = card_class(tags),
+    style = card_style(gutter, corners),
     pieces$header, above, below, pieces$footer
   ))
 }
@@ -48,8 +48,8 @@ layout_card_labelonly <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_class(gutter),
-    style = card_style(corners),
+    class = card_class(tags),
+    style = card_style(gutter, corners),
     pieces$header, label_vertical, pieces$footer
   ))
 }
@@ -68,8 +68,8 @@ layout_card_imageonly <- function(title, text, image, link,
   rm(title, text, image, footer, header)
 
   return(htmltools::div(
-    class = card_class(gutter, tags),
-    style = card_style(corners),
+    class = card_class(tags),
+    style = card_style(gutter, corners),
     pieces$header, pieces$image, pieces$footer
   ))
 }
@@ -115,8 +115,8 @@ layout_card_horizontal <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_class(gutter, tags),
-    style = card_style(corners),
+    class = card_class(tags),
+    style = card_style(gutter, corners),
     pieces$header, body_horizontal, pieces$footer
   ))
 }
@@ -157,8 +157,8 @@ layout_card_inset <- function(title, text, image, link,
   )
 
   return(htmltools::div(
-    class = card_class(gutter, tags),
-    style = card_style(corners),
+    class = card_class(tags),
+    style = card_style(gutter, corners),
     pieces$header, body_inset, pieces$footer
   ))
 }

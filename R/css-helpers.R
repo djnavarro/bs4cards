@@ -2,30 +2,29 @@
 
 # cards -------------------------------------------------------------------
 
-card_class <- function(gutter, tags = "") {
-  paste0("card bg-transparent m-0 p-", gutter, " border-0 collapse.show ", tags)
+card_class <- function(tags = "") {
+  paste0("card bg-transparent m-0 border-0 collapse.show ", tags)
 }
 
-card_style <- function(corners) {
-  corners[["card"]]
+card_style <- function(gutter, corners) {
+  paste(
+    "padding:", gutter, ";",
+    corners[["card"]]
+  )
 }
 
 outer_row_class <- function(width, gutter) {
-  paste("row p-0", column_width_class(width), row_margins_class(gutter))
+  paste("row p-0", width) #, row_margins_class(gutter))
 }
 
-column_width_class <- function(width){
-  if(width == 1) return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
-  if(width == 2) return("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4")
-  if(width == 3) return("row-cols-1 row-cols-md-2 row-cols-lg-3")
-  if(width == 4) return("row-cols-1 row-cols-lg-2")
-  if(width == 5) return("row-cols-1")
-  return(width)
+outer_row_style <- function(gutter) {
+  paste0("margin: -", gutter, ";")
 }
 
-row_margins_class <- function(gutter) {
-  paste("my-1", ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter)))
-}
+
+# row_margins_class <- function(gutter) {
+#   paste("my-1", ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter)))
+# }
 
 
 # text and titles ---------------------------------------------------------
