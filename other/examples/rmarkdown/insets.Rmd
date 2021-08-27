@@ -1,0 +1,88 @@
+---
+title: "R markdown page with bootstrap 4"
+author: "Danielle J. Navarro"
+date: "12/08/2021"
+output: 
+  html_document:
+    theme:
+      version: 4
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE}
+library(bs4cards)
+
+locate_thumbnail <- function(x) {
+  system.file("extdata", "thumbnail", paste0(x, ".jpg"), package = "bs4cards")
+} 
+locate_gallery <- function(x) {
+  paste0("https://art.djnavarro.net/gallery/", x)
+}
+
+galleries
+```
+
+
+## Inset, full label
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    image = image_url,
+    layout = "inset-top"
+  )
+```
+
+
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    image = image_url,
+    layout = "inset-bottom"
+  )
+```
+
+
+
+
+## Inset, title only
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    image = image_url,
+    layout = "inset-top",
+    breakpoint = 3 
+  )
+```
+
+
+
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    image = image_url,
+    layout = "inset-bottom",
+    breakpoint = 3 
+  )
+```
+
+
+
+
+
+
+

@@ -136,7 +136,7 @@ layout_card_inset <- function(title, text, image, link,
   rm(title, text, image, footer, header)
 
   label_inner_wrapper <- htmltools::div(
-    class = "my-auto",
+    class = "mb-auto",
     pieces$title, pieces$text
   )
 

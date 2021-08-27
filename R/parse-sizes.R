@@ -1,9 +1,9 @@
 
-
-# width = 3,
-# spacing = 2,
-# breakpoint = 7,
-# border_width = 1,
+# ---- default values ----
+# width = 3
+# spacing = 2
+# breakpoint = 4
+# border_width = 1
 # rounding = 3
 
 
@@ -18,7 +18,23 @@ parse_width <- function(width){
 }
 
 parse_breakpoint <- function(breakpoint, layout) {
-  breakpoint/12
+
+  if(layout == "label-left" | layout == "label-right") {
+    if(breakpoint == 1) return("col-4")
+    if(breakpoint == 2) return("col-5")
+    if(breakpoint == 3) return("col-6")
+    if(breakpoint == 4) return("col-7")
+    if(breakpoint == 5) return("col-8")
+  }
+
+  if(layout == "inset-top" | layout == "inset-bottom") {
+    if(breakpoint == 1) return(3/12)
+    if(breakpoint == 2) return(4/12)
+    if(breakpoint == 3) return(5/12)
+    if(breakpoint == 4) return(6/12)
+    if(breakpoint == 5) return(7/12)
+  }
+
 }
 
 parse_borderwidth <- function(border_width) {
