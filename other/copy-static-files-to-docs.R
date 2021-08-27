@@ -1,5 +1,6 @@
 
-static <- list.files(here::here("other/static/"), all.files = TRUE, recursive = TRUE)
+static <- list.files(here::here("other/static/"),
+                     all.files = TRUE, recursive = TRUE)
 if(!dir.exists(here::here("docs/image"))) {
   dir.create(here::here("docs/image"))
 }
