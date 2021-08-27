@@ -107,14 +107,13 @@ Finally there are two "inset" layouts, in which the label is displayed as an ove
 galleries %>% 
   cards(
     title = long_name,
+    text = blurb,
     link = gallery_url,
     image = image_url,
-    layout = "inset-top", 
-    label_colour = "#ffffffcc"
+    layout = "inset-top"
   )
 ```
 
-(Notice I set a partially transparent `label_colour` for the labels in this example. I'll talk about colours later, but inset layouts in particular tend to benefit from choosing a judicious label colour)
 
 
 ## Filtering cards by category

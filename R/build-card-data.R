@@ -34,7 +34,7 @@ build_card_data <- function(cardspec, n) {
   cardspec[["gutter"]] <- parse_spacing(cardspec[["gutter"]])
   cardspec[["border_width"]] <- parse_borderwidth(cardspec[["border_width"]])
   cardspec[["rounding"]] <- parse_rounding(cardspec[["rounding"]])
-  cardspec[["breakpoint"]] <- parse_breakpoint(cardspec[["breakpoint"]])
+  cardspec[["breakpoint"]] <- parse_breakpoint(cardspec[["breakpoint"]], cardspec[["layout"]])
 
   # coerce to data frame
   carddata <- as.data.frame(cardspec)
@@ -72,8 +72,9 @@ check_valid_spacing <- function(gutter) {
 }
 
 check_valid_breakpoint <- function(breakpoint) {
-  if(is_scalar_numeric(breakpoint) && breakpoint %in% 0:12) return(NULL)
-  abort("breakpoint must be an integer between 0 and 12")
+  err <- "breakpoint must be an integer between 1 and 5"
+  if(is_scalar_numeric(breakpoint) && breakpoint %in% 1:5) return(NULL)
+  abort(err)
 }
 
 check_valid_border_width <- function(x, n) {
@@ -108,7 +109,6 @@ check_valid_border_colour <- function(x, n) {
   check_valid_input_length(x, n, "border_colour")
 }
 
-
 # if the user only specifies one of the two basic card parts
 # (image & label), require that the layout value be appropriate
 # and message user if needed
@@ -126,9 +126,6 @@ clean_layout <- function(layout, no_image, no_label) {
 
   return(layout)
 }
-
-
-
 
 
 # to do: use this to make a preserve_whitespace() function??

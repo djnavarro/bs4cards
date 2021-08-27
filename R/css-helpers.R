@@ -105,7 +105,7 @@ label_vertical_style <- function(colour, corners, border) {
 # horizontal layouts ------------------------------------------------------
 
 label_horizontal_class <- function(breakpoint) {
-  paste0("col-", round(breakpoint * 12), " h-100")
+  paste(breakpoint, "h-100")
 }
 
 row_horizontal_style <- function(corners, border) {
@@ -134,7 +134,8 @@ body_horizontal_style <- function(colour, corners, border) {
 }
 
 image_horizontal_class <- function(breakpoint) {
-  paste0("col-", 12 - round(breakpoint * 12))
+  label_cols <- as.numeric(gsub("col-", "", breakpoint))
+  paste0("col-", 12 - label_cols)
 }
 
 image_horizontal_style <- function(corners) {
