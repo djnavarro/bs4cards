@@ -27,11 +27,6 @@ outer_row_style <- function(gutter) {
 }
 
 
-# row_margins_class <- function(gutter) {
-#   paste("my-1", ifelse(gutter == 0, "mx-0", paste0("mx-n", gutter)))
-# }
-
-
 # text and titles ---------------------------------------------------------
 
 title_class <- function(has_text) {
