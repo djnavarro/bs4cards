@@ -2,7 +2,18 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  articles/custom-cards: custom-cards.html
-  articles/getting-started: getting-started.html
-last_built: 2021-08-27T03:19Z
+  articles/borders: borders.html
+  articles/breakpoints: breakpoints.html
+  articles/bs4cards: bs4cards.html
+  articles/colours: colours.html
+  articles/columns: columns.html
+  articles/filtering: filtering.html
+  articles/headers-footers: headers-footers.html
+  articles/introduction: introduction.html
+  articles/layouts: layouts.html
+  articles/spacing: spacing.html
+last_built: 2021-08-27T05:32Z
+urls:
+  reference: https://bs4cards.djnavarro.net/reference
+  article: https://bs4cards.djnavarro.net/articles
 

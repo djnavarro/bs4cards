@@ -90,6 +90,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/articles/bs4cards.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -99,11 +102,38 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Structure</li>
     <li>
-      <a href="../articles/articles/getting-started.html">Getting started</a>
+      <a href="../articles/articles/introduction.html">Introduction</a>
     </li>
     <li>
-      <a href="../articles/articles/custom-cards.html">Customising cards</a>
+      <a href="../articles/articles/layouts.html">Card layouts</a>
+    </li>
+    <li>
+      <a href="../articles/articles/headers-footers.html">Headers and footers</a>
+    </li>
+    <li>
+      <a href="../articles/articles/columns.html">Responsive columns</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Appearance</li>
+    <li>
+      <a href="../articles/articles/spacing.html">Spacing</a>
+    </li>
+    <li>
+      <a href="../articles/articles/breakpoints.html">Break points</a>
+    </li>
+    <li>
+      <a href="../articles/articles/colours.html">Colours</a>
+    </li>
+    <li>
+      <a href="../articles/articles/borders.html">Customising cards</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Extras</li>
+    <li>
+      <a href="../articles/articles/filtering.html">Filtering display by tag</a>
     </li>
   </ul>
 </li>
@@ -146,15 +176,14 @@
   footer <span class='op'>=</span> <span class='cn'>NULL</span>,
   header <span class='op'>=</span> <span class='cn'>NULL</span>,
   tags <span class='op'>=</span> <span class='cn'>NULL</span>,
-  width <span class='op'>=</span> <span class='st'>"medium"</span>,
   layout <span class='op'>=</span> <span class='st'>"label-below"</span>,
-  padding <span class='op'>=</span> <span class='fl'>0</span>,
-  gutter <span class='op'>=</span> <span class='fl'>1</span>,
-  breakpoint <span class='op'>=</span> <span class='cn'>NULL</span>,
-  colour <span class='op'>=</span> <span class='st'>"#ffffffaa"</span>,
-  border_width <span class='op'>=</span> <span class='st'>"1px"</span>,
+  width <span class='op'>=</span> <span class='fl'>3</span>,
+  spacing <span class='op'>=</span> <span class='fl'>2</span>,
+  breakpoint <span class='op'>=</span> <span class='fl'>4</span>,
+  label_colour <span class='op'>=</span> <span class='st'>"#ffffffaa"</span>,
   border_colour <span class='op'>=</span> <span class='st'>"#808080"</span>,
-  rounding <span class='op'>=</span> <span class='st'>"1rem"</span>
+  border_width <span class='op'>=</span> <span class='fl'>1</span>,
+  rounding <span class='op'>=</span> <span class='fl'>3</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -193,40 +222,36 @@
       <td><p>Tags to be assigned to each card</p></td>
     </tr>
     <tr>
-      <th>width</th>
-      <td><p>Card width ("narrow", "medium", "wide")</p></td>
-    </tr>
-    <tr>
       <th>layout</th>
-      <td><p>Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")</p></td>
+      <td><p>Card layout is a string, defaults to "label-below" (see details)</p></td>
     </tr>
     <tr>
-      <th>padding</th>
-      <td><p>Spacing between parts of the card (integer between 0 and 5)</p></td>
+      <th>width</th>
+      <td><p>Card width is an integer between 1 and 5</p></td>
     </tr>
     <tr>
-      <th>gutter</th>
-      <td><p>Spacing between adjacent cards (integer between 0 and 5)</p></td>
+      <th>spacing</th>
+      <td><p>Spacing between cards is an integer between 0 and 5</p></td>
     </tr>
     <tr>
       <th>breakpoint</th>
-      <td><p>Position to insert breaks for horizontal or inset cards, interpreted as proportion of card allocated to label</p></td>
+      <td><p>Number between 1 and 5, controlling label size on horizontal and inset layouts</p></td>
     </tr>
     <tr>
-      <th>colour</th>
-      <td><p>Colour applied to the card (interpretation depends on layout)</p></td>
-    </tr>
-    <tr>
-      <th>border_width</th>
-      <td><p>Width of card border</p></td>
+      <th>label_colour</th>
+      <td><p>Colour applied to the card label</p></td>
     </tr>
     <tr>
       <th>border_colour</th>
-      <td><p>Colour of card border</p></td>
+      <td><p>Colour applied to the card border</p></td>
+    </tr>
+    <tr>
+      <th>border_width</th>
+      <td><p>Width of card border is an integer between 0 and 5</p></td>
     </tr>
     <tr>
       <th>rounding</th>
-      <td><p>Amount of rounding on card corners</p></td>
+      <td><p>Amount of rounding on card corners is an integer between 0 and 5</p></td>
     </tr>
     </table>
 
