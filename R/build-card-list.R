@@ -28,7 +28,7 @@ build_card <- function(title, text, image, link, footer, header, tags,
   if(layout == "inset-top")    layout_card <- layout_card_inset
   if(layout == "inset-bottom") layout_card <- layout_card_inset
 
-  border <- c(
+  border <- list(
     width = border_width,
     colour = border_colour,
     style = "solid"
@@ -38,13 +38,18 @@ build_card <- function(title, text, image, link, footer, header, tags,
     title, text, image, link,
     footer, header, tags, layout,
     padding, gutter, breakpoint,
-    colour, border, radius = rounding
+    colour, border,
+    radius = rounding
   ))
 }
 
 row_wrap <- function(width, gutter) {
   function(...) {
-    htmltools::div(class = outer_row_class(width, gutter), ...)
+    htmltools::div(
+      class = outer_row_class(width),
+      style = outer_row_style(gutter),
+      ...
+    )
   }
 }
 
