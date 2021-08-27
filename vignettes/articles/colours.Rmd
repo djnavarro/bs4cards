@@ -1,0 +1,27 @@
+---
+title: "Colours"
+---
+
+```{r, include = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+library(bs4cards)
+```
+
+
+
+## Card colour
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    label_colour = c("#d6cadd", "white", "#c4d8e2")
+  )
+```

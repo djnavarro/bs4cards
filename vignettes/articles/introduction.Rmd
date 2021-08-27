@@ -1,0 +1,53 @@
+---
+title: "Introduction"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+
+
+In this article I'll provide an overview of the various arguments to `cards()`, and how they can be used to customise the look and feel of a card grid, using the built in `galleries` data.
+
+```{r}
+library(bs4cards)
+galleries
+```
+
+
+## Anatomy of a card
+
+Conceptually, a card is comprised of five major parts:
+
+- The *card image* is controlled by the `image` argument, which should specify the path to the image file to be displayed in each card. As a general principle, bs4cards does not distort the appearance of an image: it is not cropped, nor does it alter the aspect ratio. The only thing it will do is rescale the size of the image as the size of the browser window changes. The image can be omitted by setting `image = NULL`. The exact positioning of the image depends on the card layout (discussed below).
+
+- The *card label* has two parts, the `title` and the `text`, whose values should be character strings specifying the text to be displayed. As long as one or both of these arguments are specified, the card will have a label. The title is always displayed above the text, and the size of the label is adjusted flexibly as the screen size changes. The constituent parts can be omitted by setting `title = NULL` and/or `text = NULL`. The exact positioning of the label depends on the card layout (discussed below).
+
+- The *card link* is controlled by the `link` argument, which should specify the url to be opened when the user selects the card. The link itself does not occupy any space: if it exists, then it is applied to both the image and the card title. The link can be omitted by setting `link = NULL`
+
+- The *card footer* is controlled by the `footer` argument, which should specify text that will displayed at the bottom of the card (it always appears at the bottom regardless of what layout is adopted). The footer text is displayed in muted colours and is intended for the display of ancillary information. Some care is required when using footers, discussed later in the article. To omit footers, set `footer = NULL`.
+
+- The *card header* is analogous to the footer, and is controlled by the `header` argument. The only difference is that the header appears at the top of the card. This is rarely a useful thing to do, and while the bs4cards package does allow it, a lot of care is required (discussed later). In most cases no header is needed, in which case the default `header = NULL` is appropriate.
+
+The different parts are illustrated in the example below:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    footer = date
+  )
+```
+

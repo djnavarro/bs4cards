@@ -13,15 +13,14 @@ cards(
   footer = NULL,
   header = NULL,
   tags = NULL,
-  width = "medium",
   layout = "label-below",
-  padding = 0,
-  gutter = 1,
-  breakpoint = NULL,
-  colour = "#ffffffaa",
-  border_width = "1px",
+  width = 3,
+  spacing = 2,
+  breakpoint = 4,
+  label_colour = "#ffffffaa",
   border_colour = "#808080",
-  rounding = "1rem"
+  border_width = 1,
+  rounding = 3
 )
 }
 \arguments{
@@ -41,23 +40,21 @@ cards(
 
 \item{tags}{Tags to be assigned to each card}
 
-\item{width}{Card width ("narrow", "medium", "wide")}
+\item{layout}{Card layout is a string, defaults to "label-below" (see details)}
 
-\item{layout}{Card layout ("label-above", "label-below", "label-left", "label-right", "inset-top", "inset-bottom")}
+\item{width}{Card width is an integer between 1 and 5}
 
-\item{padding}{Spacing between parts of the card (integer between 0 and 5)}
+\item{spacing}{Spacing between cards is an integer between 0 and 5}
 
-\item{gutter}{Spacing between adjacent cards (integer between 0 and 5)}
+\item{breakpoint}{Number between 1 and 5, controlling label size on horizontal and inset layouts}
 
-\item{breakpoint}{Position to insert breaks for horizontal or inset cards, interpreted as proportion of card allocated to label}
+\item{label_colour}{Colour applied to the card label}
 
-\item{colour}{Colour applied to the card (interpretation depends on layout)}
+\item{border_colour}{Colour applied to the card border}
 
-\item{border_width}{Width of card border}
+\item{border_width}{Width of card border is an integer between 0 and 5}
 
-\item{border_colour}{Colour of card border}
-
-\item{rounding}{Amount of rounding on card corners}
+\item{rounding}{Amount of rounding on card corners is an integer between 0 and 5}
 }
 \value{
 A "shiny.tag" object

@@ -1,0 +1,30 @@
+---
+title: "Spacing"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+## Card spacing
+
+To modify the separation between cards, use the `spacing` argument. Currently this argument is numeric, and takes a number between 0 and 5. At `spacing = 0`, all spacing between cards is removed:
+
+```{r, message=FALSE}
+cards(data = galleries[1:6, ], image = image_url, spacing = 0)
+```
+
+At `spacing = 5` there is a lot of room between cards:
+
+```{r, message=FALSE}
+cards(data = galleries[1:6, ], image = image_url, spacing = 5)
+```
+

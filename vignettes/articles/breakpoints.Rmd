@@ -1,0 +1,37 @@
+---
+title: "Break points"
+---
+
+```{r, include = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+library(bs4cards)
+```
+
+
+
+## Break points
+
+```{r, results='hold', message=FALSE}
+horizontal_break <- function(breakpoint, layout) {
+  cards(data = galleries[1,], title = long_name, image = image_url, text = blurb,
+        layout = "label-right", breakpoint = breakpoint, width = 4)
+}
+horizontal_break(breakpoint = 1)
+horizontal_break(breakpoint = 5)
+```
+
+
+```{r, results='hold', message=FALSE}
+inset_break <- function(breakpoint, layout) {
+  cards(data = galleries[1,], title = long_name, image = image_url, text = blurb,
+        layout = "inset-top", breakpoint = breakpoint, width = 3)
+}
+inset_break(breakpoint = 1)
+inset_break(breakpoint = 5)
+```
+
+

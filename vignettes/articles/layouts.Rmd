@@ -1,0 +1,84 @@
+---
+title: "Card layouts"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+
+
+## Layout of a card
+
+The bs4cards package supports a total eight different `layout` formats. First, there are two vertical layouts and two horizontal layouts:
+
+- Setting `layout = "label-below"` places the label below the image (the default)
+- Setting `layout = "label-above"` places the label above the image
+- Setting `layout = "label-left"` places the label to the left of the image
+- Setting `layout = "label-right"` places the label to the right of the image
+
+Some examples:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    layout = "label-above"
+  )
+```
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    text = blurb,
+    layout = "label-right",
+    width = 4
+  )
+```
+
+(Notice that I set `width = 4` for the horizontal card. Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. The width of the cards is controlled by the `width` argument, and I'll talk more about it later)
+
+In addition there are two "singleton" layouts:
+
+- Setting `layout = "label-only"` includes a label but no image
+- Setting `layout = "image-only"` includes an image but no label
+
+As a convenience, the `cards()` function will detect when the user has not specified a label (or image) and will choose the appropriate layout automatically:
+
+```{r}
+galleries %>% 
+  cards(
+    link = gallery_url,
+    image = image_url
+  )
+```
+
+
+Finally there are two "inset" layouts, in which the label is displayed as an overlay on top of the image. These two layouts are experimental, and I wouldn't advise using them just yet. But if you want to try...
+
+- Setting `layout = "inset-top"` places the label at the top of the image
+- Setting `layout = "inset-bottom"` places the label at the bottom of the image
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    layout = "inset-top"
+  )
+```

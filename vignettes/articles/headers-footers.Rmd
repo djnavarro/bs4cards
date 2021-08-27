@@ -1,0 +1,35 @@
+---
+title: "Headers and footers"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+
+## Headers and footers
+
+As mentioned earlier, the bs4cards package allows you to include headers and footers. However, because of the limitations of bootstrap (or possibly my limitations in using it), it's not easy to simultaneously align headers, footers, images, and labels in a way that is clean and responsive regardless of the size of the browser window. As a consequence, they're best suited to cases where you want to discreetly include a small amount of metadata that can be guaranteed to fit on a single line:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    width = 4,
+    footer = paste("packages:", paintbrushes),
+    layout = "label-right"
+  )
+```
+
+When the text is long enough to potentially occupy multiple lines, more care is needed. The vertical space occupied by a header or footer is calculated independently of each other. This means that when the text in the header/footer varies in length, the cards are no longer guaranteed to be equal in height, producing ragged borders in situations where the user would probably prefer card parts of the same type to be aligned with one another. If you intend to include a header and/or footer, make sure to see how the cards look at different screen sizes and zoom resolutions (more so than usual!)

@@ -1,0 +1,38 @@
+---
+title: "Filtering display by tag"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tibble)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+
+
+
+## Filtering cards by category
+
+It is possible to assign each card to a set of `tags`, and allow the user to select which tag will be displayed. At the moment, the only user interface option that bs4cards supports is buttons (other options such as dropdown lists may be supported later). If the `tags` argument is specified, labelled buttons will appear at the top of the card deck. Clicking on a button will show the cards that possess the corresponding tag. Cards are allowed to possess multiple tags: the list of tags should be a single string, with spaces separating each tag. For example, in the `galleries` data the `paintbrushes` variable contains names of some of the packages used in creating the art. For the "Native Flora" system, the "paintbrushes" were ggplot2 and the flametree package, so the relevant tag string is `"ggplot2 flametree"`. Each of these tags is associated with a button, as the example below illustrates:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    tags = paste("all", paintbrushes),
+    width = 4,
+    footer = paintbrushes,
+    layout = "label-right"
+  )
+```
+
+Notice that I used `paste()` to ensure that there is an `"all"` category, to which every card belongs. That way, if the user clicks on the associated button it will show every card.

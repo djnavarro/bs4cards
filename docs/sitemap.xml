@@ -1,93 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://bs4cards.djnavarro.net/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://bs4cards.djnavarro.net/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://bs4cards.djnavarro.net/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/articles/custom-cards.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/borders.html</loc>
   </url>
   <url>
-    <loc>/articles/articles/getting-started.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/breakpoints.html</loc>
   </url>
   <url>
-    <loc>/articles/articles/other-topics.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/bs4cards.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/colours.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/columns.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/filtering.html</loc>
   </url>
   <url>
-    <loc>/reference/bs_col.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/headers-footers.html</loc>
   </url>
   <url>
-    <loc>/reference/bs_mar.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/introduction.html</loc>
   </url>
   <url>
-    <loc>/reference/bs_pad.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/layouts.html</loc>
   </url>
   <url>
-    <loc>/reference/card.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/articles/spacing.html</loc>
   </url>
   <url>
-    <loc>/reference/card_footer.html</loc>
+    <loc>https://bs4cards.djnavarro.net/articles/index.html</loc>
   </url>
   <url>
-    <loc>/reference/card_grid.html</loc>
+    <loc>https://bs4cards.djnavarro.net/authors.html</loc>
   </url>
   <url>
-    <loc>/reference/card_group.html</loc>
+    <loc>https://bs4cards.djnavarro.net/index.html</loc>
   </url>
   <url>
-    <loc>/reference/card_header.html</loc>
+    <loc>https://bs4cards.djnavarro.net/reference/cards.html</loc>
   </url>
   <url>
-    <loc>/reference/card_image.html</loc>
+    <loc>https://bs4cards.djnavarro.net/reference/galleries.html</loc>
   </url>
   <url>
-    <loc>/reference/card_subtitle.html</loc>
+    <loc>https://bs4cards.djnavarro.net/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/card_text.html</loc>
+    <loc>https://bs4cards.djnavarro.net/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/card_title.html</loc>
-  </url>
-  <url>
-    <loc>/reference/cards.html</loc>
-  </url>
-  <url>
-    <loc>/reference/galleries.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sample_card.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sample_kitten.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sample_lorem.html</loc>
-  </url>
-  <url>
-    <loc>/reference/strapless.html</loc>
-  </url>
-  <url>
-    <loc>/reference/use_strapless.html</loc>
+    <loc>https://bs4cards.djnavarro.net/reference/use_strapless.html</loc>
   </url>
 </urlset>
