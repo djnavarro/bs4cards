@@ -18,7 +18,12 @@ outer_row_class <- function(width, gutter) {
 }
 
 outer_row_style <- function(gutter) {
-  paste0("margin: -", gutter, ";")
+  paste0(
+    "margin-left: -", gutter, "; ",
+    "margin-right: -", gutter, "; ",
+    "margin-top: 1rem; ",
+    "margin-bottom: 1rem; "
+  )
 }
 
 
