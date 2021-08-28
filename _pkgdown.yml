@@ -22,7 +22,6 @@ articles:
     contents:
     - articles/introduction
     - articles/layouts
-    - articles/headers-footers
     - articles/columns
 
   - title: Appearance of cards

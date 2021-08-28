@@ -20,7 +20,7 @@ cards(
   label_colour = "#ffffffaa",
   border_colour = "#808080",
   border_width = 1,
-  rounding = 3
+  border_radius = 3
 )
 }
 \arguments{
@@ -54,7 +54,7 @@ cards(
 
 \item{border_width}{Width of card border is an integer between 0 and 5}
 
-\item{rounding}{Amount of rounding on card corners is an integer between 0 and 5}
+\item{border_radius}{Amount of rounding on card corners is an integer between 0 and 5}
 }
 \value{
 A "shiny.tag" object
