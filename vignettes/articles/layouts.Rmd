@@ -15,9 +15,6 @@ library(bs4cards)
 ```
 
 
-
-## Layout of a card
-
 The bs4cards package supports a total eight different `layout` formats. First, there are two vertical layouts and two horizontal layouts:
 
 - Setting `layout = "label-below"` places the label below the image (the default)
@@ -25,7 +22,32 @@ The bs4cards package supports a total eight different `layout` formats. First, t
 - Setting `layout = "label-left"` places the label to the left of the image
 - Setting `layout = "label-right"` places the label to the right of the image
 
-Some examples:
+In addition there are two "singleton" layouts:
+
+- Setting `layout = "label-only"` includes a label but no image
+- Setting `layout = "image-only"` includes an image but no label
+
+Finally there are two "inset" layouts" 
+
+- Setting `layout = "inset-top"` places the label at the top of the image
+- Setting `layout = "inset-bottom"` places the label at the bottom of the image
+
+
+## Vertical layouts
+
+The vertical `label-below` layout is the default for bs4cards. Images are placed above the label, with the label title above text. Footers (if present) appear under the label, and the header (if present) is shown above:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    layout = "label-below"
+  )
+```
+
+The `label-above` layout reverses the positions of label and image:
 
 ```{r}
 galleries %>% 
@@ -37,6 +59,11 @@ galleries %>%
   )
 ```
 
+
+## Horizontal layouts
+
+Horizontal card layouts are also supported in bs4cards, by setting `layout = "label-left"` or `layout = "label-right"`. Here's an example:
+
 ```{r}
 galleries %>% 
   cards(
@@ -44,33 +71,89 @@ galleries %>%
     link = gallery_url,
     image = image_url,
     text = blurb,
+    footer = date,
     layout = "label-right",
     width = 4
   )
 ```
 
-(Notice that I set `width = 4` for the horizontal card. Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. The width of the cards is controlled by the `width` argument, and I'll talk more about it later)
+Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. In the code above I set `width = 4` to provide a little more room. You can also adjust the location of the `breakpoint` separating the image and the label. The `breakpoint` argument should be an integer between 1 and 5. 
 
-In addition there are two "singleton" layouts:
+```{r, message=FALSE}
+galleries[1,] %>% 
+  cards(
+    title = long_name, 
+    image = image_url, 
+    text = blurb,
+    layout = "label-left", 
+    breakpoint = 1, 
+    width = 4
+  )
+```
 
-- Setting `layout = "label-only"` includes a label but no image
-- Setting `layout = "image-only"` includes an image but no label
 
-As a convenience, the `cards()` function will detect when the user has not specified a label (or image) and will choose the appropriate layout automatically:
+
+```{r, message=FALSE}
+galleries[1,] %>% 
+  cards(
+    title = long_name, 
+    image = image_url, 
+    text = blurb,
+    layout = "label-left", 
+    breakpoint = 5, 
+    width = 4
+  )
+```
+
+
+
+
+
+## Image-only layout
+
+In some cases there is no label to accompany the image, in which case setting `layout = "image-only"` is appropriate:
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    link = gallery_url,
+    image = image_url,
+    layout = "image-only"
+  )
+```
+
+It is still possible to add headers and footers, however:
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    link = gallery_url,
+    image = image_url,
+    footer = long_name,
+    layout = "image-only"
+  )
+```
+
+
+## Label-only layout
+
+The inversion of the `image-only` layout is the `label-only` layout, which is appropriate whenever no image is included. This is not the most visually exciting layout, but there are situations where it may be handy:
 
 ```{r}
 galleries %>% 
   cards(
     link = gallery_url,
-    image = image_url
+    title = long_name,
+    text = blurb,
+    layout = "label-only"
   )
 ```
 
 
-Finally there are two "inset" layouts, in which the label is displayed as an overlay on top of the image. These two layouts are experimental, and I wouldn't advise using them just yet. But if you want to try...
 
-- Setting `layout = "inset-top"` places the label at the top of the image
-- Setting `layout = "inset-bottom"` places the label at the bottom of the image
+## Inset layouts
+
+The remaining two layout types are "inset" types, in which the label is displayed as an overlay on top of the image.
 
 ```{r}
 galleries %>% 
@@ -82,3 +165,21 @@ galleries %>%
     layout = "inset-top"
   )
 ```
+
+
+Like horizontal cards, inset cards use the `breakpoint` argument to specify the amount of space occupied by the label. The inset occupies a fixed proportion of the image height, so a little care is required. The smallest size (`breakpoint = 1`) is generally tall enough to accommodate a single line title:
+
+```{r}
+galleries[1,] %>% 
+  cards(title = long_name, image = image_url,
+        layout = "inset-top", breakpoint = 1)
+```
+
+The largest size is `breakpoint = 5` and is large enough to fit a modest caption:
+
+```{r}
+galleries[1,] %>% 
+  cards(title = long_name, image = image_url, text = blurb,
+        layout = "inset-top", breakpoint = 5)
+```
+

@@ -29,7 +29,6 @@ articles:
     navbar: Appearance
     contents:
     - articles/spacing
-    - articles/breakpoints
     - articles/colours
     - articles/borders
 
