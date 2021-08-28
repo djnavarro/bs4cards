@@ -1,5 +1,5 @@
 ---
-title: "Responsive columns"
+title: "Responsive widths"
 ---
 
 ```{r, include = FALSE}
@@ -14,10 +14,11 @@ library(tibble)
 library(bs4cards)
 ```
 
+One of the most attractive feature of bootstrap is responsive layouts: the elements displayed on a page are resized and reorganised when the size of the screen changes. This property is inherited by bs4cards, and is particularly evident when setting the `width` argument to `cards()`
 
-## Card width
+## Numeric-valued widths
 
-There are four pre-specified width settings, numbered from 1 to 5. All are responsive widths, and will resize the cards and change the number of columns depending on the size of the display device. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:
+Unless you need fine grain control, the easiest way to specify `width` is to provide a  single integer value between 1 and 5. Larger `width` values produce wider cards, which means that fewer columns are shown on screen. However, the actual number of columns depends on the size of the screen. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:
 
 ```{r, results='hold', message=FALSE}
 cards(data = galleries[1,], image = image_url, width = 1)
@@ -26,3 +27,31 @@ cards(data = galleries[1,], image = image_url, width = 3)
 cards(data = galleries[1,], image = image_url, width = 4)
 cards(data = galleries[1,], image = image_url, width = 5)
 ```
+
+The default setting of `width = 3` will produce a layout where the cards span three columns on wide screens and one column on narrow screens. At the narrowest setting of `width = 1`, the number of columns spanned range from two to six, whereas at the widest setting the card always occupies the full width of the screen. 
+
+## Character-valued widths
+
+If you know a little bootstrap you can exercise finer-grained control over the card widths by passng a string rather than a number. This string is interpreted as a set of CSS classes and is passed directly into the output. Internally, this snippet of code shows how the numeric widths are translated to bootstrap classes:
+
+```{r, eval=FALSE}
+if(width == 1) return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
+if(width == 2) return("row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4")
+if(width == 3) return("row-cols-1 row-cols-md-2 row-cols-lg-3")
+if(width == 4) return("row-cols-1 row-cols-lg-2")
+if(width == 5) return("row-cols-1")
+```
+
+I've attempted to choose defaults that I think would make sense in most use cases that I could think of, but I'm certain that there are possibilities that I've missed. With that in mind, there's nothing stopping you from passing your own classes if you would prefer a different layout. For instance, if you wanted cards that always span exactly two columns regardless of screen size, this works:
+
+```{r}
+galleries %>% 
+  cards(
+    title = long_name,
+    link = gallery_url,
+    image = image_url,
+    width = "row-cols-2"
+)
+```
+
+At the moment, the `width` argument must be length 1: for simplicity and consistency of layout, the width classes are in fact a property of the row div that contains the cards, not the cards themselves.
