@@ -87,7 +87,10 @@
       <a href="../../articles/articles/borders.html">Customising cards</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Extras</li>
+    <li class="dropdown-header">Additional topics</li>
+    <li>
+      <a href="../../articles/articles/enabling-bootstrap4.html">Enabling bootstrap 4</a>
+    </li>
     <li>
       <a href="../../articles/articles/filtering.html">Filtering display by tag</a>
     </li>
@@ -127,30 +130,30 @@
 <p>When creating R markdown pages and websites it can be useful to organise content into a grid of links and image, sometimes known as “cards”. To design a course website you may want something like this:</p>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://slides.djnavarro.net/starting-rmarkdown">
-<img src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
-<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<img src="https://slides.djnavarro.net/index_img/starting-rmarkdown.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <a href="https://slides.djnavarro.net/starting-rmarkdown">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Starting R markdown</h5>
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">An introduction to R markdown. The target audience is a novice R user with no previous experience with markdown.</p>
 </div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://slides.djnavarro.net/starting-ggplot2">
-<img src="https://slides.djnavarro.net/index_img/starting-ggplot2.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
-<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<img src="https://slides.djnavarro.net/index_img/starting-ggplot2.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <a href="https://slides.djnavarro.net/starting-ggplot2">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Starting ggplot2</h5>
 </a>
 <p class="card-text my-auto px-3 pb-3 pt-1">An introduction to ggplot2. The target audience is a novice user with no previous experience with R or ggplot2.</p>
 </div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://slides.djnavarro.net/starting-programming">
-<img src="https://slides.djnavarro.net/index_img/starting-programming.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
-<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<img src="https://slides.djnavarro.net/index_img/starting-programming.png" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <a href="https://slides.djnavarro.net/starting-programming">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Starting programming</h5>
 </a>
@@ -159,47 +162,21 @@
 </div>
 </div>
 </div>
-<p>The ability to create cards is already available via the “bootstrap” library that is already incorporated into many html-based R markdown outputs. However, this functionality is not automatically exposed to the R markdown user. With this in mind the goal of bs4cards is to provide a convenient interface to the <a href="https://getbootstrap.com/docs/4.5/components/card/">cards system</a> system introduced in bootstrap version 4.</p>
 <div id="enabling-bootstrap-4" class="section level2">
 <h2 class="hasAnchor">
 <a href="#enabling-bootstrap-4" class="anchor"></a>Enabling bootstrap 4</h2>
-<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap. The default behaviour of R markdown when creating HTML documents is to use bootstrap version 3, so this setting needs to be altered. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you’re creating:</p>
-<div id="vanilla-r-markdown" class="section level3">
-<h3 class="hasAnchor">
-<a href="#vanilla-r-markdown" class="anchor"></a>Vanilla R markdown</h3>
-<p>For a plain R markdown document or website (i.e., one where the output format is <code>html_document</code>) here is the relevant section of YAML you might use:</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap. The default behaviour of R markdown when creating HTML documents is to use bootstrap version 3, so this setting needs to be altered. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. For a plain R markdown document or website (i.e., one where the output format is <code>html_document</code>) here is the relevant section of YAML you might use:</p>
 <pre><code>output:
   html_document:
     theme:
       version: 4</code></pre>
-<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/">bootstrap 4.5</a>.</p>
+<p>For other kinds of R markdown documents, see the <a href="enabling-bootstrap4.html">enabling bootstrap</a> article.</p>
 </div>
-<div id="pkgdown" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pkgdown" class="anchor"></a>Pkgdown</h3>
-<p>To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the <code>_pkgdown.yml</code> file to include the following</p>
-<pre><code>template:
-  bootstrap: 4</code></pre>
-<p>Note that this relies on an in-development feature, so you may need to update to the development version of pkgdown to make this work.</p>
-</div>
-<div id="distill" class="section level3">
-<h3 class="hasAnchor">
-<a href="#distill" class="anchor"></a>Distill</h3>
-<p>Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn’t look visually appealing when mixed with the distill styling.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> To fix this, bs4cards includes a stripped down version of bootstrap called “strapless”, that only uses the subset of bootstrap css relevant to cards. The convenience function <code><a href="../../reference/use_strapless.html">use_strapless()</a></code> will copy the strapless css file to the target location. To copy it to the same location as this post:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">bs4cards</span><span class="fu">::</span><span class="fu"><a href="../../reference/use_strapless.html">use_strapless</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="st">"_posts"</span>, <span class="st">"bs4cards-in-distill"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Next, to enable the library within the post, add the following lines to the YAML header for the post:</p>
-<pre><code>output:
-  distill::distill_article:
-    css: "strapless.css"</code></pre>
-<p>Alternatively, if you want to enable strapless for the entire site, this markup goes in the <code>_site.yml</code> file and the css file should go in the home folder for the project. Once that’s done you should be ready to go! That being said, please be careful: <strong>this is an experimental feature.</strong> It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn’t work with strapless yet.</p>
-</div>
-</div>
-<div id="creating-a-grid-of-cards" class="section level2">
+<div id="the-galleries-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#creating-a-grid-of-cards" class="anchor"></a>Creating a grid of cards</h2>
+<a href="#the-galleries-data" class="anchor"></a>The galleries data</h2>
 <p>The main function in bs4cards is <code><a href="../../reference/cards.html">cards()</a></code>. It takes a data frame as the first argument, generally the data set from which the bootstrap cards are to be constructed. The package comes with a data set <code>galleries</code> that I’ll use to create the grids</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards">bs4cards</a></span><span class="op">)</span>
 <span class="va">galleries</span>
 <span class="co">#&gt; # A tibble: 7 × 7</span>
@@ -212,8 +189,13 @@
 <span class="co">#&gt; 5 Silhouettes            silhouett… 2021… Tree… ggplot2 rcp… https://… https://ar…</span>
 <span class="co">#&gt; 6 Track Marks            track-mar… 2020… Voro… ggplot2 rcpp https://… https://ar…</span>
 <span class="co">#&gt; 7 Viewports              viewports  2021… Simp… ggplot2 fla… https://… https://ar…</span></code></pre></div>
-<p>Each row in this data corresponds to one card in the grid. The columns contain information that is useful for constructing the cards. For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>Each row in this data corresponds to one card in the grid. The columns contain information that is useful for constructing the cards.</p>
+</div>
+<div id="basic-usage" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basic-usage" class="anchor"></a>Basic usage</h2>
+<p>For example to create the card grid shown at the start of the vignette, I needed to the <code>title</code> for each card, the <code>text</code> printed below it, the <code>image</code> decorating the card, and the URL to which the title and image in each card should <code>link</code>. Each of these is an argument to <code><a href="../../reference/cards.html">cards()</a></code>, and for each argument you can pass an expression that will be evaluated using the <code>data</code> input:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
@@ -223,80 +205,84 @@
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/ash">
-<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2021-07-17</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2021-07-17</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
-<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2021-01-09</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2021-01-09</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
-<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2021-01-19</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2021-01-19</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
-<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Native Flora</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2021-02-10</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2021-02-10</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
-<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Silhouettes</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2021-01-24</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2021-01-24</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
-<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Track Marks</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2020-09-20</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2020-09-20</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
-<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
 <div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
 <h5 class="card-title my-auto px-3 pt-3 pb-3">Viewports</h5>
 </a>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .3rem .3rem ;">posted: 2021-02-28</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 .6rem .6rem ;">posted: 2021-02-28</div>
 </div>
 </div>
 </div>
+</div>
+<div id="additional-example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#additional-example" class="anchor"></a>Additional example</h2>
 <p>The <code><a href="../../reference/cards.html">cards()</a></code> function supports a variety of different layouts and customisation options, discussed in the next article. To give a flavour of what’s possible, here’s another example based on the same data:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
@@ -307,7 +293,7 @@
     footer <span class="op">=</span> <span class="va">paintbrushes</span>,
     layout <span class="op">=</span> <span class="st">"label-right"</span>, 
     width <span class="op">=</span> <span class="fl">4</span>,
-    rounding <span class="op">=</span> <span class="fl">0</span>
+    rounding <span class="op">=</span> <span class="fl">5</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <p>
@@ -318,12 +304,12 @@
 <button class="btn btn-primary" type="button" onclick="$('.all').hide(400, 'swing');setTimeout(function() {$('.rcpp').show(400, 'swing')}, 400);">rcpp</button>
 </p>
 <div class="row p-0 row-cols-1 row-cols-lg-2" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
-<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ash">
-<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/ash">
@@ -333,14 +319,14 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ggplot2</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show all ambient" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ambient" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ghosts">
-<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/ghosts">
@@ -350,14 +336,14 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ambient</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ambient</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show all ambient" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ambient" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
-<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/ice-floes">
@@ -367,14 +353,14 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ambient</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ambient</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 flametree" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 flametree" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/native-flora">
-<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/native-flora">
@@ -384,14 +370,14 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ggplot2 flametree</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 flametree</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 rcpp flametree" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 rcpp flametree" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
-<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/silhouettes">
@@ -401,14 +387,14 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ggplot2 rcpp flametree</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 rcpp flametree</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 rcpp" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 rcpp" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/track-marks">
-<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/track-marks">
@@ -418,14 +404,14 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ggplot2 rcpp</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 rcpp</div>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 flametree" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
-<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 0 0 0 0 ;">
-<div class="row no-gutters h-100 border-0" style="border-radius: 0 0 0 0 ;">
-<div class="col-5" style="border-radius: 0 0 0 0 ;">
+<div class="card bg-transparent m-0 border-0 collapse.show all ggplot2 flametree" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<div class="card-body m-0 p-0 col-12" style="visibility: visible; border-style:solid; border-color:#808080; border-width:1px; background-color: #ffffffaa;border-radius: 1rem 1rem 0 0 ;">
+<div class="row no-gutters h-100 border-0" style="border-radius: 1rem 1rem 0 0 ;">
+<div class="col-5" style="border-radius: 1rem 0 0 0 ;">
 <a href="https://art.djnavarro.net/gallery/viewports">
-<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 0 0 0 0 ;"></a>
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; margin-left: -1px;margin-right: -1px;margin-top: -1px;margin-bottom: -1px;border-radius: 1rem 0 0 0 ;"></a>
 </div>
 <div class="col-7 h-100">
 <a href="https://art.djnavarro.net/gallery/viewports">
@@ -435,16 +421,10 @@
 </div>
 </div>
 </div>
-<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 0 0 ;">ggplot2 flametree</div>
+<div class="card-footer small text-muted px-3 py-auto" style="border-style:solid; border-color:#808080; border-width:0 1px 1px 1px; border-radius: 0 0 1rem 1rem ;">ggplot2 flametree</div>
 </div>
 </div>
 </div>
-</div>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>The original version of this post used that solution, with a promissory note to do a better job later.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
   </div>
 

@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customising cards • bs4cards</title>
+<title>Enabling bootstrap 4 • bs4cards</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
 <script src="../../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="Customising cards">
+<script src="../../pkgdown.js"></script><meta property="og:title" content="Enabling bootstrap 4">
 <meta property="og:description" content="bs4cards">
 <meta property="og:image" content="https://bs4cards.djnavarro.net/twitter-card.png">
 <meta property="og:image:alt" content="A grid of hearts. Text in the middle reads 'bs4cards'">
@@ -114,30 +114,58 @@
 
       
 
-      </header><script src="borders_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="enabling-bootstrap4_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Customising cards</h1>
+      <h1 data-toc-skip>Enabling bootstrap 4</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/djnavarro/bs4cards/blob/master/vignettes/articles/borders.Rmd"><code>vignettes/articles/borders.Rmd</code></a></small>
-      <div class="hidden name"><code>borders.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/djnavarro/bs4cards/blob/master/vignettes/articles/enabling-bootstrap4.Rmd"><code>vignettes/articles/enabling-bootstrap4.Rmd</code></a></small>
+      <div class="hidden name"><code>enabling-bootstrap4.Rmd</code></div>
 
     </div>
 
     
     
-<div id="border-colour" class="section level2">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards">bs4cards</a></span><span class="op">)</span></code></pre></div>
+<p>The ability to create cards is already available via the bootstrap library that is already incorporated into many html-based R markdown outputs. However, this functionality is not automatically exposed to the R markdown user. With this in mind the goal of bs4cards is to provide a convenient interface to the <a href="https://getbootstrap.com/docs/4.5/components/card/">cards system</a> system introduced in bootstrap version 4.</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap. The default behaviour of R markdown when creating HTML documents is to use bootstrap version 3, so this setting needs to be altered. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you’re creating:</p>
+<div id="vanilla-r-markdown" class="section level2">
 <h2 class="hasAnchor">
-<a href="#border-colour" class="anchor"></a>Border colour</h2>
+<a href="#vanilla-r-markdown" class="anchor"></a>Vanilla R markdown</h2>
+<p>For a plain R markdown document or website (i.e., one where the output format is <code>html_document</code>) here is the relevant section of YAML you might use:</p>
+<pre><code>output:
+  html_document:
+    theme:
+      version: 4</code></pre>
+<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/">bootstrap 4.5</a>.</p>
 </div>
-<div id="border-width" class="section level2">
+<div id="pkgdown" class="section level2">
 <h2 class="hasAnchor">
-<a href="#border-width" class="anchor"></a>Border width</h2>
+<a href="#pkgdown" class="anchor"></a>Pkgdown</h2>
+<p>To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the <code>_pkgdown.yml</code> file to include the following</p>
+<pre><code>template:
+  bootstrap: 4</code></pre>
+<p>Note that this relies on an in-development feature, so you may need to update to the development version of pkgdown to make this work.</p>
 </div>
-<div id="corner-rounding" class="section level2">
+<div id="distill" class="section level2">
 <h2 class="hasAnchor">
-<a href="#corner-rounding" class="anchor"></a>Corner rounding</h2>
+<a href="#distill" class="anchor"></a>Distill</h2>
+<p>Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn’t look visually appealing when mixed with the distill styling.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> To fix this, bs4cards includes a stripped down version of bootstrap called “strapless”, that only uses the subset of bootstrap css relevant to cards. The convenience function <code><a href="../../reference/use_strapless.html">use_strapless()</a></code> will copy the strapless css file to the target location. To copy it to the same location as this post:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">bs4cards</span><span class="fu">::</span><span class="fu"><a href="../../reference/use_strapless.html">use_strapless</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="st">"_posts"</span>, <span class="st">"bs4cards-in-distill"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Next, to enable the library within the post, add the following lines to the YAML header for the post:</p>
+<pre><code>output:
+  distill::distill_article:
+    css: "strapless.css"</code></pre>
+<p>Alternatively, if you want to enable strapless for the entire site, this markup goes in the <code>_site.yml</code> file and the css file should go in the home folder for the project. Once that’s done you should be ready to go! That being said, please be careful: <strong>this is an experimental feature.</strong> It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn’t work with strapless yet.</p>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The original version of this post used that solution, with a promissory note to do a better job later.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
   </div>
 
