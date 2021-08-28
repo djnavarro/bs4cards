@@ -9,3 +9,4 @@
 ^vignettes/articles$
 ^other$
 ^bootstrap$
+^codecov\.yml$

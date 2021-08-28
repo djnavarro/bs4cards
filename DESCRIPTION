@@ -20,10 +20,13 @@ Imports:
 URL: https://github.com/djnavarro/bs4cards
 BugReports: https://github.com/djnavarro/bs4cards/issues
 Suggests: 
+    testthat (>= 3.0.0),
     knitr,
     rmarkdown,
-    tibble
+    tibble,
+    covr
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
