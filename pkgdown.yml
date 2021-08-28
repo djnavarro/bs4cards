@@ -8,11 +8,10 @@ articles:
   articles/columns: columns.html
   articles/enabling-bootstrap4: enabling-bootstrap4.html
   articles/filtering: filtering.html
-  articles/headers-footers: headers-footers.html
   articles/introduction: introduction.html
   articles/layouts: layouts.html
   articles/spacing: spacing.html
-last_built: 2021-08-28T06:44Z
+last_built: 2021-08-28T06:54Z
 urls:
   reference: https://bs4cards.djnavarro.net/reference
   article: https://bs4cards.djnavarro.net/articles
