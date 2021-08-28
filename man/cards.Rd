@@ -2,7 +2,7 @@
 % Please edit documentation in R/cards.R
 \name{cards}
 \alias{cards}
-\title{Specifies a bootstrap card}
+\title{Builds a deck of bootstrap cards}
 \usage{
 cards(
   data,
@@ -24,7 +24,7 @@ cards(
 )
 }
 \arguments{
-\item{data}{Data}
+\item{data}{Data frame}
 
 \item{title}{Title for the card}
 
@@ -57,8 +57,42 @@ cards(
 \item{border_radius}{Amount of rounding on card corners is an integer between 0 and 5}
 }
 \value{
-A "shiny.tag" object
+A "shiny.tag" object containing the HTML for the card deck
 }
 \description{
-Specifies a bootstrap card
+Builds a deck of bootstrap cards
+}
+\details{
+This function constructs the HTML necessary to specify a deck of bootstrap 4
+cards suitable for inclusion within an R markdown document. It takes a data
+frame as the first argument, with one row for each card to be generated.
+
+Cards are specified using the \code{title}, \code{text}, \code{image},
+\code{link}, \code{footer}, \code{header}, and \code{tags} arguments. These
+arguments take expressions to be evaluated using the user-supplied
+\code{data}, and should evaluate to character vectors that have length 1 or
+the same number of rows as \code{data}.
+
+The \code{layout} argument is a single character string specifying the
+layout of the cards: possible values are "label-below" (the default),
+"label-above", "label-left", "label-right", "label-only", "image-only",
+"inset-top", "inset-bottom".
+
+The \code{width}, \code{spacing}, \code{breakpoint}, \code{border_width},
+and \code{border_radius} arguments all take integer inputs specifying
+the visual appearance of the cards. Allowed values range from 0 to 5, except
+for \code{width} and \code{breakpoint} which cannot be 0. The other two
+arguments \code{label_colour} and \code{border_colour} take a single string
+specifying colours of the relevant parts of the card.
+}
+\examples{
+\dontrun{
+galleries \%>\%
+  cards(
+    title = long_name,
+    text = blurb,
+    image = image_url,
+    link = gallery_url
+  )
+}
 }
