@@ -32,7 +32,7 @@ The default setting of `width = 3` will produce a layout where the cards span th
 
 ## Character-valued widths
 
-If you know a little bootstrap you can exercise finer-grained control over the card widths by passng a string rather than a number. This string is interpreted as a set of CSS classes and is passed directly into the output. Internally, this snippet of code shows how the numeric widths are translated to bootstrap classes:
+If you know a little bootstrap you can exercise finer-grained control over the card widths by passing a string rather than a number. This string is interpreted as a set of CSS classes and is passed directly into the output. Internally, this snippet of code shows how the numeric widths are translated to bootstrap classes:
 
 ```{r, eval=FALSE}
 if(width == 1) return("row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6")
