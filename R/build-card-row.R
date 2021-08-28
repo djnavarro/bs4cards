@@ -17,7 +17,7 @@ build_card_row <- function(data) {
 
 build_card <- function(title, text, image, link, footer, header, tags,
                        width, layout, padding, gutter, breakpoint, colour,
-                       border_width, border_colour, rounding){
+                       border_width, border_colour, border_radius){
 
   if(layout == "label-below")  layout_card <- layout_card_vertical
   if(layout == "label-above")  layout_card <- layout_card_vertical
@@ -38,8 +38,7 @@ build_card <- function(title, text, image, link, footer, header, tags,
     title, text, image, link,
     footer, header, tags, layout,
     padding, gutter, breakpoint,
-    colour, border,
-    radius = rounding
+    colour, border, border_radius
   ))
 }
 

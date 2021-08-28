@@ -37,7 +37,7 @@ parse_breakpoint <- function(breakpoint, layout) {
 
 }
 
-parse_borderwidth <- function(border_width) {
+parse_border_width <- function(border_width) {
   if(is_character(border_width)) return(border_width)
   if(border_width == 0) return("0")
   if(border_width == 1) return("1px")
@@ -47,7 +47,7 @@ parse_borderwidth <- function(border_width) {
   if(border_width == 5) return("8px")
 }
 
-parse_rounding <- function(rounding) {
+parse_border_radius <- function(rounding) {
   if(is_character(rounding)) return(rounding)
   if(rounding == 0) return("0")
   if(rounding == 1) return(".2rem")

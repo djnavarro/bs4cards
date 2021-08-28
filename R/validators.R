@@ -62,9 +62,9 @@ check_valid_border_width <- function(x, n) {
 }
 
 
-check_valid_rounding <- function(x, n) {
-  if(is_null(x)) abort("rounding cannot be NULL")
-  check_valid_veclength(x, n, "rounding")
+check_valid_border_radius <- function(x, n) {
+  if(is_null(x)) abort("border_radius cannot be NULL")
+  check_valid_veclength(x, n, "border_radius")
 }
 
 

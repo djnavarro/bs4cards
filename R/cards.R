@@ -53,11 +53,11 @@ cards <- function(data,
     colour = label_colour,
     border_width = border_width,
     border_colour = border_colour,
-    rounding = border_radius
+    border_radius = border_radius
   )
 
   card_spec <- lapply(quosures, function(x) eval_tidy(x, data = data))
-  card_spec$padding <- 0
+  card_spec$padding <- 0 # hack
 
   card_data <- build_card_data(card_spec, nrow(data))
   card_row <- build_card_row(card_data)

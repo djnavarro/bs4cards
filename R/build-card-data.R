@@ -27,13 +27,13 @@ build_card_data <- function(cardspec, n) {
   check_valid_colour(cardspec[["colour"]], n)
   check_valid_border_width(cardspec[["border_width"]], n)
   check_valid_border_colour(cardspec[["border_colour"]], n)
-  check_valid_rounding(cardspec[["rounding"]], n)
+  check_valid_border_radius(cardspec[["border_radius"]], n)
 
   # convert numeric sizes to css specifications
   cardspec[["width"]] <- parse_width(cardspec[["width"]])
   cardspec[["gutter"]] <- parse_spacing(cardspec[["gutter"]])
-  cardspec[["border_width"]] <- parse_borderwidth(cardspec[["border_width"]])
-  cardspec[["rounding"]] <- parse_rounding(cardspec[["rounding"]])
+  cardspec[["border_width"]] <- parse_border_width(cardspec[["border_width"]])
+  cardspec[["border_radius"]] <- parse_border_radius(cardspec[["border_radius"]])
   cardspec[["breakpoint"]] <- parse_breakpoint(cardspec[["breakpoint"]], cardspec[["layout"]])
 
   # coerce to data frame

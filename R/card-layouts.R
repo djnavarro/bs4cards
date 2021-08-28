@@ -3,9 +3,9 @@
 layout_card_vertical <- function(title, text, image, link,
                                  footer, header, tags, layout,
                                  padding, gutter, breakpoint,
-                                 colour, border, radius) {
+                                 colour, border, border_radius) {
 
-  corners <- card_corners(layout, footer, header, radius)
+  corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
@@ -32,9 +32,9 @@ layout_card_vertical <- function(title, text, image, link,
 layout_card_labelonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
                                   padding, gutter, breakpoint,
-                                  colour, border, radius) {
+                                  colour, border, border_radius) {
 
-  corners <- card_corners(layout, footer, header, radius)
+  corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
@@ -58,9 +58,9 @@ layout_card_labelonly <- function(title, text, image, link,
 layout_card_imageonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
                                   padding, gutter, breakpoint,
-                                  colour, border, radius) {
+                                  colour, border, border_radius) {
 
-  corners <- card_corners(layout, footer, header, radius)
+  corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
@@ -79,9 +79,9 @@ layout_card_imageonly <- function(title, text, image, link,
 layout_card_horizontal <- function(title, text, image, link,
                                    footer, header, tags, layout,
                                    padding, gutter, breakpoint,
-                                   colour, border, radius) {
+                                   colour, border, border_radius) {
 
-  corners <- card_corners(layout, footer, header, radius)
+  corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 
@@ -126,9 +126,9 @@ layout_card_horizontal <- function(title, text, image, link,
 layout_card_inset <- function(title, text, image, link,
                               footer, header, tags, layout,
                               padding, gutter, breakpoint,
-                              colour, border, radius) {
+                              colour, border, border_radius) {
 
-  corners <- card_corners(layout, footer, header, radius)
+  corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
                         layout, border, corners)
 

@@ -4,12 +4,12 @@
 # helpers to define tidy corners ------------------------------------------
 
 
-card_corners <- function(layout, footer = NULL, header = NULL, radius) {
+card_corners <- function(layout, footer = NULL, header = NULL, border_radius) {
 
   no_footer <- is_na(footer)
   no_header <- is_na(header)
 
-  css_corners <- css_corner_function(radius)
+  css_corners <- css_corner_function(border_radius)
 
   # singleton layouts
 
@@ -88,8 +88,8 @@ card_corners <- function(layout, footer = NULL, header = NULL, radius) {
 
 }
 
-css_corner_function <- function(radius) {
-  function(tl = FALSE, tr = FALSE, bl = FALSE, br = FALSE, size = radius) {
+css_corner_function <- function(border_radius) {
+  function(tl = FALSE, tr = FALSE, bl = FALSE, br = FALSE, size = border_radius) {
     cnr <- function(exists, sz) ifelse(exists, sz, "0")
     paste(
       "border-radius:", # border-radius is clockwise from top-left
