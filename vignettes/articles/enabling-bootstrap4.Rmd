@@ -1,0 +1,63 @@
+---
+title: "Enabling bootstrap 4"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bs4cards)
+```
+
+
+The ability to create cards is already available via the bootstrap library that is already incorporated into many html-based R markdown outputs. However, this functionality is not automatically exposed to the R markdown user. With this in mind the goal of bs4cards is to provide a convenient interface to the [cards system](https://getbootstrap.com/docs/4.5/components/card/) system introduced in bootstrap version 4.
+
+The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap. The default behaviour of R markdown when creating HTML documents is to use bootstrap version 3, so this setting needs to be altered. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you're creating:
+
+## Vanilla R markdown
+
+For a plain R markdown document or website (i.e., one where the output format is `html_document`) here is the relevant section of YAML you might use:
+
+```
+output:
+  html_document:
+    theme:
+      version: 4
+```
+
+This overrides the R markdown defaults to ensure that the output is built using [bootstrap 4.5](https://getbootstrap.com/docs/4.5/getting-started/introduction/). 
+
+## Pkgdown
+
+To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the `_pkgdown.yml` file to include the following
+
+```
+template:
+  bootstrap: 4
+```
+
+Note that this relies on an in-development feature, so you may need to update to the development version of pkgdown to make this work.
+
+
+## Distill
+
+Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn't look visually appealing when mixed with the distill styling.^[The original version of this post used that solution, with a promissory note to do a better job later.] To fix this, bs4cards includes a stripped down version of bootstrap called "strapless", that only uses the subset of bootstrap css relevant to cards. The convenience function `use_strapless()` will copy the strapless css file to the target location. To copy it to the same location as this post:
+
+```{r, eval=FALSE}
+bs4cards::use_strapless(here::here("_posts", "bs4cards-in-distill"))
+```
+
+Next, to enable the library within the post, add the following lines to the YAML header for the post:
+
+```
+output:
+  distill::distill_article:
+    css: "strapless.css"
+```
+
+Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project. Once that's done you should be ready to go! That being said, please be careful: **this is an experimental feature.** It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn't work with strapless yet.
+

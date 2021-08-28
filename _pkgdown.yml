@@ -32,7 +32,8 @@ articles:
     - articles/colours
     - articles/borders
 
-  - title: Extra features
-    navbar: Extras
+  - title: Additional topics
+    navbar: Additional topics
     contents:
+    - articles/enabling-bootstrap4
     - articles/filtering

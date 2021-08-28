@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="bs4cards">
-<title>Spacing • bs4cards</title>
+<title>Enabling bootstrap 4 • bs4cards</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../../deps/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="../../deps/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="../../deps/bs3compat-0.2.5.1/tabs.js"></script><script src="../../deps/bs3compat-0.2.5.1/bs3compat.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
 <link href="../../syntax-highlighting.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="Spacing">
+<script src="../../pkgdown.js"></script><meta property="og:title" content="Enabling bootstrap 4">
 <meta property="og:description" content="bs4cards">
 <meta property="og:image" content="https://bs4cards.djnavarro.net/twitter-card.png">
 <meta property="og:image:alt" content="A grid of hearts. Text in the middle reads 'bs4cards'">
@@ -80,14 +80,14 @@
 </div>
   </div>
 </nav><div class="container template-article">
-<script src="spacing_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+<script src="enabling-bootstrap4_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <img src="" class="pkg-logo" alt=""><div class="page-header pb-2 mt-4 mb-2 border-bottom toc-ignore">
-      <h1 class="display-4" data-toc-skip>Spacing</h1>
+      <h1 class="display-4" data-toc-skip>Enabling bootstrap 4</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/djnavarro/bs4cards/blob/master/vignettes/articles/spacing.Rmd" class="external-link"><code>vignettes/articles/spacing.Rmd</code></a></small>
-      <div class="d-none name"><code>spacing.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/djnavarro/bs4cards/blob/master/vignettes/articles/enabling-bootstrap4.Rmd" class="external-link"><code>vignettes/articles/enabling-bootstrap4.Rmd</code></a></small>
+      <div class="d-none name"><code>enabling-bootstrap4.Rmd</code></div>
 
     </div>
 
@@ -95,60 +95,39 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span></code></pre></div>
-<div id="card-spacing" class="section level2">
+<p>The ability to create cards is already available via the bootstrap library that is already incorporated into many html-based R markdown outputs. However, this functionality is not automatically exposed to the R markdown user. With this in mind the goal of bs4cards is to provide a convenient interface to the <a href="https://getbootstrap.com/docs/4.5/components/card/" class="external-link">cards system</a> system introduced in bootstrap version 4.</p>
+<p>The first step in using the package is to make sure that your R markdown document uses version 4 of bootstrap. The default behaviour of R markdown when creating HTML documents is to use bootstrap version 3, so this setting needs to be altered. To ensure that you are using bootstrap 4, you need to edit the YAML header for your document to specify which version of bootstrap you want to use. The instructions are slightly different depending on what kind of document you’re creating:</p>
+<div id="vanilla-r-markdown" class="section level2">
 <h2 class="hasAnchor">
-<a href="#card-spacing" class="anchor" aria-hidden="true"></a>Card spacing</h2>
-<p>To modify the separation between cards, use the <code>spacing</code> argument. Currently this argument is numeric, and takes a number between 0 and 5. At <code>spacing = 0</code>, all spacing between cards is removed:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, spacing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<div>
-<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -0; margin-right: -0; margin-top: 1rem; margin-bottom: 1rem; ">
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 0 ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="#vanilla-r-markdown" class="anchor" aria-hidden="true"></a>Vanilla R markdown</h2>
+<p>For a plain R markdown document or website (i.e., one where the output format is <code>html_document</code>) here is the relevant section of YAML you might use:</p>
+<pre><code>output:
+  html_document:
+    theme:
+      version: 4</code></pre>
+<p>This overrides the R markdown defaults to ensure that the output is built using <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/" class="external-link">bootstrap 4.5</a>.</p>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 0 ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
+<div id="pkgdown" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pkgdown" class="anchor" aria-hidden="true"></a>Pkgdown</h2>
+<p>To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the <code>_pkgdown.yml</code> file to include the following</p>
+<pre><code>template:
+  bootstrap: 4</code></pre>
+<p>Note that this relies on an in-development feature, so you may need to update to the development version of pkgdown to make this work.</p>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 0 ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
+<div id="distill" class="section level2">
+<h2 class="hasAnchor">
+<a href="#distill" class="anchor" aria-hidden="true"></a>Distill</h2>
+<p>Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn’t look visually appealing when mixed with the distill styling.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The original version of this post used that solution, with a promissory note to do a better job later.&lt;/p&gt;"><sup>1</sup></a> To fix this, bs4cards includes a stripped down version of bootstrap called “strapless”, that only uses the subset of bootstrap css relevant to cards. The convenience function <code><a href="../../reference/use_strapless.html">use_strapless()</a></code> will copy the strapless css file to the target location. To copy it to the same location as this post:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">bs4cards</span><span class="fu">::</span><span class="fu"><a href="../../reference/use_strapless.html">use_strapless</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"_posts"</span>, <span class="st">"bs4cards-in-distill"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Next, to enable the library within the post, add the following lines to the YAML header for the post:</p>
+<pre><code>output:
+  distill::distill_article:
+    css: "strapless.css"</code></pre>
+<p>Alternatively, if you want to enable strapless for the entire site, this markup goes in the <code>_site.yml</code> file and the css file should go in the home folder for the project. Once that’s done you should be ready to go! That being said, please be careful: <strong>this is an experimental feature.</strong> It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn’t work with strapless yet.</p>
 </div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 0 ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 0 ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 0 ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-</div>
-</div>
-<p>At <code>spacing = 5</code> there is a lot of room between cards:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, spacing <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
-<div>
-<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -1rem; margin-right: -1rem; margin-top: 1rem; margin-bottom: 1rem; ">
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 1rem ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 1rem ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 1rem ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 1rem ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 1rem ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: 1rem ; border-radius: .6rem .6rem .6rem .6rem ;">
-<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img" style="border-style:solid; border-color:#808080; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;">
-</div>
-</div>
-</div>
-</div>
+
   </div>
  <div class="col-md-3 d-none d-md-block" id="pkgdown-sidebar">
         <div class="sticky-top">

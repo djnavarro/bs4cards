@@ -50,11 +50,11 @@ parse_borderwidth <- function(border_width) {
 parse_rounding <- function(rounding) {
   if(is_character(rounding)) return(rounding)
   if(rounding == 0) return("0")
-  if(rounding == 1) return(".1rem")
-  if(rounding == 2) return(".2rem")
-  if(rounding == 3) return(".3rem")
-  if(rounding == 4) return(".4rem")
-  if(rounding == 5) return(".5rem")
+  if(rounding == 1) return(".2rem")
+  if(rounding == 2) return(".4rem")
+  if(rounding == 3) return(".6rem")
+  if(rounding == 4) return(".8rem")
+  if(rounding == 5) return("1rem")
 }
 
 parse_spacing <- function(spacing) {
