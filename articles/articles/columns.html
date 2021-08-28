@@ -180,7 +180,7 @@
 <div id="character-valued-widths" class="section level2">
 <h2 class="hasAnchor">
 <a href="#character-valued-widths" class="anchor"></a>Character-valued widths</h2>
-<p>If you know a little bootstrap you can exercise finer-grained control over the card widths by passng a string rather than a number. This string is interpreted as a set of CSS classes and is passed directly into the output. Internally, this snippet of code shows how the numeric widths are translated to bootstrap classes:</p>
+<p>If you know a little bootstrap you can exercise finer-grained control over the card widths by passing a string rather than a number. This string is interpreted as a set of CSS classes and is passed directly into the output. Internally, this snippet of code shows how the numeric widths are translated to bootstrap classes:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6"</span><span class="op">)</span>
 <span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4"</span><span class="op">)</span>
