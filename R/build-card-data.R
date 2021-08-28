@@ -24,7 +24,7 @@ build_card_data <- function(cardspec, n) {
   }
 
   # check that valid "card properties" have been input
-  check_valid_colour(cardspec[["colour"]], n)
+  check_valid_label_colour(cardspec[["label_colour"]], n)
   check_valid_border_width(cardspec[["border_width"]], n)
   check_valid_border_colour(cardspec[["border_colour"]], n)
   check_valid_border_radius(cardspec[["border_radius"]], n)

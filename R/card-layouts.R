@@ -3,7 +3,7 @@
 layout_card_vertical <- function(title, text, image, link,
                                  footer, header, tags, layout,
                                  padding, spacing, breakpoint,
-                                 colour, border, border_radius) {
+                                 label_colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
@@ -14,7 +14,7 @@ layout_card_vertical <- function(title, text, image, link,
 
   label_vertical <- htmltools::div(
     class = label_vertical_class(padding),
-    style = label_vertical_style(colour, corners, border),
+    style = label_vertical_style(label_colour, corners, border),
     pieces$title, pieces$text
   )
 
@@ -32,7 +32,7 @@ layout_card_vertical <- function(title, text, image, link,
 layout_card_labelonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
                                   padding, spacing, breakpoint,
-                                  colour, border, border_radius) {
+                                  label_colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
@@ -43,7 +43,7 @@ layout_card_labelonly <- function(title, text, image, link,
 
   label_vertical <- htmltools::div(
     class = label_vertical_class(padding),
-    style = label_vertical_style(colour, corners, border),
+    style = label_vertical_style(label_colour, corners, border),
     pieces$title, pieces$text
   )
 
@@ -58,7 +58,7 @@ layout_card_labelonly <- function(title, text, image, link,
 layout_card_imageonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
                                   padding, spacing, breakpoint,
-                                  colour, border, border_radius) {
+                                  label_colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
@@ -79,7 +79,7 @@ layout_card_imageonly <- function(title, text, image, link,
 layout_card_horizontal <- function(title, text, image, link,
                                    footer, header, tags, layout,
                                    padding, spacing, breakpoint,
-                                   colour, border, border_radius) {
+                                   label_colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
@@ -110,7 +110,7 @@ layout_card_horizontal <- function(title, text, image, link,
 
   body_horizontal <- htmltools::div(
     class = body_horizontal_class(padding),
-    style = body_horizontal_style(colour, corners, border),
+    style = body_horizontal_style(label_colour, corners, border),
     row_horizontal
   )
 
@@ -126,7 +126,7 @@ layout_card_horizontal <- function(title, text, image, link,
 layout_card_inset <- function(title, text, image, link,
                               footer, header, tags, layout,
                               padding, spacing, breakpoint,
-                              colour, border, border_radius) {
+                              label_colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
   pieces <- card_pieces(title, text, image, link, footer, header,
@@ -147,7 +147,7 @@ layout_card_inset <- function(title, text, image, link,
 
   label_inset <- htmltools::div(
     class = label_inset_class(),
-    style = label_inset_style(colour, corners, border, breakpoint, layout),
+    style = label_inset_style(label_colour, corners, border, breakpoint, layout),
     label_outer_wrapper
   )
 

@@ -90,10 +90,10 @@ label_vertical_class <- function(padding) {
   paste0("card-body justify-content-end m-0 p-", padding)
 }
 
-label_vertical_style <- function(colour, corners, border) {
+label_vertical_style <- function(label_colour, corners, border) {
   paste0(
     "visibility: visible; ",
-    "background-color: ", colour, "; ",
+    "background-color: ", label_colour, "; ",
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
     "border-width:", border[["width"]], "; ",
@@ -122,13 +122,13 @@ body_horizontal_class <- function(padding) {
   paste0("card-body m-0 p-", padding, " col-12")
 }
 
-body_horizontal_style <- function(colour, corners, border) {
+body_horizontal_style <- function(label_colour, corners, border) {
   paste0(
     "visibility: visible; ",
     "border-style:", border[["style"]], "; ",
     "border-color:", border[["colour"]], "; ",
     "border-width:", border[["width"]], "; ",
-    "background-color: ", colour, ";",
+    "background-color: ", label_colour, ";",
     corners[["core"]]
   )
 }
@@ -156,11 +156,11 @@ label_inset_class <- function() {
   "card-img-overlay p-0 m-0"
 }
 
-label_inset_style <- function(colour, corners, border, breakpoint, layout) {
+label_inset_style <- function(label_colour, corners, border, breakpoint, layout) {
   height <- round(breakpoint * 100)
   paste0(
     "overflow: hidden;",
-    "background-color: ", colour, ";",
+    "background-color: ", label_colour, ";",
     "height: ", height, "%;",
     "position: absolute;",
     "top: ", ifelse(layout == "inset-bottom", 100 - height, 0), "%;",

@@ -72,9 +72,9 @@ check_valid_border_radius <- function(x, n) {
 
 
 # these need to be more precise later...
-check_valid_colour <- function(x, n) {
-  if(is_null(x)) abort("colour cannot be NULL")
-  check_valid_veclength(x, n, "colour")
+check_valid_label_colour <- function(x, n) {
+  if(is_null(x)) abort("label_colour cannot be NULL")
+  check_valid_veclength(x, n, "label_colour")
 }
 
 check_valid_border_colour <- function(x, n) {

@@ -50,7 +50,7 @@ cards <- function(data,
     layout = layout,
     spacing = spacing,
     breakpoint = breakpoint,
-    colour = label_colour,
+    label_colour = label_colour,
     border_width = border_width,
     border_colour = border_colour,
     border_radius = border_radius
