@@ -11,9 +11,79 @@ library(tibble)
 library(bs4cards)
 ```
 
-## Border colour
+The colour and width of card borders are customisable, as is the amount of rounding on the card borders. 
 
 ## Border width
 
+To remove the borders entirely set `border_width = 0`:
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    image = image_url, 
+    border_width = 0
+  )
+```
+
+The thickest border setting is `border_width = 5`:
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    image = image_url, 
+    border_width = 5
+  )
+```
+
+
+## Border colour
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    image = image_url, 
+    border_width = 2,
+    border_colour = c("#8b0000", "black", "#0b0b80")
+  )
+```
+
+
 ## Border radius
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    image = image_url, 
+    border_radius = 0,
+  )
+```
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    image = image_url, 
+    border_radius = 5,
+  )
+```
+
+
+## Additional customisation
+
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    image = image_url, 
+    border_colour = "#dddddd",
+    border_width = "20px",
+    border_radius = "20rem",
+  )
+```
+
+
 

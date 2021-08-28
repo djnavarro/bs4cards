@@ -92,17 +92,177 @@
 
     
     
-<div id="border-colour" class="section level2">
-<h2 class="hasAnchor">
-<a href="#border-colour" class="anchor" aria-hidden="true"></a>Border colour</h2>
-</div>
+<p>The colour and width of card borders are customisable, as is the amount of rounding on the card borders.</p>
 <div id="border-width" class="section level2">
 <h2 class="hasAnchor">
 <a href="#border-width" class="anchor" aria-hidden="true"></a>Border width</h2>
+<p>To remove the borders entirely set <code>border_width = 0</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>, 
+    border_width <span class="op">=</span> <span class="fl">0</span>
+  <span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:0 0 0 0; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:0; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:0 0 0 0; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:0; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:0 0 0 0; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:0; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
+</div>
+</div>
+</div>
+</div>
+<p>The thickest border setting is <code>border_width = 5</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>, 
+    border_width <span class="op">=</span> <span class="fl">5</span>
+  <span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:8px 8px 0 8px; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:8px; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:8px 8px 0 8px; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:8px; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:8px 8px 0 8px; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:8px; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="border-colour" class="section level2">
+<h2 class="hasAnchor">
+<a href="#border-colour" class="anchor" aria-hidden="true"></a>Border colour</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>, 
+    border_width <span class="op">=</span> <span class="fl">2</span>,
+    border_colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#8b0000"</span>, <span class="st">"black"</span>, <span class="st">"#0b0b80"</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#8b0000; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#8b0000; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:black; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:black; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .6rem .6rem .6rem .6rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#0b0b80; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#0b0b80; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="border-radius" class="section level2">
 <h2 class="hasAnchor">
 <a href="#border-radius" class="anchor" aria-hidden="true"></a>Border radius</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>, 
+    border_radius <span class="op">=</span> <span class="fl">0</span>,
+  <span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 0 0 0 0 ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 0 0 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 0 0 ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
+</div>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>, 
+    border_radius <span class="op">=</span> <span class="fl">5</span>,
+  <span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 1rem 1rem 1rem 1rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: 1rem 1rem 0 0 ;"><div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 1rem 1rem ;">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="additional-customisation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#additional-customisation" class="anchor" aria-hidden="true"></a>Additional customisation</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    image <span class="op">=</span> <span class="va">image_url</span>, 
+    border_colour <span class="op">=</span> <span class="st">"#dddddd"</span>,
+    border_width <span class="op">=</span> <span class="st">"20px"</span>,
+    border_radius <span class="op">=</span> <span class="st">"20rem"</span>,
+  <span class="op">)</span>
+<span class="co">#&gt; using 'image-only' layout</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 20rem 20rem 20rem 20rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#dddddd; border-width:20px; border-radius: 20rem 20rem 20rem 20rem ;">
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 20rem 20rem 20rem 20rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#dddddd; border-width:20px; border-radius: 20rem 20rem 20rem 20rem ;">
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: 20rem 20rem 20rem 20rem ;">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#dddddd; border-width:20px; border-radius: 20rem 20rem 20rem 20rem ;">
+</div>
+</div>
+</div>
 </div>
   </div>
  <div class="col-md-3 d-none d-md-block" id="pkgdown-sidebar">
