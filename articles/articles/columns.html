@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Responsive columns • bs4cards</title>
+<title>Responsive widths • bs4cards</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
 <script src="../../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="Responsive columns">
+<script src="../../pkgdown.js"></script><meta property="og:title" content="Responsive widths">
 <meta property="og:description" content="bs4cards">
 <meta property="og:image" content="https://bs4cards.djnavarro.net/twitter-card.png">
 <meta property="og:image:alt" content="A grid of hearts. Text in the middle reads 'bs4cards'">
@@ -73,7 +73,7 @@
       <a href="../../articles/articles/headers-footers.html">Headers and footers</a>
     </li>
     <li>
-      <a href="../../articles/articles/columns.html">Responsive columns</a>
+      <a href="../../articles/articles/columns.html">Responsive widths</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Appearance</li>
@@ -117,7 +117,7 @@
       </header><script src="columns_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Responsive columns</h1>
+      <h1 data-toc-skip>Responsive widths</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/djnavarro/bs4cards/blob/master/vignettes/articles/columns.Rmd"><code>vignettes/articles/columns.Rmd</code></a></small>
@@ -129,10 +129,11 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards">bs4cards</a></span><span class="op">)</span></code></pre></div>
-<div id="card-width" class="section level2">
+<p>One of the most attractive feature of bootstrap is responsive layouts: the elements displayed on a page are resized and reorganised when the size of the screen changes. This property is inherited by bs4cards, and is particularly evident when setting the <code>width</code> argument to <code><a href="../../reference/cards.html">cards()</a></code></p>
+<div id="numeric-valued-widths" class="section level2">
 <h2 class="hasAnchor">
-<a href="#card-width" class="anchor"></a>Card width</h2>
-<p>There are four pre-specified width settings, numbered from 1 to 5. All are responsive widths, and will resize the cards and change the number of columns depending on the size of the display device. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:</p>
+<a href="#numeric-valued-widths" class="anchor"></a>Numeric-valued widths</h2>
+<p>Unless you need fine grain control, the easiest way to specify <code>width</code> is to provide a single integer value between 1 and 5. Larger <code>width</code> values produce wider cards, which means that fewer columns are shown on screen. However, the actual number of columns depends on the size of the screen. To provide a sense of how each setting behaves, try resizing the window and seeing how these cards behave:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, image <span class="op">=</span> <span class="va">image_url</span>, width <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
@@ -174,6 +175,95 @@
 </div>
 </div>
 </div>
+<p>The default setting of <code>width = 3</code> will produce a layout where the cards span three columns on wide screens and one column on narrow screens. At the narrowest setting of <code>width = 1</code>, the number of columns spanned range from two to six, whereas at the widest setting the card always occupies the full width of the screen.</p>
+</div>
+<div id="character-valued-widths" class="section level2">
+<h2 class="hasAnchor">
+<a href="#character-valued-widths" class="anchor"></a>Character-valued widths</h2>
+<p>If you know a little bootstrap you can exercise finer-grained control over the card widths by passng a string rather than a number. This string is interpreted as a set of CSS classes and is passed directly into the output. Internally, this snippet of code shows how the numeric widths are translated to bootstrap classes:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6"</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4"</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-1 row-cols-md-2 row-cols-lg-3"</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-1 row-cols-lg-2"</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-1"</span><span class="op">)</span></code></pre></div>
+<p>I’ve attempted to choose defaults that I think would make sense in most use cases that I could think of, but I’m certain that there are possibilities that I’ve missed. With that in mind, there’s nothing stopping you from passing your own classes if you would prefer a different layout. For instance, if you wanted cards that always span exactly two columns regardless of screen size, this works:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="va">long_name</span>,
+    link <span class="op">=</span> <span class="va">gallery_url</span>,
+    image <span class="op">=</span> <span class="va">image_url</span>,
+    width <span class="op">=</span> <span class="st">"row-cols-2"</span>
+<span class="op">)</span></code></pre></div>
+<div>
+<div class="row p-0 row-cols-2" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/ash">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ash Cloud and Blood</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ghosts on Marble Paper</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Ice Floes</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<img src="https://bs4cards.djnavarro.net/image/native-flora.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/native-flora">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Native Flora</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<img src="https://bs4cards.djnavarro.net/image/silhouettes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/silhouettes">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Silhouettes</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<img src="https://bs4cards.djnavarro.net/image/track-marks.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/track-marks">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Track Marks</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show NA" style="padding: .2rem ; border-radius: .3rem .3rem .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<img src="https://bs4cards.djnavarro.net/image/viewports.jpg" class="card-img-top" style="border-style:solid; border-color:#808080; border-width:1px 1px 0 1px; border-radius: .3rem .3rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #ffffffaa; border-style:solid; border-color:#808080; border-width:1px; border-radius: 0 0 .3rem .3rem ;">
+<a href="https://art.djnavarro.net/gallery/viewports">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Viewports</h5>
+</a>
+</div>
+</div>
+</div>
+</div>
+<p>At the moment, the <code>width</code> argument must be length 1: for simplicity and consistency of layout, the width classes are in fact a property of the row div that contains the cards, not the cards themselves.</p>
 </div>
   </div>
 
