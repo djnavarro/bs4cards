@@ -117,16 +117,12 @@
 <div id="distill" class="section level2">
 <h2 class="hasAnchor">
 <a href="#distill" class="anchor" aria-hidden="true"></a>Distill</h2>
-<p>Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn’t look visually appealing when mixed with the distill styling.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The original version of this post used that solution, with a promissory note to do a better job later.&lt;/p&gt;"><sup>1</sup></a> To fix this, bs4cards includes a stripped down version of bootstrap called “strapless”, that only uses the subset of bootstrap css relevant to cards. The convenience function <code><a href="../../reference/use_strapless.html">use_strapless()</a></code> will copy the strapless css file to the target location. To copy it to the same location as this post:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">bs4cards</span><span class="fu">::</span><span class="fu"><a href="../../reference/use_strapless.html">use_strapless</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"_posts"</span>, <span class="st">"bs4cards-in-distill"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Next, to enable the library within the post, add the following lines to the YAML header for the post:</p>
+<p>Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn’t look visually appealing when mixed with the istill styling. The solution I’ve adopted for this is to use a custom bootstrap build that includes a minimal number of bootstrap components. If you want to try the same approach, you can download the <a href="https://github.com/djnavarro/strapless/releases/download/0.0.0.9000/strapless.css" class="external-link">strapless.css</a> file to the same folder as the distill post you want to enable it for, and include the following YAML in the post header:</p>
 <pre><code>output:
   distill::distill_article:
     css: "strapless.css"</code></pre>
-<p>Alternatively, if you want to enable strapless for the entire site, this markup goes in the <code>_site.yml</code> file and the css file should go in the home folder for the project. Once that’s done you should be ready to go! That being said, please be careful: <strong>this is an experimental feature.</strong> It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn’t work with strapless yet.</p>
+<p>If you want to enable strapless for the entire site, this markup goes in the <code>_site.yml</code> file and the css file should go in the home folder for the project. Once that’s done you should be ready to go. That being said, you’d be wise to be careful when adopting this approach: the strapless build is a crude hack, and I haven’t tested it very thoroughly.</p>
 </div>
-
   </div>
  <div class="col-md-3 d-none d-md-block" id="pkgdown-sidebar">
         <div class="sticky-top">

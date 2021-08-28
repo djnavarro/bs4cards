@@ -45,13 +45,7 @@ Note that this relies on an in-development feature, so you may need to update to
 
 ## Distill
 
-Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn't look visually appealing when mixed with the distill styling.^[The original version of this post used that solution, with a promissory note to do a better job later.] To fix this, bs4cards includes a stripped down version of bootstrap called "strapless", that only uses the subset of bootstrap css relevant to cards. The convenience function `use_strapless()` will copy the strapless css file to the target location. To copy it to the same location as this post:
-
-```{r, eval=FALSE}
-bs4cards::use_strapless(here::here("_posts", "bs4cards-in-distill"))
-```
-
-Next, to enable the library within the post, add the following lines to the YAML header for the post:
+Distill R markdown does not use bootstrap, which is a little inconvenient if you want to use bs4cards with distill. With a little effort it is possible to enable the entire bootstrap library in a distill site, but this can lead to undesirable side-effects because bootstrap has a lot of styling that doesn't look visually appealing when mixed with the istill styling. The solution I've adopted for this is to use a custom bootstrap build that includes a minimal number of bootstrap components. If you want to try the same approach, you can download the [strapless.css](https://github.com/djnavarro/strapless/releases/download/0.0.0.9000/strapless.css) file to the same folder as the distill post you want to enable it for, and include the following YAML in the post header:
 
 ```
 output:
@@ -59,5 +53,6 @@ output:
     css: "strapless.css"
 ```
 
-Alternatively, if you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project. Once that's done you should be ready to go! That being said, please be careful: **this is an experimental feature.** It has not yet been properly tested, and some of the functionality (e.g., card filtering) doesn't work with strapless yet.
+If you want to enable strapless for the entire site, this markup goes in the `_site.yml` file and the css file should go in the home folder for the project. Once that's done you should be ready to go. That being said, you'd be wise to be careful when adopting this approach: the strapless build is a crude hack, and I haven't tested it very thoroughly. 
+
 
