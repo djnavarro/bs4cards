@@ -44,9 +44,9 @@ check_valid_padding <- function(padding) {
   abort("padding must be an integer between 0 and 5")
 }
 
-check_valid_spacing <- function(gutter) {
+check_valid_spacing <- function(spacing) {
   err <- "spacing must be an integer between 0 and 5"
-  if(is_scalar_numeric(gutter) && gutter %in% 0:5) return(NULL)
+  if(is_scalar_numeric(spacing) && spacing %in% 0:5) return(NULL)
   abort(err)
 }
 

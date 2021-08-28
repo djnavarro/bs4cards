@@ -10,13 +10,13 @@ build_card_row <- function(data) {
   # define function to wrap all cards in a row, then call it
   row_wrapper <- row_wrap(
     width = data[["width"]][[1]],
-    gutter = data[["gutter"]][[1]]
+    spacing = data[["spacing"]][[1]]
   )
   return(do.call(row_wrapper, card_list))
 }
 
 build_card <- function(title, text, image, link, footer, header, tags,
-                       width, layout, padding, gutter, breakpoint, colour,
+                       width, layout, padding, spacing, breakpoint, colour,
                        border_width, border_colour, border_radius){
 
   if(layout == "label-below")  layout_card <- layout_card_vertical
@@ -37,16 +37,16 @@ build_card <- function(title, text, image, link, footer, header, tags,
   return(layout_card(
     title, text, image, link,
     footer, header, tags, layout,
-    padding, gutter, breakpoint,
+    padding, spacing, breakpoint,
     colour, border, border_radius
   ))
 }
 
-row_wrap <- function(width, gutter) {
+row_wrap <- function(width, spacing) {
   function(...) {
     htmltools::div(
       class = outer_row_class(width),
-      style = outer_row_style(gutter),
+      style = outer_row_style(spacing),
       ...
     )
   }

@@ -2,7 +2,7 @@
 
 layout_card_vertical <- function(title, text, image, link,
                                  footer, header, tags, layout,
-                                 padding, gutter, breakpoint,
+                                 padding, spacing, breakpoint,
                                  colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
@@ -23,7 +23,7 @@ layout_card_vertical <- function(title, text, image, link,
 
   return(htmltools::div(
     class = card_class(tags),
-    style = card_style(gutter, corners),
+    style = card_style(spacing, corners),
     pieces$header, above, below, pieces$footer
   ))
 }
@@ -31,7 +31,7 @@ layout_card_vertical <- function(title, text, image, link,
 
 layout_card_labelonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
-                                  padding, gutter, breakpoint,
+                                  padding, spacing, breakpoint,
                                   colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
@@ -49,7 +49,7 @@ layout_card_labelonly <- function(title, text, image, link,
 
   return(htmltools::div(
     class = card_class(tags),
-    style = card_style(gutter, corners),
+    style = card_style(spacing, corners),
     pieces$header, label_vertical, pieces$footer
   ))
 }
@@ -57,7 +57,7 @@ layout_card_labelonly <- function(title, text, image, link,
 
 layout_card_imageonly <- function(title, text, image, link,
                                   footer, header, tags, layout,
-                                  padding, gutter, breakpoint,
+                                  padding, spacing, breakpoint,
                                   colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
@@ -69,7 +69,7 @@ layout_card_imageonly <- function(title, text, image, link,
 
   return(htmltools::div(
     class = card_class(tags),
-    style = card_style(gutter, corners),
+    style = card_style(spacing, corners),
     pieces$header, pieces$image, pieces$footer
   ))
 }
@@ -78,7 +78,7 @@ layout_card_imageonly <- function(title, text, image, link,
 
 layout_card_horizontal <- function(title, text, image, link,
                                    footer, header, tags, layout,
-                                   padding, gutter, breakpoint,
+                                   padding, spacing, breakpoint,
                                    colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
@@ -116,7 +116,7 @@ layout_card_horizontal <- function(title, text, image, link,
 
   return(htmltools::div(
     class = card_class(tags),
-    style = card_style(gutter, corners),
+    style = card_style(spacing, corners),
     pieces$header, body_horizontal, pieces$footer
   ))
 }
@@ -125,7 +125,7 @@ layout_card_horizontal <- function(title, text, image, link,
 
 layout_card_inset <- function(title, text, image, link,
                               footer, header, tags, layout,
-                              padding, gutter, breakpoint,
+                              padding, spacing, breakpoint,
                               colour, border, border_radius) {
 
   corners <- card_corners(layout, footer, header, border_radius)
@@ -158,7 +158,7 @@ layout_card_inset <- function(title, text, image, link,
 
   return(htmltools::div(
     class = card_class(tags),
-    style = card_style(gutter, corners),
+    style = card_style(spacing, corners),
     pieces$header, body_inset, pieces$footer
   ))
 }

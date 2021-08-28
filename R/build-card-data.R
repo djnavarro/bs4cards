@@ -10,7 +10,7 @@ build_card_data <- function(cardspec, n) {
   check_valid_layout(cardspec[["layout"]])
   check_valid_width(cardspec[["width"]])
   check_valid_padding(cardspec[["padding"]])
-  check_valid_spacing(cardspec[["gutter"]])
+  check_valid_spacing(cardspec[["spacing"]])
   check_valid_breakpoint(cardspec[["breakpoint"]])
 
   # coerce the layout if needed
@@ -31,7 +31,7 @@ build_card_data <- function(cardspec, n) {
 
   # convert numeric sizes to css specifications
   cardspec[["width"]] <- parse_width(cardspec[["width"]])
-  cardspec[["gutter"]] <- parse_spacing(cardspec[["gutter"]])
+  cardspec[["spacing"]] <- parse_spacing(cardspec[["spacing"]])
   cardspec[["border_width"]] <- parse_border_width(cardspec[["border_width"]])
   cardspec[["border_radius"]] <- parse_border_radius(cardspec[["border_radius"]])
   cardspec[["breakpoint"]] <- parse_breakpoint(cardspec[["breakpoint"]], cardspec[["layout"]])

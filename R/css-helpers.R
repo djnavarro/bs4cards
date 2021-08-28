@@ -6,21 +6,21 @@ card_class <- function(tags = "") {
   paste0("card bg-transparent m-0 border-0 collapse.show ", tags)
 }
 
-card_style <- function(gutter, corners) {
+card_style <- function(spacing, corners) {
   paste(
-    "padding:", gutter, ";",
+    "padding:", spacing, ";",
     corners[["card"]]
   )
 }
 
-outer_row_class <- function(width, gutter) {
-  paste("row p-0", width) #, row_margins_class(gutter))
+outer_row_class <- function(width, spacing) {
+  paste("row p-0", width) #, row_margins_class(spacing))
 }
 
-outer_row_style <- function(gutter) {
+outer_row_style <- function(spacing) {
   paste0(
-    "margin-left: -", gutter, "; ",
-    "margin-right: -", gutter, "; ",
+    "margin-left: -", spacing, "; ",
+    "margin-right: -", spacing, "; ",
     "margin-top: 1rem; ",
     "margin-bottom: 1rem; "
   )
