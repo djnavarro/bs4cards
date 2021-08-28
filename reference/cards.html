@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specifies a bootstrap card — cards • bs4cards</title>
+<title>Builds a deck of bootstrap cards — cards • bs4cards</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Specifies a bootstrap card — cards" />
-<meta property="og:description" content="Specifies a bootstrap card" />
+<meta property="og:title" content="Builds a deck of bootstrap cards — cards" />
+<meta property="og:description" content="Builds a deck of bootstrap cards" />
 <meta property="og:image" content="https://bs4cards.djnavarro.net/twitter-card.png" />
 <meta property="og:image:alt" content="A grid of hearts. Text in the middle reads 'bs4cards'" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -155,13 +155,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Specifies a bootstrap card</h1>
+    <h1>Builds a deck of bootstrap cards</h1>
     <small class="dont-index">Source: <a href='https://github.com/djnavarro/bs4cards/blob/master/R/cards.R'><code>R/cards.R</code></a></small>
     <div class="hidden name"><code>cards.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Specifies a bootstrap card</p>
+    <p>Builds a deck of bootstrap cards</p>
     </div>
 
     <pre class="usage"><span class='fu'>cards</span><span class='op'>(</span>
@@ -188,7 +188,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Data</p></td>
+      <td><p>Data frame</p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -254,8 +254,39 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A "shiny.tag" object</p>
+    <p>A "shiny.tag" object containing the HTML for the card deck</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>This function constructs the HTML necessary to specify a deck of bootstrap 4
+cards suitable for inclusion within an R markdown document. It takes a data
+frame as the first argument, with one row for each card to be generated.</p>
+<p>Cards are specified using the <code>title</code>, <code>text</code>, <code>image</code>,
+<code>link</code>, <code>footer</code>, <code>header</code>, and <code>tags</code> arguments. These
+arguments take expressions to be evaluated using the user-supplied
+<code>data</code>, and should evaluate to character vectors that have length 1 or
+the same number of rows as <code>data</code>.</p>
+<p>The <code>layout</code> argument is a single character string specifying the
+layout of the cards: possible values are "label-below" (the default),
+"label-above", "label-left", "label-right", "label-only", "image-only",
+"inset-top", "inset-bottom".</p>
+<p>The <code>width</code>, <code>spacing</code>, <code>breakpoint</code>, <code>border_width</code>,
+and <code>border_radius</code> arguments all take integer inputs specifying
+the visual appearance of the cards. Allowed values range from 0 to 5, except
+for <code>width</code> and <code>breakpoint</code> which cannot be 0. The other two
+arguments <code>label_colour</code> and <code>border_colour</code> take a single string
+specifying colours of the relevant parts of the card.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>galleries</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>cards</span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='va'>long_name</span>,
+    text <span class='op'>=</span> <span class='va'>blurb</span>,
+    image <span class='op'>=</span> <span class='va'>image_url</span>,
+    link <span class='op'>=</span> <span class='va'>gallery_url</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
