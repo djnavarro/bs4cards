@@ -13,8 +13,6 @@ library(bs4cards)
 
 
 
-## Card colour
-
 ```{r}
 galleries[1:3, ] %>% 
   cards(

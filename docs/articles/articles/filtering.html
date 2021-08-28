@@ -57,7 +57,7 @@
     <h6 class="dropdown-header" data-toc-skip>Appearance</h6>
     <a class="dropdown-item" href="../../articles/articles/spacing.html">Spacing</a>
     <a class="dropdown-item" href="../../articles/articles/colours.html">Colours</a>
-    <a class="dropdown-item" href="../../articles/articles/borders.html">Customising cards</a>
+    <a class="dropdown-item" href="../../articles/articles/borders.html">Borders</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Additional topics</h6>
     <a class="dropdown-item" href="../../articles/articles/enabling-bootstrap4.html">Enabling bootstrap 4</a>
@@ -95,9 +95,6 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span></code></pre></div>
-<div id="filtering-cards-by-category" class="section level2">
-<h2 class="hasAnchor">
-<a href="#filtering-cards-by-category" class="anchor" aria-hidden="true"></a>Filtering cards by category</h2>
 <p>It is possible to assign each card to a set of <code>tags</code>, and allow the user to select which tag will be displayed. At the moment, the only user interface option that bs4cards supports is buttons (other options such as dropdown lists may be supported later). If the <code>tags</code> argument is specified, labelled buttons will appear at the top of the card deck. Clicking on a button will show the cards that possess the corresponding tag. Cards are allowed to possess multiple tags: the list of tags should be a single string, with spaces separating each tag. For example, in the <code>galleries</code> data the <code>paintbrushes</code> variable contains names of some of the packages used in creating the art. For the “Native Flora” system, the “paintbrushes” were ggplot2 and the flametree package, so the relevant tag string is <code>"ggplot2 flametree"</code>. Each of these tags is associated with a button, as the example below illustrates:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
@@ -242,14 +239,8 @@
 </div>
 </div>
 <p>Notice that I used <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste()</a></code> to ensure that there is an <code>"all"</code> category, to which every card belongs. That way, if the user clicks on the associated button it will show every card.</p>
-</div>
   </div>
  <div class="col-md-3 d-none d-md-block" id="pkgdown-sidebar">
-        <div class="sticky-top">
-    <nav id="toc"><h2 data-toc-skip>Contents</h2>
-
-    </nav>
-</div>
       </div>
 
 </div>

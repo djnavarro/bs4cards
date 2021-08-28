@@ -82,7 +82,7 @@ galleries %>%
     footer = paintbrushes,
     layout = "label-right", 
     width = 4,
-    rounding = 5
+    border_radius = 5
   )
 ```
 

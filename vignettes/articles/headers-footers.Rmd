@@ -15,8 +15,6 @@ library(bs4cards)
 ```
 
 
-## Headers and footers
-
 As mentioned earlier, the bs4cards package allows you to include headers and footers. However, because of the limitations of bootstrap (or possibly my limitations in using it), it's not easy to simultaneously align headers, footers, images, and labels in a way that is clean and responsive regardless of the size of the browser window. As a consequence, they're best suited to cases where you want to discreetly include a small amount of metadata that can be guaranteed to fit on a single line:
 
 ```{r}

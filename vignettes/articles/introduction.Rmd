@@ -24,8 +24,6 @@ galleries
 ```
 
 
-## Anatomy of a card
-
 Conceptually, a card is comprised of five major parts:
 
 - The *card image* is controlled by the `image` argument, which should specify the path to the image file to be displayed in each card. As a general principle, bs4cards does not distort the appearance of an image: it is not cropped, nor does it alter the aspect ratio. The only thing it will do is rescale the size of the image as the size of the browser window changes. The image can be omitted by setting `image = NULL`. The exact positioning of the image depends on the card layout (discussed below).

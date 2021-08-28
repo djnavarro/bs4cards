@@ -14,7 +14,6 @@ library(tibble)
 library(bs4cards)
 ```
 
-## Card spacing
 
 To modify the separation between cards, use the `spacing` argument. Currently this argument is numeric, and takes a number between 0 and 5. At `spacing = 0`, all spacing between cards is removed:
 

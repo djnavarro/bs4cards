@@ -57,7 +57,7 @@
     <h6 class="dropdown-header" data-toc-skip>Appearance</h6>
     <a class="dropdown-item" href="../../articles/articles/spacing.html">Spacing</a>
     <a class="dropdown-item" href="../../articles/articles/colours.html">Colours</a>
-    <a class="dropdown-item" href="../../articles/articles/borders.html">Customising cards</a>
+    <a class="dropdown-item" href="../../articles/articles/borders.html">Borders</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Additional topics</h6>
     <a class="dropdown-item" href="../../articles/articles/enabling-bootstrap4.html">Enabling bootstrap 4</a>
@@ -95,9 +95,6 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/djnavarro/bs4cards" class="external-link">bs4cards</a></span><span class="op">)</span></code></pre></div>
-<div id="headers-and-footers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#headers-and-footers" class="anchor" aria-hidden="true"></a>Headers and footers</h2>
 <p>As mentioned earlier, the bs4cards package allows you to include headers and footers. However, because of the limitations of bootstrap (or possibly my limitations in using it), it’s not easy to simultaneously align headers, footers, images, and labels in a way that is clean and responsive regardless of the size of the browser window. As a consequence, they’re best suited to cases where you want to discreetly include a small amount of metadata that can be guaranteed to fit on a single line:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
@@ -234,14 +231,8 @@
 </div>
 </div>
 <p>When the text is long enough to potentially occupy multiple lines, more care is needed. The vertical space occupied by a header or footer is calculated independently of each other. This means that when the text in the header/footer varies in length, the cards are no longer guaranteed to be equal in height, producing ragged borders in situations where the user would probably prefer card parts of the same type to be aligned with one another. If you intend to include a header and/or footer, make sure to see how the cards look at different screen sizes and zoom resolutions (more so than usual!)</p>
-</div>
   </div>
  <div class="col-md-3 d-none d-md-block" id="pkgdown-sidebar">
-        <div class="sticky-top">
-    <nav id="toc"><h2 data-toc-skip>Contents</h2>
-
-    </nav>
-</div>
       </div>
 
 </div>
