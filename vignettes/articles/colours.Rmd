@@ -11,7 +11,7 @@ library(tibble)
 library(bs4cards)
 ```
 
-
+The colour of the card label is specified using `label_colour` and recognises any valid colour string recognised by CSS. The input can either be a single colour, but you can also pass a vector as input assigning each card a different label colour:
 
 ```{r}
 galleries[1:3, ] %>% 
@@ -23,3 +23,21 @@ galleries[1:3, ] %>%
     label_colour = c("#d6cadd", "white", "#c4d8e2")
   )
 ```
+
+For inset layouts, the colour needs to be partly transparent if you want the image underneath to show through:
+
+```{r}
+galleries[1:3, ] %>% 
+  cards(
+    title = long_name,
+    text = blurb,
+    link = gallery_url,
+    image = image_url,
+    layout = "inset-bottom",
+    label_colour = c("#d6caddaa", "#ffffffaa", "#c4d8e2aa"),
+    breakpoint = 5
+  )
+```
+
+
+

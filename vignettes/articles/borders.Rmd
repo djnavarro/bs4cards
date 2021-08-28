@@ -26,7 +26,7 @@ galleries[1:3, ] %>%
   )
 ```
 
-The thickest border setting is `border_width = 5`:
+For thick borders, set `border_width = 5`:
 
 ```{r}
 galleries[1:3, ] %>% 
@@ -39,6 +39,8 @@ galleries[1:3, ] %>%
 
 
 ## Border colour
+
+The colour of the card borders is specified using `border_colour` and recognises any valid colour string recognised by CSS. The input can either be a single colour, but you can also pass a vector as input assigning each card a different border colour:
 
 ```{r}
 galleries[1:3, ] %>% 
@@ -53,6 +55,8 @@ galleries[1:3, ] %>%
 
 ## Border radius
 
+The `border_radius` argument is used to control the degree of rounding of the card borders, and should be an integer between 0 and 5. At `border_radius = 0` the cards are perfectly rectangular, with no rounding at all:
+
 ```{r}
 galleries[1:3, ] %>% 
   cards(
@@ -61,6 +65,8 @@ galleries[1:3, ] %>%
     border_radius = 0,
   )
 ```
+
+At the roundest setting `border_radius = 5` produces noticeably rounded rectangles:
 
 ```{r}
 galleries[1:3, ] %>% 
@@ -74,6 +80,7 @@ galleries[1:3, ] %>%
 
 ## Additional customisation
 
+Additional border customisation is possible, by passing character strings for `border_width` and `border_width`. When character input is used, the `cards()` function passes the input directly to the CSS. For example, you can create cards with circular images and very thick borders like this:
 
 ```{r}
 galleries[1:3, ] %>% 

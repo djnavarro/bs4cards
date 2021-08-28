@@ -123,7 +123,7 @@
 </div>
 </div>
 </div>
-<p>The thickest border setting is <code>border_width = 5</code>:</p>
+<p>For thick borders, set <code>border_width = 5</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
@@ -154,6 +154,7 @@
 <div id="border-colour" class="section level2">
 <h2 class="hasAnchor">
 <a href="#border-colour" class="anchor" aria-hidden="true"></a>Border colour</h2>
+<p>The colour of the card borders is specified using <code>border_colour</code> and recognises any valid colour string recognised by CSS. The input can either be a single colour, but you can also pass a vector as input assigning each card a different border colour:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
@@ -185,6 +186,7 @@
 <div id="border-radius" class="section level2">
 <h2 class="hasAnchor">
 <a href="#border-radius" class="anchor" aria-hidden="true"></a>Border radius</h2>
+<p>The <code>border_radius</code> argument is used to control the degree of rounding of the card borders, and should be an integer between 0 and 5. At <code>border_radius = 0</code> the cards are perfectly rectangular, with no rounding at all:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
@@ -211,6 +213,7 @@
 </div>
 </div>
 </div>
+<p>At the roundest setting <code>border_radius = 5</code> produces noticeably rounded rectangles:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
@@ -241,6 +244,7 @@
 <div id="additional-customisation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#additional-customisation" class="anchor" aria-hidden="true"></a>Additional customisation</h2>
+<p>Additional border customisation is possible, by passing character strings for <code>border_width</code> and <code>border_width</code>. When character input is used, the <code><a href="../../reference/cards.html">cards()</a></code> function passes the input directly to the CSS. For example, you can create cards with circular images and very thick borders like this:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
