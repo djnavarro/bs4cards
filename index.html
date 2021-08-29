@@ -118,10 +118,14 @@
 <a href="#bs4cards" class="anchor"></a>bs4cards</h1></div>
 <!-- badges: start -->
 
-<p>When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links. The goal of bs4cards is to his task a little easier inside an R markdown document or website. You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<p>When creating R markdown websites, I often find myself wanting to organise content into a nice-looking grid of links with thumbnail images and maybe a small amount of text. It’s a design pattern I use over and over again in my own sites. Whether I’m creating previews for lectures, profiles and bios for people, or links to galleries, I find myself needing the ability to create pages that look something like this:</p>
+<p><img src="https://bs4cards.djnavarro.net/example-slides.png"></p>
+<p>The specific format I need varies from case to case. Sometimes I want the text under the image (as in the example above), other times I want the text on the side, and other times I want the text to float over the image.</p>
+<p>Realising that I’m almost certain to make many more sites that need this functionality, and suspecting that other people have the same need that I do, I wrote bs4cards to make task a little easier inside an R markdown document or website. You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"djnavarro/bs4cards"</span><span class="op">)</span></code></pre></div>
+<p>The package exports a single function <code><a href="reference/cards.html">cards()</a></code> which takes a data frame as input and automatically generates the HTML you need to create a card grid like the one shown above. It’s a little tricky to show how the function works in the README because this page appears on GitHub and there’s no bootstrap library underneath… so if you’d like to see some examples of how it works, check out the <a href="https://bs4cards.djnavarro.net/articles/articles/bs4cards.html">get started</a> page.</p>
 <p><img src="https://bs4cards.djnavarro.net/bs4cards-logo.png"></p>
 </div>
   </div>
