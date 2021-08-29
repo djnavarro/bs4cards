@@ -90,7 +90,8 @@ test_that("breakpoint argument errors are caught", {
   # note: deliberately not checking character input
 
   for(b in 1:5) {
-    expect_s3_class(cards(galleries, title = "title", image = image_url, breakpoint = b), "shiny.tag")
+    expect_s3_class(cards(galleries, title = "title", image = image_url, layout = "label-left",  breakpoint = b), "shiny.tag")
+    expect_s3_class(cards(galleries, title = "title", image = image_url, layout = "inset-top",  breakpoint = b), "shiny.tag")
   }
 
 })
