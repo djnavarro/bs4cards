@@ -36,6 +36,10 @@ build_card_data <- function(cardspec, n) {
   cardspec[["border_radius"]] <- parse_border_radius(cardspec[["border_radius"]])
   cardspec[["breakpoint"]] <- parse_breakpoint(cardspec[["breakpoint"]], cardspec[["layout"]])
 
+  # convert character input to hex rgba
+  cardspec[["border_colour"]] <- parse_colour(cardspec[["border_colour"]], "border_colour")
+  cardspec[["label_colour"]] <- parse_colour(cardspec[["label_colour"]], "label_colour")
+
   # coerce to data frame
   carddata <- as.data.frame(cardspec)
 

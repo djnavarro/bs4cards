@@ -68,3 +68,21 @@ parse_spacing <- function(spacing) {
 }
 
 
+parse_colour <- function(colours, var) {
+  unname(vapply(colours, col2hex, "#ffffffff", var = var))
+}
+
+col2hex <- function(name, var) {
+  col_matrix <- try(grDevices::col2rgb(name, alpha = TRUE), silent = TRUE)
+  if(methods::is(col_matrix, "try-error")) abort(paste("invalid RGB specification in", var))
+  col_string <- grDevices::rgb(
+    red   = col_matrix[1, ]/255,
+    green = col_matrix[2, ]/255,
+    blue  = col_matrix[3, ]/255,
+    alpha = col_matrix[4, ]/255
+  )
+  return(col_string)
+}
+
+
+

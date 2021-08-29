@@ -16,6 +16,7 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     htmltools,
     magrittr,
+    methods,
     rlang
 URL: https://github.com/djnavarro/bs4cards
 BugReports: https://github.com/djnavarro/bs4cards/issues
