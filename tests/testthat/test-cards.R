@@ -38,16 +38,16 @@ test_that("layout argument errors are caught", {
   expect_error(cards(galleries, title = "title", image = image_url, layout = NA_character_), "unrecognised value for layout")
   expect_error(cards(galleries, title = "title", image = image_url, layout = list("label-left")), "unrecognised value for layout")
 
+  twin_layouts <- c("label-left", "label-right", "label-above", "label-below", "inset-top", "inset-bottom")
+  for(l in twin_layouts) {
+    expect_s3_class(cards(galleries, title = "title", image = image_url, layout = l), "shiny.tag")
+  }
+  expect_s3_class(cards(galleries, title = "title", layout = "label-only"), "shiny.tag")
+  expect_s3_class(cards(galleries, image = image_url, layout = "image-only"), "shiny.tag")
+
+
 })
 
-test_that("layout argument errors are caught", {
-
-  expect_error(cards(galleries, title = "title", image = image_url, layout = c("label-left", "label-top")), "unrecognised value for layout")
-  expect_error(cards(galleries, title = "title", image = image_url, layout = 1), "unrecognised value for layout")
-  expect_error(cards(galleries, title = "title", image = image_url, layout = NA_character_), "unrecognised value for layout")
-  expect_error(cards(galleries, title = "title", image = image_url, layout = list("label-left")), "unrecognised value for layout")
-
-})
 
 test_that("width argument errors are caught", {
 
@@ -55,6 +55,10 @@ test_that("width argument errors are caught", {
   expect_error(cards(galleries, title = "title", image = image_url, width = NA_integer_), "width must be an integer between 1 and 5")
   expect_error(cards(galleries, title = "title", image = image_url, width = 1.3), "width must be an integer between 1 and 5")
   expect_error(cards(galleries, title = "title", image = image_url, width = 10), "width must be an integer between 1 and 5")
+
+  for(w in 1:5) {
+    expect_s3_class(cards(galleries, title = "title", image = image_url, width = w), "shiny.tag")
+  }
 
   # note: deliberately not checking character input
 
@@ -69,6 +73,10 @@ test_that("spacing argument errors are caught", {
 
   # note: deliberately not checking character input
 
+  for(s in 0:5) {
+    expect_s3_class(cards(galleries, title = "title", image = image_url, spacing = s), "shiny.tag")
+  }
+
 })
 
 
@@ -80,6 +88,10 @@ test_that("breakpoint argument errors are caught", {
   expect_error(cards(galleries, title = "title", image = image_url, breakpoint = 10), "breakpoint must be an integer between 1 and 5")
 
   # note: deliberately not checking character input
+
+  for(b in 1:5) {
+    expect_s3_class(cards(galleries, title = "title", image = image_url, breakpoint = b), "shiny.tag")
+  }
 
 })
 
@@ -93,6 +105,10 @@ test_that("border_width argument errors are caught", {
 
   # note: deliberately not checking character input
 
+  for(b in 0:5) {
+    expect_s3_class(cards(galleries, title = "title", image = image_url, border_width = b), "shiny.tag")
+  }
+
 })
 
 test_that("border_radius argument errors are caught", {
@@ -103,6 +119,10 @@ test_that("border_radius argument errors are caught", {
   expect_error(cards(galleries, title = "title", image = image_url, border_radius = 10), "border_radius must be an integer between 0 and 5")
 
   # note: deliberately not checking character input
+
+  for(r in 0:5) {
+    expect_s3_class(cards(galleries, title = "title", image = image_url, border_radius = r), "shiny.tag")
+  }
 
 })
 
