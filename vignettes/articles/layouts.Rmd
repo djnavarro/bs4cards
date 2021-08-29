@@ -1,5 +1,7 @@
 ---
 title: "Card layouts"
+description: >
+  Choose between vertical or horizontal layouts, select an inset layout, or display images without text or vice versa
 ---
 
 ```{r, include = FALSE}

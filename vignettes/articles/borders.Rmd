@@ -1,5 +1,7 @@
 ---
 title: "Borders"
+description: >
+  Controlling the colour, width, and rounding applied to the card borders
 ---
 
 ```{r, include = FALSE, message=FALSE}

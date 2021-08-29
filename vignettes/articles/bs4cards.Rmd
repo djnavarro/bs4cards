@@ -86,5 +86,8 @@ galleries %>%
   )
 ```
 
+## Where to next?
+
+If you're interested in using the bs4cards package, check out the [articles](https://bs4cards.djnavarro.net/articles/) page.
 
 

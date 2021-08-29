@@ -1,5 +1,7 @@
 ---
 title: "Filtering display by tag"
+description: >
+  Allow your site users to filter the display by selecting which cards should be shown
 ---
 
 ```{r, include = FALSE}

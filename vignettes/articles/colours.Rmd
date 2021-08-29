@@ -1,5 +1,7 @@
 ---
 title: "Colours"
+description: >
+  Controlling the colour of the card label
 ---
 
 ```{r, include = FALSE, message=FALSE}

@@ -1,5 +1,7 @@
 ---
 title: "Introduction"
+description: >
+  The anatomy of a card deck
 ---
 
 ```{r, include = FALSE}

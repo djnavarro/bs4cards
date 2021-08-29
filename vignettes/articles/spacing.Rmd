@@ -1,5 +1,6 @@
 ---
 title: "Spacing"
+description: "Controlling the amount of space between adjacent cards"
 ---
 
 ```{r, include = FALSE}
@@ -26,4 +27,3 @@ At `spacing = 5` there is a lot of room between cards:
 ```{r, message=FALSE}
 cards(data = galleries[1:6, ], image = image_url, spacing = 5)
 ```
-

@@ -1,5 +1,7 @@
 ---
 title: "Enabling bootstrap 4"
+description: >
+  How to make sure your R markdown site or document is using bootstrap 4
 ---
 
 ```{r, include = FALSE}
