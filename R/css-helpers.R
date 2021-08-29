@@ -3,7 +3,9 @@
 # cards -------------------------------------------------------------------
 
 card_class <- function(tags = "") {
-  paste0("card bg-transparent m-0 border-0 collapse.show ", tags)
+  s <- unique_tags(tags)
+  s <- paste(s, collapse = " ")
+  paste0("card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah ", s)
 }
 
 card_style <- function(spacing, corners) {

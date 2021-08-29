@@ -78,7 +78,7 @@ galleries %>%
     text = blurb,
     link = gallery_url,
     image = image_url,
-    tags = paste("all", paintbrushes),
+    tags = paste("all;", paintbrushes),
     footer = paintbrushes,
     layout = "label-right", 
     width = 4,
