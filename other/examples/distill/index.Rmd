@@ -17,111 +17,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, message=FALSE}
 library(bs4cards)
-
-locate_thumbnail <- function(x) {
-  system.file("extdata", "thumbnail", paste0(x, ".jpg"), package = "bs4cards")
-} 
-locate_gallery <- function(x) {
-  paste0("https://art.djnavarro.net/gallery/", x)
-}
-
-galleries %>% 
-  cards(
-    title = long_name,
-    text = date,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "medium",
-    layout = "label-below"
-  )
 ```
-
-
-## Vertical layouts
 
 ```{r}
 galleries %>% 
   cards(
     title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    footer = paste("posted on", date),
-    width = "wide",
-    layout = "label-above"
+    image = image_url,
   )
 ```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    text = blurb,
-    footer = paste("posted on", date),
-    width = "wide",
-    layout = "label-below"
-  )
-```
-
-
-## Horizontal layouts
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "very-wide",
-    layout = "label-left"
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    text = blurb,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "very-wide",
-    footer = paste("posted on", date),
-    layout = "label-right"
-  )
-```
-
-
-
-## Inset layouts
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "wide",
-    layout = "inset-bottom", 
-    padding = 0
-  )
-```
-
-
-```{r}
-galleries %>% 
-  cards(
-    title = long_name,
-    link = locate_gallery(short_name),
-    image = locate_thumbnail(short_name),
-    width = "wide",
-    layout = "inset-top", 
-    padding = 0
-  )
-```
-
 
 

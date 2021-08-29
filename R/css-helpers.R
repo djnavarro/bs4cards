@@ -11,6 +11,7 @@ card_class <- function(tags = "") {
 card_style <- function(spacing, corners) {
   paste(
     "padding:", spacing, ";",
+    "border-width: 0;", # force outer card to have border zero for distill
     corners[["card"]]
   )
 }
