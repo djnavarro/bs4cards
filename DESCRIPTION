@@ -7,8 +7,10 @@ Authors@R:
            role = c("aut", "cre"),
            email = "d.navarro@unsw.edu.au",
            comment = c(ORCID = "0000-0001-7648-6578"))
-Description: Provides wrapper functions to generate bootstrap cards within
-    R markdown documents. 
+Description: Allows the user to generate bootstrap cards within
+    R markdown documents. Intended for use in conjunction with
+    R markdown websites, pkgdown sites, and any other format 
+    that supports the bootstrap 4 library.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
