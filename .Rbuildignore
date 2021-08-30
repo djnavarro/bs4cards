@@ -10,3 +10,4 @@
 ^other$
 ^bootstrap$
 ^codecov\.yml$
+^cran-comments\.md$
