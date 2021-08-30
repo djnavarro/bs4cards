@@ -9,8 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0001-7648-6578"))
 Description: Allows the user to generate bootstrap cards within
     R markdown documents. Intended for use in conjunction with
-    R markdown websites, pkgdown sites, and any other format 
-    that supports the bootstrap 4 library.
+    R markdown HTML outputs and other formats that support the 
+    bootstrap 4 library.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
