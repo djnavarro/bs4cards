@@ -21,3 +21,9 @@
 0 errors ✓ | 0 warnings ✓ | 1 note x
 
 
+## Developer note
+
+Thank you in advance! I'm still a little new to the CRAN submission 
+process. I've read the R extensions manual and checked on multiple
+test environments. Hoping that there are no problems with this one.
+
