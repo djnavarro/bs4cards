@@ -1,11 +1,11 @@
 Package: bs4cards
 Title: Generate Bootstrap 4 Cards
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: 
     person(given = "Danielle",
            family = "Navarro",
            role = c("aut", "cre"),
-           email = "d.navarro@unsw.edu.au",
+           email = "djnavarro@protonmail.com",
            comment = c(ORCID = "0000-0001-7648-6578"))
 Description: Allows the user to generate bootstrap cards within
     R markdown documents. Intended for use in conjunction with
@@ -27,7 +27,8 @@ Suggests:
     knitr,
     rmarkdown,
     tibble,
-    covr
+    covr,
+    bslib
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
