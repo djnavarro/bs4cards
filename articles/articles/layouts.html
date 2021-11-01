@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">bs4cards</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -148,7 +148,7 @@
 <a href="#vertical-layouts" class="anchor"></a>Vertical layouts</h2>
 <p>The vertical <code>label-below</code> layout is the default for bs4cards. Images are placed above the label, with the label title above text. Footers (if present) appear under the label, and the header (if present) is shown above:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     link <span class="op">=</span> <span class="va">gallery_url</span>,
@@ -224,7 +224,7 @@
 </div>
 <p>The <code>label-above</code> layout reverses the positions of label and image:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     link <span class="op">=</span> <span class="va">gallery_url</span>,
@@ -304,7 +304,7 @@
 <a href="#horizontal-layouts" class="anchor"></a>Horizontal layouts</h2>
 <p>Horizontal card layouts are also supported in bs4cards, by setting <code>layout = "label-left"</code> or <code>layout = "label-right"</code>. Here’s an example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     link <span class="op">=</span> <span class="va">gallery_url</span>,
@@ -439,7 +439,7 @@
 </div>
 <p>Horizontal layouts tend to need more horizontal space, especially when the label includes text as well as a title. In the code above I set <code>width = 4</code> to provide a little more room. You can also adjust the location of the <code>breakpoint</code> separating the image and the label. The <code>breakpoint</code> argument should be an integer between 1 and 5.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>, 
     image <span class="op">=</span> <span class="va">image_url</span>, 
@@ -466,7 +466,7 @@
 </div>
 </div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>, 
     image <span class="op">=</span> <span class="va">image_url</span>, 
@@ -498,7 +498,7 @@
 <a href="#image-only-layout" class="anchor"></a>Image-only layout</h2>
 <p>In some cases there is no label to accompany the image, in which case setting <code>layout = "image-only"</code> is appropriate:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     link <span class="op">=</span> <span class="va">gallery_url</span>,
     image <span class="op">=</span> <span class="va">image_url</span>,
@@ -522,7 +522,7 @@
 </div>
 <p>It is still possible to add headers and footers, however:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     link <span class="op">=</span> <span class="va">gallery_url</span>,
     image <span class="op">=</span> <span class="va">image_url</span>,
@@ -554,7 +554,7 @@
 <a href="#label-only-layout" class="anchor"></a>Label-only layout</h2>
 <p>The inversion of the <code>image-only</code> layout is the <code>label-only</code> layout, which is appropriate whenever no image is included. This is not the most visually exciting layout, but there are situations where it may be handy:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     link <span class="op">=</span> <span class="va">gallery_url</span>,
     title <span class="op">=</span> <span class="va">long_name</span>,
@@ -627,7 +627,7 @@
 <a href="#inset-layouts" class="anchor"></a>Inset layouts</h2>
 <p>The remaining two layout types are “inset” types, in which the label is displayed as an overlay on top of the image.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     text <span class="op">=</span> <span class="va">blurb</span>,
@@ -753,7 +753,7 @@
 </div>
 <p>Like horizontal cards, inset cards use the <code>breakpoint</code> argument to specify the amount of space occupied by the label. The inset occupies a fixed proportion of the image height, so a little care is required. The smallest size (<code>breakpoint = 1</code>) is generally tall enough to accommodate a single line title:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">long_name</span>, image <span class="op">=</span> <span class="va">image_url</span>,
         layout <span class="op">=</span> <span class="st">"inset-top"</span>, breakpoint <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <div>
@@ -773,7 +773,7 @@
 </div>
 <p>The largest size is <code>breakpoint = 5</code> and is large enough to fit a modest caption:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">long_name</span>, image <span class="op">=</span> <span class="va">image_url</span>, text <span class="op">=</span> <span class="va">blurb</span>,
         layout <span class="op">=</span> <span class="st">"inset-top"</span>, breakpoint <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <div>

@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">bs4cards</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -186,7 +186,7 @@
 <span class="kw">if</span><span class="op">(</span><span class="va">width</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="st">"row-cols-1"</span><span class="op">)</span></code></pre></div>
 <p>I’ve attempted to choose defaults that I think would make sense in most use cases that I could think of, but I’m certain that there are possibilities that I’ve missed. With that in mind, there’s nothing stopping you from passing your own classes if you would prefer a different layout. For instance, if you wanted cards that always span exactly two columns regardless of screen size, this works:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">galleries</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">galleries</span> <span class="op"><a href="../../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
     title <span class="op">=</span> <span class="va">long_name</span>,
     link <span class="op">=</span> <span class="va">gallery_url</span>,
