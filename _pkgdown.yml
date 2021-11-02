@@ -1,7 +1,7 @@
 url: https://bs4cards.djnavarro.net
 
 home:
-  title: An R package for bootstrap 4 cards
+  title: An R package for bootstrap cards
   description: Generate beautiful and responsive cards within R markdown documents and websites.
 
 template:
