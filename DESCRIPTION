@@ -1,6 +1,6 @@
 Package: bs4cards
-Title: Generate Bootstrap 4 Cards
-Version: 0.1.0.9000
+Title: Generate Bootstrap Cards
+Version: 0.1.0.9001
 Authors@R: 
     person(given = "Danielle",
            family = "Navarro",

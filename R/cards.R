@@ -12,8 +12,8 @@
 #' @param width Card width is an integer between 1 and 5
 #' @param spacing Spacing between cards is an integer between 0 and 5
 #' @param breakpoint Number between 1 and 5, controlling label size on horizontal and inset layouts
-#' @param label_colour Colour applied to the card label
-#' @param border_colour Colour applied to the card border
+#' @param label_colour Colour applied to the card label (if NULL, colour inherits)
+#' @param border_colour Colour applied to the card border (if NULL, colour inherits)
 #' @param border_width Width of card border is an integer between 0 and 5
 #' @param border_radius Amount of rounding on card corners is an integer between 0 and 5
 #'
@@ -65,8 +65,8 @@ cards <- function(data,
                   width = 3,
                   spacing = 2,
                   breakpoint = 4,
-                  label_colour = "#ffffffaa",
-                  border_colour = "#808080",
+                  label_colour = NULL,
+                  border_colour = NULL,
                   border_width = 1,
                   border_radius = 3
 ) {

@@ -23,6 +23,10 @@ build_card_data <- function(cardspec, n) {
     cardspec[[input]] <- cardspec[[input]] %||% NA_character_
   }
 
+  # treat NULL colours as equivalent to "inherits"
+  cardspec[["label_colour"]] <- cardspec[["label_colour"]] %||% "inherits"
+  cardspec[["border_colour"]] <- cardspec[["border_colour"]] %||% "inherits"
+
   # check that valid "card properties" have been input
   check_valid_label_colour(cardspec[["label_colour"]], n)
   check_valid_border_width(cardspec[["border_width"]], n)

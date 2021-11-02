@@ -42,7 +42,7 @@ galleries[1:3, ] %>%
 
 ## Border colour
 
-The colour of the card borders is specified using `border_colour` and recognises any valid colour string recognised by CSS. The input can either be a single colour, but you can also pass a vector as input assigning each card a different border colour:
+By default the `border_colour` argument is set to `NULL`, and is interpreted as a CSS value of `"inherit"`. However, you can override this and set the card label colour manually. The `border_colour` argument will accept any valid colour string recognised by R. The input can either be a single colour or a vector assigning each card a different border colour:
 
 ```{r}
 galleries[1:3, ] %>% 

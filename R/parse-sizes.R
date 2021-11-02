@@ -74,7 +74,10 @@ parse_colour <- function(colours, var) {
 
 col2hex <- function(name, var) {
   col_matrix <- try(grDevices::col2rgb(name, alpha = TRUE), silent = TRUE)
-  if(methods::is(col_matrix, "try-error")) abort(paste("invalid RGB specification in", var))
+  if(methods::is(col_matrix, "try-error")) {
+    if(name %in% c("inherits", "initial", "transparent")) return(name) # allows CSS keywords
+    abort(paste("invalid RGB specification in", var)) # otherwise error
+  }
   col_string <- grDevices::rgb(
     red   = col_matrix[1, ]/255,
     green = col_matrix[2, ]/255,
