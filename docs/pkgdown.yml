@@ -1,6 +1,6 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1.9001
-pkgdown_sha: ce9781a15c7ea07df9fb17a11295ba4abec0b54b
+pandoc: 2.14.0.3
+pkgdown: 1.9000.9000.9000
+pkgdown_sha: e2cb76867c0d303cd693705e59f41cc168acdc99
 articles:
   borders: articles/borders.html
   bs4cards: articles/bs4cards.html
@@ -11,7 +11,7 @@ articles:
   introduction: articles/introduction.html
   layouts: articles/layouts.html
   spacing: articles/spacing.html
-last_built: 2021-08-29T22:00Z
+last_built: 2021-11-02T00:39Z
 urls:
   reference: https://bs4cards.djnavarro.net/reference
   article: https://bs4cards.djnavarro.net/articles
