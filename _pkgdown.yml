@@ -5,7 +5,7 @@ home:
   description: Generate beautiful and responsive cards within R markdown documents and websites.
 
 template:
-  bootstrap: 4
+  bootstrap: 5
   opengraph:
     image:
       src: "https://bs4cards.djnavarro.net/twitter-card.png"
