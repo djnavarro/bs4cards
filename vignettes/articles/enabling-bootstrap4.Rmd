@@ -35,15 +35,14 @@ This overrides the R markdown defaults to ensure that the output is built using 
 
 ## Pkgdown
 
-To enable bootstrap 4 in a pkgdown site, the process is similar but not identical. Edit the `_pkgdown.yml` file to include the following
+The process for a pkgdown site is similar but not identical. As of version 2.0, pkgdown supports bootstrap 3 (the default) and bootstrap 5, but it does not support bootstrap 4. However, bootstrap 5 and bootstrap 4 are sufficiently similar that (as far as I have been able to determine) the bs4cards package functionality works fine with bootstrap 5. To set the bootstrap version, edit the `_pkgdown.yml` file to include the following
 
 ```
 template:
-  bootstrap: 4
+  bootstrap: 5
 ```
 
-Note that this relies on an in-development feature, so you may need to update to the development version of pkgdown to make this work.
-
+Note that this requires pkgdown version 2.0 to work.
 
 ## Distill
 
