@@ -47,6 +47,10 @@ text_class <- function(has_title) {
 
 # images ------------------------------------------------------------------
 
+image_link_style <- function() {
+  "color: inherit;"
+}
+
 image_class <- function(layout) {
   card_type <- "card-img"
   if(layout == "label-above") card_type <- "card-img-bottom"

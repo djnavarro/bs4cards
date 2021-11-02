@@ -11,7 +11,7 @@ card_pieces <- function(title, text, image, link, footer, header,
 
   if(!is_na(link)) {
     title <- htmltools::a(title, href = link)
-    image <- htmltools::a(image, href = link)
+    image <- htmltools::a(image, href = link, style = image_link_style())
   }
 
   return(list(title = title, text = text, image = image,
