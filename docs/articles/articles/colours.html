@@ -30,7 +30,7 @@
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     <a class="navbar-brand me-2" href="../../index.html">bs4cards</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9001</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -94,7 +94,7 @@
 
     
     
-<p>The colour of the card label is specified using <code>label_colour</code> and recognises any valid colour string recognised by CSS. The input can either be a single colour, but you can also pass a vector as input assigning each card a different label colour:</p>
+<p>By default the <code>label_colour</code> argument is set to <code>NULL</code>, and is interpreted as a CSS value of <code>"inherit"</code>. However, you can override this and set the card label colour manually. The <code>label_colour</code> argument will accept any valid colour string recognised by R. The input can either be a single colour or a vector assigning each card a different label colour:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">galleries</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op"><a href="../../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../../reference/cards.html">cards</a></span><span class="op">(</span>
@@ -102,14 +102,14 @@
     text <span class="op">=</span> <span class="va">blurb</span>,
     link <span class="op">=</span> <span class="va">gallery_url</span>,
     image <span class="op">=</span> <span class="va">image_url</span>,
-    label_colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#d6cadd"</span>, <span class="st">"white"</span>, <span class="st">"#c4d8e2"</span><span class="op">)</span>
+    label_colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#d6cadd"</span>, <span class="st">"antiquewhite"</span>, <span class="st">"#c4d8e2"</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <div>
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
 <div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-NA" style="padding: .2rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
-<a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:#808080FF; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
-<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #D6CADDFF; border-style:solid; border-color:#808080FF; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://art.djnavarro.net/gallery/ash" style="color: inherit;" class="external-link">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #D6CADDFF; border-style:solid; border-color:inherits; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Ash Cloud and Blood</h5>
 </a>
@@ -117,9 +117,9 @@
 </div>
 </div>
 <div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-NA" style="padding: .2rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
-<a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:#808080FF; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
-<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #FFFFFFFF; border-style:solid; border-color:#808080FF; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts" style="color: inherit;" class="external-link">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #FAEBD7FF; border-style:solid; border-color:inherits; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Ghosts on Marble Paper</h5>
 </a>
@@ -127,9 +127,9 @@
 </div>
 </div>
 <div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-NA" style="padding: .2rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
-<a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:#808080FF; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
-<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #C4D8E2FF; border-style:solid; border-color:#808080FF; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes" style="color: inherit;" class="external-link">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:1px 1px 0 1px; border-radius: .6rem .6rem 0 0 ;"></a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: #C4D8E2FF; border-style:solid; border-color:inherits; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
 <h5 class="card-title my-auto px-3 pt-3 pb-1">Ice Floes</h5>
 </a>
@@ -154,9 +154,9 @@
 <div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -.2rem; margin-right: -.2rem; margin-top: 1rem; margin-bottom: 1rem; ">
 <div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-NA" style="padding: .2rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
 <div style="position: relative; border-radius: 0 0 .6rem .6rem ;">
-<a href="https://art.djnavarro.net/gallery/ash" class="external-link">
-<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:#808080FF; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;"></a>
-<div class="card-img-overlay p-0 m-0" style="overflow: hidden;background-color: #D6CADDAA;height: 58%;position: absolute;top: 42%;border-style:solid; border-color:#808080FF; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://art.djnavarro.net/gallery/ash" style="color: inherit;" class="external-link">
+<img src="https://bs4cards.djnavarro.net/image/ash.jpg" class="card-img" style="border-style:solid; border-color:inherits; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="overflow: hidden;background-color: #D6CADDAA;height: 58%;position: absolute;top: 42%;border-style:solid; border-color:inherits; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <div class="d-flex flex-column h-100">
 <div class="mb-auto">
 <a href="https://art.djnavarro.net/gallery/ash" class="external-link">
@@ -170,9 +170,9 @@
 </div>
 <div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-NA" style="padding: .2rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
 <div style="position: relative; border-radius: 0 0 .6rem .6rem ;">
-<a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
-<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:#808080FF; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;"></a>
-<div class="card-img-overlay p-0 m-0" style="overflow: hidden;background-color: #FFFFFFAA;height: 58%;position: absolute;top: 42%;border-style:solid; border-color:#808080FF; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://art.djnavarro.net/gallery/ghosts" style="color: inherit;" class="external-link">
+<img src="https://bs4cards.djnavarro.net/image/ghosts.jpg" class="card-img" style="border-style:solid; border-color:inherits; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="overflow: hidden;background-color: #FFFFFFAA;height: 58%;position: absolute;top: 42%;border-style:solid; border-color:inherits; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <div class="d-flex flex-column h-100">
 <div class="mb-auto">
 <a href="https://art.djnavarro.net/gallery/ghosts" class="external-link">
@@ -186,9 +186,9 @@
 </div>
 <div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-NA" style="padding: .2rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
 <div style="position: relative; border-radius: 0 0 .6rem .6rem ;">
-<a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">
-<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:#808080FF; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;"></a>
-<div class="card-img-overlay p-0 m-0" style="overflow: hidden;background-color: #C4D8E2AA;height: 58%;position: absolute;top: 42%;border-style:solid; border-color:#808080FF; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://art.djnavarro.net/gallery/ice-floes" style="color: inherit;" class="external-link">
+<img src="https://bs4cards.djnavarro.net/image/ice-floes.jpg" class="card-img" style="border-style:solid; border-color:inherits; border-width:1px; border-radius: .6rem .6rem .6rem .6rem ;"></a>
+<div class="card-img-overlay p-0 m-0" style="overflow: hidden;background-color: #C4D8E2AA;height: 58%;position: absolute;top: 42%;border-style:solid; border-color:inherits; border-width:1px; border-radius: 0 0 .6rem .6rem ;">
 <div class="d-flex flex-column h-100">
 <div class="mb-auto">
 <a href="https://art.djnavarro.net/gallery/ice-floes" class="external-link">

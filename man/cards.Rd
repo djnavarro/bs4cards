@@ -18,7 +18,7 @@ cards(
   spacing = 2,
   breakpoint = 4,
   label_colour = NULL,
-  border_colour = "#808080",
+  border_colour = NULL,
   border_width = 1,
   border_radius = 3
 )
@@ -50,7 +50,7 @@ cards(
 
 \item{label_colour}{Colour applied to the card label (if NULL, colour inherits)}
 
-\item{border_colour}{Colour applied to the card border}
+\item{border_colour}{Colour applied to the card border (if NULL, colour inherits)}
 
 \item{border_width}{Width of card border is an integer between 0 and 5}
 
