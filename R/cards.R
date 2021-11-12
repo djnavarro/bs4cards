@@ -89,6 +89,21 @@ cards <- function(data,
     border_radius = border_radius
   )
 
+  # because we might modify the quosures list, we have to coerce to a bare list
+  # this is required as of rlang 0.3.0 but doesn't change behavior
+  quosures <- as.list(quosures)
+
+  # check if we should use columns from the `data` input for the card spec
+  # but users can mask an element by passing e.g. `text = NULL`
+  data_args <- c("title", "text", "image", "link", "footer", "header", "tags")
+  for (data_arg in data_args) {
+    data_arg_is_missing <- eval(parse(text = sprintf("missing(%s)", data_arg)))
+    data_arg_in_data <- data_arg %in% names(data)
+    if (data_arg_is_missing && data_arg_in_data) {
+      quosures[[data_arg]] <- sym(data_arg)
+    }
+  }
+
   card_spec <- lapply(quosures, function(x) eval_tidy(x, data = data))
   card_spec$padding <- 0 # hack
 
