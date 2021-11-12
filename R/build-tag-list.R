@@ -1,7 +1,7 @@
 
 
 build_tag_list <- function(tags) {
-  if(is_na(tags[[1]])) return(NULL)
+  if(is_null(tags) || is_na(tags[[1]])) return(NULL)
   categories <- unique_tags(tags)
   if(length(categories) == 0) return(NULL)
   labels <- unique_labels(tags)
@@ -12,7 +12,8 @@ build_tag_list <- function(tags) {
 }
 
 unique_labels <- function(x) {
-  s <- unlist(strsplit(x, split = ";"))
+  if (is_null(x) || is_na(x)) return(character())
+  s <- unlist(strsplit(as.character(x), split = ";"))
   s <- gsub("^[[:space:]]+", "", s)
   s <- gsub("[[:space:]]+$", "", s)
   s <- unique(s)
@@ -20,8 +21,9 @@ unique_labels <- function(x) {
 }
 
 unique_tags <- function(x) {
+  if (is_null(x) || is_na(x)) return(character())
   #unique(unlist(strsplit(x, split = "[[:space:]]+")))
-  s <- unlist(strsplit(x, split = ";"))
+  s <- unlist(strsplit(as.character(x), split = ";"))
   s <- gsub("^[[:space:]]+", "", s)
   s <- gsub("[[:space:]]+$", "", s)
   s <- gsub("[[:space:]]+", "-", s)
