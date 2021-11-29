@@ -19,14 +19,18 @@ build_card <- function(title, text, image, link, footer, header, tags,
                        width, layout, padding, spacing, breakpoint, label_colour,
                        border_width, border_colour, border_radius){
 
-  if(layout == "label-below")  layout_card <- layout_card_vertical
-  if(layout == "label-above")  layout_card <- layout_card_vertical
-  if(layout == "label-only")   layout_card <- layout_card_labelonly
-  if(layout == "image-only")   layout_card <- layout_card_imageonly
-  if(layout == "label-right")  layout_card <- layout_card_horizontal
-  if(layout == "label-left")   layout_card <- layout_card_horizontal
-  if(layout == "inset-top")    layout_card <- layout_card_inset
-  if(layout == "inset-bottom") layout_card <- layout_card_inset
+  layout_card <- switch(
+    layout,
+    "label-below"  = layout_card_vertical,
+    "label-above"  = layout_card_vertical,
+    "label-only"   = layout_card_labelonly,
+    "image-only"   = layout_card_imageonly,
+    "label-right"  = layout_card_horizontal,
+    "label-left"   = layout_card_horizontal,
+    "inset-top"    = layout_card_inset,
+    "inset-bottom" = layout_card_inset,
+    stop("Unknown card layout: ", layout)
+  )
 
   border <- list(
     width = border_width,
