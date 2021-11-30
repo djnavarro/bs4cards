@@ -168,3 +168,19 @@ test_that("factor tags are handled correctly", {
 
 })
 
+test_that("cards() uses data columns by default", {
+
+  galleries_rnm <- galleries
+  galleries_rnm$title <- galleries_rnm$long_name
+  galleries_rnm$image <- galleries_rnm$image_url
+  galleries_rnm$long_name <- NULL
+  galleries_rnm$image_url <- NULL
+
+  expect_equal(
+    cards(galleries, title = long_name, image = image_url),
+    cards(galleries_rnm)
+  )
+
+})
+
+
