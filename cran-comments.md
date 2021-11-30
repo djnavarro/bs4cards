@@ -1,9 +1,11 @@
 ## Test environments
-- local R installation, ubuntu 20.04, R 4.1.1
+
+- local R installation, ubuntu 20.04, R 4.1.2
 - github actions macOS-latest
 - github actions windows-latest
-- github actions ubuntu 20.04 (release)
-- github actions ubuntu 20.04 (devel)
+- github actions ubuntu-latest (release)
+- github actions ubuntu-latest (devel)
+- github actions ubuntu-latest (oldrel-1)
 - R-hub windows-x86_64-devel (r-devel)
 - R-hub ubuntu-gcc-release (r-release)
 - R-hub fedora-clang-devel (r-devel)
@@ -11,19 +13,6 @@
 
 ## R CMD check results
 
-> All test environments return only the new package note:
-
-  checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Danielle Navarro <d.navarro@unsw.edu.au>'
-  
-  New submission
-
-0 errors ✓ | 0 warnings ✓ | 1 note x
-
 
 ## Developer note
-
-Thank you in advance! I'm still a little new to the CRAN submission 
-process. I've read the R extensions manual and checked on multiple
-test environments. Hoping that there are no problems with this one.
 
