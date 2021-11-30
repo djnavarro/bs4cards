@@ -10,8 +10,9 @@
 status](https://www.r-pkg.org/badges/version/bs4cards)](https://CRAN.R-project.org/package=bs4cards)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test
-coverage](https://codecov.io/gh/djnavarro/bs4cards/branch/master/graph/badge.svg)](https://codecov.io/gh/djnavarro/bs4cards?branch=master)
+[![](https://codecov.io/gh/djnavarro/bs4cards/branch/master/graph/badge.svg)](https://app.codecov.io/gh/djnavarro/bs4cards)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/bs4cards?color=blue)](https://r-pkg.org/pkg/bs4cards)
 <!-- badges: end -->
 
 When creating R markdown websites, I often find myself wanting to
