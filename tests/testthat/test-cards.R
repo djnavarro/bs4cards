@@ -156,5 +156,15 @@ test_that("label_colour argument errors are caught", {
 
 })
 
+test_that("factor tags are handled correctly", {
 
+  galleries_fct <- galleries
+  galleries_fct$paintbrushes <- as.factor(galleries_fct$paintbrushes)
+
+  expect_equal(
+    cards(galleries, title = long_name, tags = paintbrushes),
+    cards(galleries_fct, title = long_name, tags = paintbrushes)
+  )
+
+})
 
